@@ -1,3 +1,3 @@
-# $D\to K^+K^-\pi^+\pi^-$ from $B^\pm\to DK^\pm$ decays binned fit
+# D->KKpipi from B->DK decays binned fit
 
-This repository contains ```C++```  code for doing a binned fit of $D\to K^+K^-\pi^+\pi^-$ from $B^\pm\to DK^\pm$ decays. The main goal is to extract $\gamma$.
+This repository contains ```C++```  code for doing a binned fit of D->KKpipi from B->DK decays. The main goal is to extract gamma.
