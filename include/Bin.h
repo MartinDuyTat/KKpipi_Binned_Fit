@@ -2,39 +2,40 @@
 /**
  * Bin is a class for a bin in phase space
  */
-#ifndef BIN
-#define BIN
+#ifndef BIN_H
+#define BIN_H
+
+#include"EventList.h"
+#include"Event.h"
 
 class Bin {
   public:
     /**
-     * Default constructor
+     * Constructor that assigns a bin number
+     * @param binnumber Bin number
      */
-    Bin();
+    Bin(int binnumber);
     /**
-     * Function for adding pennies
-     * @param pennies Number of pennies
+     * Constructor that assigns a bin number and an EventList
+     * @param binnumber Bin number
+     * @param eventlist Eventlist with events in this bin
      */
-    void AddPennies(int &pennies);
+    Bin(int binnumber, const EventList &eventlist);
     /**
-     * Function for adding pounds
-     * @param pounds Number of Pounds
+     * Function for adding an event
+     * @param event Event to add
      */
-    void AddPounds(int &pounds);
-    /** 
-     * Function for getting the total amount of money
-     * @return The total amount of money
+    void AddEvent(const Event &event);
+    /**
+     * Function for getting number of events in this bin
+     * @return Number of events in this bin
      */
-    double GetMoney();
+    int GetNumberEvents();
   private:
     /**
-     * Number of pennies
+     * EventList for events in this bin
      */
-    int m_pennies;
-    /**
-     * Number of pounds
-     */
-    int m_pounds;
+    EventList m_eventlist;
 };
 
 #endif
