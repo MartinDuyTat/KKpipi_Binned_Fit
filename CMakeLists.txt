@@ -13,5 +13,5 @@ add_compile_options (-Wextra)
 add_compile_options (-Werror)
 
 add_subdirectory(apps)
-add_subdirectory(include)
+include_directories(include)
 add_subdirectory(src)

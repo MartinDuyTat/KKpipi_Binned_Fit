@@ -8,8 +8,9 @@
 
 int main() {
   Bin money;
-  money.AddPennies(35);
-  money.AddPounds(5);
+  int a = 35, b = 5;
+  money.AddPennies(a);
+  money.AddPounds(b);
   double amount = money.GetMoney();
   std::cout << amount << std::endl;
   return 0;
