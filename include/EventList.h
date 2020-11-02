@@ -16,11 +16,6 @@ class EventList {
      * Default constructor that creates an empty EventList
      */
     EventList();
-    /** 
-     * Constructor that take events from a ROOT TTree in the AmpGen format
-     * @param tree ROOT TTree in the AmpGen format
-     */
-    EventList(const TTree &tree);
     /**
      * Function that adds an Event to the EventList
      * @param event New Event object to be added to the EventList

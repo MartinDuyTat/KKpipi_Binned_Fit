@@ -11,31 +11,30 @@
 class Bin {
   public:
     /**
-     * Constructor that assigns a bin number
-     * @param binnumber Bin number
+     * Default constructor that creates an empty EventList
      */
-    Bin(int binnumber);
-    /**
-     * Constructor that assigns a bin number and an EventList
-     * @param binnumber Bin number
-     * @param eventlist Eventlist with events in this bin
-     */
-    Bin(int binnumber, const EventList &eventlist);
+    Bin();
     /**
      * Function for adding an event
      * @param event Event to add
+     * @param charge +1 for B+, -1 for B-
      */
-    void AddEvent(const Event &event);
+    void AddEvent(Event event, int charge);
     /**
      * Function for getting number of events in this bin
+     * @param charge +1 for B+, -1 for B-
      * @return Number of events in this bin
      */
-    int GetNumberEvents();
+    int GetNumberEvents(int charge);
   private:
     /**
-     * EventList for events in this bin
+     * EventList for B+ events in this bin
      */
-    EventList m_eventlist;
+    EventList m_eventlistBplus;
+    /**
+     * EventList for B- events in this bin
+     */
+    EventList m_eventlistBminus;
 };
 
 #endif

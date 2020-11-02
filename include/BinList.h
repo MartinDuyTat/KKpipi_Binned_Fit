@@ -20,35 +20,44 @@ class Binlist {
      * Constructor that takes a PhaseSpaceParameterisation object and creates the bins
      * @param php A PhaseSpaceParameterisation object that defines the bins in the 5D phase space
      */
-    BinList(const PhaseSpaceParameterisation &php);
+    BinList(PhaseSpaceParameterisation php);
     /**
      * Function for adding an event to the correct bin
      * @param event Event object to be added to the correct bin
+     * @param charge +1 for B+, -1 for B-
      */
-    void AddEvent(const Event &event);
+    void AddEvent(Event event, int charge);
     /**
      * Function for loading events from input data into their respective bins
      * @param tree A ROOT TTree in the AmpGen format containing all the input data events
+     * @param charge +1 for B+, -1 for B-
      */
-    void LoadTTree(const TTree &tree);
+    void LoadTTree(const TTree &tree, int charge);
     /**
      * Function for getting the number of events in each bin
+     * @param charge +1 for B+, -1 for B-
      * @return A vector of the number of events in each bin
      */
-    std::vector<int> GetEvents();
+    std::vector<int> GetEvents(int charge);
     /**
      * Function for calculating the number of events in each bin, given the D decay parameters and the CP parameters
      * @param ddparameters A DDecayParameters object that describes the D meson decay
      * @param cpparameters A CPParameters object that describes the CP violation in the B meson decay
-     * @param bins Number of bins
-     * @return A vector of the predicted number of events in each bin
+     * @param BplusEvents Vector of predicted number of B+ events
+     * @param BminusEvents Vector of predicted number of B- events
+     * @param totalBplus Total number of B+ events
+     * @param totalBminus Total number of B- events
      */
-    std::vector<int> Predict(const DDecayParameters &ddparameters, const CPParameters &cpparameters, const int &bins);
+    void Predict(const DDecayParameters &ddparameters, const CPParameters &cpparameters, std::vector<double> &BplusEvents, std::vector<double> &BminusEvents, int totalBplus, int totalBminus);
   private:
     /**
      * Vector of Bin objects
      */
     std::vector<Bin> m_bins;
+    /**
+     * A parameterisation of phase space
+     */
+    PhaseSpaceParameterisation m_php;
 }/
 
 #endif

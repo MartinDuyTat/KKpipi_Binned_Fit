@@ -12,14 +12,19 @@
 class Event {
   public:
     /**
-     * Default constructor with zero particles
+     * Default constructor for D to K+ K- pi+ pi- event with zero momentum
      */
     Event();
     /**
      * Constructor that takes a vector of four-momenta
      * @param p Four-momenta in the form (E, px, py, pz), in the order K+ K- pi+ pi-
      */
-    Event(const std::vector<double> &p);
+    Event(std::vector<double> p);
+    /**
+     * Returns the four-momenta of daughter particles as a vector
+     * @return Four-momenta of daughter particles in the form (E, px, py, pz), in the order K+ K- pi+ pi-
+     */
+    std::vector<double> GetEventVector();
     /**
      * Copy constructor
      */
@@ -29,16 +34,6 @@ class Event {
      * @param p Vector of TLorentzVector objects, in the order K+ K- pi+ pi-
      */
     Event(const std::vector<TLorentzVector> &p);
-    /**
-     * Returns the four-momenta of daughter particles as a vector
-     * @return Four-momenta of daughter particles in the form (E, px, py, pz), in the order K+ K- pi+ pi-
-     */
-    std::vector<double> GetEventVector();
-    /**
-     * Returns the four-momenta of daughter particles as a vector of TLorentzVector objects
-     * @return Four-momenta of daughter particles in the order K+ K- pi+ pi-
-     */
-    std::vector<TLorentzVector> GetEventLorentzVector();
     /**
      * Function for getting invariant mass of two particles
      * @param particle1 Particle 0(K+), 1(K-), 2(pi+), 3(pi-)

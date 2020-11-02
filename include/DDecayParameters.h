@@ -20,9 +20,14 @@ class DDecayParameters {
     DDecayParameters(const PhasespaceParameterisation &psp, int events);
     /**
      * Function for getting fractional yield K_i
-     * @return K Vector of fractional yields
+     * @return K Vector of fractional yields of D0 events
      */
     std::vector<double> GetK();
+    /**
+     * Function for getting fractional yield K_i
+     * @return K Vector of fractional yields of DBAR0 events
+     */
+    std::vector<double> GetKbar();
     /**
      * Function for getting cosine of the strong phase
      * @return c Vector of cosine of the strong phases
@@ -35,9 +40,13 @@ class DDecayParameters {
     std::vector<double> Gets();
  private:
     /**
-     * Vector of fractional yields
+     * Vector of fractional yields of D0 events
      */
     std::vector<double> m_K;
+    /**
+     * Vector of fractional yields of DBAR0 events
+     */
+    std::vector<double> m_Kbar;
     /**
      * Vector of cosine of strong phases
      */

@@ -1,18 +1,24 @@
 // Martin Duy Tat 30th October 2020
 
-#include<Bin.h>
+#include"Bin.h"
+#include"EventList.h"
+#include"Event.h"
 
-Bin::Bin(): m_pennies(0), m_pounds(0) {
+Bin::Bin() {
 }
 
-void Bin::AddPennies(int &pennies) {
-  m_pennies += pennies;
+void Bin::AddEvent(Event event, int charge) {
+  if(charge == + 1) {
+    m_eventlistBplus.AddEvent(event);
+  } else if(charge == -1) {
+    m_eventlistBminus.AddEvent(event);
+  }
 }
 
-void Bin::AddPounds(int &pounds) {
-  m_pounds += pounds;
-}
-
-double Bin::GetMoney() {
-  return (double)m_pounds + (double)m_pennies/100;
+int Bin::GetNumberEvents(int charge) {
+  if(charge == +1) {
+    return m_eventlistBplus.NumberEvents();
+  } else if(charge == -1) {
+    return m_eventlistBminus.NumberEvents();
+  }
 }
