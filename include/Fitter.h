@@ -17,12 +17,12 @@ class Fitter {
      * @param binlist Input data events
      * @param ddecayparameters Parameters describing the D meson decay
      */
-    Fitter(BinList binlist, DDecayParameters ddecayparameters);
+    Fitter(BinList binlist, DDecayParameters ddparameters);
     /**
      * Function for doing fit and returning the CP violation parameters (by reference)
      * @param cpparameters Initial guess of CP violation parameters, function replaces these with the fitted parameters
      */
-    void DoFit(CPParameters cpparameters); 
+    void DoFit(CPParameters &cpparameters); 
   private:
     /**
      * Input data, sorted into their respective bins
@@ -31,7 +31,7 @@ class Fitter {
     /**
      * D meson decay parameters
      */
-    DDecayParameters m_ddecayparameters;
+    DDecayParameters m_ddparameters;
 };
 
 #endif

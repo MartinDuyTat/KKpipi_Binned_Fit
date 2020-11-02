@@ -26,6 +26,12 @@ class Bin {
      * @return Number of events in this bin
      */
     int GetNumberEvents(int charge);
+    /**
+     * Function for betting EventList object
+     * @param charge +1 for B+, -1 for B-
+     * @return eventlist EventList object
+     */
+    EventList GetEvents(int charge);
   private:
     /**
      * EventList for B+ events in this bin

@@ -18,6 +18,16 @@ void BinList::AddEvent(Event event, int charge) {
   m_bins[m_php.WhichBin(event)].AddEvent(event, charge);
 }
 
+void BinList::AddEvent(Event event, int charge, int maxevents) {
+  int whichbin = m_php.WhichBin(event);
+  if(int maxevents > m_bins[whichbin].GetNumberEvents(charge)) {
+    m_bins[whichbin].AddEvent(event, charge);
+    return;
+  } else {
+    return;
+  }
+}
+
 void BinList::LoadTTree(const TTree *tree, int charge) {
   std::vector<double> four_momentum(16);
   double *p = four_momentum.data();
@@ -43,12 +53,20 @@ void BinList::LoadTTree(const TTree *tree, int charge) {
   }
 }
 
+int BinList::NumberBins() {
+  return m_bins.size();
+}
+
 std::vector<int> BinList::GetEvents(int charge) {
   std::vector<int> number_events;
   for(int i = 0; i < m_bins.size(); i++) {
     number_events.push_back(m_bins[i].GetNumberEvents(charge));
   }
   return number_events;
+}
+
+Bin BinList::GetBin(int i) {
+  return m_bins[i];
 }
 
 void BinList::Predict(const DDecayParameters &ddparameters, const CPParameters &cpparameters, std::vector<int> &BplusEvents, std::vector<int> &BminusEvents, int totalBplus, int totalBminus) {

@@ -14,7 +14,7 @@
 #include"DDecayParameters.h"
 #include"CPParameters.h"
 
-class Binlist {
+class BinList {
   public;
     /**
      * Constructor that takes a PhaseSpaceParameterisation object and creates the bins
@@ -28,17 +28,34 @@ class Binlist {
      */
     void AddEvent(Event event, int charge);
     /**
+     * Function for adding an event to the correct bin, if the number of events in that bin is less than the maximum
+     * @param event Event object to be added to the correct bin
+     * @param charge +1 for B+, -1 for B-
+     * @param maxEvents Maximum number of events in each bin
+     */
+    void AddEvent(Event event, int charge, int maxevents);
+    /**
      * Function for loading events from input data into their respective bins
      * @param tree A ROOT TTree in the AmpGen format containing all the input data events
      * @param charge +1 for B+, -1 for B-
      */
     void LoadTTree(const TTree &tree, int charge);
     /**
+     * Function for getting number of bins
+     */
+    int NumberBins();
+    /**
      * Function for getting the number of events in each bin
      * @param charge +1 for B+, -1 for B-
      * @return A vector of the number of events in each bin
      */
     std::vector<int> GetEvents(int charge);
+    /**
+     * Function for getting Bin object
+     * @param i Bin number
+     * @return Bin object
+     */
+    Bin GetBin(int i);
     /**
      * Function for calculating the number of events in each bin, given the D decay parameters and the CP parameters
      * @param ddparameters A DDecayParameters object that describes the D meson decay

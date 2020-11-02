@@ -22,3 +22,13 @@ int Bin::GetNumberEvents(int charge) {
     return m_eventlistBminus.NumberEvents();
   }
 }
+
+EventList Bin::GetEvents(int charge) {
+  if(charge == +1) {
+    return m_eventlistBplus;
+  } else if(charge == -1) {
+    return m_eventlistBminus;
+  } else {
+    return EventList();
+  }
+}

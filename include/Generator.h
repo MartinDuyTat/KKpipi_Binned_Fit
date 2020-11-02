@@ -18,11 +18,11 @@ class Generator {
      * @param mass_decay mass of decay particles
      * @param particles Number of particles in the final state
      */
-    Generator(double &mass_parent, const double *mass_decay, int particles);
+    Generator(const double &mass_parent, const Double_t *mass_decay, Int_t particles);
     /**
      * Function that generates a random unweighted event
      */
-    std::vector<TLorentzVector> Generator();
+    std::vector<TLorentzVector> Generate();
  private:
     /**
      * TGenPhaseSpace object that describes phase space of decay particles

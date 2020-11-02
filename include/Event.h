@@ -49,6 +49,11 @@ class Event {
      * @return Returns mass of given particles
      */
     double GetInvMass(int particle1, int particle2, int particle3);
+    /**
+     * Function for getting vector of four-momenta of event
+     * @return Vector of four-momenta
+     */
+    std::vector<double> GetEvent();
   private:
     /**
      * Four-momenta of daughter particles

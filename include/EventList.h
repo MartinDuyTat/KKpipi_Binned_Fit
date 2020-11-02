@@ -25,6 +25,11 @@ class EventList {
      * Function that returns total number of events in this EventList
      */
     int NumberEvents();
+    /**
+     * Function that returns the vector of Event objects
+     * @return Vector of Event objects
+     */
+    std::vector<Event> GetEvents();
   private:
     /**
      * List of events

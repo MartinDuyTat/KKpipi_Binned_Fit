@@ -34,3 +34,7 @@ double Event::GetInvMass(int particle1, int particle2) {
 double Event::GetInvMass(int particle1, int particle2) {
   return TMath::Sqrt(TMath::Power(m_momenta[4*particle1 + 0] + m_momenta[4*particle2 + 0] + m_momenta[4*particle3 + 0], 2) - TMath::Power(m_momenta[4*particle1 + 1] + m_momenta[4*particle2 + 1] + m_momenta[4*particle3 + 1], 2) - TMath::Power(m_momenta[4*particle1 + 2] + m_momenta[4*particle2 + 2] + m_momenta[4*particle3 + 2], 2) - TMath::Power(m_momenta[4*particle1 + 3] + m_momenta[4*particle2 + 3] + m_momenta[4*particle3 + 3], 2));
 }
+
+std::vector<double> Event::GetEvent() {
+  return m_momenta;
+}

@@ -17,7 +17,7 @@ class DDecayParameters {
      * @param psp PhaseSpaceParameterisation object
      * @param events Number of events in each bin for Monte Carlo integration
      */
-    DDecayParameters(const PhasespaceParameterisation &psp, int events);
+    DDecayParameters(const PhasespaceParameterisation &psp, const double &mass_parent, const double *mass_decay, int events);
     /**
      * Function for getting fractional yield K_i
      * @return K Vector of fractional yields of D0 events

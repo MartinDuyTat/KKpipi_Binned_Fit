@@ -7,32 +7,32 @@
 #ifndef LIKELIHOOD
 #define LIKELIHOOD
 
-#include"EventList.h"
+#include"BinList.h"
 #include"DDecayParameters.h"
-#include"CPParameters.h"
 
 class Likelihood {
   public:
     /**
-     * Constructor that takes in an EventList object with input data and a DDecayParameters object
-     * @param events EventList object with the input data
+     * Constructor that takes in an BinList object with input data and a DDecayParameters object
+     * @param events BinList object with the input data
      * @param ddecayparameters A DDecayParameters object with the parameters for the D meson decay
      */
-    Likelihood(EventList events, DDecayParameters ddecayparameters);
+    Likelihood(BinList bins, DDecayParameters ddparameters);
     /**
      * Operator overload of () to easily access the likelihood function
      * @param cpparameters A CPParameters object with the CP violation parameters for the B meson decay
+     * @return -2*ln(L), where L is the likelihood function
      */
-    double operator()(const CPParameters *cpparameters);
+    double operator()(const double *cpparameters);
   private:
     /**
      * List of input data events
      */
-    EventList m_events;
+    BinList m_bins;
     /**
      * D meson decay parameters
      */
-    DDecayParameters m_ddecayparameters;
+    DDecayParameters m_ddparameters;
 };
 
 #endif
