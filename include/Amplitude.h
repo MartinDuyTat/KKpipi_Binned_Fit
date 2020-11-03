@@ -37,5 +37,6 @@ class Amplitude {
      * @return Ampltitude of the event
      */
     std::complex<double> (*m_DBARamplitude)(double const* event, const int &x1);
+};
 
 #endif

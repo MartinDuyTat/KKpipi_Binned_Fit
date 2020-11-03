@@ -35,5 +35,6 @@ class EventList {
      * List of events
      */
     std::vector<Event> m_eventlist;
+};
 
 #endif

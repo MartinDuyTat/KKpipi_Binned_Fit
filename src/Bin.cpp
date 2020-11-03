@@ -21,6 +21,7 @@ int Bin::GetNumberEvents(int charge) {
   } else if(charge == -1) {
     return m_eventlistBminus.NumberEvents();
   }
+  return 0;
 }
 
 EventList Bin::GetEvents(int charge) {

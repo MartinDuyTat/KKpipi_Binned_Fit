@@ -11,20 +11,17 @@
 #include"CPParameters.h"
 #include"TMath.h"
 
-BinList::BinList(PhaseSpaceParameterisation php): m_php(php), m_bins(std::vector<Bin>(php.NumberOfBins())) {
+BinList::BinList(PhaseSpaceParameterisation psp): m_psp(psp), m_bins(std::vector<Bin>(psp.NumberOfBins())) {
 }
 
 void BinList::AddEvent(Event event, int charge) {
-  m_bins[m_php.WhichBin(event)].AddEvent(event, charge);
+  m_bins[m_psp.WhichBin(event)].AddEvent(event, charge);
 }
 
 void BinList::AddEvent(Event event, int charge, int maxevents) {
-  int whichbin = m_php.WhichBin(event);
+  int whichbin = m_psp.WhichBin(event);
   if(int maxevents > m_bins[whichbin].GetNumberEvents(charge)) {
     m_bins[whichbin].AddEvent(event, charge);
-    return;
-  } else {
-    return;
   }
 }
 

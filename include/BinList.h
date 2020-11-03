@@ -15,7 +15,7 @@
 #include"CPParameters.h"
 
 class BinList {
-  public;
+  public:
     /**
      * Constructor that takes a PhaseSpaceParameterisation object and creates the bins
      * @param php A PhaseSpaceParameterisation object that defines the bins in the 5D phase space
@@ -68,13 +68,13 @@ class BinList {
     void Predict(const DDecayParameters &ddparameters, const CPParameters &cpparameters, std::vector<double> &BplusEvents, std::vector<double> &BminusEvents, int totalBplus, int totalBminus);
   private:
     /**
+     * A parameterisation of phase space
+     */
+    PhaseSpaceParameterisation m_psp;
+    /**
      * Vector of Bin objects
      */
     std::vector<Bin> m_bins;
-    /**
-     * A parameterisation of phase space
-     */
-    PhaseSpaceParameterisation m_php;
-}/
+};
 
 #endif

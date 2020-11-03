@@ -32,3 +32,6 @@ class PhaseSpaceParameterisation {
      * Number of bins in this binning scheme
      */
     int m_bins;
+};
+
+#endif

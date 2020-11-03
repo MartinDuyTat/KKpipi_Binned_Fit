@@ -17,8 +17,9 @@ int main() {
   PhaseSpaceParameterisation psp;
   TFile fBplus(Bplusfile, "READ");
   TFile fBminus(Bminusfile, "READ");
-  TTree *treeBplus = (*TTree)fBplus.GetObject("DalitzEventList");
-  TTree *treeBminus = (*TTree)fBminus.GetObject("DalitzEventList");
+  TTree *treeBplus, *treeBminus;
+  fBplus.GetObject("DalitzEventList", treeBplus);
+  fBminus.GetObject("DalitzEventList", treeBminus);
   BinList binlist(psp);
   binlist.LoadTree(treeBplus, +1);
   binlist.LoadTree(treeBminus, -1);

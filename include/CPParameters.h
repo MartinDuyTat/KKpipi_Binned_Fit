@@ -6,7 +6,7 @@
 #ifndef CPPARAMETERS
 #define CPPARAMETERS
 
-class {
+class CPParameters {
   public:
     /**
      * Constructor that takes the CP parameters, x and y
