@@ -7,9 +7,9 @@ PhaseSpaceParameterisation::PhaseSpaceParameterisation(): m_bins(8) {
 }
 
 int PhaseSpaceParameterisation::WhichBin(const Event &event) {
-  double s02 = event.GetInvMass(0, 2);
-  double s13 = event.GetInvMass(1, 3);
-  double s012 = event.GetInvMass(0, 1, 2);
+  double s02 = event.GetInvMass2(0, 2);
+  double s13 = event.GetInvMass2(1, 3);
+  double s012 = event.GetInvMass3(0, 1, 2);
   if(s02 < 0.8 && s13 < 0.8 && s012 < 1.5) {
     return 0;
   } else if(s02 >= 0.8 && s13 < 0.8 && s012 < 1.5) {

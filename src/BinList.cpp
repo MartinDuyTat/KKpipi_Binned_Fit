@@ -20,13 +20,13 @@ void BinList::AddEvent(Event event, int charge) {
 
 void BinList::AddEvent(Event event, int charge, int maxevents) {
   int whichbin = m_psp.WhichBin(event);
-  if(int maxevents > m_bins[whichbin].GetNumberEvents(charge)) {
+  if(maxevents > m_bins[whichbin].GetNumberEvents(charge)) {
     m_bins[whichbin].AddEvent(event, charge);
   }
 }
 
-void BinList::LoadTTree(const TTree *tree, int charge) {
-  std::vector<double> four_momentum(16);
+void BinList::LoadTTree(TTree *tree, int charge) {
+  std::vector<Double_t> four_momentum(16);
   double *p = four_momentum.data();
   tree->SetBranchAddress("_1_K~_E", p);
   tree->SetBranchAddress("_1_K~_Px", p + 1);
@@ -56,7 +56,7 @@ int BinList::NumberBins() {
 
 std::vector<int> BinList::GetEvents(int charge) {
   std::vector<int> number_events;
-  for(int i = 0; i < m_bins.size(); i++) {
+  for(unsigned int i = 0; i < m_bins.size(); i++) {
     number_events.push_back(m_bins[i].GetNumberEvents(charge));
   }
   return number_events;
@@ -66,7 +66,7 @@ Bin BinList::GetBin(int i) {
   return m_bins[i];
 }
 
-void BinList::Predict(const DDecayParameters &ddparameters, const CPParameters &cpparameters, std::vector<int> &BplusEvents, std::vector<int> &BminusEvents, int totalBplus, int totalBminus) {
+void BinList::Predict(const DDecayParameters &ddparameters, const CPParameters &cpparameters, std::vector<double> &BplusEvents, std::vector<double> &BminusEvents, int totalBplus, int totalBminus) {
   double xplus, xminus, yplus, yminus;
   cpparameters.GetCPParameters(xplus, xminus, yplus, yminus);
   std::vector<double> K = ddparameters.GetK();
@@ -76,14 +76,14 @@ void BinList::Predict(const DDecayParameters &ddparameters, const CPParameters &
   BplusEvents.resize(m_bins.size());
   BminusEvents.resize(m_bins.size());
   double sumplus = 0, summinus = 0;
-  for(int i = 0; i < m_bins.size(); i++) {
+  for(unsigned int i = 0; i < m_bins.size(); i++) {
     BplusEvents[i] = Kbar[i] + (xplus*xplus + yplus*yplus)*K[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(xplus*c[i] - yplus*s[i]);
     BminusEvents[i] = K[i] + (xminus*xminus + yminus*yminus)*Kbar[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(xminus*c[i] + yminus*s[i]);
     sumplus += BplusEvents[i];
     summinus += BminusEvents[i];
   }
-  double normalisationBplus = BplusEvents/sumplus;
-  double normalisationBminus = BminusEvents/summinus;
+  double normalisationBplus = totalBplus/sumplus;
+  double normalisationBminus = totalBminus/summinus;
   std::transform(BplusEvents.begin(), BplusEvents.end(), BplusEvents.begin(), std::bind(std::multiplies<double>(), std::placeholders::_1, normalisationBplus));
   std::transform(BminusEvents.begin(), BminusEvents.end(), BminusEvents.begin(), std::bind(std::multiplies<double>(), std::placeholders::_1, normalisationBminus));
 }

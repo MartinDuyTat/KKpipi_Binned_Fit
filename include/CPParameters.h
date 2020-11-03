@@ -23,7 +23,7 @@ class CPParameters {
      * @param yplus r_Bsin(delta_B + gamma) for Bplus decays
      * @param yminus r_Bsin(delta - gamma) for Bminus decays
      */
-    void GetCPParameters(double &xplus, double &xminus, double &yplus, double& yminus);
+    void GetCPParameters(double &xplus, double &xminus, double &yplus, double& yminus) const;
   private:
     /**
      * xplus r_Bcos(delta_B + gamma) for Bplus decays

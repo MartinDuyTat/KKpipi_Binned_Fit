@@ -4,7 +4,7 @@
 #include"EventList.h"
 #include"Event.h"
 
-EventList::Eventlist() {
+EventList::EventList() {
 }
 
 void EventList::AddEvent(Event event) {

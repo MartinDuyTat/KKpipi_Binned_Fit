@@ -11,19 +11,20 @@
 #include"EventList.h"
 #include"Bin.h"
 #include"TMath.h"
+#include"Amplitude.h"
 
 DDecayParameters::DDecayParameters(const PhaseSpaceParameterisation &psp, const double &mass_parent, const Double_t *mass_decay, int events) {
   Generator generator(mass_parent, mass_decay, 4);
-  BinList binlist(php);
+  BinList binlist(psp);
   // Generate events until all bins have "events" number of events
   // Use different events for K/Kbar and c/s
-  while(std::all_of(binlist.GetEvents(+1).begin(), binlist.GetEvents(-1).end(), [](int i){return i == events;})) {
+  while(std::all_of(binlist.GetEvents(+1).begin(), binlist.GetEvents(-1).end(), [&events](int i){return i == events;})) {
     std::vector<TLorentzVector> eventvectors = generator.Generate();
-    binlist.AddEvent(Event(eventvectors), charge = +1, events);
+    binlist.AddEvent(Event(eventvectors), +1, events);
   }		    
-  while(std::all_of(binlist.GetEvents(-1).begin(), binlist.GetEvents(-1).end(), [](int i){return i == events;})) {
+  while(std::all_of(binlist.GetEvents(-1).begin(), binlist.GetEvents(-1).end(), [&events](int i){return i == events;})) {
     std::vector<TLorentzVector> eventvectors = generator.Generate();
-    binlist.AddEvent(Event(eventvectors), charge = -1, events);
+    binlist.AddEvent(Event(eventvectors), -1, events);
   }
   int NumberBins = binlist.NumberBins();
   m_K = std::vector<double>(NumberBins, 0.0);
@@ -39,7 +40,7 @@ DDecayParameters::DDecayParameters(const PhaseSpaceParameterisation &psp, const 
       std::complex<double> amplitude_dbar = amplitude(eventlist_dbar[j].GetEvent(), +1);
       m_K[i] += std::norm(amplitude_d)/events;
       m_Kbar[i] += std::norm(amplitude_dbar)/events;
-      amplitude_ddbar = amplitude_d/amplitude_dbar;
+      std::complex<double>amplitude_ddbar = amplitude_d/amplitude_dbar;
       m_c[i] += TMath::Sqrt(std::norm(amplitude_d))*TMath::Sqrt(std::norm(amplitude_dbar))*amplitude_ddbar.real()/events;
       m_s[i] += TMath::Sqrt(std::norm(amplitude_d))*TMath::Sqrt(std::norm(amplitude_dbar))*amplitude_ddbar.imag()/events;
     }
@@ -51,21 +52,21 @@ DDecayParameters::DDecayParameters(const PhaseSpaceParameterisation &psp, const 
     m_c[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
     m_s[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
   }
-  std::transform(m_K.begin(), m_K.end, m_K.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumK));
-  std::transform(m_Kbar.begin(), m_Kbar.end, m_Kbar.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumKbar));
+  std::transform(m_K.begin(), m_K.end(), m_K.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumK));
+  std::transform(m_Kbar.begin(), m_Kbar.end(), m_Kbar.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumKbar));
 }
 
-std::vector<double> DDecayParameters::GetK() {
+std::vector<double> DDecayParameters::GetK() const {
   return m_K;
 }
-std::vector<double> DDecayParameters::GetKbar() {
+std::vector<double> DDecayParameters::GetKbar() const {
   return m_Kbar;
 }
 
-std::vector<double> DDecayParameters::Getc() {
+std::vector<double> DDecayParameters::Getc() const {
   return m_c;
 }
 
-std::vector<double> DDecayParameters::Gets() {
+std::vector<double> DDecayParameters::Gets() const {
   return m_s;
 }

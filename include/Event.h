@@ -26,10 +26,6 @@ class Event {
      */
     std::vector<double> GetEventVector();
     /**
-     * Copy constructor
-     */
-    Event(const Event &event);
-    /**
      * Constructor that takes a vector of four-momenta
      * @param p Vector of TLorentzVector objects, in the order K+ K- pi+ pi-
      */
@@ -40,7 +36,7 @@ class Event {
      * @param particle2 Particle 0(K+), 1(K-), 2(pi+), 3(pi-)
      * @return Returns invariant mass of given particles
      */
-    double GetInvMass(int particle1, int particle2);
+    double GetInvMass2(int particle1, int particle2) const;
     /**
      * Function for getting invariant mass of three particles
      * @param particle1 Particle 0(K+), 1(K-), 2(pi+), 3(pi-)
@@ -48,12 +44,12 @@ class Event {
      * @param particle3 Particle 0(K+), 1(K-), 2(pi+), 3(pi-)
      * @return Returns mass of given particles
      */
-    double GetInvMass(int particle1, int particle2, int particle3);
+    double GetInvMass3(int particle1, int particle2, int particle3) const;
     /**
      * Function for getting vector of four-momenta of event
      * @return Vector of four-momenta
      */
-    std::vector<double> GetEvent();
+    std::vector<double> GetEvent() const;
   private:
     /**
      * Four-momenta of daughter particles

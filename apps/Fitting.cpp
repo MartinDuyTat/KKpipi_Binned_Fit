@@ -6,23 +6,25 @@
 #include<string>
 #include<iostream>
 #include"PhaseSpaceParameterisation.h"
+#include"TFile.h"
 #include"TTree.h"
 #include"BinList.h"
 #include"DDecayParameters.h"
 #include"CPParameters.h"
+#include"Fitter.h"
 
 int main() {
   std::string Bplusfile("/data/lhcb/users/tat/D02KKpipi/BplusEvents/BplustoDK_1K.root");
   std::string Bminusfile("/data/lhcb/users/tat/D02KKpipi/BminusEvents/BminustoDK_1K.root");
   PhaseSpaceParameterisation psp;
-  TFile fBplus(Bplusfile, "READ");
-  TFile fBminus(Bminusfile, "READ");
+  TFile fBplus(Bplusfile.c_str(), "READ");
+  TFile fBminus(Bminusfile.c_str(), "READ");
   TTree *treeBplus, *treeBminus;
   fBplus.GetObject("DalitzEventList", treeBplus);
   fBminus.GetObject("DalitzEventList", treeBminus);
   BinList binlist(psp);
-  binlist.LoadTree(treeBplus, +1);
-  binlist.LoadTree(treeBminus, -1);
+  binlist.LoadTTree(treeBplus, +1);
+  binlist.LoadTTree(treeBminus, -1);
   double masses[4] = {0.493677, 0.493677, 0.13957039, 0.13957039};
   DDecayParameters ddparameters(psp, 1.86483, masses, 1000);
   Fitter fit(binlist, ddparameters);

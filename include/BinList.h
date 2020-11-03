@@ -39,7 +39,7 @@ class BinList {
      * @param tree A ROOT TTree in the AmpGen format containing all the input data events
      * @param charge +1 for B+, -1 for B-
      */
-    void LoadTTree(const TTree *tree, int charge);
+    void LoadTTree(TTree *tree, int charge);
     /**
      * Function for getting number of bins
      */
