@@ -8,7 +8,7 @@
 
 Generator::Generator(const Double_t &mass_parent, const Double_t *mass_decay, Int_t particles) {
   m_phasespace = TGenPhaseSpace();
-  TLorentzVector P(mass_parent, 0.0, 0.0, 0.0);
+  TLorentzVector P(0.0, 0.0, 0.0, mass_parent);
   m_phasespace.SetDecay(P, particles, mass_decay);
 }
 
@@ -20,8 +20,7 @@ std::vector<TLorentzVector> Generator::Generate() {
   } while(weight < random_generator.Rndm());
   std::vector<TLorentzVector> event(4);
   for(Int_t i = 0; i < 4; i++) {
-    TLorentzVector *v;
-    v = m_phasespace.GetDecay(i);
+    TLorentzVector *v = m_phasespace.GetDecay(i);
     event[i] = *v;
   }
   return event;

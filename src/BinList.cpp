@@ -11,7 +11,7 @@
 #include"CPParameters.h"
 #include"TMath.h"
 
-BinList::BinList(PhaseSpaceParameterisation psp): m_psp(psp), m_bins(std::vector<Bin>(psp.NumberOfBins())) {
+BinList::BinList(PhaseSpaceParameterisation psp): m_psp(psp), m_bins(std::vector<Bin>(m_psp.NumberOfBins())) {
 }
 
 void BinList::AddEvent(Event event, int charge) {
@@ -28,22 +28,22 @@ void BinList::AddEvent(Event event, int charge, int maxevents) {
 void BinList::LoadTTree(TTree *tree, int charge) {
   std::vector<Double_t> four_momentum(16);
   double *p = four_momentum.data();
-  tree->SetBranchAddress("_1_K~_E", p);
-  tree->SetBranchAddress("_1_K~_Px", p + 1);
-  tree->SetBranchAddress("_1_K~_Py", p + 2);
-  tree->SetBranchAddress("_1_K~_Pz", p + 3);
-  tree->SetBranchAddress("_2_K#_E", p + 4);
-  tree->SetBranchAddress("_2_K#_Px", p + 5);
-  tree->SetBranchAddress("_2_K#_Py", p + 6);
-  tree->SetBranchAddress("_2_K#_Pz", p + 7);
-  tree->SetBranchAddress("_3_pi~_E", p + 8);
-  tree->SetBranchAddress("_3_pi~_Px", p + 9);
-  tree->SetBranchAddress("_3_pi~_Py", p + 10);
-  tree->SetBranchAddress("_3_pi~_Pz", p + 11);
-  tree->SetBranchAddress("_4_pi#_E", p + 12);
-  tree->SetBranchAddress("_4_pi#_Px", p + 13);
-  tree->SetBranchAddress("_4_pi#_Py", p + 14);
-  tree->SetBranchAddress("_4_pi#_Pz", p + 15);
+  tree->SetBranchAddress("_1_K~_Px", p + 0);
+  tree->SetBranchAddress("_1_K~_Py", p + 1);
+  tree->SetBranchAddress("_1_K~_Pz", p + 2);
+  tree->SetBranchAddress("_1_K~_E", p + 3);
+  tree->SetBranchAddress("_2_K#_Px", p + 4);
+  tree->SetBranchAddress("_2_K#_Py", p + 5);
+  tree->SetBranchAddress("_2_K#_Pz", p + 6);
+  tree->SetBranchAddress("_2_K#_E", p + 7);
+  tree->SetBranchAddress("_3_pi~_Px", p + 8);
+  tree->SetBranchAddress("_3_pi~_Py", p + 9);
+  tree->SetBranchAddress("_3_pi~_Pz", p + 10);
+  tree->SetBranchAddress("_3_pi~_E", p +11);
+  tree->SetBranchAddress("_4_pi#_Px", p + 12);
+  tree->SetBranchAddress("_4_pi#_Py", p + 13);
+  tree->SetBranchAddress("_4_pi#_Pz", p + 14);
+  tree->SetBranchAddress("_4_pi#_E", p + 15);
   for(Int_t i = 0; i < tree->GetEntries(); i++) {
     tree->GetEntry(i);
     this->AddEvent(Event(four_momentum), charge);
@@ -54,7 +54,7 @@ int BinList::NumberBins() {
   return m_bins.size();
 }
 
-std::vector<int> BinList::GetEvents(int charge) {
+std::vector<int> BinList::GetEvents(int charge) const {
   std::vector<int> number_events;
   for(unsigned int i = 0; i < m_bins.size(); i++) {
     number_events.push_back(m_bins[i].GetNumberEvents(charge));

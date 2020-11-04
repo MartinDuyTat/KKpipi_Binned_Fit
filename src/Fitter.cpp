@@ -12,17 +12,21 @@ Fitter::Fitter(BinList binlist, DDecayParameters ddparameters): m_binlist(binlis
 }
 
 void Fitter::DoFit(CPParameters &cpparameters) {
-  ROOT::Minuit2::Minuit2Minimizer *mini = new ROOT::Minuit2::Minuit2Minimizer("Hesse");
+  ROOT::Minuit2::Minuit2Minimizer *mini = new ROOT::Minuit2::Minuit2Minimizer();
   Likelihood *likelihood = new Likelihood(m_binlist, m_ddparameters);
   ROOT::Math::Functor fcn(*likelihood, 4);
   mini->SetFunction(fcn);
   double xplus, xminus, yplus, yminus;
   cpparameters.GetCPParameters(xplus, xminus, yplus, yminus);
-  mini->SetVariable(0, "xplus", xplus, 0.1);
-  mini->SetVariable(1, "xminus", xminus, 0.1);
-  mini->SetVariable(2, "yplus", yplus, 0.1);
-  mini->SetVariable(3, "yminus", yminus, 0.1);
+  mini->SetVariable(0, "xplus", xplus, 1);
+  mini->SetVariable(1, "xminus", xminus, 1);
+  mini->SetVariable(2, "yplus", yplus, 1);
+  mini->SetVariable(3, "yminus", yminus, 1);
   mini->Minimize();
-  cpparameters = CPParameters(xplus, xminus, yplus, yminus);
+  const double *xs = mini->X();
+  const double *err = mini->Errors();
+  cpparameters = CPParameters(xs[0], xs[1], xs[2], xs[3]);
+  std::cout << err[0] << " " << err[1] << " " << err[2] << " " << err[3] << std::endl;
   delete mini;
+  delete likelihood;
 }

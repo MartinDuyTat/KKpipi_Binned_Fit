@@ -25,7 +25,7 @@ class Bin {
      * @param charge +1 for B+, -1 for B-
      * @return Number of events in this bin
      */
-    int GetNumberEvents(int charge);
+    int GetNumberEvents(int charge) const;
     /**
      * Function for betting EventList object
      * @param charge +1 for B+, -1 for B-

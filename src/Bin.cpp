@@ -15,7 +15,7 @@ void Bin::AddEvent(Event event, int charge) {
   }
 }
 
-int Bin::GetNumberEvents(int charge) {
+int Bin::GetNumberEvents(int charge) const {
   if(charge == +1) {
     return m_eventlistBplus.NumberEvents();
   } else if(charge == -1) {

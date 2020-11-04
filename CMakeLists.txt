@@ -7,11 +7,14 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+find_package(ROOT 6.22 CONFIG REQUIRED)
+
 add_compile_options (-Wall)
 add_compile_options (-Wunused)
 add_compile_options (-Wextra)
 add_compile_options (-Werror)
 
-add_subdirectory(apps)
-include_directories(include)
-add_subdirectory(src)
+add_subdirectory(${CMAKE_SOURCE_DIR}/apps)
+include_directories(${CMAKE_SOURCE_DIR}/include)
+add_subdirectory(${CMAKE_SOURCE_DIR}/src)
+link_directories(${CMAKE_SOURCE_DIR}/shared)

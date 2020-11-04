@@ -3,6 +3,7 @@
 #include<vector>
 #include<string>
 #include<complex>
+#include<algorithm>
 #include<dlfcn.h>
 #include"Amplitude.h"
 

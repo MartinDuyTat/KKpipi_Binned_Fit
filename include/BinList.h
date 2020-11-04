@@ -49,7 +49,7 @@ class BinList {
      * @param charge +1 for B+, -1 for B-
      * @return A vector of the number of events in each bin
      */
-    std::vector<int> GetEvents(int charge);
+    std::vector<int> GetEvents(int charge) const;
     /**
      * Function for getting Bin object
      * @param i Bin number

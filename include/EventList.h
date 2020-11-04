@@ -24,7 +24,7 @@ class EventList {
     /**
      * Function that returns total number of events in this EventList
      */
-    int NumberEvents();
+    int NumberEvents() const;
     /**
      * Function that returns the vector of Event objects
      * @return Vector of Event objects

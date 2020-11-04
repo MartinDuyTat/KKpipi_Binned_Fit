@@ -3,6 +3,7 @@
 #include<algorithm>
 #include<vector>
 #include<complex>
+#include<iostream>
 #include"DDecayParameters.h"
 #include"BinList.h"
 #include"Generator.h"
@@ -18,13 +19,16 @@ DDecayParameters::DDecayParameters(const PhaseSpaceParameterisation &psp, const 
   BinList binlist(psp);
   // Generate events until all bins have "events" number of events
   // Use different events for K/Kbar and c/s
-  while(std::all_of(binlist.GetEvents(+1).begin(), binlist.GetEvents(-1).end(), [&events](int i){return i == events;})) {
+  int counter = 0;
+  std::vector<int> v = binlist.GetEvents(+1);
+  while(!std::all_of(v.begin(), v.end(), [&events](int i){return i == events;})) {
     std::vector<TLorentzVector> eventvectors = generator.Generate();
     binlist.AddEvent(Event(eventvectors), +1, events);
-  }		    
-  while(std::all_of(binlist.GetEvents(-1).begin(), binlist.GetEvents(-1).end(), [&events](int i){return i == events;})) {
-    std::vector<TLorentzVector> eventvectors = generator.Generate();
-    binlist.AddEvent(Event(eventvectors), -1, events);
+    v = binlist.GetEvents(+1);
+    counter++;
+    if(counter%events == 0) {
+      std::cout << "Generated " << counter << " events\n";
+    }
   }
   int NumberBins = binlist.NumberBins();
   m_K = std::vector<double>(NumberBins, 0.0);
@@ -32,23 +36,29 @@ DDecayParameters::DDecayParameters(const PhaseSpaceParameterisation &psp, const 
   m_c = std::vector<double>(NumberBins, 0.0);
   m_s = std::vector<double>(NumberBins, 0.0);
   Amplitude amplitude("D0toKKpipi.so", "Dbar0toKKpipi.so");
+  // Do Monte Carlo integration to find the hadronic parameters
   for(int i = 0; i < NumberBins; i++) {
-    std::vector<Event> eventlist_d = binlist.GetBin(i).GetEvents(-1).GetEvents();
+    std::vector<Event> eventlist_d = binlist.GetBin(i).GetEvents(+1).GetEvents();
     std::vector<Event> eventlist_dbar = binlist.GetBin(i).GetEvents(+1).GetEvents();
     for(int j = 0; j < events; j++) {
+      // Calculate amplitude of event
       std::complex<double> amplitude_d = amplitude(eventlist_d[j].GetEvent(), +1);
-      std::complex<double> amplitude_dbar = amplitude(eventlist_dbar[j].GetEvent(), +1);
-      m_K[i] += std::norm(amplitude_d)/events;
-      m_Kbar[i] += std::norm(amplitude_dbar)/events;
-      std::complex<double>amplitude_ddbar = amplitude_d/amplitude_dbar;
-      m_c[i] += TMath::Sqrt(std::norm(amplitude_d))*TMath::Sqrt(std::norm(amplitude_dbar))*amplitude_ddbar.real()/events;
-      m_s[i] += TMath::Sqrt(std::norm(amplitude_d))*TMath::Sqrt(std::norm(amplitude_dbar))*amplitude_ddbar.imag()/events;
+      std::complex<double> amplitude_dbar = amplitude(eventlist_dbar[j].GetEvent(), -1);
+      // Fractional yield in bin i
+      m_K[i] += std::norm(amplitude_d);
+      m_Kbar[i] += std::norm(amplitude_dbar);
+      // Strong Phase difference
+      double phase = std::arg(amplitude_d) - std::arg(amplitude_dbar);
+      m_c[i] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase);
+      m_s[i] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase);
     }
   }
   double sumK = 0, sumKbar = 0;
   for(int i = 0; i < NumberBins; i++) {
+    // Normalise fractional yields so they sum to 1
     sumK += m_K[i];
     sumKbar += m_Kbar[i];
+    // Amplitude averaged strong phase variation normalisation
     m_c[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
     m_s[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
   }

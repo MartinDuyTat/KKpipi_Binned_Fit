@@ -11,7 +11,7 @@ void EventList::AddEvent(Event event) {
   m_eventlist.push_back(event);
 }
 
-int EventList::NumberEvents() {
+int EventList::NumberEvents() const {
   return m_eventlist.size();
 }
 
