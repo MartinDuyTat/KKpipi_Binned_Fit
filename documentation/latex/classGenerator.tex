@@ -1,0 +1,49 @@
+\hypertarget{classGenerator}{}\doxysection{Generator Class Reference}
+\label{classGenerator}\index{Generator@{Generator}}
+
+
+{\ttfamily \#include $<$Generator.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGenerator_a6be6e84fd34c7331c7423ce9ded414e8}{Generator}} (const double \&mass\+\_\+parent, const Double\+\_\+t $\ast$mass\+\_\+decay, Int\+\_\+t particles)
+\item 
+std\+::vector$<$ TLorentz\+Vector $>$ \mbox{\hyperlink{classGenerator_adcfe8892019282b8fad1800481d7056a}{Generate}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classGenerator}{Generator}} is a class that generates uniformly distributed events in phase space, assuming the parent particle is at rest 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGenerator_a6be6e84fd34c7331c7423ce9ded414e8}\label{classGenerator_a6be6e84fd34c7331c7423ce9ded414e8}} 
+\index{Generator@{Generator}!Generator@{Generator}}
+\index{Generator@{Generator}!Generator@{Generator}}
+\doxysubsubsection{\texorpdfstring{Generator()}{Generator()}}
+{\footnotesize\ttfamily Generator\+::\+Generator (\begin{DoxyParamCaption}\item[{const double \&}]{mass\+\_\+parent,  }\item[{const Double\+\_\+t $\ast$}]{mass\+\_\+decay,  }\item[{Int\+\_\+t}]{particles }\end{DoxyParamCaption})}
+
+Constructor that takes in the particle passes and sets up phase space 
+\begin{DoxyParams}{Parameters}
+{\em mass\+\_\+parent} & Mass of parent particle \\
+\hline
+{\em mass\+\_\+decay} & mass of decay particles \\
+\hline
+{\em particles} & Number of particles in the final state \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGenerator_adcfe8892019282b8fad1800481d7056a}\label{classGenerator_adcfe8892019282b8fad1800481d7056a}} 
+\index{Generator@{Generator}!Generate@{Generate}}
+\index{Generate@{Generate}!Generator@{Generator}}
+\doxysubsubsection{\texorpdfstring{Generate()}{Generate()}}
+{\footnotesize\ttfamily std\+::vector$<$ TLorentz\+Vector $>$ Generator\+::\+Generate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function that generates a random unweighted event 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/Generator.\+h\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/Generator.\+cpp\end{DoxyCompactItemize}

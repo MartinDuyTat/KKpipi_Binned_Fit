@@ -1,0 +1,92 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Class Index}{1}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Class List}{1}{section.1.1}% 
+\contentsline {chapter}{\numberline {2}Class Documentation}{3}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Amplitude Class Reference}{3}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}Detailed Description}{3}{subsection.2.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}Constructor \& Destructor Documentation}{3}{subsection.2.1.2}% 
+\contentsline {subsubsection}{\numberline {2.1.2.1}Amplitude()}{3}{subsubsection.2.1.2.1}% 
+\contentsline {subsection}{\numberline {2.1.3}Member Function Documentation}{3}{subsection.2.1.3}% 
+\contentsline {subsubsection}{\numberline {2.1.3.1}operator()()}{3}{subsubsection.2.1.3.1}% 
+\contentsline {section}{\numberline {2.2}Bin Class Reference}{4}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Detailed Description}{4}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}Constructor \& Destructor Documentation}{4}{subsection.2.2.2}% 
+\contentsline {subsubsection}{\numberline {2.2.2.1}Bin()}{4}{subsubsection.2.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.3}Member Function Documentation}{4}{subsection.2.2.3}% 
+\contentsline {subsubsection}{\numberline {2.2.3.1}AddEvent()}{4}{subsubsection.2.2.3.1}% 
+\contentsline {subsubsection}{\numberline {2.2.3.2}GetEvents()}{5}{subsubsection.2.2.3.2}% 
+\contentsline {subsubsection}{\numberline {2.2.3.3}GetNumberEvents()}{5}{subsubsection.2.2.3.3}% 
+\contentsline {section}{\numberline {2.3}Bin\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List Class Reference}{5}{section.2.3}% 
+\contentsline {subsection}{\numberline {2.3.1}Detailed Description}{6}{subsection.2.3.1}% 
+\contentsline {subsection}{\numberline {2.3.2}Constructor \& Destructor Documentation}{6}{subsection.2.3.2}% 
+\contentsline {subsubsection}{\numberline {2.3.2.1}BinList()}{6}{subsubsection.2.3.2.1}% 
+\contentsline {subsection}{\numberline {2.3.3}Member Function Documentation}{6}{subsection.2.3.3}% 
+\contentsline {subsubsection}{\numberline {2.3.3.1}AddEvent()\hspace {0.1cm}{\relax \fontsize {8}{9.5}\selectfont \abovedisplayskip 6\p@ plus2\p@ minus4\p@ \abovedisplayshortskip \z@ plus\p@ \belowdisplayshortskip 3\p@ plus\p@ minus2\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 3\p@ plus\p@ minus\p@ \parsep 2\p@ plus\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \ttfamily [1/2]}}{6}{subsubsection.2.3.3.1}% 
+\contentsline {subsubsection}{\numberline {2.3.3.2}AddEvent()\hspace {0.1cm}{\relax \fontsize {8}{9.5}\selectfont \abovedisplayskip 6\p@ plus2\p@ minus4\p@ \abovedisplayshortskip \z@ plus\p@ \belowdisplayshortskip 3\p@ plus\p@ minus2\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 3\p@ plus\p@ minus\p@ \parsep 2\p@ plus\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \ttfamily [2/2]}}{7}{subsubsection.2.3.3.2}% 
+\contentsline {subsubsection}{\numberline {2.3.3.3}GetBin()}{7}{subsubsection.2.3.3.3}% 
+\contentsline {subsubsection}{\numberline {2.3.3.4}GetEvents()}{7}{subsubsection.2.3.3.4}% 
+\contentsline {subsubsection}{\numberline {2.3.3.5}LoadTTree()}{8}{subsubsection.2.3.3.5}% 
+\contentsline {subsubsection}{\numberline {2.3.3.6}NumberBins()}{8}{subsubsection.2.3.3.6}% 
+\contentsline {subsubsection}{\numberline {2.3.3.7}Predict()}{8}{subsubsection.2.3.3.7}% 
+\contentsline {section}{\numberline {2.4}CPParameters Class Reference}{9}{section.2.4}% 
+\contentsline {subsection}{\numberline {2.4.1}Detailed Description}{9}{subsection.2.4.1}% 
+\contentsline {subsection}{\numberline {2.4.2}Constructor \& Destructor Documentation}{9}{subsection.2.4.2}% 
+\contentsline {subsubsection}{\numberline {2.4.2.1}CPParameters()}{9}{subsubsection.2.4.2.1}% 
+\contentsline {subsection}{\numberline {2.4.3}Member Function Documentation}{9}{subsection.2.4.3}% 
+\contentsline {subsubsection}{\numberline {2.4.3.1}GetCPParameters()}{10}{subsubsection.2.4.3.1}% 
+\contentsline {subsubsection}{\numberline {2.4.3.2}GetError()}{10}{subsubsection.2.4.3.2}% 
+\contentsline {subsubsection}{\numberline {2.4.3.3}SetError()}{10}{subsubsection.2.4.3.3}% 
+\contentsline {section}{\numberline {2.5}DDecay\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Parameters Class Reference}{11}{section.2.5}% 
+\contentsline {subsection}{\numberline {2.5.1}Detailed Description}{11}{subsection.2.5.1}% 
+\contentsline {subsection}{\numberline {2.5.2}Constructor \& Destructor Documentation}{11}{subsection.2.5.2}% 
+\contentsline {subsubsection}{\numberline {2.5.2.1}DDecayParameters()}{11}{subsubsection.2.5.2.1}% 
+\contentsline {subsection}{\numberline {2.5.3}Member Function Documentation}{12}{subsection.2.5.3}% 
+\contentsline {subsubsection}{\numberline {2.5.3.1}Getc()}{12}{subsubsection.2.5.3.1}% 
+\contentsline {subsubsection}{\numberline {2.5.3.2}GetK()}{12}{subsubsection.2.5.3.2}% 
+\contentsline {subsubsection}{\numberline {2.5.3.3}GetKbar()}{12}{subsubsection.2.5.3.3}% 
+\contentsline {subsubsection}{\numberline {2.5.3.4}Gets()}{13}{subsubsection.2.5.3.4}% 
+\contentsline {section}{\numberline {2.6}Event Class Reference}{13}{section.2.6}% 
+\contentsline {subsection}{\numberline {2.6.1}Detailed Description}{13}{subsection.2.6.1}% 
+\contentsline {subsection}{\numberline {2.6.2}Constructor \& Destructor Documentation}{13}{subsection.2.6.2}% 
+\contentsline {subsubsection}{\numberline {2.6.2.1}Event()\hspace {0.1cm}{\relax \fontsize {8}{9.5}\selectfont \abovedisplayskip 6\p@ plus2\p@ minus4\p@ \abovedisplayshortskip \z@ plus\p@ \belowdisplayshortskip 3\p@ plus\p@ minus2\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 3\p@ plus\p@ minus\p@ \parsep 2\p@ plus\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \ttfamily [1/3]}}{13}{subsubsection.2.6.2.1}% 
+\contentsline {subsubsection}{\numberline {2.6.2.2}Event()\hspace {0.1cm}{\relax \fontsize {8}{9.5}\selectfont \abovedisplayskip 6\p@ plus2\p@ minus4\p@ \abovedisplayshortskip \z@ plus\p@ \belowdisplayshortskip 3\p@ plus\p@ minus2\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 3\p@ plus\p@ minus\p@ \parsep 2\p@ plus\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \ttfamily [2/3]}}{13}{subsubsection.2.6.2.2}% 
+\contentsline {subsubsection}{\numberline {2.6.2.3}Event()\hspace {0.1cm}{\relax \fontsize {8}{9.5}\selectfont \abovedisplayskip 6\p@ plus2\p@ minus4\p@ \abovedisplayshortskip \z@ plus\p@ \belowdisplayshortskip 3\p@ plus\p@ minus2\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 3\p@ plus\p@ minus\p@ \parsep 2\p@ plus\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \ttfamily [3/3]}}{14}{subsubsection.2.6.2.3}% 
+\contentsline {subsection}{\numberline {2.6.3}Member Function Documentation}{14}{subsection.2.6.3}% 
+\contentsline {subsubsection}{\numberline {2.6.3.1}GetEvent()}{14}{subsubsection.2.6.3.1}% 
+\contentsline {subsubsection}{\numberline {2.6.3.2}GetEventVector()}{14}{subsubsection.2.6.3.2}% 
+\contentsline {subsubsection}{\numberline {2.6.3.3}GetInvMass2()}{14}{subsubsection.2.6.3.3}% 
+\contentsline {subsubsection}{\numberline {2.6.3.4}GetInvMass3()}{15}{subsubsection.2.6.3.4}% 
+\contentsline {section}{\numberline {2.7}Event\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List Class Reference}{15}{section.2.7}% 
+\contentsline {subsection}{\numberline {2.7.1}Detailed Description}{16}{subsection.2.7.1}% 
+\contentsline {subsection}{\numberline {2.7.2}Constructor \& Destructor Documentation}{16}{subsection.2.7.2}% 
+\contentsline {subsubsection}{\numberline {2.7.2.1}EventList()}{16}{subsubsection.2.7.2.1}% 
+\contentsline {subsection}{\numberline {2.7.3}Member Function Documentation}{16}{subsection.2.7.3}% 
+\contentsline {subsubsection}{\numberline {2.7.3.1}AddEvent()}{16}{subsubsection.2.7.3.1}% 
+\contentsline {subsubsection}{\numberline {2.7.3.2}GetEvents()}{16}{subsubsection.2.7.3.2}% 
+\contentsline {subsubsection}{\numberline {2.7.3.3}NumberEvents()}{17}{subsubsection.2.7.3.3}% 
+\contentsline {section}{\numberline {2.8}Fitter Class Reference}{17}{section.2.8}% 
+\contentsline {subsection}{\numberline {2.8.1}Detailed Description}{17}{subsection.2.8.1}% 
+\contentsline {subsection}{\numberline {2.8.2}Constructor \& Destructor Documentation}{17}{subsection.2.8.2}% 
+\contentsline {subsubsection}{\numberline {2.8.2.1}Fitter()}{17}{subsubsection.2.8.2.1}% 
+\contentsline {subsection}{\numberline {2.8.3}Member Function Documentation}{17}{subsection.2.8.3}% 
+\contentsline {subsubsection}{\numberline {2.8.3.1}DoFit()}{18}{subsubsection.2.8.3.1}% 
+\contentsline {section}{\numberline {2.9}Generator Class Reference}{18}{section.2.9}% 
+\contentsline {subsection}{\numberline {2.9.1}Detailed Description}{18}{subsection.2.9.1}% 
+\contentsline {subsection}{\numberline {2.9.2}Constructor \& Destructor Documentation}{18}{subsection.2.9.2}% 
+\contentsline {subsubsection}{\numberline {2.9.2.1}Generator()}{18}{subsubsection.2.9.2.1}% 
+\contentsline {subsection}{\numberline {2.9.3}Member Function Documentation}{19}{subsection.2.9.3}% 
+\contentsline {subsubsection}{\numberline {2.9.3.1}Generate()}{19}{subsubsection.2.9.3.1}% 
+\contentsline {section}{\numberline {2.10}Likelihood Class Reference}{19}{section.2.10}% 
+\contentsline {subsection}{\numberline {2.10.1}Detailed Description}{19}{subsection.2.10.1}% 
+\contentsline {subsection}{\numberline {2.10.2}Constructor \& Destructor Documentation}{19}{subsection.2.10.2}% 
+\contentsline {subsubsection}{\numberline {2.10.2.1}Likelihood()}{19}{subsubsection.2.10.2.1}% 
+\contentsline {subsection}{\numberline {2.10.3}Member Function Documentation}{20}{subsection.2.10.3}% 
+\contentsline {subsubsection}{\numberline {2.10.3.1}operator()()}{20}{subsubsection.2.10.3.1}% 
+\contentsline {section}{\numberline {2.11}Phase\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Space\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Parameterisation Class Reference}{20}{section.2.11}% 
+\contentsline {subsection}{\numberline {2.11.1}Detailed Description}{20}{subsection.2.11.1}% 
+\contentsline {subsection}{\numberline {2.11.2}Constructor \& Destructor Documentation}{21}{subsection.2.11.2}% 
+\contentsline {subsubsection}{\numberline {2.11.2.1}PhaseSpaceParameterisation()}{21}{subsubsection.2.11.2.1}% 
+\contentsline {subsection}{\numberline {2.11.3}Member Function Documentation}{21}{subsection.2.11.3}% 
+\contentsline {subsubsection}{\numberline {2.11.3.1}NumberOfBins()}{21}{subsubsection.2.11.3.1}% 
+\contentsline {subsubsection}{\numberline {2.11.3.2}WhichBin()}{21}{subsubsection.2.11.3.2}% 
+\contentsline {chapter}{Index}{23}{section*.12}% 

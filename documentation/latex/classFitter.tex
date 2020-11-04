@@ -1,0 +1,52 @@
+\hypertarget{classFitter}{}\doxysection{Fitter Class Reference}
+\label{classFitter}\index{Fitter@{Fitter}}
+
+
+{\ttfamily \#include $<$Fitter.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFitter_ae114a3bfb09e046fd969c07c26413704}{Fitter}} (\mbox{\hyperlink{classBinList}{Bin\+List}} binlist, \mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}} ddparameters)
+\item 
+void \mbox{\hyperlink{classFitter_a9223a8bbf734409eb9dcba435b938909}{Do\+Fit}} (\mbox{\hyperlink{classCPParameters}{CPParameters}} \&cpparameters)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classFitter}{Fitter}} is a class for maximising the likelihood and obtaining the CP violation parameters for a B meson decay 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFitter_ae114a3bfb09e046fd969c07c26413704}\label{classFitter_ae114a3bfb09e046fd969c07c26413704}} 
+\index{Fitter@{Fitter}!Fitter@{Fitter}}
+\index{Fitter@{Fitter}!Fitter@{Fitter}}
+\doxysubsubsection{\texorpdfstring{Fitter()}{Fitter()}}
+{\footnotesize\ttfamily Fitter\+::\+Fitter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBinList}{Bin\+List}}}]{binlist,  }\item[{\mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}}}]{ddparameters }\end{DoxyParamCaption})}
+
+Constructor that takes in a \mbox{\hyperlink{classBinList}{Bin\+List}} object of input data and D meson decay parameters 
+\begin{DoxyParams}{Parameters}
+{\em binlist} & Input data events \\
+\hline
+{\em ddecayparameters} & Parameters describing the D meson decay \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFitter_a9223a8bbf734409eb9dcba435b938909}\label{classFitter_a9223a8bbf734409eb9dcba435b938909}} 
+\index{Fitter@{Fitter}!DoFit@{DoFit}}
+\index{DoFit@{DoFit}!Fitter@{Fitter}}
+\doxysubsubsection{\texorpdfstring{DoFit()}{DoFit()}}
+{\footnotesize\ttfamily void Fitter\+::\+Do\+Fit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCPParameters}{CPParameters}} \&}]{cpparameters }\end{DoxyParamCaption})}
+
+Function for doing fit and returning the CP violation parameters (by reference) 
+\begin{DoxyParams}{Parameters}
+{\em cpparameters} & Initial guess of CP violation parameters, function replaces these with the fitted parameters \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/Fitter.\+h\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/Fitter.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,83 @@
+\hypertarget{classDDecayParameters}{}\doxysection{DDecay\+Parameters Class Reference}
+\label{classDDecayParameters}\index{DDecayParameters@{DDecayParameters}}
+
+
+{\ttfamily \#include $<$DDecay\+Parameters.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDDecayParameters_aa2ab9a76fd4d97ae6218ea8248df9543}{DDecay\+Parameters}} (const \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} \&psp, const double \&mass\+\_\+parent, const double $\ast$mass\+\_\+decay, int events)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classDDecayParameters_a46cf4e9348bdd60d5d483cd9cee87a66}{GetK}} () const
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classDDecayParameters_a3e467e2ac2ca762509d61c04ab71e59a}{Get\+Kbar}} () const
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classDDecayParameters_a1ba0f9ece4c9db7be26abdd29c722766}{Getc}} () const
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classDDecayParameters_abe8d6ebf3ed3da503aef809d0a1852a5}{Gets}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}} is the class that calculates and stores the parameters describing the D$^\wedge$0 and DBAR$^\wedge$0 decay These parameters only need to be calculated once because they only depend on the amplitude model 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDDecayParameters_aa2ab9a76fd4d97ae6218ea8248df9543}\label{classDDecayParameters_aa2ab9a76fd4d97ae6218ea8248df9543}} 
+\index{DDecayParameters@{DDecayParameters}!DDecayParameters@{DDecayParameters}}
+\index{DDecayParameters@{DDecayParameters}!DDecayParameters@{DDecayParameters}}
+\doxysubsubsection{\texorpdfstring{DDecayParameters()}{DDecayParameters()}}
+{\footnotesize\ttfamily DDecay\+Parameters\+::\+DDecay\+Parameters (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} \&}]{psp,  }\item[{const double \&}]{mass\+\_\+parent,  }\item[{const double $\ast$}]{mass\+\_\+decay,  }\item[{int}]{events }\end{DoxyParamCaption})}
+
+Constructor that takes in a \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} object and calculates the D decay parameters in each bin 
+\begin{DoxyParams}{Parameters}
+{\em psp} & \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} object \\
+\hline
+{\em events} & Number of events in each bin for Monte Carlo integration \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDDecayParameters_a1ba0f9ece4c9db7be26abdd29c722766}\label{classDDecayParameters_a1ba0f9ece4c9db7be26abdd29c722766}} 
+\index{DDecayParameters@{DDecayParameters}!Getc@{Getc}}
+\index{Getc@{Getc}!DDecayParameters@{DDecayParameters}}
+\doxysubsubsection{\texorpdfstring{Getc()}{Getc()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ DDecay\+Parameters\+::\+Getc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Function for getting cosine of the strong phase \begin{DoxyReturn}{Returns}
+c Vector of cosine of the strong phases 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDDecayParameters_a46cf4e9348bdd60d5d483cd9cee87a66}\label{classDDecayParameters_a46cf4e9348bdd60d5d483cd9cee87a66}} 
+\index{DDecayParameters@{DDecayParameters}!GetK@{GetK}}
+\index{GetK@{GetK}!DDecayParameters@{DDecayParameters}}
+\doxysubsubsection{\texorpdfstring{GetK()}{GetK()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ DDecay\+Parameters\+::\+GetK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Function for getting fractional yield K\+\_\+i \begin{DoxyReturn}{Returns}
+K Vector of fractional yields of D0 events 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDDecayParameters_a3e467e2ac2ca762509d61c04ab71e59a}\label{classDDecayParameters_a3e467e2ac2ca762509d61c04ab71e59a}} 
+\index{DDecayParameters@{DDecayParameters}!GetKbar@{GetKbar}}
+\index{GetKbar@{GetKbar}!DDecayParameters@{DDecayParameters}}
+\doxysubsubsection{\texorpdfstring{GetKbar()}{GetKbar()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ DDecay\+Parameters\+::\+Get\+Kbar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Function for getting fractional yield K\+\_\+i \begin{DoxyReturn}{Returns}
+K Vector of fractional yields of DBAR0 events 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDDecayParameters_abe8d6ebf3ed3da503aef809d0a1852a5}\label{classDDecayParameters_abe8d6ebf3ed3da503aef809d0a1852a5}} 
+\index{DDecayParameters@{DDecayParameters}!Gets@{Gets}}
+\index{Gets@{Gets}!DDecayParameters@{DDecayParameters}}
+\doxysubsubsection{\texorpdfstring{Gets()}{Gets()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ DDecay\+Parameters\+::\+Gets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Function for getting sine of the strong phase \begin{DoxyReturn}{Returns}
+s Vector of sine of the strong phases 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/DDecay\+Parameters.\+h\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/DDecay\+Parameters.\+cpp\end{DoxyCompactItemize}

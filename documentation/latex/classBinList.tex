@@ -1,0 +1,147 @@
+\hypertarget{classBinList}{}\doxysection{Bin\+List Class Reference}
+\label{classBinList}\index{BinList@{BinList}}
+
+
+{\ttfamily \#include $<$Bin\+List.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBinList_a75339798b699eac5ce63add585f0b73a}{Bin\+List}} (\mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} php)
+\item 
+void \mbox{\hyperlink{classBinList_ad90ba02ac0b2aabfdfa4a7ddffd96b2f}{Add\+Event}} (\mbox{\hyperlink{classEvent}{Event}} event, int charge)
+\item 
+void \mbox{\hyperlink{classBinList_aca44f2af1825132f40339605bcd98db6}{Add\+Event}} (\mbox{\hyperlink{classEvent}{Event}} event, int charge, int maxevents)
+\item 
+void \mbox{\hyperlink{classBinList_afff3683bdbe921637b5540b796b17e9c}{Load\+TTree}} (TTree $\ast$tree, int charge)
+\item 
+int \mbox{\hyperlink{classBinList_a7f4fe374927c94b25c8f3f1abb1886ed}{Number\+Bins}} ()
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classBinList_aa907e84db928f3c427aa875cece21f83}{Get\+Events}} (int charge) const
+\item 
+\mbox{\hyperlink{classBin}{Bin}} \mbox{\hyperlink{classBinList_a4c49f29815a065f5d7981c5dce19e662}{Get\+Bin}} (int i)
+\item 
+void \mbox{\hyperlink{classBinList_ab2df617dc6a9589fd5b4cb5b216d40da}{Predict}} (const \mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}} \&ddparameters, const \mbox{\hyperlink{classCPParameters}{CPParameters}} \&cpparameters, std\+::vector$<$ double $>$ \&Bplus\+Events, std\+::vector$<$ double $>$ \&Bminus\+Events, int total\+Bplus, int total\+Bminus)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classBinList}{Bin\+List}} is a class that contains all the bins in phase space \mbox{\hyperlink{classBinList}{Bin\+List}} also loads the input data and puts it in their respective bins 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBinList_a75339798b699eac5ce63add585f0b73a}\label{classBinList_a75339798b699eac5ce63add585f0b73a}} 
+\index{BinList@{BinList}!BinList@{BinList}}
+\index{BinList@{BinList}!BinList@{BinList}}
+\doxysubsubsection{\texorpdfstring{BinList()}{BinList()}}
+{\footnotesize\ttfamily Bin\+List\+::\+Bin\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}}}]{php }\end{DoxyParamCaption})}
+
+Constructor that takes a \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} object and creates the bins 
+\begin{DoxyParams}{Parameters}
+{\em php} & A \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} object that defines the bins in the 5D phase space \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBinList_ad90ba02ac0b2aabfdfa4a7ddffd96b2f}\label{classBinList_ad90ba02ac0b2aabfdfa4a7ddffd96b2f}} 
+\index{BinList@{BinList}!AddEvent@{AddEvent}}
+\index{AddEvent@{AddEvent}!BinList@{BinList}}
+\doxysubsubsection{\texorpdfstring{AddEvent()}{AddEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Bin\+List\+::\+Add\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}}}]{event,  }\item[{int}]{charge }\end{DoxyParamCaption})}
+
+Function for adding an event to the correct bin 
+\begin{DoxyParams}{Parameters}
+{\em event} & \mbox{\hyperlink{classEvent}{Event}} object to be added to the correct bin \\
+\hline
+{\em charge} & +1 for B+, -\/1 for B-\/ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBinList_aca44f2af1825132f40339605bcd98db6}\label{classBinList_aca44f2af1825132f40339605bcd98db6}} 
+\index{BinList@{BinList}!AddEvent@{AddEvent}}
+\index{AddEvent@{AddEvent}!BinList@{BinList}}
+\doxysubsubsection{\texorpdfstring{AddEvent()}{AddEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Bin\+List\+::\+Add\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}}}]{event,  }\item[{int}]{charge,  }\item[{int}]{maxevents }\end{DoxyParamCaption})}
+
+Function for adding an event to the correct bin, if the number of events in that bin is less than the maximum 
+\begin{DoxyParams}{Parameters}
+{\em event} & \mbox{\hyperlink{classEvent}{Event}} object to be added to the correct bin \\
+\hline
+{\em charge} & +1 for B+, -\/1 for B-\/ \\
+\hline
+{\em max\+Events} & Maximum number of events in each bin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBinList_a4c49f29815a065f5d7981c5dce19e662}\label{classBinList_a4c49f29815a065f5d7981c5dce19e662}} 
+\index{BinList@{BinList}!GetBin@{GetBin}}
+\index{GetBin@{GetBin}!BinList@{BinList}}
+\doxysubsubsection{\texorpdfstring{GetBin()}{GetBin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBin}{Bin}} Bin\+List\+::\+Get\+Bin (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+Function for getting \mbox{\hyperlink{classBin}{Bin}} object 
+\begin{DoxyParams}{Parameters}
+{\em i} & \mbox{\hyperlink{classBin}{Bin}} number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classBin}{Bin}} object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBinList_aa907e84db928f3c427aa875cece21f83}\label{classBinList_aa907e84db928f3c427aa875cece21f83}} 
+\index{BinList@{BinList}!GetEvents@{GetEvents}}
+\index{GetEvents@{GetEvents}!BinList@{BinList}}
+\doxysubsubsection{\texorpdfstring{GetEvents()}{GetEvents()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ Bin\+List\+::\+Get\+Events (\begin{DoxyParamCaption}\item[{int}]{charge }\end{DoxyParamCaption}) const}
+
+Function for getting the number of events in each bin 
+\begin{DoxyParams}{Parameters}
+{\em charge} & +1 for B+, -\/1 for B-\/ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of the number of events in each bin 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBinList_afff3683bdbe921637b5540b796b17e9c}\label{classBinList_afff3683bdbe921637b5540b796b17e9c}} 
+\index{BinList@{BinList}!LoadTTree@{LoadTTree}}
+\index{LoadTTree@{LoadTTree}!BinList@{BinList}}
+\doxysubsubsection{\texorpdfstring{LoadTTree()}{LoadTTree()}}
+{\footnotesize\ttfamily void Bin\+List\+::\+Load\+TTree (\begin{DoxyParamCaption}\item[{TTree $\ast$}]{tree,  }\item[{int}]{charge }\end{DoxyParamCaption})}
+
+Function for loading events from input data into their respective bins 
+\begin{DoxyParams}{Parameters}
+{\em tree} & A ROOT TTree in the Amp\+Gen format containing all the input data events \\
+\hline
+{\em charge} & +1 for B+, -\/1 for B-\/ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBinList_a7f4fe374927c94b25c8f3f1abb1886ed}\label{classBinList_a7f4fe374927c94b25c8f3f1abb1886ed}} 
+\index{BinList@{BinList}!NumberBins@{NumberBins}}
+\index{NumberBins@{NumberBins}!BinList@{BinList}}
+\doxysubsubsection{\texorpdfstring{NumberBins()}{NumberBins()}}
+{\footnotesize\ttfamily int Bin\+List\+::\+Number\+Bins (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function for getting number of bins \mbox{\Hypertarget{classBinList_ab2df617dc6a9589fd5b4cb5b216d40da}\label{classBinList_ab2df617dc6a9589fd5b4cb5b216d40da}} 
+\index{BinList@{BinList}!Predict@{Predict}}
+\index{Predict@{Predict}!BinList@{BinList}}
+\doxysubsubsection{\texorpdfstring{Predict()}{Predict()}}
+{\footnotesize\ttfamily void Bin\+List\+::\+Predict (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}} \&}]{ddparameters,  }\item[{const \mbox{\hyperlink{classCPParameters}{CPParameters}} \&}]{cpparameters,  }\item[{std\+::vector$<$ double $>$ \&}]{Bplus\+Events,  }\item[{std\+::vector$<$ double $>$ \&}]{Bminus\+Events,  }\item[{int}]{total\+Bplus,  }\item[{int}]{total\+Bminus }\end{DoxyParamCaption})}
+
+Function for calculating the number of events in each bin, given the D decay parameters and the CP parameters 
+\begin{DoxyParams}{Parameters}
+{\em ddparameters} & A \mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}} object that describes the D meson decay \\
+\hline
+{\em cpparameters} & A \mbox{\hyperlink{classCPParameters}{CPParameters}} object that describes the CP violation in the B meson decay \\
+\hline
+{\em Bplus\+Events} & Vector of predicted number of B+ events \\
+\hline
+{\em Bminus\+Events} & Vector of predicted number of B-\/ events \\
+\hline
+{\em total\+Bplus} & Total number of B+ events \\
+\hline
+{\em total\+Bminus} & Total number of B-\/ events \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/Bin\+List.\+h\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/Bin\+List.\+cpp\end{DoxyCompactItemize}

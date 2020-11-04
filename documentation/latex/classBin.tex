@@ -1,0 +1,79 @@
+\hypertarget{classBin}{}\doxysection{Bin Class Reference}
+\label{classBin}\index{Bin@{Bin}}
+
+
+{\ttfamily \#include $<$Bin.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBin_ab0c042b6a28914c9d4a5553881b83719}{Bin}} ()
+\item 
+void \mbox{\hyperlink{classBin_a1e26aa7240170c6cbb70b7697aabbd2d}{Add\+Event}} (\mbox{\hyperlink{classEvent}{Event}} event, int charge)
+\item 
+int \mbox{\hyperlink{classBin_a81b079de712b91de614b9484b9405d28}{Get\+Number\+Events}} (int charge) const
+\item 
+\mbox{\hyperlink{classEventList}{Event\+List}} \mbox{\hyperlink{classBin_a552f483f9d19078d78c822bf47736390}{Get\+Events}} (int charge)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classBin}{Bin}} is a class for a bin in phase space 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBin_ab0c042b6a28914c9d4a5553881b83719}\label{classBin_ab0c042b6a28914c9d4a5553881b83719}} 
+\index{Bin@{Bin}!Bin@{Bin}}
+\index{Bin@{Bin}!Bin@{Bin}}
+\doxysubsubsection{\texorpdfstring{Bin()}{Bin()}}
+{\footnotesize\ttfamily Bin\+::\+Bin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default constructor that creates an empty \mbox{\hyperlink{classEventList}{Event\+List}} 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBin_a1e26aa7240170c6cbb70b7697aabbd2d}\label{classBin_a1e26aa7240170c6cbb70b7697aabbd2d}} 
+\index{Bin@{Bin}!AddEvent@{AddEvent}}
+\index{AddEvent@{AddEvent}!Bin@{Bin}}
+\doxysubsubsection{\texorpdfstring{AddEvent()}{AddEvent()}}
+{\footnotesize\ttfamily void Bin\+::\+Add\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}}}]{event,  }\item[{int}]{charge }\end{DoxyParamCaption})}
+
+Function for adding an event 
+\begin{DoxyParams}{Parameters}
+{\em event} & \mbox{\hyperlink{classEvent}{Event}} to add \\
+\hline
+{\em charge} & +1 for B+, -\/1 for B-\/ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBin_a552f483f9d19078d78c822bf47736390}\label{classBin_a552f483f9d19078d78c822bf47736390}} 
+\index{Bin@{Bin}!GetEvents@{GetEvents}}
+\index{GetEvents@{GetEvents}!Bin@{Bin}}
+\doxysubsubsection{\texorpdfstring{GetEvents()}{GetEvents()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventList}{Event\+List}} Bin\+::\+Get\+Events (\begin{DoxyParamCaption}\item[{int}]{charge }\end{DoxyParamCaption})}
+
+Function for betting \mbox{\hyperlink{classEventList}{Event\+List}} object 
+\begin{DoxyParams}{Parameters}
+{\em charge} & +1 for B+, -\/1 for B-\/ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+eventlist \mbox{\hyperlink{classEventList}{Event\+List}} object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBin_a81b079de712b91de614b9484b9405d28}\label{classBin_a81b079de712b91de614b9484b9405d28}} 
+\index{Bin@{Bin}!GetNumberEvents@{GetNumberEvents}}
+\index{GetNumberEvents@{GetNumberEvents}!Bin@{Bin}}
+\doxysubsubsection{\texorpdfstring{GetNumberEvents()}{GetNumberEvents()}}
+{\footnotesize\ttfamily int Bin\+::\+Get\+Number\+Events (\begin{DoxyParamCaption}\item[{int}]{charge }\end{DoxyParamCaption}) const}
+
+Function for getting number of events in this bin 
+\begin{DoxyParams}{Parameters}
+{\em charge} & +1 for B+, -\/1 for B-\/ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of events in this bin 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/Bin.\+h\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/Bin.\+cpp\end{DoxyCompactItemize}

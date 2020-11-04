@@ -1,0 +1,55 @@
+\hypertarget{classLikelihood}{}\doxysection{Likelihood Class Reference}
+\label{classLikelihood}\index{Likelihood@{Likelihood}}
+
+
+{\ttfamily \#include $<$Likelihood.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLikelihood_ad2ceefa8bdffe81d203459ac0ca5d520}{Likelihood}} (\mbox{\hyperlink{classBinList}{Bin\+List}} bins, \mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}} ddparameters)
+\item 
+double \mbox{\hyperlink{classLikelihood_a0a6f5026b36ca7f13d003ad056f8de22}{operator()}} (const double $\ast$cpparameters)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classLikelihood}{Likelihood}} is a class for calculating the likelihood, given an \mbox{\hyperlink{classEventList}{Event\+List}} of input data and a set of D meson decay parameters and CP violation parameters in B meson decays () operator is overloaded to make the likelihood function easily accessible 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLikelihood_ad2ceefa8bdffe81d203459ac0ca5d520}\label{classLikelihood_ad2ceefa8bdffe81d203459ac0ca5d520}} 
+\index{Likelihood@{Likelihood}!Likelihood@{Likelihood}}
+\index{Likelihood@{Likelihood}!Likelihood@{Likelihood}}
+\doxysubsubsection{\texorpdfstring{Likelihood()}{Likelihood()}}
+{\footnotesize\ttfamily Likelihood\+::\+Likelihood (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBinList}{Bin\+List}}}]{bins,  }\item[{\mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}}}]{ddparameters }\end{DoxyParamCaption})}
+
+Constructor that takes in an \mbox{\hyperlink{classBinList}{Bin\+List}} object with input data and a \mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}} object 
+\begin{DoxyParams}{Parameters}
+{\em events} & \mbox{\hyperlink{classBinList}{Bin\+List}} object with the input data \\
+\hline
+{\em ddecayparameters} & A \mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}} object with the parameters for the D meson decay \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLikelihood_a0a6f5026b36ca7f13d003ad056f8de22}\label{classLikelihood_a0a6f5026b36ca7f13d003ad056f8de22}} 
+\index{Likelihood@{Likelihood}!operator()@{operator()}}
+\index{operator()@{operator()}!Likelihood@{Likelihood}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily double Likelihood\+::operator() (\begin{DoxyParamCaption}\item[{const double $\ast$}]{cpparameters }\end{DoxyParamCaption})}
+
+Operator overload of () to easily access the likelihood function 
+\begin{DoxyParams}{Parameters}
+{\em cpparameters} & A \mbox{\hyperlink{classCPParameters}{CPParameters}} object with the CP violation parameters for the B meson decay \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/2$\ast$ln(L), where L is the likelihood function 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/Likelihood.\+h\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/Likelihood.\+cpp\end{DoxyCompactItemize}
