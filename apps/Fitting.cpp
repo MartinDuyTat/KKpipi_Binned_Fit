@@ -15,8 +15,8 @@
 
 int main() {
   std::cout << "Starting B->DK, D->KKpipi binned fit\n";
-  std::string Bplusfile("/data/lhcb/users/tat/D02KKpipi/BplusEvents/BplustoDK_10K.root");
-  std::string Bminusfile("/data/lhcb/users/tat/D02KKpipi/BminusEvents/BminustoDK_10K.root");
+  std::string Bplusfile("/data/lhcb/users/tat/D02KKpipi/BplusEvents/BplustoDK_100K.root");
+  std::string Bminusfile("/data/lhcb/users/tat/D02KKpipi/BminusEvents/BminustoDK_100K.root");
   PhaseSpaceParameterisation psp;
   std::cout << "Loaded phase space\n";
   TFile fBplus(Bplusfile.c_str(), "READ");
@@ -37,15 +37,16 @@ int main() {
   std::cout << "Calculated D meson parameters\n";
   Fitter fit(binlist, ddparameters);
   CPParameters cpparameters(-0.09, 0.06, -0.04, 0.08);
-  double xplus, xminus, yplus, yminus;
+  double xplus, xminus, yplus, yminus, xpluse, xminuse, ypluse, yminuse;
   std::cout << "Start fitting\n";
   fit.DoFit(cpparameters);
   std::cout << "Done fitting, getting fitted parameters\n";
   cpparameters.GetCPParameters(xplus, xminus, yplus, yminus);
+  cpparameters.GetError(xpluse, xminuse, ypluse, yminuse);
   std::cout << "Fitted parameters:\n";
-  std::cout << "xplus = " << xplus << std::endl;
-  std::cout << "xminus = " << xminus << std::endl;
-  std::cout << "yplus = " << yplus << std::endl;
-  std::cout << "yminus = " << yminus << std::endl;
+  std::cout << "xplus = " << xplus << " +- " << xpluse << std::endl;
+  std::cout << "xminus = " << xminus << " +- " << xminuse << std::endl;
+  std::cout << "yplus = " << yplus << " +- " << ypluse << std::endl;
+  std::cout << "yminus = " << yminus << " +- " << yminuse << std::endl;
   return 0;
 }

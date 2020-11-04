@@ -26,7 +26,7 @@ void Fitter::DoFit(CPParameters &cpparameters) {
   const double *xs = mini->X();
   const double *err = mini->Errors();
   cpparameters = CPParameters(xs[0], xs[1], xs[2], xs[3]);
-  std::cout << err[0] << " " << err[1] << " " << err[2] << " " << err[3] << std::endl;
+  cpparameters.SetError(err[0], err[1], err[2], err[3]);
   delete mini;
   delete likelihood;
 }
