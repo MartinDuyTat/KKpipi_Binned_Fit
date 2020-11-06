@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['phasespaceparameterisation_31',['PhaseSpaceParameterisation',['../classPhaseSpaceParameterisation.html',1,'PhaseSpaceParameterisation'],['../classPhaseSpaceParameterisation.html#a9c002f4fb258011d8d0cbc9cd4192985',1,'PhaseSpaceParameterisation::PhaseSpaceParameterisation()']]],
-  ['predict_32',['Predict',['../classBinList.html#ab2df617dc6a9589fd5b4cb5b216d40da',1,'BinList']]]
+  ['operator_28_29_53',['operator()',['../classAmplitude.html#a6d150a471deb143466e1316dfebe86bd',1,'Amplitude::operator()()'],['../classLikelihood.html#a0a6f5026b36ca7f13d003ad056f8de22',1,'Likelihood::operator()()']]]
 ];

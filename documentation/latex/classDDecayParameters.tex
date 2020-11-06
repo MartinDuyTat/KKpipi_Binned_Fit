@@ -9,6 +9,10 @@
 \item 
 \mbox{\hyperlink{classDDecayParameters_aa2ab9a76fd4d97ae6218ea8248df9543}{DDecay\+Parameters}} (const \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} \&psp, const double \&mass\+\_\+parent, const double $\ast$mass\+\_\+decay, int events)
 \item 
+\mbox{\hyperlink{classDDecayParameters_ada593ba938bc5bcf6f1aa11b14628c11}{DDecay\+Parameters}} (std\+::string filename)
+\item 
+void \mbox{\hyperlink{classDDecayParameters_aba7c07bfc262cc325feb85e33c997c25}{save\+CSV}} (std\+::string filename) const
+\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{classDDecayParameters_a46cf4e9348bdd60d5d483cd9cee87a66}{GetK}} () const
 \item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{classDDecayParameters_a3e467e2ac2ca762509d61c04ab71e59a}{Get\+Kbar}} () const
@@ -22,11 +26,15 @@ std\+::vector$<$ double $>$ \mbox{\hyperlink{classDDecayParameters_abe8d6ebf3ed3
 \doxysubsection{Detailed Description}
 \mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}} is the class that calculates and stores the parameters describing the D$^\wedge$0 and DBAR$^\wedge$0 decay These parameters only need to be calculated once because they only depend on the amplitude model 
 
+Definition at line 14 of file DDecay\+Parameters.\+h.
+
+
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classDDecayParameters_aa2ab9a76fd4d97ae6218ea8248df9543}\label{classDDecayParameters_aa2ab9a76fd4d97ae6218ea8248df9543}} 
 \index{DDecayParameters@{DDecayParameters}!DDecayParameters@{DDecayParameters}}
 \index{DDecayParameters@{DDecayParameters}!DDecayParameters@{DDecayParameters}}
-\doxysubsubsection{\texorpdfstring{DDecayParameters()}{DDecayParameters()}}
+\doxysubsubsection{\texorpdfstring{DDecayParameters()}{DDecayParameters()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily DDecay\+Parameters\+::\+DDecay\+Parameters (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} \&}]{psp,  }\item[{const double \&}]{mass\+\_\+parent,  }\item[{const double $\ast$}]{mass\+\_\+decay,  }\item[{int}]{events }\end{DoxyParamCaption})}
 
 Constructor that takes in a \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} object and calculates the D decay parameters in each bin 
@@ -36,6 +44,21 @@ Constructor that takes in a \mbox{\hyperlink{classPhaseSpaceParameterisation}{Ph
 {\em events} & Number of events in each bin for Monte Carlo integration \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classDDecayParameters_ada593ba938bc5bcf6f1aa11b14628c11}\label{classDDecayParameters_ada593ba938bc5bcf6f1aa11b14628c11}} 
+\index{DDecayParameters@{DDecayParameters}!DDecayParameters@{DDecayParameters}}
+\index{DDecayParameters@{DDecayParameters}!DDecayParameters@{DDecayParameters}}
+\doxysubsubsection{\texorpdfstring{DDecayParameters()}{DDecayParameters()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily DDecay\+Parameters\+::\+DDecay\+Parameters (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+Constructor that takes in the D meson hadronic parameters from a comma separated CSV file, in the order i K\+\_\+i Kbar\+\_\+i c\+\_\+i s\+\_\+i First line is assumed to be column names 
+\begin{DoxyParams}{Parameters}
+{\em filename} & Filename of file with D meson hadronic parameters \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 72 of file DDecay\+Parameters.\+cpp.
+
 
 
 \doxysubsection{Member Function Documentation}
@@ -48,6 +71,10 @@ Constructor that takes in a \mbox{\hyperlink{classPhaseSpaceParameterisation}{Ph
 Function for getting cosine of the strong phase \begin{DoxyReturn}{Returns}
 c Vector of cosine of the strong phases 
 \end{DoxyReturn}
+
+
+Definition at line 113 of file DDecay\+Parameters.\+cpp.
+
 \mbox{\Hypertarget{classDDecayParameters_a46cf4e9348bdd60d5d483cd9cee87a66}\label{classDDecayParameters_a46cf4e9348bdd60d5d483cd9cee87a66}} 
 \index{DDecayParameters@{DDecayParameters}!GetK@{GetK}}
 \index{GetK@{GetK}!DDecayParameters@{DDecayParameters}}
@@ -57,6 +84,10 @@ c Vector of cosine of the strong phases
 Function for getting fractional yield K\+\_\+i \begin{DoxyReturn}{Returns}
 K Vector of fractional yields of D0 events 
 \end{DoxyReturn}
+
+
+Definition at line 106 of file DDecay\+Parameters.\+cpp.
+
 \mbox{\Hypertarget{classDDecayParameters_a3e467e2ac2ca762509d61c04ab71e59a}\label{classDDecayParameters_a3e467e2ac2ca762509d61c04ab71e59a}} 
 \index{DDecayParameters@{DDecayParameters}!GetKbar@{GetKbar}}
 \index{GetKbar@{GetKbar}!DDecayParameters@{DDecayParameters}}
@@ -66,6 +97,10 @@ K Vector of fractional yields of D0 events
 Function for getting fractional yield K\+\_\+i \begin{DoxyReturn}{Returns}
 K Vector of fractional yields of DBAR0 events 
 \end{DoxyReturn}
+
+
+Definition at line 109 of file DDecay\+Parameters.\+cpp.
+
 \mbox{\Hypertarget{classDDecayParameters_abe8d6ebf3ed3da503aef809d0a1852a5}\label{classDDecayParameters_abe8d6ebf3ed3da503aef809d0a1852a5}} 
 \index{DDecayParameters@{DDecayParameters}!Gets@{Gets}}
 \index{Gets@{Gets}!DDecayParameters@{DDecayParameters}}
@@ -77,7 +112,26 @@ s Vector of sine of the strong phases
 \end{DoxyReturn}
 
 
+Definition at line 117 of file DDecay\+Parameters.\+cpp.
+
+\mbox{\Hypertarget{classDDecayParameters_aba7c07bfc262cc325feb85e33c997c25}\label{classDDecayParameters_aba7c07bfc262cc325feb85e33c997c25}} 
+\index{DDecayParameters@{DDecayParameters}!saveCSV@{saveCSV}}
+\index{saveCSV@{saveCSV}!DDecayParameters@{DDecayParameters}}
+\doxysubsubsection{\texorpdfstring{saveCSV()}{saveCSV()}}
+{\footnotesize\ttfamily void DDecay\+Parameters\+::save\+CSV (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption}) const}
+
+Function for saving K\+\_\+i, Kbar\+\_\+i, c\+\_\+i and s\+\_\+i to a CSV file 
+\begin{DoxyParams}{Parameters}
+{\em filename} & Filename of file to save D meson hadronic parameters \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 97 of file DDecay\+Parameters.\+cpp.
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/DDecay\+Parameters.\+h\item 
-/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/DDecay\+Parameters.\+cpp\end{DoxyCompactItemize}
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/\mbox{\hyperlink{DDecayParameters_8h}{DDecay\+Parameters.\+h}}\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/\mbox{\hyperlink{DDecayParameters_8cpp}{DDecay\+Parameters.\+cpp}}\end{DoxyCompactItemize}

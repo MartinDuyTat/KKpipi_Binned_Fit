@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['operator_28_29_30',['operator()',['../classAmplitude.html#a6d150a471deb143466e1316dfebe86bd',1,'Amplitude::operator()()'],['../classLikelihood.html#a0a6f5026b36ca7f13d003ad056f8de22',1,'Likelihood::operator()()']]]
+  ['numberbins_50',['NumberBins',['../classBinList.html#a7f4fe374927c94b25c8f3f1abb1886ed',1,'BinList']]],
+  ['numberevents_51',['NumberEvents',['../classEventList.html#a132a9f61af3d5de6060b69f09dccbfe7',1,'EventList']]],
+  ['numberofbins_52',['NumberOfBins',['../classPhaseSpaceParameterisation.html#a70da18b13ea6b48e4d8214e521f4839b',1,'PhaseSpaceParameterisation']]]
 ];

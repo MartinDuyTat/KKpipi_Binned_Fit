@@ -1,144 +1,200 @@
 \begin{theindex}
 
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/Amplitude.h}, 
+		\hyperpage{27}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/Bin.h}, 
+		\hyperpage{27}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/BinList.h}, 
+		\hyperpage{27}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/CPParameters.h}, 
+		\hyperpage{28}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/DDecayParameters.h}, 
+		\hyperpage{28}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/Event.h}, 
+		\hyperpage{28}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/EventList.h}, 
+		\hyperpage{28}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/FitGamma.h}, 
+		\hyperpage{29}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/Fitter.h}, 
+		\hyperpage{29}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/Generator.h}, 
+		\hyperpage{29}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/HadronicParameters.h}, 
+		\hyperpage{29}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/Likelihood.h}, 
+		\hyperpage{29}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/include/PhaseSpaceParameterisation.h}, 
+		\hyperpage{30}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/Amplitude.cpp}, 
+		\hyperpage{30}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/Bin.cpp}, 
+		\hyperpage{30}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/BinList.cpp}, 
+		\hyperpage{30}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/CMakeLists.txt}, 
+		\hyperpage{31}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/CPParameters.cpp}, 
+		\hyperpage{31}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/DDecayParameters.cpp}, 
+		\hyperpage{31}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/Event.cpp}, 
+		\hyperpage{31}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/EventList.cpp}, 
+		\hyperpage{31}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/Fitter.cpp}, 
+		\hyperpage{32}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/Generator.cpp}, 
+		\hyperpage{32}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/Likelihood.cpp}, 
+		\hyperpage{32}
+  \item {/data/lhcb/users/tat/KKpipi\_Binned\_Fit/src/PhaseSpaceParameterisation.cpp}, 
+		\hyperpage{32}
+
+  \indexspace
+
   \item {AddEvent}
-    \subitem {Bin}, \hyperpage{4}
-    \subitem {BinList}, \hyperpage{6, 7}
-    \subitem {EventList}, \hyperpage{16}
-  \item {Amplitude}, \hyperpage{3}
-    \subitem {Amplitude}, \hyperpage{3}
-    \subitem {operator()}, \hyperpage{3}
+    \subitem {Bin}, \hyperpage{6}
+    \subitem {BinList}, \hyperpage{8, 9}
+    \subitem {EventList}, \hyperpage{20}
+  \item {Amplitude}, \hyperpage{5}
+    \subitem {Amplitude}, \hyperpage{5}
+    \subitem {operator()}, \hyperpage{5}
 
   \indexspace
 
-  \item {Bin}, \hyperpage{4}
-    \subitem {AddEvent}, \hyperpage{4}
-    \subitem {Bin}, \hyperpage{4}
-    \subitem {GetEvents}, \hyperpage{5}
-    \subitem {GetNumberEvents}, \hyperpage{5}
-  \item {BinList}, \hyperpage{5}
-    \subitem {AddEvent}, \hyperpage{6, 7}
-    \subitem {BinList}, \hyperpage{6}
-    \subitem {GetBin}, \hyperpage{7}
+  \item {Bin}, \hyperpage{6}
+    \subitem {AddEvent}, \hyperpage{6}
+    \subitem {Bin}, \hyperpage{6}
     \subitem {GetEvents}, \hyperpage{7}
-    \subitem {LoadTTree}, \hyperpage{8}
-    \subitem {NumberBins}, \hyperpage{8}
-    \subitem {Predict}, \hyperpage{8}
+    \subitem {GetNumberEvents}, \hyperpage{7}
+  \item {BinList}, \hyperpage{8}
+    \subitem {AddEvent}, \hyperpage{8, 9}
+    \subitem {BinList}, \hyperpage{8}
+    \subitem {GetBin}, \hyperpage{9}
+    \subitem {GetEvents}, \hyperpage{10}
+    \subitem {LoadTTree}, \hyperpage{10}
+    \subitem {NumberBins}, \hyperpage{10}
+    \subitem {Predict}, \hyperpage{10}
 
   \indexspace
 
-  \item {CPParameters}, \hyperpage{9}
-    \subitem {CPParameters}, \hyperpage{9}
-    \subitem {GetCPParameters}, \hyperpage{9}
-    \subitem {GetError}, \hyperpage{10}
-    \subitem {SetError}, \hyperpage{10}
+  \item {CPParameters}, \hyperpage{11}
+    \subitem {CPParameters}, \hyperpage{11}
+    \subitem {GetCPParameters}, \hyperpage{12}
+    \subitem {GetError}, \hyperpage{12}
+    \subitem {SetError}, \hyperpage{13}
 
   \indexspace
 
-  \item {DDecayParameters}, \hyperpage{11}
-    \subitem {DDecayParameters}, \hyperpage{11}
-    \subitem {Getc}, \hyperpage{12}
-    \subitem {GetK}, \hyperpage{12}
-    \subitem {GetKbar}, \hyperpage{12}
-    \subitem {Gets}, \hyperpage{12}
+  \item {DDecayParameters}, \hyperpage{13}
+    \subitem {DDecayParameters}, \hyperpage{14}
+    \subitem {Getc}, \hyperpage{15}
+    \subitem {GetK}, \hyperpage{15}
+    \subitem {GetKbar}, \hyperpage{15}
+    \subitem {Gets}, \hyperpage{15}
+    \subitem {saveCSV}, \hyperpage{16}
   \item {DoFit}
-    \subitem {Fitter}, \hyperpage{17}
+    \subitem {Fitter}, \hyperpage{22}
 
   \indexspace
 
-  \item {Event}, \hyperpage{13}
-    \subitem {Event}, \hyperpage{13, 14}
-    \subitem {GetEvent}, \hyperpage{14}
-    \subitem {GetEventVector}, \hyperpage{14}
-    \subitem {GetInvMass2}, \hyperpage{14}
-    \subitem {GetInvMass3}, \hyperpage{15}
-  \item {EventList}, \hyperpage{15}
-    \subitem {AddEvent}, \hyperpage{16}
-    \subitem {EventList}, \hyperpage{16}
-    \subitem {GetEvents}, \hyperpage{16}
-    \subitem {NumberEvents}, \hyperpage{16}
+  \item {Event}, \hyperpage{16}
+    \subitem {Event}, \hyperpage{17}
+    \subitem {GetEvent}, \hyperpage{18}
+    \subitem {GetEventVector}, \hyperpage{18}
+    \subitem {GetInvMass2}, \hyperpage{18}
+    \subitem {GetInvMass3}, \hyperpage{19}
+  \item {EventList}, \hyperpage{19}
+    \subitem {AddEvent}, \hyperpage{20}
+    \subitem {EventList}, \hyperpage{20}
+    \subitem {GetEvents}, \hyperpage{20}
+    \subitem {NumberEvents}, \hyperpage{20}
 
   \indexspace
 
-  \item {Fitter}, \hyperpage{17}
-    \subitem {DoFit}, \hyperpage{17}
-    \subitem {Fitter}, \hyperpage{17}
+  \item {Fitter}, \hyperpage{21}
+    \subitem {DoFit}, \hyperpage{22}
+    \subitem {Fitter}, \hyperpage{21}
 
   \indexspace
 
   \item {Generate}
-    \subitem {Generator}, \hyperpage{19}
-  \item {Generator}, \hyperpage{18}
-    \subitem {Generate}, \hyperpage{19}
-    \subitem {Generator}, \hyperpage{18}
+    \subitem {Generator}, \hyperpage{23}
+  \item {Generator}, \hyperpage{22}
+    \subitem {Generate}, \hyperpage{23}
+    \subitem {Generator}, \hyperpage{22}
   \item {GetBin}
-    \subitem {BinList}, \hyperpage{7}
+    \subitem {BinList}, \hyperpage{9}
   \item {Getc}
-    \subitem {DDecayParameters}, \hyperpage{12}
+    \subitem {DDecayParameters}, \hyperpage{15}
   \item {GetCPParameters}
-    \subitem {CPParameters}, \hyperpage{9}
+    \subitem {CPParameters}, \hyperpage{12}
   \item {GetError}
-    \subitem {CPParameters}, \hyperpage{10}
+    \subitem {CPParameters}, \hyperpage{12}
   \item {GetEvent}
-    \subitem {Event}, \hyperpage{14}
+    \subitem {Event}, \hyperpage{18}
   \item {GetEvents}
-    \subitem {Bin}, \hyperpage{5}
-    \subitem {BinList}, \hyperpage{7}
-    \subitem {EventList}, \hyperpage{16}
+    \subitem {Bin}, \hyperpage{7}
+    \subitem {BinList}, \hyperpage{10}
+    \subitem {EventList}, \hyperpage{20}
   \item {GetEventVector}
-    \subitem {Event}, \hyperpage{14}
+    \subitem {Event}, \hyperpage{18}
   \item {GetInvMass2}
-    \subitem {Event}, \hyperpage{14}
+    \subitem {Event}, \hyperpage{18}
   \item {GetInvMass3}
-    \subitem {Event}, \hyperpage{15}
+    \subitem {Event}, \hyperpage{19}
   \item {GetK}
-    \subitem {DDecayParameters}, \hyperpage{12}
+    \subitem {DDecayParameters}, \hyperpage{15}
   \item {GetKbar}
-    \subitem {DDecayParameters}, \hyperpage{12}
+    \subitem {DDecayParameters}, \hyperpage{15}
   \item {GetNumberEvents}
-    \subitem {Bin}, \hyperpage{5}
+    \subitem {Bin}, \hyperpage{7}
   \item {Gets}
-    \subitem {DDecayParameters}, \hyperpage{12}
+    \subitem {DDecayParameters}, \hyperpage{15}
 
   \indexspace
 
-  \item {Likelihood}, \hyperpage{19}
-    \subitem {Likelihood}, \hyperpage{19}
-    \subitem {operator()}, \hyperpage{20}
+  \item {Likelihood}, \hyperpage{23}
+    \subitem {Likelihood}, \hyperpage{23}
+    \subitem {operator()}, \hyperpage{24}
   \item {LoadTTree}
-    \subitem {BinList}, \hyperpage{8}
+    \subitem {BinList}, \hyperpage{10}
 
   \indexspace
 
   \item {NumberBins}
-    \subitem {BinList}, \hyperpage{8}
+    \subitem {BinList}, \hyperpage{10}
   \item {NumberEvents}
-    \subitem {EventList}, \hyperpage{16}
+    \subitem {EventList}, \hyperpage{20}
   \item {NumberOfBins}
-    \subitem {PhaseSpaceParameterisation}, \hyperpage{21}
+    \subitem {PhaseSpaceParameterisation}, \hyperpage{25}
 
   \indexspace
 
   \item {operator()}
-    \subitem {Amplitude}, \hyperpage{3}
-    \subitem {Likelihood}, \hyperpage{20}
+    \subitem {Amplitude}, \hyperpage{5}
+    \subitem {Likelihood}, \hyperpage{24}
 
   \indexspace
 
-  \item {PhaseSpaceParameterisation}, \hyperpage{20}
-    \subitem {NumberOfBins}, \hyperpage{21}
-    \subitem {PhaseSpaceParameterisation}, \hyperpage{21}
-    \subitem {WhichBin}, \hyperpage{21}
+  \item {PhaseSpaceParameterisation}, \hyperpage{24}
+    \subitem {NumberOfBins}, \hyperpage{25}
+    \subitem {PhaseSpaceParameterisation}, \hyperpage{25}
+    \subitem {WhichBin}, \hyperpage{25}
   \item {Predict}
-    \subitem {BinList}, \hyperpage{8}
+    \subitem {BinList}, \hyperpage{10}
 
   \indexspace
 
+  \item {saveCSV}
+    \subitem {DDecayParameters}, \hyperpage{16}
   \item {SetError}
-    \subitem {CPParameters}, \hyperpage{10}
+    \subitem {CPParameters}, \hyperpage{13}
 
   \indexspace
 
   \item {WhichBin}
-    \subitem {PhaseSpaceParameterisation}, \hyperpage{21}
+    \subitem {PhaseSpaceParameterisation}, \hyperpage{25}
 
 \end{theindex}

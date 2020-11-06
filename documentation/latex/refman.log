@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.1.28)  4 NOV 2020 23:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.1.28)  6 NOV 2020 16:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1031,6 +1031,10 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 
 ]
 Chapter 2.
+(./files.tex) [3] [4
+
+]
+Chapter 3.
 (./classAmplitude.tex
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 7.
@@ -1044,73 +1048,50 @@ File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
 (Font)              scaled to size 8.99994pt on input line 10.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 24.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 28.
 
-[3]) (./classBin.tex [4]
-Underfull \hbox (badness 10000) detected at line 57
+[5]) (./classBin.tex [6]
+Underfull \hbox (badness 10000) detected at line 69
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 71
+Underfull \hbox (badness 10000) detected at line 87
 [][][]
  []
 
-) (./classBinList.tex [5]
+) (./classBinList.tex [7]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <8> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 49.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 57.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 7.19995pt on input line 49.
+(Font)              scaled to size 7.19995pt on input line 57.
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <8> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 49.
- [6]
-Underfull \hbox (badness 10000) detected at line 85
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 57.
+ [8] [9]
+Underfull \hbox (badness 10000) detected at line 101
 [][][]
  []
 
-[7]
-Underfull \hbox (badness 10000) detected at line 99
+
+Underfull \hbox (badness 10000) detected at line 119
 [][][]
  []
 
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 125.
-
-Overfull \vbox (40.93127pt too high) has occurred while \output is active []
-
-
-[8]) (./classCPParameters.tex [9] [10]) (./classDDecayParameters.tex [11]
-Underfull \hbox (badness 10000) detected at line 48
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 57
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 66
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 75
-[][][]
- []
-
-) (./classEvent.tex [12] [13]
-Underfull \hbox (badness 10000) detected at line 67
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 76
-[][][]
- []
-
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 157.
+[10]) (./classCPParameters.tex [11] [12]) (./classDDecayParameters.tex [13]
 [14]
-Underfull \hbox (badness 10000) detected at line 92
+Underfull \hbox (badness 10000) detected at line 71
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 84
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 97
 [][][]
  []
 
@@ -1119,71 +1100,218 @@ Underfull \hbox (badness 10000) detected at line 110
 [][][]
  []
 
-) (./classEventList.tex [15]
-Underfull \hbox (badness 10000) detected at line 50
-[][][]
- []
-
-[16]) (./classFitter.tex [17]) (./classGenerator.tex [18])
-(./classLikelihood.tex [19]
-Underfull \hbox (badness 10000) detected at line 47
-[][][]
- []
-
-) (./classPhaseSpaceParameterisation.tex [20]
-Underfull \hbox (badness 10000) detected at line 37
+[15]) (./classEvent.tex [16] [17]
+Underfull \hbox (badness 10000) detected at line 83
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 51
+Underfull \hbox (badness 10000) detected at line 96
 [][][]
  []
 
-) [21] [22
 
-] (./refman.ind [23
+Underfull \hbox (badness 10000) detected at line 116
+[][][]
+ []
+
+[18]
+Underfull \hbox (badness 10000) detected at line 138
+[][][]
+ []
+
+) (./classEventList.tex [19]
+Underfull \hbox (badness 10000) detected at line 62
+[][][]
+ []
+
+[20]) (./classFitter.tex [21]) (./classGenerator.tex [22])
+(./classLikelihood.tex [23]
+Underfull \hbox (badness 10000) detected at line 55
+[][][]
+ []
+
+) (./classPhaseSpaceParameterisation.tex [24]
+Underfull \hbox (badness 10000) detected at line 45
+[][][]
+ []
+
+[25]
+Underfull \hbox (badness 10000) detected at line 63
+[][][]
+ []
+
+) [26]
+Chapter 4.
+(./Amplitude_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--6
+
+ []
+
+) (./Bin_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+) (./BinList_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--9
+
+ []
+
+) (./CPParameters_8h.tex [27
+
+]) (./DDecayParameters_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--6
+
+ []
+
+) (./Event_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+) (./EventList_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--6
+
+ []
+
+) (./FitGamma_8h.tex) (./Fitter_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--6
+
+ []
+
+[28]) (./Generator_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--6
+
+ []
+
+) (./HadronicParameters_8h.tex) (./Likelihood_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+
+ []
+
+) (./PhaseSpaceParameterisation_8h.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+[29]) (./Amplitude_8cpp.tex) (./Bin_8cpp.tex) (./BinList_8cpp.tex)
+(./CMakeLists_8txt.tex) (./CPParameters_8cpp.tex) (./DDecayParameters_8cpp.tex
+[30]) (./Event_8cpp.tex) (./EventList_8cpp.tex) (./Fitter_8cpp.tex)
+(./Generator_8cpp.tex [31]) (./Likelihood_8cpp.tex)
+(./PhaseSpaceParameterisation_8cpp.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 3--217
+
+ []
+
+[32] (./refman.ind
+Overfull \hbox (31.90178pt too wide) in paragraph at lines 9--11
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/include/CPParameters.h,
+
+ []
 
 
-] [24
+Overfull \hbox (51.13463pt too wide) in paragraph at lines 11--13
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/include/DDecayParameter
+s.h,
+ []
 
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 198.
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--15
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/include/Event.h,
+ []
+
+
+Overfull \hbox (15.47694pt too wide) in paragraph at lines 17--19
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/include/FitGamma.h,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/include/Fitter.h,
+ []
+
+
+Overfull \hbox (55.40938pt too wide) in paragraph at lines 23--25
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/include/HadronicParamet
+ers.h,
+ []
+
+
+Overfull \hbox (92.20946pt too wide) in paragraph at lines 27--29
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/include/PhaseSpaceParam
+eterisation.h,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--35
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/src/BinList.cpp,
+ []
+
+
+Overfull \hbox (24.89102pt too wide) in paragraph at lines 37--39
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/src/CPParameters.cpp,
+ []
+
+
+Overfull \hbox (44.12387pt too wide) in paragraph at lines 39--41
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/src/DDecayParameters.cp
+p,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--43
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/src/Event.cpp,
+ []
+
+
+Overfull \hbox (85.1987pt too wide) in paragraph at lines 51--53
+[]\T1/phv/m/n/10 /data/lhcb/users/tat/KKpipi_Binned_Fit/src/PhaseSpaceParameter
+isation.cpp,
+ []
+
+[33
+
+
+
+] [34])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 226.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 226.
  (./refman.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 198.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 198.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 226.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 226.
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 653B819BA8B1768463E4794CE52F8D8C;18812.
+(rerunfilecheck)             Checksum: 4027157981F0D62A9C06BEB375A3ACC2;31189.
  ) 
 Here is how much of TeX's memory you used:
- 16810 strings out of 492616
- 247768 string characters out of 6123731
- 359849 words of memory out of 5000000
- 20221 multiletter control sequences out of 15000+600000
+ 17003 strings out of 492616
+ 250779 string characters out of 6123731
+ 395436 words of memory out of 5000000
+ 20280 multiletter control sequences out of 15000+600000
  60186 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,15n,92p,938b,635s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,16n,92p,1356b,635s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/network/software/el7/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</
 network/software/el7/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
 i10.pfb></network/software/el7/texlive/2018/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmmi12.pfb></network/software/el7/texlive/2018/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi8.pfb></network/software/el7/texlive/2018/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></network/software/el7/texlive/2018/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></network/software/el7/texlive/20
-18/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></network/software/el7/t
-exlive/2018/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></network/software/el
-7/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></network/software
-/el7/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></network/soft
-ware/el7/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></network/
-software/el7/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb></net
-work/software/el7/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><
-/network/software/el7/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.
-pfb>
-Output written on refman.pdf (30 pages, 168525 bytes).
+blic/amsfonts/cm/cmmi7.pfb></network/software/el7/texlive/2018/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi8.pfb></network/software/el7/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></network/software/el7/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></network/software/el7/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></network/softw
+are/el7/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></network/so
+ftware/el7/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></network
+/software/el7/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></net
+work/software/el7/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><
+/network/software/el7/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.
+pfb></network/software/el7/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhv
+r8a.pfb></network/software/el7/texlive/2018/texmf-dist/fonts/type1/urw/helvetic
+/uhvro8a.pfb>
+Output written on refman.pdf (40 pages, 196747 bytes).
 PDF statistics:
- 1032 PDF objects out of 1200 (max. 8388607)
- 951 compressed objects within 10 object streams
- 209 named destinations out of 1000 (max. 500000)
- 729 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1402 PDF objects out of 1440 (max. 8388607)
+ 1306 compressed objects within 14 object streams
+ 289 named destinations out of 1000 (max. 500000)
+ 969 words of extra memory for PDF output out of 10000 (max. 10000000)
 
