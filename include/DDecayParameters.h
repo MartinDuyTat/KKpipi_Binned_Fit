@@ -24,12 +24,12 @@ class DDecayParameters {
      * First line is assumed to be column names
      * @param filename Filename of file with D meson hadronic parameters
      */
-    DDecarParameters(std::string filename);
+    DDecayParameters(std::string filename);
     /**
      * Function for saving K_i, Kbar_i, c_i and s_i to a CSV file
      * @param filename Filename of file to save D meson hadronic parameters
      */
-    void saveCSV(std::string filename);
+    void saveCSV(std::string filename) const;
     /**
      * Function for getting fractional yield K_i
      * @return K Vector of fractional yields of D0 events

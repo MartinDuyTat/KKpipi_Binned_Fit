@@ -69,18 +69,23 @@ DDecayParameters::DDecayParameters(const PhaseSpaceParameterisation &psp, const 
   std::transform(m_Kbar.begin(), m_Kbar.end(), m_Kbar.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumKbar));
 }
 
-DDecayParameters(std::string filename) {
+DDecayParameters::DDecayParameters(std::string filename) {
   std::ifstream DDecayFile(filename);
   std::string line;
   std::getline(DDecayFile, line);
   while(std::getline(DDecayFile, line)) {
     std::stringstream ss(line);
-    double i, K, Kbar, c, s;
-    std::getline(ss, i, ",");
-    std::getline(ss, K, ",");
-    std::getline(ss, Kbar, ",");
-    std::getline(ss, c, ",");
-    std::getline(ss, s, "\n");
+    int i;
+    double K, Kbar, c, s;
+    ss >> i;
+    ss.ignore();
+    ss >> K;
+    ss.ignore();
+    ss >> Kbar;
+    ss.ignore();
+    ss >> c;
+    ss.ignore();
+    ss >> s;
     m_K.push_back(K);
     m_Kbar.push_back(Kbar);
     m_c.push_back(c);
@@ -89,13 +94,14 @@ DDecayParameters(std::string filename) {
   DDecayFile.close();
 }
 
-void DDecayParameters::saveCSV(filename) const {
+void DDecayParameters::saveCSV(std::string filename) const {
   std::ofstream DDecayFile(filename);
   DDecayFile << "i,K_i,Kbar_i,c_i,s_i\n";
-  for(int i = 0; i < m_K.size(); i++) {
-    DDecayfile << m_K[i] "," << m_Kbar[i] << "," << c_i[i] << "," << s_i[i] << std::endl;
+  for(unsigned int i = 0; i < m_K.size(); i++) {
+    DDecayFile << i << "," <<  m_K[i] << "," << m_Kbar[i] << "," << m_c[i] << "," << m_s[i] << std::endl;
   }
   DDecayFile.close();
+}
 
 std::vector<double> DDecayParameters::GetK() const {
   return m_K;
