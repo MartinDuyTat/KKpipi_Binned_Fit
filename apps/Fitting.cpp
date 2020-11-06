@@ -15,8 +15,8 @@
 
 int main() {
   std::cout << "Starting B->DK, D->KKpipi binned fit\n";
-  std::string Bplusfile("/data/lhcb/users/tat/D02KKpipi/BplusEvents/BplustoDK_100K.root");
-  std::string Bminusfile("/data/lhcb/users/tat/D02KKpipi/BminusEvents/BminustoDK_100K.root");
+  std::string Bplusfile("/data/lhcb/users/tat/D02KKpipi/BplusEvents/BplustoDK_10K.root");
+  std::string Bminusfile("/data/lhcb/users/tat/D02KKpipi/BminusEvents/BminustoDK_10K.root");
   PhaseSpaceParameterisation psp;
   std::cout << "Loaded phase space\n";
   TFile fBplus(Bplusfile.c_str(), "READ");
