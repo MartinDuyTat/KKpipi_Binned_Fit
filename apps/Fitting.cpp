@@ -1,6 +1,7 @@
 // Martin Duy Tat 30th October 2020
 /**
  * Fitting is the program for doing the binned fitting
+ * D meson decay parameters are calculated using Monte Carlo integration using the ampliude model from AmpGen
  */
 
 #include<string>

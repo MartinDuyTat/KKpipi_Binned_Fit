@@ -1,4 +1,4 @@
-// Martin Duy Tat
+// Martin Duy Tat 2nd November
 
 #include<vector>
 #include"Generator.h"
