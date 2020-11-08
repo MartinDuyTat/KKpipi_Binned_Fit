@@ -5,13 +5,22 @@
 #include<complex>
 #include<algorithm>
 #include<dlfcn.h>
+#include<iostream>
 #include"Amplitude.h"
 
 Amplitude::Amplitude(const std::string &Damplitude, const std::string &DBARamplitude) {
   void *my_lib_handle_d = dlopen(Damplitude.c_str(), RTLD_NOW);
   void *my_lib_handle_dbar = dlopen(DBARamplitude.c_str(), RTLD_NOW);
+  if(my_lib_handle_d == nullptr || my_lib_handle_dbar == nullptr) {
+    std::cout << "Cannot find shared libraries\n";
+    return;
+  }
   m_Damplitude = (std::complex<double> (*)(double const *event, const int &x1)) dlsym(my_lib_handle_d, "AMP");
   m_DBARamplitude = (std::complex<double> (*)(double const *event, const int &x1)) dlsym(my_lib_handle_dbar, "AMP");
+  if(m_Damplitude == nullptr || m_DBARamplitude == nullptr) {
+    std::cout << "Cannot find function AMP\n";
+    return;
+  }
 }
 
 std::complex<double> Amplitude::operator()(const std::vector<double> &event, int conj) {
