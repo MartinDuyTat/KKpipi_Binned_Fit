@@ -24,10 +24,10 @@ int main(int argc, char *argv[]) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
-  double r_B = 0.1, delta_B = 130, gamma = 75;
+  double r_B = 0.1, delta_B = 130*TMath::Pi()/180, gamma = 75*TMath::Pi()/180;
   double xplus_true = r_B*TMath::Cos(delta_B + gamma);
-  double xminus_true = r_B*TMath::Sin(delta_B - gamma);
-  double yplus_true = r_B*TMath::Cos(delta_B + gamma);
+  double xminus_true = r_B*TMath::Cos(delta_B - gamma);
+  double yplus_true = r_B*TMath::Sin(delta_B + gamma);
   double yminus_true = r_B*TMath::Sin(delta_B - gamma);
   std::string BplusFilename = argv[1];
   std::string BminusFilename = argv[2];
@@ -44,10 +44,12 @@ int main(int argc, char *argv[]) {
   fBminus.GetObject("DalitzEventList", treeBminus);
   std::cout << "Loaded trees\n";
   TFile *f = new TFile("PullDistributions.root", "RECREATE");
-  TH1D *xplusHist = new TH1D("xplus", "xplus pull distribution", 20, -2.0, 2.0);
-  TH1D *xminusHist = new TH1D("xminus", "xminus pull distribution", 20, -2.0, 2.0);
-  TH1D *yplusHist = new TH1D("yplus", "yplus pull distribution", 20, -2.0, 2.0);
-  TH1D *yminusHist = new TH1D("yminus", "yminus pull distribution", 20, -2.0, 2.0);
+  TTree *PullTree = new TTree("pull", "Pull distributions of #x_#pm and #y_#pm");
+  Double_t xplus_pull, xminus_pull, yplus_pull, yminus_pull;
+  PullTree->Branch("xplus", &xplus_pull, "xplus/D");
+  PullTree->Branch("xminus", &xminus_pull, "xminus/D");
+  PullTree->Branch("yplus", &yplus_pull, "yplus/D");
+  PullTree->Branch("yminus", &yminus_pull, "yminus/D");
   for(int i = 0; i < Samples; i++) {
     std::cout << "Starting fitting of sample " << i << std::endl;
     TTree *treeSmallBplus = new TTree("DalitzEventList", "Dbar0 K+ K- pi+ pi-");
@@ -66,19 +68,17 @@ int main(int argc, char *argv[]) {
     fit.DoFit(cpparameters);
     cpparameters.GetCPParameters(xplus, xminus, yplus, yminus);
     cpparameters.GetError(xpluse, xminuse, ypluse, yminuse);
-    xplusHist->Fill((xplus - xplus_true)/xpluse);
-    xminusHist->Fill((xminus - xminus_true)/xminuse);
-    yplusHist->Fill((yplus - yplus_true)/ypluse);
-    yminusHist->Fill((yminus - yminus_true)/yminuse);
+    xplus_pull = (xplus - xplus_true)/xpluse;
+    xminus_pull = (xminus - xminus_true)/xminuse;
+    yplus_pull = (yplus - yplus_true)/ypluse;
+    yminus_pull = (yminus - yminus_true)/yminuse;
+    PullTree->Fill();
     //delete treeSmallBplus;
     //delete treeSmallBminus;
   }
   std::cout << "Pool study finished\n";
   std::cout << "Analysed " << Samples << " samples, each of size " << SampleSize << std::endl;
-  xplusHist->Write();
-  xminusHist->Write();
-  yplusHist->Write();
-  yminusHist->Write();
+  PullTree->Write();
   f->Close();
   return 0;
 }
