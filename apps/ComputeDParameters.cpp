@@ -1,6 +1,6 @@
 // Martin Duy Tat 6th November 2020
 /** 
- * This program is for calculating hadronic parameters of D->KKpipi decays using Monte Carlo integration and an amplitude model
+ * This program is for calculating hadronic parameters of D->KKpipi decays using Monte Carlo integration and an amplitude model from AmpGen
  * @param 1 Filename to save D hadronic decay parameters to
  * @param 2 Number of events used in Monte Carlo integration
  */
@@ -20,6 +20,6 @@ int main(int argc, char *argv[]) {
   double masses[4] = {0.493677, 0.493677, 0.13957039, 0.13957039};
   PhaseSpaceParameterisation psp;
   DDecayParameters ddecay(psp, mass_parent, masses, events);
-  ddecay.saveCSV(filename);
+  ddecay.SaveCSV(filename);
   return 0;
 }

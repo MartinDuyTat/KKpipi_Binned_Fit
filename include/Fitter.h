@@ -20,9 +20,9 @@ class Fitter {
     Fitter(BinList binlist, DDecayParameters ddparameters);
     /**
      * Function for doing fit and returning the CP violation parameters (by reference)
-     * @param cpparameters Initial guess of CP violation parameters, function replaces these with the fitted parameters
+     * @param cpparameters Initial guess of CP violation parameters, function replaces these with the fitted parameters and its covariance matrix
      */
-    void DoFit(CPParameters &cpparameters); 
+    void DoFit(CPParameters &cpparameters);
   private:
     /**
      * Input data, sorted into their respective bins

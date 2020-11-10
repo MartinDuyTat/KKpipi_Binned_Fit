@@ -2,6 +2,11 @@
 /**
  * Poolstudy is the program for doing a pool study of the binned fitting
  * D meson decay parameters are loaded from file
+ * @param 1 Filename of B+ event file
+ * @param 2 Filename of B- event file
+ * @param 3 Filename of D meson hadronic decay parameters
+ * @param 4 Sample size
+ * @param 5 Number of samples
  */
 
 #include<string>
@@ -16,6 +21,7 @@
 #include"Fitter.h"
 #include"TMath.h"
 #include"TH1D.h"
+#include"TMatrixD.h"
 
 void SplitTree(TTree *tree, TTree *treeSmall, const int &StartEvent, const int &SampleSize);
 
@@ -64,14 +70,14 @@ int main(int argc, char *argv[]) {
     Fitter fit(binlist, ddparameters);
     //CPParameters cpparameters(-0.09, 0.06, -0.04, 0.08);
     CPParameters cpparameters(0.0, 0.0, 0.0, 0.0);
-    double xplus, xminus, yplus, yminus, xpluse, xminuse, ypluse, yminuse;
+    double xplus, xminus, yplus, yminus;
     fit.DoFit(cpparameters);
     cpparameters.GetCPParameters(xplus, xminus, yplus, yminus);
-    cpparameters.GetError(xpluse, xminuse, ypluse, yminuse);
-    xplus_pull = (xplus - xplus_true)/xpluse;
-    xminus_pull = (xminus - xminus_true)/xminuse;
-    yplus_pull = (yplus - yplus_true)/ypluse;
-    yminus_pull = (yminus - yminus_true)/yminuse;
+    TMatrixD cov = cpparameters.GetCov();
+    xplus_pull = (xplus - xplus_true)/TMath::Sqrt(cov(0, 0));
+    xminus_pull = (xminus - xminus_true)/TMath::Sqrt(cov(1, 1));
+    yplus_pull = (yplus - yplus_true)/TMath::Sqrt(cov(2, 2));
+    yminus_pull = (yminus - yminus_true)/TMath::Sqrt(cov(3, 3));
     PullTree->Fill();
     //delete treeSmallBplus;
     //delete treeSmallBminus;

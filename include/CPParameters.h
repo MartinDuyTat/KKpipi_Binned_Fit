@@ -6,6 +6,8 @@
 #ifndef CPPARAMETERS
 #define CPPARAMETERS
 
+#include"TMatrixD.h"
+
 class CPParameters {
   public:
     /**
@@ -26,20 +28,14 @@ class CPParameters {
     void GetCPParameters(double &xplus, double &xminus, double &yplus, double& yminus) const;
     /**
      * Function for setting CP parameter errors
-     * @param xplus xplus error
-     * @param xminus xminus error
-     * @param yplus yplus error
-     * @param yminus yminus error
+     * @param CovMatrix Array with covariance matrix
      */
-    void SetError(double xplus, double xminus, double yplus, double yminus);
+    void SetCov(double *CovMatrix);
     /**
      * Function for getting CP parameter errors
-     * @param xplus xplus error
-     * @param xminus xminus error
-     * @param yplus yplus error
-     * @param yminus yminus error
+     * @param CovMatrix TMatrixD object with covariance matrix
      */
-    void GetError(double &xplus, double &xminus, double &yplus, double &yminus) const;
+    TMatrixD GetCov() const;
   private:
     /**
      * xplus r_Bcos(delta_B + gamma) for Bplus decays
@@ -58,21 +54,9 @@ class CPParameters {
      */
     double m_yminus;
     /**
-     * xplus error
+     * Covariance matrix
      */
-    double m_xpluserror;
-    /**
-     * xminus error
-     */
-    double m_xminuserror;
-    /**
-     * yplus error
-     */
-    double m_ypluserror;
-    /**
-     * yminus error
-     */
-    double m_yminuserror;
+    TMatrixD m_CovMatrix;
 };
 
 #endif

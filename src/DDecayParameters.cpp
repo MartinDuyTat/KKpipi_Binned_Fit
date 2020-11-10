@@ -16,6 +16,9 @@
 #include"Bin.h"
 #include"TMath.h"
 #include"Amplitude.h"
+#include"TCanvas.h"
+#include"TGraph.h"
+#include"TAxis.h"
 
 DDecayParameters::DDecayParameters(const PhaseSpaceParameterisation &psp, const double &mass_parent, const Double_t *mass_decay, int events) {
   Generator generator(mass_parent, mass_decay, 4);
@@ -94,13 +97,58 @@ DDecayParameters::DDecayParameters(std::string filename) {
   DDecayFile.close();
 }
 
-void DDecayParameters::saveCSV(std::string filename) const {
+void DDecayParameters::SaveCSV(std::string filename) const {
   std::ofstream DDecayFile(filename);
   DDecayFile << "i,K_i,Kbar_i,c_i,s_i\n";
   for(unsigned int i = 0; i < m_K.size(); i++) {
     DDecayFile << i << "," <<  m_K[i] << "," << m_Kbar[i] << "," << m_c[i] << "," << m_s[i] << std::endl;
   }
   DDecayFile.close();
+}
+
+void DDecayParameters::PlotParameters(std::string filename_cs, std::string filename_K) {
+  std::vector<Double_t> circle_x(101), circle_y(101);
+  for(int i = 0; i < 101; i++) {
+    circle_x[i] = TMath::Cos(2*TMath::Pi()*i/100);
+    circle_y[i] = TMath::Sin(2*TMath::Pi()*i/100);
+  }
+  TGraph *gr1 = new TGraph(this->Getc().size(), this->Gets().data(), this->Getc().data());
+  TGraph *circle = new TGraph(101, circle_x.data(), circle_y.data());
+  TCanvas *c1 = new TCanvas("s_vs_c", "s_i vs c_i", 700, 700);
+  circle->Draw("AL");
+  gr1->Draw("P");
+  circle->GetXaxis()->SetTitle("s_{i}");
+  circle->GetYaxis()->SetTitle("c_{i}");
+  circle->GetXaxis()->SetRangeUser(-1.0, 1.0);
+  circle->GetYaxis()->SetRangeUser(-1.0, 1.0);
+  circle->SetTitle("Plot of c_i vs s_i");
+  gr1->SetMarkerStyle(kFullDotLarge);
+  c1->SetLeftMargin(0.11);
+  circle->Draw("AL");
+  gr1->Draw("P");
+  c1->Update();
+  c1->SaveAs(filename_cs.c_str());
+  std::vector<double> binning(this->GetK().size());
+  for(unsigned int i = 0; i < binning.size(); i++) {
+    binning[i] = i;
+  }
+  TGraph *gr2 = new TGraph(binning.size(), binning.data(), this->GetK().data());
+  TCanvas *c2 = new TCanvas("K", "K_i and Kbar_i");
+  gr2->Draw("*A");
+  gr2->GetXaxis()->SetTitle("Bin number");
+  gr2->GetYaxis()->SetTitle("Fractional yield");
+  gr2->GetXaxis()->SetLimits(-0.5, 3.5);
+  gr2->GetYaxis()->SetRangeUser(0.0, 0.4);
+  gr2->SetTitle("Fractional yields");
+  gr2->SetMarkerStyle(kFullDotLarge);
+  gr2->Draw("AP");
+  c2->Update();
+  c2->SaveAs(filename_K.c_str());
+  delete gr1;
+  delete gr2;
+  delete circle;
+  delete c1;
+  delete c2;
 }
 
 std::vector<double> DDecayParameters::GetK() const {

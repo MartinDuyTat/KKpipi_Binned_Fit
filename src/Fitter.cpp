@@ -24,9 +24,10 @@ void Fitter::DoFit(CPParameters &cpparameters) {
   mini->SetVariable(3, "yminus", yminus, 1);
   mini->Minimize();
   const double *xs = mini->X();
-  const double *err = mini->Errors();
   cpparameters = CPParameters(xs[0], xs[1], xs[2], xs[3]);
-  cpparameters.SetError(err[0], err[1], err[2], err[3]);
+  double CovMatrix[16];
+  mini->GetCovMatrix(CovMatrix);
+  cpparameters.SetCov(CovMatrix);
   delete mini;
   delete likelihood;
 }
