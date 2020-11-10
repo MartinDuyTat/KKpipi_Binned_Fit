@@ -27,12 +27,12 @@ class CPParameters {
      */
     void GetCPParameters(double &xplus, double &xminus, double &yplus, double& yminus) const;
     /**
-     * Function for setting CP parameter errors
+     * Function for setting CP parameter covariance matrix
      * @param CovMatrix Array with covariance matrix
      */
     void SetCov(double *CovMatrix);
     /**
-     * Function for getting CP parameter errors
+     * Function for getting CP parameter covariance matrix
      * @param CovMatrix TMatrixD object with covariance matrix
      */
     TMatrixD GetCov() const;

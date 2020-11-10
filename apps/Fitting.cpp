@@ -17,6 +17,9 @@
 #include"CPParameters.h"
 #include"Fitter.h"
 #include"TMath.h"
+#include"FitGamma.h"
+#include"Gamma.h"
+#include"TMatrixD.h"
 
 int main(int argc, char *argv[]) {
   std::cout << "Starting B->DK, D->KKpipi binned fit\n";
@@ -56,5 +59,17 @@ int main(int argc, char *argv[]) {
   std::cout << "xminus = " << xminus << " +- " << TMath::Sqrt(cov(1, 1)) << std::endl;
   std::cout << "yplus = " << yplus << " +- " << TMath::Sqrt(cov(2, 2)) << std::endl;
   std::cout << "yminus = " << yminus << " +- " << TMath::Sqrt(cov(3, 3)) << std::endl;
+  std::cout << "Starting fit to determine r_B, delta_B and gamma\n";
+  FitGamma fitgamma(cpparameters);
+  Gamma gammaparams(0.05, 140.0, 60.0);
+  fitgamma.DoFit(gammaparams);
+  std::cout << "Done fitting for r_B, delta_B and gamma\n";
+  double rB, deltaB, gamma;
+  gammaparams.GetGammaParameters(rB, deltaB, gamma);
+  TMatrixD gammacov = gammaparams.GetCov();
+  std::cout << "Fitted parameters:\n";
+  std::cout << "r_B = " << rB << " +- " << TMath::Sqrt(gammacov(0, 0)) << std::endl;
+  std::cout << "delta_B = " << deltaB << " +- " << TMath::Sqrt(gammacov(1, 1)) << std::endl;
+  std::cout << "gamma = " << gamma << " +- " << TMath::Sqrt(gammacov(2, 2)) << std::endl;
   return 0;
 }
