@@ -43,9 +43,8 @@ int main(int argc, char *argv[]) {
   binlist.LoadTTree(treeBplus, +1);
   binlist.LoadTTree(treeBminus, -1);
   std::cout << "Loaded tree events into bins\n";
-  std::cout << "Generating events for D meson hadronic parameter calculation\n";
   DDecayParameters ddparameters(argv[3]);
-  std::cout << "Calculated D meson parameters\n";
+  std::cout << "Loaded D meson hadronic parameters\n";
   Fitter fit(binlist, ddparameters);
   CPParameters cpparameters(-0.09, 0.06, -0.04, 0.08);
   double xplus, xminus, yplus, yminus;
@@ -71,5 +70,8 @@ int main(int argc, char *argv[]) {
   std::cout << "r_B = " << rB << " +- " << TMath::Sqrt(gammacov(0, 0)) << std::endl;
   std::cout << "delta_B = " << deltaB << " +- " << TMath::Sqrt(gammacov(1, 1)) << std::endl;
   std::cout << "gamma = " << gamma << " +- " << TMath::Sqrt(gammacov(2, 2)) << std::endl;
+  std::cout << "Drawing contours\n";
+  fitgamma.PlotContours("Contour_rB_vs_dB.png", "Contour_dB_vs_gamma.png", "Contour_gamma_vs_rB.png", 20);
+  std::cout << "Finished drawing contours\n";
   return 0;
 }

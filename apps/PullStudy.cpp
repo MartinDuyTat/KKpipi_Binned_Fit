@@ -22,6 +22,8 @@
 #include"TMath.h"
 #include"TH1D.h"
 #include"TMatrixD.h"
+#include"Gamma.h"
+#include"FitGamma.h"
 
 void SplitTree(TTree *tree, TTree *treeSmall, const int &StartEvent, const int &SampleSize);
 
@@ -35,6 +37,9 @@ int main(int argc, char *argv[]) {
   double xminus_true = r_B*TMath::Cos(delta_B - gamma);
   double yplus_true = r_B*TMath::Sin(delta_B + gamma);
   double yminus_true = r_B*TMath::Sin(delta_B - gamma);
+  double rB_true = 0.1;
+  double dB_true = 130;
+  double gamma_true = 75;
   std::string BplusFilename = argv[1];
   std::string BminusFilename = argv[2];
   std::string DDecayFilename = argv[3];
@@ -51,11 +56,14 @@ int main(int argc, char *argv[]) {
   std::cout << "Loaded trees\n";
   TFile *f = new TFile("PullDistributions.root", "RECREATE");
   TTree *PullTree = new TTree("pull", "Pull distributions of #x_#pm and #y_#pm");
-  Double_t xplus_pull, xminus_pull, yplus_pull, yminus_pull;
+  Double_t xplus_pull, xminus_pull, yplus_pull, yminus_pull, rB_pull, dB_pull, gamma_pull;
   PullTree->Branch("xplus", &xplus_pull, "xplus/D");
   PullTree->Branch("xminus", &xminus_pull, "xminus/D");
   PullTree->Branch("yplus", &yplus_pull, "yplus/D");
   PullTree->Branch("yminus", &yminus_pull, "yminus/D");
+  PullTree->Branch("rB", &rB_pull, "rB/D");
+  PullTree->Branch("dB", &dB_pull, "dB/D");
+  PullTree->Branch("gamma", &gamma_pull, "gamma/D");
   for(int i = 0; i < Samples; i++) {
     std::cout << "Starting fitting of sample " << i << std::endl;
     TTree *treeSmallBplus = new TTree("DalitzEventList", "Dbar0 K+ K- pi+ pi-");
@@ -78,6 +86,15 @@ int main(int argc, char *argv[]) {
     xminus_pull = (xminus - xminus_true)/TMath::Sqrt(cov(1, 1));
     yplus_pull = (yplus - yplus_true)/TMath::Sqrt(cov(2, 2));
     yminus_pull = (yminus - yminus_true)/TMath::Sqrt(cov(3, 3));
+    FitGamma gammafitter(cpparameters);
+    Gamma gammaparams(0.1, 140, 70);
+    gammafitter.DoFit(gammaparams);
+    double rB, dB, gamma;
+    gammaparams.GetGammaParameters(rB, dB, gamma);
+    TMatrixD gammacov = gammaparams.GetCov();
+    rB_pull = (rB - rB_true)/TMath::Sqrt(gammacov(0, 0));
+    dB_pull = (dB - dB_true)/TMath::Sqrt(gammacov(1, 1));
+    gamma_pull = (gamma - gamma_true)/TMath::Sqrt(gammacov(2, 2));
     PullTree->Fill();
     //delete treeSmallBplus;
     //delete treeSmallBminus;

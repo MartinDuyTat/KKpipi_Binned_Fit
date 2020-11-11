@@ -6,6 +6,7 @@
 #ifndef FITGAMMA
 #define FITGAMMA
 
+#include<string>
 #include"XYLikelihood.h"
 #include"CPParameters.h"
 #include"Minuit2/Minuit2Minimizer.h"
@@ -23,6 +24,10 @@ class FitGamma {
      * @param cpparameters Initial guess of \f$r_B\f$, \f$\delta_B\f$ and \f$\gamma\f$
      */
     void DoFit(Gamma &GammaParams);
+    /**
+     * Function for plotting contours after fitting
+     */
+    void PlotContours(std::string Filename_rB_deltaB, std::string Filename_deltaB_gamma, std::string Filename_gamma_rB, unsigned int npoints) const;
     /**
      * Destructor to kill the minimiser
      */
