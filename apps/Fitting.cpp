@@ -20,6 +20,7 @@
 #include"FitGamma.h"
 #include"Gamma.h"
 #include"TMatrixD.h"
+#include"NaiivePhaseSpace.h"
 
 int main(int argc, char *argv[]) {
   std::cout << "Starting B->DK, D->KKpipi binned fit\n";
@@ -27,7 +28,8 @@ int main(int argc, char *argv[]) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
-  PhaseSpaceParameterisation psp;
+  NaiivePhaseSpace phasespace;
+  PhaseSpaceParameterisation *psp = &phasespace;
   std::cout << "Loaded phase space\n";
   std::string Bplusfile = argv[1];
   std::string Bminusfile = argv[2];

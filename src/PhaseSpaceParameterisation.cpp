@@ -1,25 +1,10 @@
-// Martin Duy Tat 2nd November 2020
+// Martin Duy Tat 12th November 2020
 
-#include<vector>
 #include"PhaseSpaceParameterisation.h"
-#include"Event.h"
 
-PhaseSpaceParameterisation::PhaseSpaceParameterisation(): m_bins(4) {
+PhaseSpaceParameterisation::PhaseSpaceParameterisation(int bins): m_bins(bins) {
 }
 
-int PhaseSpaceParameterisation::WhichBin(const Event &event) {
-  std::vector<double> momenta = event.GetEvent();
-  if(momenta[3] > momenta[7] && momenta[11] > momenta[15]) {
-    return 0;
-  } else if(momenta[3] > momenta[7] && momenta[11] < momenta[15]) {
-    return 1;
-  } else if(momenta[3] < momenta[7] && momenta[11] > momenta[15]) {
-    return 2;
-  } else {
-    return 3;
-  }
-}
-
-int PhaseSpaceParameterisation::NumberOfBins() {
+int PhaseSpaceParameterisation::NumberOfBins() const {
   return m_bins;
 }

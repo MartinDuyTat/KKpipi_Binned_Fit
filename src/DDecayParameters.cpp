@@ -20,7 +20,7 @@
 #include"TGraph.h"
 #include"TAxis.h"
 
-DDecayParameters::DDecayParameters(const PhaseSpaceParameterisation &psp, const double &mass_parent, const Double_t *mass_decay, int events) {
+DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const double &mass_parent, const Double_t *mass_decay, int events) {
   Generator generator(mass_parent, mass_decay, 4);
   BinList binlist(psp);
   // Generate events until all bins have "events" number of events

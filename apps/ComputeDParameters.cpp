@@ -9,6 +9,7 @@
 #include<stdlib.h>
 #include"DDecayParameters.h"
 #include"PhaseSpaceParameterisation.h"
+#include"NaiivePhaseSpace.h"
 
 int main(int argc, char *argv[]) {
   if(argc != 3) {
@@ -18,7 +19,8 @@ int main(int argc, char *argv[]) {
   int events = atoi(argv[2]);
   double mass_parent = 1.86483;
   double masses[4] = {0.493677, 0.493677, 0.13957039, 0.13957039};
-  PhaseSpaceParameterisation psp;
+  NaiivePhaseSpace phasespace;
+  PhaseSpaceParameterisation *psp = &phasespace;
   DDecayParameters ddecay(psp, mass_parent, masses, events);
   ddecay.SaveCSV(filename);
   return 0;

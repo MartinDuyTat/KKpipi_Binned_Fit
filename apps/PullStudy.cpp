@@ -24,6 +24,7 @@
 #include"TMatrixD.h"
 #include"Gamma.h"
 #include"FitGamma.h"
+#include"NaiivePhaseSpace.h"
 
 void SplitTree(TTree *tree, TTree *treeSmall, const int &StartEvent, const int &SampleSize);
 
@@ -64,13 +65,14 @@ int main(int argc, char *argv[]) {
   PullTree->Branch("rB", &rB_pull, "rB/D");
   PullTree->Branch("dB", &dB_pull, "dB/D");
   PullTree->Branch("gamma", &gamma_pull, "gamma/D");
+  NaiivePhaseSpace phasespace;
+  PhaseSpaceParameterisation *psp = &phasespace;
   for(int i = 0; i < Samples; i++) {
     std::cout << "Starting fitting of sample " << i << std::endl;
     TTree *treeSmallBplus = new TTree("DalitzEventList", "Dbar0 K+ K- pi+ pi-");
     TTree *treeSmallBminus = new TTree("DalitzEventList", "D0 K+ K- pi+ pi-");
     SplitTree(treeBplus, treeSmallBplus, Samples*i, SampleSize);
     SplitTree(treeBminus, treeSmallBminus, Samples*i, SampleSize);
-    PhaseSpaceParameterisation psp;
     BinList binlist(psp);
     binlist.LoadTTree(treeSmallBplus, +1);
     binlist.LoadTTree(treeSmallBminus, -1);    

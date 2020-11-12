@@ -11,15 +11,15 @@
 #include"CPParameters.h"
 #include"TMath.h"
 
-BinList::BinList(PhaseSpaceParameterisation psp): m_psp(psp), m_bins(std::vector<Bin>(m_psp.NumberOfBins())) {
+BinList::BinList(PhaseSpaceParameterisation *psp): m_psp(psp), m_bins(std::vector<Bin>(m_psp->NumberOfBins())) {
 }
 
 void BinList::AddEvent(Event event, int charge) {
-  m_bins[m_psp.WhichBin(event)].AddEvent(event, charge);
+  m_bins[m_psp->WhichBin(event)].AddEvent(event, charge);
 }
 
 void BinList::AddEvent(Event event, int charge, int maxevents) {
-  int whichbin = m_psp.WhichBin(event);
+  int whichbin = m_psp->WhichBin(event);
   if(maxevents > m_bins[whichbin].GetNumberEvents(charge)) {
     m_bins[whichbin].AddEvent(event, charge);
   }

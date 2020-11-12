@@ -20,7 +20,7 @@ class BinList {
      * Constructor that takes a PhaseSpaceParameterisation object and creates the bins
      * @param php A PhaseSpaceParameterisation object that defines the bins in the 5D phase space
      */
-    BinList(PhaseSpaceParameterisation php);
+    BinList(PhaseSpaceParameterisation *php);
     /**
      * Function for adding an event to the correct bin
      * @param event Event object to be added to the correct bin
@@ -70,7 +70,7 @@ class BinList {
     /**
      * A parameterisation of phase space
      */
-    PhaseSpaceParameterisation m_psp;
+    PhaseSpaceParameterisation *m_psp;
     /**
      * Vector of Bin objects
      */

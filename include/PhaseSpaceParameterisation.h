@@ -1,8 +1,7 @@
-// Martin Duy Tat 31st October 2020
+// Martin Duy Tat 12th November 2020
 /**
  * PhaseSpaceParameterisation is a class that contains the information about how phase space is divided into bins
- * PhasespaceParameterisation contains a very coarse and arbitrary binning of phase space
- * A more sophisticated binning can be added by added a new class that inherits from PhaseSpaceParameterisation
+ * Add a new binning scheme by adding a derived class with the binning implemented
  */
 
 #ifndef PHASESPACEPARAMETERISATION
@@ -13,25 +12,26 @@
 class PhaseSpaceParameterisation {
   public:
     /**
-     * Default constructor
+     * Default empty constructor
      */
-    PhaseSpaceParameterisation();
+    PhaseSpaceParameterisation(int bins);
     /**
      * Function that determines which bin an event belongs to
      * @param event The event we want to determine the bin of
      * @return Bin number
      */
-    int WhichBin(const Event &event);
+    virtual int WhichBin(const Event &event) = 0;
     /**
      * Function that returns the number of bins in the binning scheme
      * @return Number of bins
      */
-    int NumberOfBins();
+    int NumberOfBins() const;
   private:
     /**
      * Number of bins in this binning scheme
      */
     int m_bins;
+  private:
 };
 
 #endif
