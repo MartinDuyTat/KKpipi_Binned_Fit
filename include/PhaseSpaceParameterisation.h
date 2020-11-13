@@ -20,7 +20,7 @@ class PhaseSpaceParameterisation {
      * @param event The event we want to determine the bin of
      * @return Bin number
      */
-    virtual int WhichBin(const Event &event) = 0;
+    virtual int WhichBin(const Event &event) const = 0;
     /**
      * Function that returns the number of bins in the binning scheme
      * @return Number of bins
@@ -31,7 +31,6 @@ class PhaseSpaceParameterisation {
      * Number of bins in this binning scheme
      */
     int m_bins;
-  private:
 };
 
 #endif

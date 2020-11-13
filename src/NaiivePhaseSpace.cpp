@@ -8,7 +8,7 @@
 NaiivePhaseSpace::NaiivePhaseSpace(): PhaseSpaceParameterisation(4) {
 }
 
-int NaiivePhaseSpace::WhichBin(const Event &event) {
+int NaiivePhaseSpace::WhichBin(const Event &event) const {
   std::vector<double> momenta = event.GetEvent();
   if(momenta[3] > momenta[7] && momenta[11] > momenta[15]) {
     return 0;

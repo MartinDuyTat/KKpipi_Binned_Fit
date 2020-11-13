@@ -21,7 +21,7 @@ class NaiivePhaseSpace: public PhaseSpaceParameterisation {
      * @param event The event we want to determine the bin of
      * @return Bin number
      */
-    int WhichBin(const Event &event);
+    int WhichBin(const Event &event) const;
     /**
      * Function that returns the number of bins in the binning scheme
      * @return Number of bins
