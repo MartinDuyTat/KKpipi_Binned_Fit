@@ -21,44 +21,45 @@
 #include"TAxis.h"
 
 DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const double &mass_parent, const Double_t *mass_decay, int events) {
+  // Declare necessary variables
+  Amplitude amplitude("D0toKKpipi.so", "Dbar0toKKpipi.so");
   Generator generator(mass_parent, mass_decay, 4);
-  BinList binlist(psp);
-  // Generate events until all bins have "events" number of events
-  // Use different events for K/Kbar and c/s
+  int NumberBins = psp->NumberOfBins();
   int counter = 0;
-  std::vector<int> v = binlist.GetEvents(+1);
-  while(!std::all_of(v.begin(), v.end(), [&events](int i){return i == events;})) {
-    std::vector<TLorentzVector> eventvectors = generator.Generate();
-    binlist.AddEvent(Event(eventvectors), +1, events);
-    v = binlist.GetEvents(+1);
-    counter++;
-    if(counter%events == 0) {
-      std::cout << "Generated " << counter << " events\n";
-    }
-  }
-  int NumberBins = binlist.NumberBins();
+  // Reset all bins that store D hadronic parameters
   m_K = std::vector<double>(NumberBins, 0.0);
   m_Kbar = std::vector<double>(NumberBins, 0.0);
   m_c = std::vector<double>(NumberBins, 0.0);
   m_s = std::vector<double>(NumberBins, 0.0);
-  Amplitude amplitude("D0toKKpipi.so", "Dbar0toKKpipi.so");
-  // Do Monte Carlo integration to find the hadronic parameters
-  for(int i = 0; i < NumberBins; i++) {
-    std::vector<Event> eventlist_d = binlist.GetBin(i).GetEvents(+1).GetEvents();
-    std::vector<Event> eventlist_dbar = binlist.GetBin(i).GetEvents(+1).GetEvents();
-    for(int j = 0; j < events; j++) {
-      // Calculate amplitude of event
-      std::complex<double> amplitude_d = amplitude(eventlist_d[j].GetEvent(), +1);
-      std::complex<double> amplitude_dbar = amplitude(eventlist_dbar[j].GetEvent(), -1);
-      // Fractional yield in bin i
-      m_K[i] += std::norm(amplitude_d);
-      m_Kbar[i] += std::norm(amplitude_dbar);
-      // Strong Phase difference
-      double phase = std::arg(amplitude_d) - std::arg(amplitude_dbar);
-      m_c[i] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase);
-      m_s[i] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase);
+  // Generate events until all bins have "events" number of events, and for each event calculate the ampltitudes and phases
+  std::vector<int> EventsGenerated(NumberBins, 0);
+  while(!std::all_of(EventsGenerated.begin(), EventsGenerated.end(), [&events](int i){return i == events;})) {
+    ++counter;
+    // Generate event
+    Event GeneratedEvent(generator.Generate());
+    // Check which bin event belongs to
+    int BinNumber = psp->WhichBin(GeneratedEvent);
+    // Check if bin is full
+    if(EventsGenerated[BinNumber] == events) {
+      continue;
+    }
+    // Calculate amplitude
+    std::complex<double> amplitude_d = amplitude(GeneratedEvent.GetEvent(), +1);
+    std::complex<double> amplitude_dbar = amplitude(GeneratedEvent.GetEvent(), -1);
+    // Calculate fractional yield
+    m_K[BinNumber] += std::norm(amplitude_d);
+    m_Kbar[BinNumber] += std::norm(amplitude_dbar);
+    // Calcualte strong Phase difference
+    double phase = std::arg(amplitude_d) - std::arg(amplitude_dbar);
+    m_c[BinNumber] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase);
+    m_s[BinNumber] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase);
+    // Increment event count
+    EventsGenerated[BinNumber] += 1;
+    if(counter%events == 0) {
+      std::cout << "Generated " << counter << " events\n";
     }
   }
+  std::cout << "Generated " << counter << " events\n";
   double sumK = 0, sumKbar = 0;
   for(int i = 0; i < NumberBins; i++) {
     // Normalise fractional yields so they sum to 1
@@ -68,8 +69,10 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const double
     m_c[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
     m_s[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
   }
+  // Divide by total to normalise fractional yields to 1
   std::transform(m_K.begin(), m_K.end(), m_K.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumK));
   std::transform(m_Kbar.begin(), m_Kbar.end(), m_Kbar.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumKbar));
+  std::cout << "Calculation of D hadronic decay parameters complete\n";
 }
 
 DDecayParameters::DDecayParameters(std::string filename) {
