@@ -20,16 +20,17 @@
 #include"FitGamma.h"
 #include"Gamma.h"
 #include"TMatrixD.h"
-#include"NaiivePhaseSpace.h"
 #include"RectangularPhaseSpace.h"
+#include<stdlib.h>
 
 int main(int argc, char *argv[]) {
   std::cout << "Starting B->DK, D->KKpipi binned fit\n";
-  if(argc != 4) {
+  std::cout << "Using Rectangular binning scheme\n";
+  if(argc != 9) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
-  std::vector<int> bins = {1, 1, 2, 2, 2};
+  std::vector<int> bins = {atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]), atoi(argv[8])};
   RectangularPhaseSpace phasespace(bins);
   PhaseSpaceParameterisation *psp = &phasespace;
   std::cout << "Loaded phase space\n";
