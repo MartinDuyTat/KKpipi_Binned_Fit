@@ -43,9 +43,13 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const double
     if(EventsGenerated[BinNumber] == events) {
       continue;
     }
+    // If amplitude is nan, event is probably on the boundary of phase space and wrongly classified as kinematically impossible, so discard event
     // Calculate amplitude
     std::complex<double> amplitude_d = amplitude(GeneratedEvent.GetEvent(), +1);
     std::complex<double> amplitude_dbar = amplitude(GeneratedEvent.GetEvent(), -1);
+    if(TMath::IsNaN(std::norm(amplitude_d)) || TMath::IsNaN(std::norm(amplitude_dbar))) {
+      continue;
+    }
     // Calculate fractional yield
     m_K[BinNumber] += std::norm(amplitude_d);
     m_Kbar[BinNumber] += std::norm(amplitude_dbar);
