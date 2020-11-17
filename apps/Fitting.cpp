@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
-  std::vector<int> bins = {2, 2, 2, 2, 2};
+  std::vector<int> bins = {1, 1, 2, 2, 2};
   RectangularPhaseSpace phasespace(bins);
   PhaseSpaceParameterisation *psp = &phasespace;
   std::cout << "Loaded phase space\n";
