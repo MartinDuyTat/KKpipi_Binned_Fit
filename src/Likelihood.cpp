@@ -7,7 +7,13 @@
 #include"TMath.h"
 #include"Math/PdfFuncMathCore.h"
 
-Likelihood::Likelihood(BinList bins, DDecayParameters ddparameters): m_bins(bins), m_ddparameters(ddparameters) {
+#include<iostream> //remove
+
+Likelihood::Likelihood(BinList bins, DDecayParameters ddparameters): m_bins(bins), m_ddparameters(ddparameters), m_leastsquares(false) {
+}
+
+double Likelihood::LogPoissonPDF(int x, double mu) const {
+  return x*TMath::Log(mu) - ROOT::Math::lgamma(x + 1) - mu;
 }
 
 double Likelihood::operator()(const double *cpparameters) {
@@ -22,9 +28,20 @@ double Likelihood::operator()(const double *cpparameters) {
   }
   CPParameters cpparam(cpparameters[0], cpparameters[1], cpparameters[2], cpparameters[3]);
   m_bins.Predict(m_ddparameters, cpparam, predictedBplus, predictedBminus, totalBplus, totalBminus);
-  for(int i = 0; i < m_bins.NumberBins(); i++) {
-    loglikelihood += -2*TMath::Log(ROOT::Math::poisson_pdf(eventsBplus[i], predictedBplus[i]));
-    loglikelihood += -2*TMath::Log(ROOT::Math::poisson_pdf(eventsBminus[i], predictedBminus[i]));
+  if(m_leastsquares) {
+    for(int i = 0; i < m_bins.NumberBins(); i++) {
+      loglikelihood += TMath::Power(eventsBplus[i] - predictedBplus[i], 2)/predictedBplus[i];
+      loglikelihood += TMath::Power(eventsBminus[i] - predictedBminus[i], 2)/predictedBminus[i];
+    }
+  } else {
+    for(int i = 0; i < m_bins.NumberBins(); i++) {
+      loglikelihood += -2*LogPoissonPDF(eventsBplus[i], predictedBplus[i]);
+      loglikelihood += -2*LogPoissonPDF(eventsBminus[i], predictedBminus[i]);
+    }
   }
   return loglikelihood;
+}
+
+void Likelihood::SetLeastSquares(bool UseLeastSquares) {
+  m_leastsquares = UseLeastSquares;
 }

@@ -21,6 +21,7 @@
 #include"Gamma.h"
 #include"TMatrixD.h"
 #include"NaiivePhaseSpace.h"
+#include"RectangularPhaseSpace.h"
 
 int main(int argc, char *argv[]) {
   std::cout << "Starting B->DK, D->KKpipi binned fit\n";
@@ -28,7 +29,8 @@ int main(int argc, char *argv[]) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
-  NaiivePhaseSpace phasespace;
+  std::vector<int> bins = {1, 2, 2, 2, 2};
+  RectangularPhaseSpace phasespace(bins);
   PhaseSpaceParameterisation *psp = &phasespace;
   std::cout << "Loaded phase space\n";
   std::string Bplusfile = argv[1];

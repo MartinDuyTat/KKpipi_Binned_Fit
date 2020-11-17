@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
   std::cout << "Loaded trees\n";
   TFile *f = new TFile("PullDistributions.root", "RECREATE");
   TTree *PullTree = new TTree("pull", "Pull distributions of #x_#pm and #y_#pm");
-  Double_t xplus_pull, xminus_pull, yplus_pull, yminus_pull, rB_pull, dB_pull, gamma_pull;
+  Double_t xplus_pull, xminus_pull, yplus_pull, yminus_pull, rB_pull, dB_pull, gamma_pull, gamma_fitted, gamma_error;
   PullTree->Branch("xplus", &xplus_pull, "xplus/D");
   PullTree->Branch("xminus", &xminus_pull, "xminus/D");
   PullTree->Branch("yplus", &yplus_pull, "yplus/D");
@@ -65,6 +65,8 @@ int main(int argc, char *argv[]) {
   PullTree->Branch("rB", &rB_pull, "rB/D");
   PullTree->Branch("dB", &dB_pull, "dB/D");
   PullTree->Branch("gamma", &gamma_pull, "gamma/D");
+  PullTree->Branch("gamma_fitted", &gamma_fitted, "gamma_fitted/D");
+  PullTree->Branch("gamma_error", &gamma_error, "gamma_error/D");
   NaiivePhaseSpace phasespace;
   PhaseSpaceParameterisation *psp = &phasespace;
   for(int i = 0; i < Samples; i++) {
@@ -97,6 +99,8 @@ int main(int argc, char *argv[]) {
     rB_pull = (rB - rB_true)/TMath::Sqrt(gammacov(0, 0));
     dB_pull = (dB - dB_true)/TMath::Sqrt(gammacov(1, 1));
     gamma_pull = (gamma - gamma_true)/TMath::Sqrt(gammacov(2, 2));
+    gamma_fitted = gamma;
+    gamma_error = TMath::Sqrt(gammacov(2, 2));
     PullTree->Fill();
     //delete treeSmallBplus;
     //delete treeSmallBminus;

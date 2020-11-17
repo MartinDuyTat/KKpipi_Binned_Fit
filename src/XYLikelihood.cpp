@@ -1,4 +1,4 @@
-// Martin Duy Tat 10th November 2020
+// Martin Duy Tat 10th November 2020, based on code from Sneha Malde
 
 #include"XYLikelihood.h"
 #include"CPParameters.h"
