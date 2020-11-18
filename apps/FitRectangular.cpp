@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
   std::cout << "yminus = " << yminus << " +- " << TMath::Sqrt(cov(3, 3)) << std::endl;
   std::cout << "Starting fit to determine r_B, delta_B and gamma\n";
   FitGamma fitgamma(cpparameters);
-  Gamma gammaparams(0.05, 140.0, 60.0);
+  Gamma gammaparams(0.1, 130.0, 75.0);
   fitgamma.DoFit(gammaparams);
   std::cout << "Done fitting for r_B, delta_B and gamma\n";
   double rB, deltaB, gamma;
