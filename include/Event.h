@@ -17,7 +17,7 @@ class Event {
     Event();
     /**
      * Constructor that takes a vector of four-momenta
-     * @param p Four-momenta in the form (E, px, py, pz), in the order K+ K- pi+ pi-
+     * @param p Four-momenta in the form (px, py, pz, E), in the order K+ K- pi+ pi-
      */
     Event(std::vector<double> p);
     /**

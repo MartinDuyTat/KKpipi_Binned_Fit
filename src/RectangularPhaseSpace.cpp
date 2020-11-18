@@ -32,6 +32,9 @@ RectangularPhaseSpace::RectangularPhaseSpace(std::vector<int> bins, double *mass
   }
 }
 
+RectangularPhaseSpace::RectangularPhaseSpace(): RectangularPhaseSpace({1, 1, 1, 1, 1}) {
+}
+
 std::vector<TLorentzVector> RectangularPhaseSpace::ConvertTo4Vectors(const Event &event) const {
   std::vector<double> p = event.GetEvent();
   std::vector<TLorentzVector> momenta(4);
