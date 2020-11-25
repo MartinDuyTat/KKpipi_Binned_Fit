@@ -42,6 +42,16 @@ class RectangularPhaseSpace: public PhaseSpaceParameterisation {
      * @return Number of bins
      */
     int NumberOfBins() const;
+    /**
+     * Function that returns the lower boundary of phase space
+     * @param Coordinate to return the lower boundary for
+     */
+    double GetLowerBoundary(int coordinate) const;
+    /**
+     * Function that returns the upper boundary of phase space
+     * @param Coordinate to return the upper boundary for
+     */
+    double GetUpperBoundary(int coordinate) const;
   private:
     /** 
      * The lower boundary of phase space

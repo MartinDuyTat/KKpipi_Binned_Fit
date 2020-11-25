@@ -66,13 +66,13 @@ int main(int argc, char *argv[]) {
   std::cout << "Loaded trees\n";
   std::cout << "Starting bin number study\n";
   for(int i = 2; i < 11; i++) {
-    std::vector<int> bins = {1, 1, 1, i, 2};
+    std::vector<int> bins = {1, 1, i, 1, 2};
     RectangularPhaseSpace phasespace(bins);
     PhaseSpaceParameterisation *psp = &phasespace;
     BinList binlist(psp);
     binlist.LoadTTree(treeBplus, +1);
     binlist.LoadTTree(treeBminus, -1);
-    std::string filename = "/data/lhcb/users/tat/D02KKpipi/DHadronicParameters/RectangularPhaseSpace_1_1_1_" + std::to_string(i) + "_2_10M.cs\
+    std::string filename = "/data/lhcb/users/tat/D02KKpipi/DHadronicParameters/RectangularPhaseSpace_1_1_" + std::to_string(i) + "_1_2_10M.cs\
 v";
     DDecayParameters ddparameters(filename);
     Fitter fit(binlist, ddparameters);

@@ -87,3 +87,11 @@ int RectangularPhaseSpace::WhichBin(const Event &event) const {
 int RectangularPhaseSpace::NumberOfBins() const {
   return PhaseSpaceParameterisation::NumberOfBins();
 }
+
+double RectangularPhaseSpace::GetLowerBoundary(int coordinate) const {
+  return m_xlow[coordinate];
+}
+
+double RectangularPhaseSpace::GetUpperBoundary(int coordinate) const {
+  return m_xhigh[coordinate];
+}
