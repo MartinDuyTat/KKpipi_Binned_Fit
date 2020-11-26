@@ -73,8 +73,8 @@ int main(int argc, char *argv[]) {
   std::cout << "r_B = " << rB << " +- " << TMath::Sqrt(gammacov(0, 0)) << std::endl;
   std::cout << "delta_B = " << deltaB << " +- " << TMath::Sqrt(gammacov(1, 1)) << std::endl;
   std::cout << "gamma = " << gamma << " +- " << TMath::Sqrt(gammacov(2, 2)) << std::endl;
-  std::cout << "Drawing contours\n";
-  fitgamma.PlotContours("Contour_rB_vs_dB.png", "Contour_dB_vs_gamma.png", "Contour_gamma_vs_rB.png", 20);
-  std::cout << "Finished drawing contours\n";
+  //std::cout << "Drawing contours\n";
+  //fitgamma.PlotContours("Contour_rB_vs_dB.png", "Contour_dB_vs_gamma.png", "Contour_gamma_vs_rB.png", 20);
+  //std::cout << "Finished drawing contours\n";
   return 0;
 }

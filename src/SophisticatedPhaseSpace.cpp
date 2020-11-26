@@ -10,7 +10,7 @@
 #include"TFile.h"
 #include"TTree.h"
 
-SophisticatedPhaseSpace::SophisticatedPhaseSpace(double *masses): RectangularPhaseSpace({6, 1, 1, 1, 1}, masses) {
+SophisticatedPhaseSpace::SophisticatedPhaseSpace(double *masses): RectangularPhaseSpace({12, 1, 1, 1, 1}, masses) {
 }
 
 SophisticatedPhaseSpace::~SophisticatedPhaseSpace() {
@@ -92,18 +92,24 @@ void SophisticatedPhaseSpace::CalculateStrongPhases(std::string BplusFilename, s
 
 int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
   std::vector<double> X = RectangularPhaseSpace::RectCoordinates(event);
-  if(X[2] + X[3] > 1.4) {
-    return 0;
-  } else if(10*X[2] - 7*X[3] < -10) {
-    return 1;
-  } else if(45*X[2] - 35*X[3] < -17) { 
-    return 2;
-  } else if(7*X[2] - 5*X[3] > 5) {
-    return 3;
-  } else if(9*X[2] + 4*X[3] > 5) {
-    return 4;
+  int phi;
+  if(X[4] > 0) {
+    phi = 6;
   } else {
-    return 5;
+    phi = 0;
+  }
+  if(X[2] + X[3] > 1.4) {
+    return 0 + phi;
+  } else if(10*X[2] - 7*X[3] < -10) {
+    return 1 + phi;
+  } else if(45*X[2] - 35*X[3] < -17) { 
+    return 2 + phi;
+  } else if(7*X[2] - 5*X[3] > 5) {
+    return 3 + phi;
+  } else if(9*X[2] + 4*X[3] > 5) {
+    return 4 + phi;
+  } else {
+    return 5 + phi;
   }
 }
 
