@@ -1,6 +1,6 @@
 // Martin Duy Tat 30th October 2020
 /**
- * Fitting is the program for doing the binned fitting with a Naiive binning scheme
+ * Fitting is the program for doing the binned fitting
  * D meson decay parameters are obtained from an input file
  * @param 1 Filename of B+ event file
  * @param 2 Filename of B- event file
@@ -20,16 +20,17 @@
 #include"FitGamma.h"
 #include"Gamma.h"
 #include"TMatrixD.h"
-#include"NaiivePhaseSpace.h"
+#include"SophisticatedPhaseSpace.h"
+#include<stdlib.h>
 
 int main(int argc, char *argv[]) {
   std::cout << "Starting B->DK, D->KKpipi binned fit\n";
-  std::cout << "Using Naiive binning scheme\n";
+  std::cout << "Using Rectangular binning scheme\n";
   if(argc != 4) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
-  NaiivePhaseSpace phasespace;
+  SophisticatedPhaseSpace phasespace;
   PhaseSpaceParameterisation *psp = &phasespace;
   std::cout << "Loaded phase space\n";
   std::string Bplusfile = argv[1];
@@ -63,7 +64,7 @@ int main(int argc, char *argv[]) {
   std::cout << "yminus = " << yminus << " +- " << TMath::Sqrt(cov(3, 3)) << std::endl;
   std::cout << "Starting fit to determine r_B, delta_B and gamma\n";
   FitGamma fitgamma(cpparameters);
-  Gamma gammaparams(0.05, 140.0, 60.0);
+  Gamma gammaparams(0.1, 130.0, 75.0);
   fitgamma.DoFit(gammaparams);
   std::cout << "Done fitting for r_B, delta_B and gamma\n";
   double rB, deltaB, gamma;
@@ -73,8 +74,8 @@ int main(int argc, char *argv[]) {
   std::cout << "r_B = " << rB << " +- " << TMath::Sqrt(gammacov(0, 0)) << std::endl;
   std::cout << "delta_B = " << deltaB << " +- " << TMath::Sqrt(gammacov(1, 1)) << std::endl;
   std::cout << "gamma = " << gamma << " +- " << TMath::Sqrt(gammacov(2, 2)) << std::endl;
-  std::cout << "Drawing contours\n";
-  fitgamma.PlotContours("Contour_rB_vs_dB.png", "Contour_dB_vs_gamma.png", "Contour_gamma_vs_rB.png", 20);
-  std::cout << "Finished drawing contours\n";
+  //std::cout << "Drawing contours\n";
+  //fitgamma.PlotContours("Contour_rB_vs_dB.png", "Contour_dB_vs_gamma.png", "Contour_gamma_vs_rB.png", 20);
+  //std::cout << "Finished drawing contours\n";
   return 0;
 }

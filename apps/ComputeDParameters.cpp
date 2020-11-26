@@ -1,28 +1,42 @@
 // Martin Duy Tat 6th November 2020
 /** 
  * This program is for calculating hadronic parameters of D->KKpipi decays using Monte Carlo integration and an amplitude model from AmpGen
- * @param 1 Filename to save D hadronic decay parameters to
- * @param 2 Number of events used in Monte Carlo integration
+ * @param 1 Choice of binning scheme, in lowercase letters
+ * @param 2 Filename to save D hadronic decay parameters to
+ * @param 3 Number of events used in Monte Carlo integration
+ * @param 4 For Rectangular Phase Space, state the number of bins in each direction
  */
 
 #include<string>
 #include<stdlib.h>
+#include<iostream>
 #include"DDecayParameters.h"
 #include"PhaseSpaceParameterisation.h"
-#include"NaiivePhaseSpace.h"
+#include"NaivePhaseSpace.h"
 #include"RectangularPhaseSpace.h"
+#include"SophisticatedPhaseSpace.h"
 
 int main(int argc, char *argv[]) {
-  if(argc != 8) {
+  NaivePhaseSpace phasespace_naive;
+  RectangularPhaseSpace phasespace_rectangular;
+  SophisticatedPhaseSpace phasespace_sophisticated;
+  PhaseSpaceParameterisation *psp;
+  if(std::string(argv[1]) == "naive" && argc == 4) {
+    psp = &phasespace_naive;
+  } else if(std::string(argv[1]) == "rectangular" && argc == 9) {
+    std::vector<int> bins = {atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]), atoi(argv[8])};
+    phasespace_rectangular = RectangularPhaseSpace(bins);
+    psp = &phasespace_rectangular;
+  } else if(std::string(argv[1]) == "sophisticated" && argc == 4) {
+    psp = &phasespace_sophisticated;
+  } else {
+    std::cout << "Invalid inputs!\n";
     return 0;
   }
-  std::string filename = argv[1];
-  int events = atoi(argv[2]);
+  std::string filename = argv[2];
+  int events = atoi(argv[3]);
   double mass_parent = 1.86483;
   double masses[4] = {0.493677, 0.493677, 0.13957039, 0.13957039};
-  std::vector<int> bins = {atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7])};
-  RectangularPhaseSpace phasespace(bins);
-  PhaseSpaceParameterisation *psp = &phasespace;
   DDecayParameters ddecay(psp, mass_parent, masses, events);
   ddecay.SaveCSV(filename);
   return 0;

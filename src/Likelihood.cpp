@@ -7,8 +7,6 @@
 #include"TMath.h"
 #include"Math/PdfFuncMathCore.h"
 
-#include<iostream> //remove
-
 Likelihood::Likelihood(BinList bins, DDecayParameters ddparameters): m_bins(bins), m_ddparameters(ddparameters), m_leastsquares(false) {
 }
 

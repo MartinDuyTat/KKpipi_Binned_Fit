@@ -1,14 +1,14 @@
 // Martin Duy Tat 2nd November 2020
 
 #include<vector>
-#include"NaiivePhaseSpace.h"
+#include"NaivePhaseSpace.h"
 #include"Event.h"
 #include"PhaseSpaceParameterisation.h"
 
-NaiivePhaseSpace::NaiivePhaseSpace(): PhaseSpaceParameterisation(4) {
+NaivePhaseSpace::NaivePhaseSpace(): PhaseSpaceParameterisation(4) {
 }
 
-int NaiivePhaseSpace::WhichBin(const Event &event) const {
+int NaivePhaseSpace::WhichBin(const Event &event) const {
   std::vector<double> momenta = event.GetEvent();
   if(momenta[3] > momenta[7] && momenta[11] > momenta[15]) {
     return 0;
@@ -21,6 +21,6 @@ int NaiivePhaseSpace::WhichBin(const Event &event) const {
   }
 }
 
-int NaiivePhaseSpace::NumberOfBins() const {
+int NaivePhaseSpace::NumberOfBins() const {
   return PhaseSpaceParameterisation::NumberOfBins();
 }

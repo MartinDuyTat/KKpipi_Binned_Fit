@@ -1,21 +1,21 @@
 // Martin Duy Tat 31st October 2020
 /**
- * NaiivePhaseSpace is a class that contains the information about how phase space is divided into bins in a naiive way
- * NaiivePhaseSpace contains a very coarse and arbitrary binning of phase space
+ * NaivePhaseSpace is a class that contains the information about how phase space is divided into bins in a naiive way
+ * NaivePhaseSpace contains a very coarse and arbitrary binning of phase space
  */
 
-#ifndef NAIIVEPHASESPACE
-#define NAIIVEPHASESPACE
+#ifndef NAIVEPHASESPACE
+#define NAIVEPHASESPACE
 
 #include"Event.h"
 #include"PhaseSpaceParameterisation.h"
 
-class NaiivePhaseSpace: public PhaseSpaceParameterisation {
+class NaivePhaseSpace: public PhaseSpaceParameterisation {
   public:
     /**
      * Default constructor that sets the number of bins
      */
-    NaiivePhaseSpace();
+    NaivePhaseSpace();
     /**
      * Function that determines which bin an event belongs to
      * @param event The event we want to determine the bin of
