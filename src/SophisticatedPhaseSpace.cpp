@@ -10,7 +10,7 @@
 #include"TFile.h"
 #include"TTree.h"
 
-SophisticatedPhaseSpace::SophisticatedPhaseSpace(double *masses): RectangularPhaseSpace({8, 1, 1, 1, 1}, masses) {
+SophisticatedPhaseSpace::SophisticatedPhaseSpace(): PhaseSpaceParameterisation(8) {
 }
 
 SophisticatedPhaseSpace::~SophisticatedPhaseSpace() {
@@ -20,11 +20,11 @@ SophisticatedPhaseSpace::~SophisticatedPhaseSpace() {
 }
 
 void SophisticatedPhaseSpace::x3x4WhichBin(const Event &event, int &x3bin, int &x4bin) const {
-  std::vector<double> X = RectangularPhaseSpace::RectCoordinates(event);
-  double x3lower = RectangularPhaseSpace::GetLowerBoundary(2);
-  double x3upper = RectangularPhaseSpace::GetUpperBoundary(2);
-  double x4lower = RectangularPhaseSpace::GetLowerBoundary(3);
-  double x4upper = RectangularPhaseSpace::GetUpperBoundary(3);
+  std::vector<double> X = m_rps.RectCoordinates(event);
+  double x3lower = m_rps.GetLowerBoundary(2);
+  double x3upper = m_rps.GetUpperBoundary(2);
+  double x4lower = m_rps.GetLowerBoundary(3);
+  double x4upper = m_rps.GetUpperBoundary(3);
   x3bin = int((X[2] - x3lower)*m_x3bins/(x3upper - x3lower));
   x4bin = int((X[3] - x4lower)*m_x4bins/(x4upper - x4lower));
 }
@@ -91,7 +91,7 @@ void SophisticatedPhaseSpace::CalculateStrongPhases(std::string BplusFilename, s
 }
 
 int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
-  std::vector<double> X = RectangularPhaseSpace::RectCoordinates(event);
+  std::vector<double> X = m_rps.RectCoordinates(event);
   int phi;
   if(X[4] > 0) {
     phi = 4;
@@ -121,5 +121,5 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
 }
 
 int SophisticatedPhaseSpace::NumberOfBins() const {
-  return RectangularPhaseSpace::NumberOfBins();
+  return PhaseSpaceParameterisation::NumberOfBins();
 }

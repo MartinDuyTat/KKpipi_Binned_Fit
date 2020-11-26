@@ -14,6 +14,10 @@
 class RectangularPhaseSpace: public PhaseSpaceParameterisation {
   public:
     /**
+     * Let SophisticatedPhaseSpace be a friend so it can access the RectCoordinates function
+     */
+    friend class SophisticatedPhaseSpace;
+    /**
      * Constructor that sets up the bins and phase space parameters
      * @param bins A vector with the number of bins in each direction, such that the total number of bins is the product
      * @param masses An array of the \f$(D^0, K^+, K^-, \pi^+, \pi^-)\f$ masses, with default the same as Ampgen's values
