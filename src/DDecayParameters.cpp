@@ -19,6 +19,7 @@
 #include"TCanvas.h"
 #include"TGraph.h"
 #include"TAxis.h"
+#include"TLegend.h"
 
 DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const double &mass_parent, const Double_t *mass_decay, int events) {
   // Declare necessary variables
@@ -144,15 +145,26 @@ void DDecayParameters::PlotParameters(std::string filename_cs, std::string filen
     }
   }
   TGraph *gr2 = new TGraph(binning.size(), binning.data(), this->GetK().data());
+  TGraph *gr3 = new TGraph(binning.size(), binning.data(), this->GetKbar().data());
   TCanvas *c2 = new TCanvas("K", "K_i and Kbar_i");
-  gr2->Draw("*A");
-  gr2->GetXaxis()->SetTitle("Bin number");
-  gr2->GetYaxis()->SetTitle("Fractional yield");
+  gr2->Draw("AP");
   gr2->GetXaxis()->SetLimits(-0.5, binning.size() - 0.5);
   gr2->GetYaxis()->SetRangeUser(0.0, maximum + 0.05);
-  gr2->SetTitle("Fractional yields");
   gr2->SetMarkerStyle(kFullDotLarge);
+  gr3->SetMarkerStyle(kFullDotLarge);
+  gr2->SetMarkerColor(kBlue);
+  gr3->SetMarkerColor(kRed);
   gr2->Draw("AP");
+  gr3->Draw("P");
+  gr2->SetName("gr2");
+  gr3->SetName("gr3");
+  TLegend *legend = new TLegend(0.75, 0.85, 0.9, 0.95);
+  legend->AddEntry("gr2", "K_{i}");
+  legend->AddEntry("gr3", "#bar{K_{i}}");
+  legend->Draw();
+  gr2->SetTitle("Fractional yields");
+  gr2->GetXaxis()->SetTitle("Bin number");
+  gr2->GetYaxis()->SetTitle("Fractional yield");
   c2->Update();
   c2->SaveAs(filename_K.c_str());
   delete gr1;
