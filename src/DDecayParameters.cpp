@@ -136,16 +136,20 @@ void DDecayParameters::PlotParameters(std::string filename_cs, std::string filen
   c1->Update();
   c1->SaveAs(filename_cs.c_str());
   std::vector<double> binning(this->GetK().size());
+  double maximum = 0;
   for(unsigned int i = 0; i < binning.size(); i++) {
     binning[i] = i;
+    if(GetK()[i] > maximum) {
+      maximum = GetK()[i];
+    }
   }
   TGraph *gr2 = new TGraph(binning.size(), binning.data(), this->GetK().data());
   TCanvas *c2 = new TCanvas("K", "K_i and Kbar_i");
   gr2->Draw("*A");
   gr2->GetXaxis()->SetTitle("Bin number");
   gr2->GetYaxis()->SetTitle("Fractional yield");
-  gr2->GetXaxis()->SetLimits(-0.5, 3.5);
-  gr2->GetYaxis()->SetRangeUser(0.0, 0.4);
+  gr2->GetXaxis()->SetLimits(-0.5, binning.size() - 0.5);
+  gr2->GetYaxis()->SetRangeUser(0.0, maximum + 0.05);
   gr2->SetTitle("Fractional yields");
   gr2->SetMarkerStyle(kFullDotLarge);
   gr2->Draw("AP");
