@@ -10,7 +10,7 @@
 #include"TFile.h"
 #include"TTree.h"
 
-SophisticatedPhaseSpace::SophisticatedPhaseSpace(double *masses): RectangularPhaseSpace({12, 1, 1, 1, 1}, masses) {
+SophisticatedPhaseSpace::SophisticatedPhaseSpace(double *masses): RectangularPhaseSpace({8, 1, 1, 1, 1}, masses) {
 }
 
 SophisticatedPhaseSpace::~SophisticatedPhaseSpace() {
@@ -94,13 +94,20 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
   std::vector<double> X = RectangularPhaseSpace::RectCoordinates(event);
   int phi;
   if(X[4] > 0) {
-    phi = 6;
+    phi = 4;
   } else {
     phi = 0;
   }
-  if(X[2] + X[3] > 1.4) {
+  if(X[2] + X[3] > 1.4 && X[2] - X[3] > 0) {
     return 0 + phi;
-  } else if(10*X[2] - 7*X[3] < -10) {
+  } else if(X[2] + X[3] > 1.4 && X[2] - X[3] <= 0) {
+    return 1 + phi;
+  } else if(X[2] - X[3] > 0) {
+    return 2 + phi;
+  } else {
+    return 3 + phi;
+  }
+    /*} else if(10*X[2] - 7*X[3] < -10) {
     return 1 + phi;
   } else if(45*X[2] - 35*X[3] < -17) { 
     return 2 + phi;
@@ -110,7 +117,7 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
     return 4 + phi;
   } else {
     return 5 + phi;
-  }
+    }*/
 }
 
 int SophisticatedPhaseSpace::NumberOfBins() const {
