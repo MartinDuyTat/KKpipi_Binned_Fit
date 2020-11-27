@@ -34,20 +34,22 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const double
   m_s = std::vector<double>(NumberBins, 0.0);
   // Generate events until all bins have "events" number of events, and for each event calculate the ampltitudes and phases
   std::vector<int> EventsGenerated(NumberBins, 0);
-  while(!std::all_of(EventsGenerated.begin(), EventsGenerated.end(), [&events](int i){return i == events;})) {
+  while(!std::all_of(EventsGenerated.begin(), EventsGenerated.end(), [&events](int i){return i >= events;})) {
     ++counter;
     // Generate event
     Event GeneratedEvent(generator.Generate());
     // Check which bin event belongs to
     int BinNumber = psp->WhichBin(GeneratedEvent);
+    // Increment event count for that bin
+    EventsGenerated[BinNumber] += 1;
     // Check if bin is full
-    if(EventsGenerated[BinNumber] == events) {
+    if(EventsGenerated[BinNumber] > events) {
       continue;
     }
-    // If amplitude is nan, event is probably on the boundary of phase space and wrongly classified as kinematically impossible, so discard event
     // Calculate amplitude
     std::complex<double> amplitude_d = amplitude(GeneratedEvent.GetEvent(), +1);
     std::complex<double> amplitude_dbar = amplitude(GeneratedEvent.GetEvent(), -1);
+    // If amplitude is nan, event is probably on the boundary of phase space and wrongly classified as kinematically impossible, so discard event
     if(TMath::IsNaN(std::norm(amplitude_d)) || TMath::IsNaN(std::norm(amplitude_dbar))) {
       continue;
     }
@@ -58,8 +60,6 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const double
     double phase = std::arg(amplitude_d) - std::arg(amplitude_dbar);
     m_c[BinNumber] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase);
     m_s[BinNumber] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase);
-    // Increment event count
-    EventsGenerated[BinNumber] += 1;
     if(counter%events == 0) {
       std::cout << "Generated " << counter << " events\n";
     }
@@ -67,12 +67,15 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const double
   std::cout << "Generated " << counter << " events\n";
   double sumK = 0, sumKbar = 0;
   for(int i = 0; i < NumberBins; i++) {
-    // Normalise fractional yields so they sum to 1
-    sumK += m_K[i];
-    sumKbar += m_Kbar[i];
     // Amplitude averaged strong phase variation normalisation
     m_c[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
     m_s[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
+    // Account for size of phase space in each bin
+    m_K[i] *= EventsGenerated[i];
+    m_Kbar[i] *= EventsGenerated[i];
+    // Normalise fractional yields so they sum to 1
+    sumK += m_K[i];
+    sumKbar += m_Kbar[i];
   }
   // Divide by total to normalise fractional yields to 1
   std::transform(m_K.begin(), m_K.end(), m_K.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumK));
@@ -125,8 +128,8 @@ void DDecayParameters::PlotParameters(std::string filename_cs, std::string filen
   TCanvas *c1 = new TCanvas("s_vs_c", "s_i vs c_i", 700, 700);
   circle->Draw("AL");
   gr1->Draw("P");
-  circle->GetXaxis()->SetTitle("s_{i}");
-  circle->GetYaxis()->SetTitle("c_{i}");
+  circle->GetXaxis()->SetTitle("c_{i}");
+  circle->GetYaxis()->SetTitle("s_{i}");
   circle->GetXaxis()->SetRangeUser(-1.0, 1.0);
   circle->GetYaxis()->SetRangeUser(-1.0, 1.0);
   circle->SetTitle("Plot of c_i vs s_i");
