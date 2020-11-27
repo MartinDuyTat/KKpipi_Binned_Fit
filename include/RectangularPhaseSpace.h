@@ -11,12 +11,8 @@
 #include"Event.h"
 #include"PhaseSpaceParameterisation.h"
 
-class RectangularPhaseSpace: public PhaseSpaceParameterisation {
+class RectangularPhaseSpace: virtual public PhaseSpaceParameterisation {
   public:
-    /**
-     * Let SophisticatedPhaseSpace be a friend so it can access the RectCoordinates function
-     */
-    friend class SophisticatedPhaseSpace;
     /**
      * Constructor that sets up the bins and phase space parameters
      * @param bins A vector with the number of bins in each direction, such that the total number of bins is the product

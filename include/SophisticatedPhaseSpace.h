@@ -13,7 +13,7 @@
 #include"Event.h"
 #include"Amplitude.h"
 
-class SophisticatedPhaseSpace: public PhaseSpaceParameterisation {
+class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public RectangularPhaseSpace {
   public:
     /**
      * Constructor that calls the corresponding constructor in RectangularPhaseSpace
@@ -69,10 +69,6 @@ class SophisticatedPhaseSpace: public PhaseSpaceParameterisation {
      * Amplitude object to calculate event amplitudes
      */
     Amplitude *m_AmplitudeModel = nullptr;
-    /**
-     * RectangularPhaseSpace object for calculating coordinates
-     */
-    RectangularPhaseSpace m_rps;
 };
 
 #endif
