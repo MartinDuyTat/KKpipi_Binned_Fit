@@ -58,8 +58,10 @@ namespace KKpipiMath {
     double alpha = (std::min(X[0], X[1]) - KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI)/2.0;
     double mplus = X[0] - alpha;
     double mminus = X[1] - alpha;
+    // Energy of K+pi+ system in the D meson rest frame
+    double Eplus = (KKpipi_Constants::MASS_D*KKpipi_Constants::MASS_D + mplus*mplus - mminus*mminus)/(2*KKpipi_Constants::MASS_D);
     // Speed of D meson in the K+pi+ rest frame
-    double betap = TMath::Sqrt(mplus*mplus - (KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI)*(KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI))/mplus;
+    double betap = TMath::Sqrt(Eplus*Eplus - mplus*mplus)/Eplus;
     // Energy of K+ in the K+pi+ rest frame
     double EKp = (mplus*mplus + KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI*KKpipi_Constants::MASS_PI)/(2*mplus);
     // Momentum of K+ in the K+pi+ rest frame
@@ -69,8 +71,10 @@ namespace KKpipiMath {
     // Put into four-vectors, with K+ at an angle theta+ relative to the D meson, and choose them in the xz plane
     TLorentzVector P_Kp(pKp*TMath::Sqrt(1 - X[2]*X[2]), 0.0, -pKp*X[2], EKp);
     TLorentzVector P_pip(-pKp*TMath::Sqrt(1 - X[2]*X[2]), 0.0, pKp*X[2], Epip);
+    // Energy of K-pi- system in the D meson rest frame
+    double Eminus = (KKpipi_Constants::MASS_D*KKpipi_Constants::MASS_D - mplus*mplus + mminus*mminus)/(2*KKpipi_Constants::MASS_D);
     // Speed of D meson in the K-pi- rest frame
-    double betam = TMath::Sqrt(mminus*mminus - (KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI)*(KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI))/mminus;
+    double betam = TMath::Sqrt(Eminus*Eminus - mminus*mminus)/Eminus;
     // Energy of K- in the K-pi- rest frame
     double EKm = (mminus*mminus + KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI*KKpipi_Constants::MASS_PI)/(2*mminus);
     // Momentum of K- in the K-pi- rest frame
