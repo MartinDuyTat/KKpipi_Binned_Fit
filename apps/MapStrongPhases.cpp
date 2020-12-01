@@ -4,22 +4,48 @@
  */
 
 #include<iostream>
+#include<fstream>
+#include<complex>
 #include"KKpipiMath.h"
 #include"TRandom3.h"
+#include"Constants.h"
+#include"Amplitude.h"
 
 int main(int argc, char *argv[]) {
-  if(argc != 6) {
+  if(argc != 2) {
     std::cout << "Need 5 inputs\n";
     return 0;
   }
-  std::vector<double> X = {atof(argv[1]), atof(argv[2]), atof(argv[3]), atof(argv[4]), atof(argv[5])};
-  std::vector<double> four_momenta = KKpipiMath::ConvertXToMomenta(X);
-  std::vector<double> event = KKpipiMath::RectCoordinates(Event(four_momenta));
-  std::cout << "Input coordinates:      " << X[0] << " " << X[1] << " " << X[2] << " " << X[3] << " " << X[4] << std::endl;
-  std::cout << "Calculated coordinates: " << event[0] << " " << event[1] << " " << event [2] << " " << event[3] << " " << event[4] << std::endl;
-  std::cout << four_momenta[0] + four_momenta[4] + four_momenta[8] + four_momenta[12] << std::endl;
-  std::cout << four_momenta[1] + four_momenta[5] + four_momenta[9] + four_momenta[13] << std::endl;
-  std::cout << four_momenta[2] + four_momenta[6] + four_momenta[10] + four_momenta[14] << std::endl;
-  std::cout << four_momenta[3] + four_momenta[7] + four_momenta[11] + four_momenta[15] << std::endl;
+  int N = 20;
+  std::vector<double> x_low = {KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI, KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI, -1.0, -1.0, -TMath::Pi()};
+  std::vector<double> x_high = {KKpipi_Constants::MASS_D - KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI, KKpipi_Constants::MASS_D - KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI, 1.0, 1.0, TMath::Pi()};
+  std::vector<double> dx(5);
+  for(int i = 0; i < 5; i++) {
+    dx[i] = (x_high[i] - x_low[i])/N;
+  }
+  Amplitude amplitude("D0toKKpipi.so", "Dbar0toKKpipi.so");
+  std::ofstream f(argv[1]);
+  f << N << std::endl;
+  for(int i = 0; i < N; i++) {
+    for(int j = 0; j < N; j++) {
+      for(int k = 0; k < N; k++) {
+	std::complex<double> sum(0.0, 0.0);
+	int M = 0;
+	for(int n = 0; n < N; n++) {
+	  for(int m = 0; m < N; m++) {
+	    std::vector<double> X = {x_low[0] + dx[0]*(i + 0.5), x_low[1] + dx[1]*(j + 0.5), x_low[2] + dx[2]*(n + 0.5), x_low[3] + dx[3]*(m + 0.5), x_low[4] + dx[4]*(k + 0.5)};
+	    if(X[2] + X[3] < 1.4) {
+	      continue;
+	    }
+	    ++M;
+	    std::vector<double> event = KKpipiMath::ConvertXToMomenta(X);
+	    sum += std::polar(1.0, std::arg(amplitude(event, +1)/amplitude(event, -1)));
+	  }
+	}
+	f << i << "," << j << "," << k << "," << std::arg(sum/(M*1.0)) << std::endl;
+      }
+    }
+  }
+  f.close();
   return 0;
 }
