@@ -18,19 +18,11 @@ class RectangularPhaseSpace: virtual public PhaseSpaceParameterisation {
      * @param bins A vector with the number of bins in each direction, such that the total number of bins is the product
      * @param masses An array of the \f$(D^0, K^+, K^-, \pi^+, \pi^-)\f$ masses, with default the same as Ampgen's values
      */
-    RectangularPhaseSpace(std::vector<int> bins, double *masses = nullptr);
+    RectangularPhaseSpace(std::vector<int> bins);
     /**
      * Default constructor, puts the whole phase space into a single bin
      */
     RectangularPhaseSpace();
-    /**
-     * Function that converts an event into a vector of TLorentzVector objects
-     */
-    std::vector<TLorentzVector> ConvertTo4Vectors(const Event &event) const;
-    /**
-     * Function that determines the rectangular coordinates in phase space of an event
-     */
-    std::vector<double> RectCoordinates(const Event &event) const;
     /**
      * Function that determines which bin an event belongs to
      * @param event The event we want to determine the bin of
@@ -69,10 +61,6 @@ class RectangularPhaseSpace: virtual public PhaseSpaceParameterisation {
      * A vector of maps that connect the upper bin edges with the bin numbers
      */
     std::vector<std::map<double, int>> m_BinMap;
-    /**
-     * A vector of masses of the \f$(D, K^+, K^-, \pi^+, \pi^-)\f$
-     */
-    std::vector<double> m_Masses;
 };
 
 #endif

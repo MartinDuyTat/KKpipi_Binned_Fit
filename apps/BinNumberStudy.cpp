@@ -1,7 +1,6 @@
 // Martin Duy Tat 30th October 2020
 /**
- * Fitting is the program for doing the binned fitting and study how the error depends on the number of bins
- * D meson decay parameters are obtained from an input file
+ * BinNumberStudy is the program for doing the binned fitting and study how the error depends on the number of bins
  * @param 1 Filename of B+ event file
  * @param 2 Filename of B- event file
  */
@@ -28,7 +27,7 @@
 #include"TLine.h"
 
 int main(int argc, char *argv[]) {
-  std::cout << "Starting B->DK, D->KKpipi binned fit\n";
+  std::cout << "Starting B->DK, D->KKpipi binned fit bin number study\n";
   std::cout << "Using Rectangular binning scheme\n";
   if(argc != 3) {
     std::cout << "Incorrect number of inputs\n";
@@ -66,14 +65,13 @@ int main(int argc, char *argv[]) {
   std::cout << "Loaded trees\n";
   std::cout << "Starting bin number study\n";
   for(int i = 2; i < 11; i++) {
-    std::vector<int> bins = {1, 1, i, 1, 2};
+    std::vector<int> bins = {1, 1, 1, i, 2};
     RectangularPhaseSpace phasespace(bins);
     PhaseSpaceParameterisation *psp = &phasespace;
     BinList binlist(psp);
     binlist.LoadTTree(treeBplus, +1);
     binlist.LoadTTree(treeBminus, -1);
-    std::string filename = "/data/lhcb/users/tat/D02KKpipi/DHadronicParameters/RectangularPhaseSpace_1_1_" + std::to_string(i) + "_1_2_10M.cs\
-v";
+    std::string filename = "/data/lhcb/users/tat/D02KKpipi/DHadronicParameters/RectangularPhaseSpace_1_1_1_" + std::to_string(i) + "_2_10M_condor.csv";
     DDecayParameters ddparameters(filename);
     Fitter fit(binlist, ddparameters);
     CPParameters cpparameters(-0.09, 0.06, -0.04, 0.08);

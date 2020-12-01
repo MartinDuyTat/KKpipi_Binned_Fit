@@ -15,6 +15,7 @@
 #include"NaivePhaseSpace.h"
 #include"RectangularPhaseSpace.h"
 #include"SophisticatedPhaseSpace.h"
+#include"Constants.h"
 
 int main(int argc, char *argv[]) {
   NaivePhaseSpace phasespace_naive;
@@ -35,8 +36,8 @@ int main(int argc, char *argv[]) {
   }
   std::string filename = argv[2];
   int events = atoi(argv[3]);
-  double mass_parent = 1.86483;
-  double masses[4] = {0.493677, 0.493677, 0.13957039, 0.13957039};
+  double mass_parent = KKpipi_Constants::MASS_D;
+  double masses[4] = {KKpipi_Constants::MASS_K, KKpipi_Constants::MASS_K, KKpipi_Constants::MASS_PI, KKpipi_Constants::MASS_PI};
   DDecayParameters ddecay(psp, mass_parent, masses, events);
   ddecay.SaveCSV(filename);
   return 0;

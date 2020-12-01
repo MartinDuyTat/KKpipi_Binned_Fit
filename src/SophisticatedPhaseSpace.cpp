@@ -9,8 +9,9 @@
 #include"Amplitude.h"
 #include"TFile.h"
 #include"TTree.h"
+#include"KKpipiMath.h"
 
-SophisticatedPhaseSpace::SophisticatedPhaseSpace(): PhaseSpaceParameterisation(8) {
+SophisticatedPhaseSpace::SophisticatedPhaseSpace(): PhaseSpaceParameterisation(12) {
 }
 
 SophisticatedPhaseSpace::~SophisticatedPhaseSpace() {
@@ -20,11 +21,11 @@ SophisticatedPhaseSpace::~SophisticatedPhaseSpace() {
 }
 
 void SophisticatedPhaseSpace::x3x4WhichBin(const Event &event, int &x3bin, int &x4bin) const {
-  std::vector<double> X = RectangularPhaseSpace::RectCoordinates(event);
-  double x3lower = RectangularPhaseSpace::GetLowerBoundary(2);
-  double x3upper = RectangularPhaseSpace::GetUpperBoundary(2);
-  double x4lower = RectangularPhaseSpace::GetLowerBoundary(3);
-  double x4upper = RectangularPhaseSpace::GetUpperBoundary(3);
+  std::vector<double> X = KKpipiMath::RectCoordinates(event.GetEventVector());
+  double x3lower = -1.0;
+  double x3upper = 1.0;
+  double x4lower = -1.0;
+  double x4upper = 1.0;
   x3bin = int((X[2] - x3lower)*m_x3bins/(x3upper - x3lower));
   x4bin = int((X[3] - x4lower)*m_x4bins/(x4upper - x4lower));
 }
@@ -91,14 +92,14 @@ void SophisticatedPhaseSpace::CalculateStrongPhases(std::string BplusFilename, s
 }
 
 int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
-  std::vector<double> X = RectangularPhaseSpace::RectCoordinates(event);
+  std::vector<double> X = KKpipiMath::RectCoordinates(event);
   int phi;
   if(X[4] > 0) {
-    phi = 4;
+    phi = 6;
   } else {
     phi = 0;
   }
-  if(X[2] + X[3] > 1.4 && X[2] - X[3] > 0) {
+  /*if(X[2] + X[3] > 1.4 && X[2] - X[3] > 0) {
     return 0 + phi;
   } else if(X[2] + X[3] > 1.4 && X[2] - X[3] <= 0) {
     return 1 + phi;
@@ -106,8 +107,10 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
     return 2 + phi;
   } else {
     return 3 + phi;
-  }
-    /*} else if(10*X[2] - 7*X[3] < -10) {
+    }*/
+  if(X[2] + X[3] > 1.4) {
+    return 0 + phi;
+  } else if(10*X[2] - 7*X[3] < -10) {
     return 1 + phi;
   } else if(45*X[2] - 35*X[3] < -17) { 
     return 2 + phi;
@@ -117,7 +120,7 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
     return 4 + phi;
   } else {
     return 5 + phi;
-    }*/
+  }
 }
 
 int SophisticatedPhaseSpace::NumberOfBins() const {
