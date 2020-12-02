@@ -30,7 +30,8 @@ target_link_libraries(PullStudy PUBLIC ROOT::Physics ROOT::RIO ROOT::Tree)
 
 target_link_libraries(ComputeMeanPhases PUBLIC KKpipi)
 target_link_libraries(ComputeMeanPhases PUBLIC ROOT::Physics ROOT::RIO ROOT::Tree)
-target_link_libraries(MapStrongPhases PUBLIC KKpipi)
+
+target_link_libraries(MapStrongPhases PUBLIC KKpipi ROOT::Tree)
 
 set_target_properties(FitNaive PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
 set_target_properties(FitRectangular PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
