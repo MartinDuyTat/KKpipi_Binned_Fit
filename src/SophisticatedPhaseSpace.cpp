@@ -102,10 +102,15 @@ void SophisticatedPhaseSpace::ReadAverageStrongPhases(const std::string &filenam
   std::vector<std::string> lines(9);
   double BinWidth = 2*TMath::Pi()/(NumberOfBins() - m_binregion);
   std::map<double, int> BinMap;
-  for(int i = 0; i < NumberOfBins(); i++) {
+  for(int i = 0; i < NumberOfBins() - m_binregion; i++) {
     BinMap.insert({-TMath::Pi() + BinWidth*(i + 1), i});
   }
-  while(std::getline(f, lines[0], ',') && std::getline(f, lines[1], ',') && std::getline(f, lines[2], ',') && std::getline(f, lines[3], ',') && std::getline(f, lines[4], ',') && std::getline(f, lines[5], ',') && std::getline(f, lines[6], ',') && std::getline(f, lines[7], ',') && std::getline(f, lines[8])) {
+  bool endfile = true;
+  while(endfile) {
+    for(int i = 0; i < m_regions + 2; i++ ) {
+      endfile = endfile && std::getline(f, lines[i], ',');
+    }
+    endfile = endfile && std::getline(f, lines[m_regions + 2]);
     for(int i = 0; i < m_regions; i++) {
       double phase = atof(lines[i + 3].c_str());
       m_LookupBins[i][atoi(lines[0].c_str())][atoi(lines[1].c_str())][atoi(lines[2].c_str())] = BinMap.lower_bound(phase)->second;
