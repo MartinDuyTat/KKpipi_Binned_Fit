@@ -5,6 +5,7 @@
  * @param 1 Filename of B+ event file
  * @param 2 Filename of B- event file
  * @param 3 Filename of D meson hadronic decay parameters
+ * @param 4 Filename of mean phases in the \f$(x_1, x_2, x_5)\f$ volume
  */
 
 #include<string>
@@ -26,7 +27,7 @@
 int main(int argc, char *argv[]) {
   std::cout << "Starting B->DK, D->KKpipi binned fit\n";
   std::cout << "Using Rectangular binning scheme\n";
-  if(argc != 4) {
+  if(argc != 5) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
@@ -42,6 +43,8 @@ int main(int argc, char *argv[]) {
   fBplus.GetObject("DalitzEventList", treeBplus);
   fBminus.GetObject("DalitzEventList", treeBminus);
   std::cout << "Loaded trees\n";
+  phasespace.ReadAverageStrongPhases(std::string(argv[4]));
+  std::cout << "Loaded lookup table for binning scheme\n";
   BinList binlist(psp);
   std::cout << "Loaded bins\n";
   binlist.LoadTTree(treeBplus, +1);

@@ -4,7 +4,7 @@
  * @param 1 Choice of binning scheme, in lowercase letters
  * @param 2 Filename to save D hadronic decay parameters to
  * @param 3 Number of events used in Monte Carlo integration
- * @param 4 For Rectangular Phase Space, state the number of bins in each direction
+ * @param 4 For Rectangular Phase Space, state the number of bins in each direction, for Sophisticated Phase Space input the filename for strong phases for binning scheme
  */
 
 #include<string>
@@ -28,8 +28,9 @@ int main(int argc, char *argv[]) {
     std::vector<int> bins = {atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]), atoi(argv[8])};
     phasespace_rectangular = RectangularPhaseSpace(bins);
     psp = &phasespace_rectangular;
-  } else if(std::string(argv[1]) == "sophisticated" && argc == 4) {
+  } else if(std::string(argv[1]) == "sophisticated" && argc == 5) {
     psp = &phasespace_sophisticated;
+    phasespace_sophisticated.ReadAverageStrongPhases(std::string(argv[4]));
   } else {
     std::cout << "Invalid inputs!\n";
     return 0;

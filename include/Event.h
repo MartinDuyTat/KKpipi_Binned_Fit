@@ -24,7 +24,7 @@ class Event {
      * Returns the four-momenta of daughter particles as a vector
      * @return Four-momenta of daughter particles in the form (E, px, py, pz), in the order K+ K- pi+ pi-
      */
-    std::vector<double> GetEventVector() const;
+    const std::vector<double>& GetEventVector() const;
     /**
      * Constructor that takes a vector of four-momenta
      * @param p Vector of TLorentzVector objects, in the order K+ K- pi+ pi-

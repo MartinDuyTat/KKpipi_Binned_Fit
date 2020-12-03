@@ -8,6 +8,7 @@
 
 #include<vector>
 #include<string>
+#include<map>
 #include"RectangularPhaseSpace.h"
 #include"PhaseSpaceParameterisation.h"
 #include"Event.h"
@@ -16,9 +17,7 @@
 class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public RectangularPhaseSpace {
   public:
     /**
-     * Constructor that calls the corresponding constructor in RectangularPhaseSpace
-     * @param bins A vector with the number of bins in each direction, such that the total number of bins is the product
-     * @param masses An array of the \f$(D^0, K^+, K^-, \pi^+, \pi^-)\f$ masses, with default the same as Ampgen's values
+     * Constructor that calls the corresponding constructor in RectangularPhaseSpace and sets up the binmap
      */
     SophisticatedPhaseSpace();
     /**
@@ -26,9 +25,9 @@ class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public
      */
     ~SophisticatedPhaseSpace();
     /**
-     * Function for binning of the \f$(x_3, x_4)\f$ plane
+     * Function for binning of the \f$(x_3, x_4)\f$ plane on a grid
      */
-    void x3x4WhichBin(const Event &event, int &x3bin, int &x4bin) const;
+    void x3x4WhichBinGrid(const Event &event, int &x3bin, int &x4bin) const;
     /**
      * Function for loading amplitude model
      */
@@ -46,7 +45,27 @@ class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public
      */
     void CalculateStrongPhases(std::string BplusFilename, std::string BminusFilename, std::string MeanFilename, std::string RMSFilename) const;
     /**
-     * Function that determines which bin an event belongs to
+     * Function for reading in average strong phases in the \f$(x_1, x_2, x_5)\f$ volume from a file and storing them in a vector
+     * @param filename Filename of file with mean strong phases
+     */
+    void ReadAverageStrongPhases(const std::string &filename);
+    /**
+     * Function for clearing out vector of phases to free up memory
+     */
+    void ClearAverageStrongPhases();
+    /**
+     * Function that returns the number of regions in the \f$(x_3, x_4)\f$ plane
+     */
+    int NumberOfRegions() const;
+    /**
+     * Function that determines which region in the \f$(x_3, x_4)\f$ plane an event belongs to
+     * @param event Vector with four-momenta of the event
+     * @return Region number
+     */
+    int WhichRegion(const std::vector<double> &X) const;
+    /**
+     * Function that determines which bin an event belongs to, based on the lookup table
+     * The first m_binregion regions are separate bins and assinged to the first m_binregion bins without using a lookup table
      * @param event The event we want to determine the bin of
      * @return Bin number
      */
@@ -57,6 +76,14 @@ class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public
      */
     int NumberOfBins() const;
   private:
+    /**
+     * Number of regions in the \f$(x_3, x_4)\f$ plane
+     */
+    int m_regions;
+    /**
+     * Number of regions that are also separate bins
+     */
+    int m_binregion;
     /**
      * Number of bins in the \f$x_3\f$ direction
      */
@@ -69,6 +96,11 @@ class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public
      * Amplitude object to calculate event amplitudes
      */
     Amplitude *m_AmplitudeModel = nullptr;
+    /**
+     * 4-dimensional lookup vector with bin numbers
+     * Indices are: bin number x_1 x_2 x_5
+     */
+    std::vector<std::vector<std::vector<std::vector<int>>>> m_LookupBins;
 };
 
 #endif

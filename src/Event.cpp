@@ -11,7 +11,7 @@ Event::Event() {
 Event::Event(std::vector<double> p): m_momenta(p) {
 }
 
-std::vector<double> Event::GetEventVector() const {
+const std::vector<double>& Event::GetEventVector() const {
   return m_momenta;
 }
 

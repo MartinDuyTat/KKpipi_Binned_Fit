@@ -29,7 +29,7 @@ namespace KKpipiMath {
     X[0] = mplus + mmin;
     X[1] = mminus + mmin;
     // 4-vector of D meson in the rest frame
-    TLorentzVector Ptot = P[0] + P[1] + P[2] + P[3];
+    TLorentzVector Ptot(0.0, 0.0, 0.0, KKpipi_Constants::MASS_D);
     // Get boost beta
     TVector3 beta = (P[0] + P[2]).BoostVector();
     TLorentzVector PtotTemp = Ptot, PKTemp = P[0];

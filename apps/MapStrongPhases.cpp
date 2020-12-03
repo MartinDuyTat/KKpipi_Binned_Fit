@@ -1,6 +1,7 @@
 // Martin Duy Tat 1st December 2020
 /**
  * MapStrongPhases is a program that will calculate strong phases on a grid in phase space and save it to a file
+ * The loop over i, or x1 bins, has been replaced by a user input to run these jobs in parallel
  */
 
 #include<iostream>
@@ -14,7 +15,7 @@
 #include"Event.h"
 
 int main(int argc, char *argv[]) {
-  if(argc != 2) {
+  if(argc != 3) {
     std::cout << "Need 2 inputs\n";
     return 0;
   }
@@ -28,25 +29,31 @@ int main(int argc, char *argv[]) {
   Amplitude amplitude("D0toKKpipi.so", "Dbar0toKKpipi.so");
   SophisticatedPhaseSpace rph;
   std::ofstream f(argv[1]);
-  f << N << std::endl;
-  for(int i = 0; i < N; i++) {
-    for(int j = 0; j < N; j++) {
-      for(int k = 0; k < N; k++) {
-	std::vector<std::complex<double>> sum(rph.NumberOfBins(), std::complex<double>(0.0, 0.0));
-	for(int n = 0; n < N; n++) {
-	  for(int m = 0; m < N; m++) {
-	    std::vector<double> X = {x_low[0] + dx[0]*(i + 0.5), x_low[1] + dx[1]*(j + 0.5), x_low[2] + dx[2]*(n + 0.5), x_low[3] + dx[3]*(m + 0.5), x_low[4] + dx[4]*(k + 0.5)};
-	    std::vector<double> event = KKpipiMath::ConvertXToMomenta(X);
-	    int whichbin = rph.WhichBin(Event(event));
-	    sum[whichbin] += std::polar(1.0, std::arg(amplitude(event, +1)/amplitude(event, -1)));
-	  }
+  int i = atoi(argv[2]);
+  if(i >= N) {
+    std::cout << "i is outside of range\n";
+    return 0;
+  }
+  if(i == 0) {
+    f << N << std::endl;
+  }
+  for(int j = 0; j < N; j++) {
+    for(int k = 0; k < N; k++) {
+      std::vector<std::complex<double>> sum(rph.NumberOfRegions(), std::complex<double>(0.0, 0.0));
+      for(int n = 0; n < N; n++) {
+	for(int m = 0; m < N; m++) {
+	  std::vector<double> X = {x_low[0] + dx[0]*(i + 0.5), x_low[1] + dx[1]*(j + 0.5), x_low[2] + dx[2]*(n + 0.5), x_low[3] + dx[3]*(m + 0.5), x_low[4] + dx[4]*(k + 0.5)};
+	  std::vector<double> event = KKpipiMath::ConvertXToMomenta(X);
+	  int whichbin = rph.WhichBin(Event(event));
+	  //sum[whichbin] += std::arg(amplitude(event, +1))*std::conj(amplitude(event, -1)); //remove maybe
+	  sum[whichbin] += std::polar(1.0, std::arg(amplitude(event, +1)/amplitude(event, -1)));
 	}
-	f << i << "," << j << "," << k << ",";
-	for(int bin = 0; bin < rph.NumberOfBins(); bin++) {
-	  f << std::arg(sum[bin]) << ",";
-	}
-	f << std::endl;
       }
+      f << i << "," << j << "," << k << ",";
+      for(int bin = 0; bin < rph.NumberOfRegions(); bin++) {
+	f << std::arg(sum[bin]) << ",";
+      }
+      f << std::endl;
     }
   }
   f.close();

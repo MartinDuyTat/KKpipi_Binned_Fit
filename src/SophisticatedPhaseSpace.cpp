@@ -4,14 +4,16 @@
 #include<string>
 #include<complex>
 #include<fstream>
+#include<stdlib.h>
 #include"SophisticatedPhaseSpace.h"
 #include"Event.h"
 #include"Amplitude.h"
 #include"TFile.h"
 #include"TTree.h"
 #include"KKpipiMath.h"
+#include"TMath.h"
 
-SophisticatedPhaseSpace::SophisticatedPhaseSpace(): PhaseSpaceParameterisation(6) {
+SophisticatedPhaseSpace::SophisticatedPhaseSpace(): PhaseSpaceParameterisation(7), m_regions(6), m_binregion(1) {
 }
 
 SophisticatedPhaseSpace::~SophisticatedPhaseSpace() {
@@ -20,7 +22,7 @@ SophisticatedPhaseSpace::~SophisticatedPhaseSpace() {
   }
 }
 
-void SophisticatedPhaseSpace::x3x4WhichBin(const Event &event, int &x3bin, int &x4bin) const {
+void SophisticatedPhaseSpace::x3x4WhichBinGrid(const Event &event, int &x3bin, int &x4bin) const {
   std::vector<double> X = KKpipiMath::RectCoordinates(event.GetEventVector());
   double x3lower = -1.0;
   double x3upper = 1.0;
@@ -67,11 +69,11 @@ void SophisticatedPhaseSpace::CalculateStrongPhases(std::string BplusFilename, s
     Event EventBplus(FourMomentumBplus), EventBminus(FourMomentumBminus);
     BplusStrongPhase = StrongPhase(EventBplus);
     BminusStrongPhase = StrongPhase(EventBminus);
-    x3x4WhichBin(EventBplus, x3bin, x4bin);
+    x3x4WhichBinGrid(EventBplus, x3bin, x4bin);
     numberevents[x3bin][x4bin] += 1;
     average[x3bin][x4bin] += BplusStrongPhase;
     rms[x3bin][x4bin] += BplusStrongPhase*BplusStrongPhase;
-    x3x4WhichBin(EventBminus, x3bin, x4bin);
+    x3x4WhichBinGrid(EventBminus, x3bin, x4bin);
     numberevents[x3bin][x4bin] += 1;
     average[x3bin][x4bin] += BminusStrongPhase;
     rms[x3bin][x4bin] += BminusStrongPhase*BminusStrongPhase;
@@ -91,8 +93,35 @@ void SophisticatedPhaseSpace::CalculateStrongPhases(std::string BplusFilename, s
   RMSFile.close();
 }
 
-int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
-  std::vector<double> X = KKpipiMath::RectCoordinates(event);
+void SophisticatedPhaseSpace::ReadAverageStrongPhases(const std::string &filename) {
+  std::ifstream f(filename);
+  std::string line;
+  std::getline(f, line);
+  int N = atoi(line.c_str());
+  m_LookupBins = std::vector<std::vector<std::vector<std::vector<int>>>>(m_regions, std::vector<std::vector<std::vector<int>>>(N, std::vector<std::vector<int>>(N, std::vector<int>(N))));
+  std::vector<std::string> lines(9);
+  double BinWidth = 2*TMath::Pi()/(NumberOfBins() - m_binregion);
+  std::map<double, int> BinMap;
+  for(int i = 0; i < NumberOfBins(); i++) {
+    BinMap.insert({-TMath::Pi() + BinWidth*(i + 1), i});
+  }
+  while(std::getline(f, lines[0], ',') && std::getline(f, lines[1], ',') && std::getline(f, lines[2], ',') && std::getline(f, lines[3], ',') && std::getline(f, lines[4], ',') && std::getline(f, lines[5], ',') && std::getline(f, lines[6], ',') && std::getline(f, lines[7], ',') && std::getline(f, lines[8])) {
+    for(int i = 0; i < m_regions; i++) {
+      double phase = atof(lines[i + 3].c_str());
+      m_LookupBins[i][atoi(lines[0].c_str())][atoi(lines[1].c_str())][atoi(lines[2].c_str())] = BinMap.lower_bound(phase)->second;
+    }
+  }
+}
+
+void SophisticatedPhaseSpace::ClearAverageStrongPhases() {
+  std::vector<std::vector<std::vector<std::vector<int>>>>().swap(m_LookupBins);
+}
+
+int SophisticatedPhaseSpace::NumberOfRegions() const {
+  return m_regions;
+}
+
+int SophisticatedPhaseSpace::WhichRegion(const std::vector<double> &X) const {
   if(X[2] + X[3] > 1.4) {
     return 0;
   } else if(10*X[2] - 7*X[3] < -10) {
@@ -107,6 +136,25 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
     return 5;
   }
 }
+
+int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
+  std::vector<double> X = KKpipiMath::RectCoordinates(event);
+  int Region = WhichRegion(X);
+  if(Region < m_binregion) {
+    return Region;
+  }
+  int N = m_LookupBins.size();
+  double dx1 = (RectangularPhaseSpace::GetUpperBoundary(0) - RectangularPhaseSpace::GetLowerBoundary(0))/N;
+  double dx2 = (RectangularPhaseSpace::GetUpperBoundary(1) - RectangularPhaseSpace::GetLowerBoundary(1))/N;
+  double dx5 = (RectangularPhaseSpace::GetUpperBoundary(4) - RectangularPhaseSpace::GetLowerBoundary(4))/N;
+  int x1_bin = static_cast<int>((X[0] - RectangularPhaseSpace::GetLowerBoundary(0))/dx1);
+  int x2_bin = static_cast<int>((X[1] - RectangularPhaseSpace::GetLowerBoundary(1))/dx2);
+  int x5_bin = static_cast<int>((X[4] - RectangularPhaseSpace::GetLowerBoundary(4))/dx5);
+  int Bin = m_LookupBins[Region][x1_bin][x2_bin][x5_bin] + m_binregion;
+  return Bin;
+}
+  
+  
 
 int SophisticatedPhaseSpace::NumberOfBins() const {
   return PhaseSpaceParameterisation::NumberOfBins();
