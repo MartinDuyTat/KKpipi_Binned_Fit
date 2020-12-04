@@ -8,6 +8,7 @@
 #include<fstream>
 #include<sstream>
 #include"DDecayParameters.h"
+#include"Constants.h"
 #include"BinList.h"
 #include"Generator.h"
 #include"TLorentzVector.h"
@@ -21,9 +22,11 @@
 #include"TAxis.h"
 #include"TLegend.h"
 
-DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const double &mass_parent, const Double_t *mass_decay, int events) {
+DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, int events) {
   // Declare necessary variables
   Amplitude amplitude("D0toKKpipi.so", "Dbar0toKKpipi.so");
+  Double_t mass_parent = KKpipi_Constants::MASS_D;
+  Double_t mass_decay[] = {KKpipi_Constants::MASS_K, KKpipi_Constants::MASS_K, KKpipi_Constants::MASS_PI, KKpipi_Constants::MASS_PI};
   Generator generator(mass_parent, mass_decay, 4);
   int NumberBins = psp->NumberOfBins();
   int counter = 0;

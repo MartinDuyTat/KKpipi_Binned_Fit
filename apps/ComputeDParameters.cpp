@@ -38,9 +38,7 @@ int main(int argc, char *argv[]) {
   }
   std::string filename = argv[2];
   int events = atoi(argv[3]);
-  double mass_parent = KKpipi_Constants::MASS_D;
-  double masses[4] = {KKpipi_Constants::MASS_K, KKpipi_Constants::MASS_K, KKpipi_Constants::MASS_PI, KKpipi_Constants::MASS_PI};
-  DDecayParameters ddecay(psp, mass_parent, masses, events);
+  DDecayParameters ddecay(psp, events);
   ddecay.SaveCSV(filename);
   return 0;
 }

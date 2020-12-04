@@ -18,7 +18,7 @@ class DDecayParameters {
      * @param psp PhaseSpaceParameterisation object
      * @param events Number of events in each bin for Monte Carlo integration
      */
-    DDecayParameters(PhaseSpaceParameterisation *psp, const double &mass_parent, const double *mass_decay, int events);
+    DDecayParameters(PhaseSpaceParameterisation *psp, int events);
     /** 
      * Constructor that takes in the D meson hadronic parameters from a comma separated CSV file, in the order i K_i Kbar_i c_i s_i
      * First line is assumed to be column names
