@@ -179,9 +179,9 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
   }
   int N = m_LookupBins.size();
   // Added small correction terms to make the right edge slightly larger than pi
-  double dx1 = (RectangularPhaseSpace::GetUpperBoundary(0) + 1e-10 - RectangularPhaseSpace::GetLowerBoundary(0))/N;
-  double dx2 = (RectangularPhaseSpace::GetUpperBoundary(1) + 1e-10 - RectangularPhaseSpace::GetLowerBoundary(1))/N;
-  double dx5 = (RectangularPhaseSpace::GetUpperBoundary(4) + 1e-10 - RectangularPhaseSpace::GetLowerBoundary(4))/N;
+  double dx1 = (RectangularPhaseSpace::GetUpperBoundary(0) + 1e-9 - RectangularPhaseSpace::GetLowerBoundary(0))/N;
+  double dx2 = (RectangularPhaseSpace::GetUpperBoundary(1) + 1e-9- RectangularPhaseSpace::GetLowerBoundary(1))/N;
+  double dx5 = (RectangularPhaseSpace::GetUpperBoundary(4) + 1e-9 - RectangularPhaseSpace::GetLowerBoundary(4))/N;
   int x1_bin = static_cast<int>((X[0] - RectangularPhaseSpace::GetLowerBoundary(0))/dx1);
   int x2_bin = static_cast<int>((X[1] - RectangularPhaseSpace::GetLowerBoundary(1))/dx2);
   int x5_bin = static_cast<int>((X[4] - RectangularPhaseSpace::GetLowerBoundary(4))/dx5);
