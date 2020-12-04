@@ -8,6 +8,7 @@
  * @param 4 Sample size
  * @param 5 Number of samples
  * @param 6 Filename of mean phases in the \f$(x_1, x_2, x_5)\f$ volume
+ * @param 7 Total number of bins
  */
 
 #include<string>
@@ -31,7 +32,7 @@
 void SplitTree(TTree *tree, TTree *treeSmall, const int &StartEvent, const int &SampleSize);
 
 int main(int argc, char *argv[]) {
-  if(argc != 7) {
+  if(argc != 8) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
@@ -69,7 +70,7 @@ int main(int argc, char *argv[]) {
   PullTree->Branch("gamma", &gamma_pull, "gamma/D");
   PullTree->Branch("gamma_fitted", &gamma_fitted, "gamma_fitted/D");
   PullTree->Branch("gamma_error", &gamma_error, "gamma_error/D");
-  SophisticatedPhaseSpace phasespace(8);
+  SophisticatedPhaseSpace phasespace(atoi(argv[7]));
   phasespace.ReadAverageStrongPhases(std::string(argv[6]));
   PhaseSpaceParameterisation *psp = &phasespace;
   for(int i = 0; i < Samples; i++) {
