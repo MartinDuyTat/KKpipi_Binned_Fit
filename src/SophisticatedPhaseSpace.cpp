@@ -13,7 +13,7 @@
 #include"KKpipiMath.h"
 #include"TMath.h"
 
-SophisticatedPhaseSpace::SophisticatedPhaseSpace(): PhaseSpaceParameterisation(8), m_regions(95), m_binregion(2) {
+SophisticatedPhaseSpace::SophisticatedPhaseSpace(int nbins): PhaseSpaceParameterisation(nbins), m_regions(95), m_binregion(2) {
 }
 
 SophisticatedPhaseSpace::~SophisticatedPhaseSpace() {
@@ -178,6 +178,7 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
     return Region;
   }
   int N = m_LookupBins.size();
+  // Added small correction terms to make the right edge slightly larger than pi
   double dx1 = (RectangularPhaseSpace::GetUpperBoundary(0) + 1e-10 - RectangularPhaseSpace::GetLowerBoundary(0))/N;
   double dx2 = (RectangularPhaseSpace::GetUpperBoundary(1) + 1e-10 - RectangularPhaseSpace::GetLowerBoundary(1))/N;
   double dx5 = (RectangularPhaseSpace::GetUpperBoundary(4) + 1e-10 - RectangularPhaseSpace::GetLowerBoundary(4))/N;

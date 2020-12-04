@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
   PullTree->Branch("gamma", &gamma_pull, "gamma/D");
   PullTree->Branch("gamma_fitted", &gamma_fitted, "gamma_fitted/D");
   PullTree->Branch("gamma_error", &gamma_error, "gamma_error/D");
-  SophisticatedPhaseSpace phasespace;
+  SophisticatedPhaseSpace phasespace(8);
   phasespace.ReadAverageStrongPhases(std::string(argv[6]));
   PhaseSpaceParameterisation *psp = &phasespace;
   for(int i = 0; i < Samples; i++) {

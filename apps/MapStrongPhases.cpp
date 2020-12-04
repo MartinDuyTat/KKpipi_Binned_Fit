@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
     dx[i] = (x_high[i] - x_low[i])/N;
   }
   Amplitude amplitude("D0toKKpipi.so", "Dbar0toKKpipi.so");
-  SophisticatedPhaseSpace rph;
+  SophisticatedPhaseSpace rph(8);
   std::ofstream f(argv[1]);
   int i = atoi(argv[2]);
   if(i >= N) {

@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     std::cout << "Incorrect number of inputs!\n";
     return 0;
   }
-  SophisticatedPhaseSpace phasespace;
+  SophisticatedPhaseSpace phasespace(8);
   phasespace.LoadAmplitudeModel("D0toKKpipi.so", "Dbar0toKKpipi.so");
   std::string BplusFilename = argv[1];
   std::string BminusFilename = argv[2];

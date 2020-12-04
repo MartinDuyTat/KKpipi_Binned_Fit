@@ -6,6 +6,7 @@
  * @param 2 Filename of B- event file
  * @param 3 Filename of D meson hadronic decay parameters
  * @param 4 Filename of mean phases in the \f$(x_1, x_2, x_5)\f$ volume
+ * @param 5 Total number of bins in this binning scheme
  */
 
 #include<string>
@@ -31,7 +32,7 @@ int main(int argc, char *argv[]) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
-  SophisticatedPhaseSpace phasespace;
+  SophisticatedPhaseSpace phasespace(atoi(argv[5]));
   PhaseSpaceParameterisation *psp = &phasespace;
   std::cout << "Loaded phase space\n";
   std::string Bplusfile = argv[1];

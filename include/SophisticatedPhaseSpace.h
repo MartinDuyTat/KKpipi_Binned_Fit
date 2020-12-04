@@ -17,9 +17,10 @@
 class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public RectangularPhaseSpace {
   public:
     /**
-     * Constructor that calls the corresponding constructor in RectangularPhaseSpace and sets up the binmap
+     * Constructor that calls the corresponding constructor in RectangularPhaseSpace
+     * @param nbins Number of bins in total
      */
-    SophisticatedPhaseSpace();
+    SophisticatedPhaseSpace(int nbins);
     /**
      * Destructor that deletes the amplitude model
      */
