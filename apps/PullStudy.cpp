@@ -7,7 +7,7 @@
  * @param 3 Filename of D meson hadronic decay parameters
  * @param 4 Sample size
  * @param 5 Number of samples
- * @param 6 Filename of strong phases for binning
+ * @param 6 Filename of mean phases in the \f$(x_1, x_2, x_5)\f$ volume
  */
 
 #include<string>

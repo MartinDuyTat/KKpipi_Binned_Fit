@@ -13,7 +13,7 @@
 #include"KKpipiMath.h"
 #include"TMath.h"
 
-SophisticatedPhaseSpace::SophisticatedPhaseSpace(): PhaseSpaceParameterisation(7), m_regions(95), m_binregion(4) {
+SophisticatedPhaseSpace::SophisticatedPhaseSpace(): PhaseSpaceParameterisation(8), m_regions(95), m_binregion(2) {
 }
 
 SophisticatedPhaseSpace::~SophisticatedPhaseSpace() {

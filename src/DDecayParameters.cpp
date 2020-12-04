@@ -123,7 +123,7 @@ void DDecayParameters::PlotParameters(std::string filename_cs, std::string filen
     circle_x[i] = TMath::Cos(2*TMath::Pi()*i/100);
     circle_y[i] = TMath::Sin(2*TMath::Pi()*i/100);
   }
-  TGraph *gr1 = new TGraph(this->Getc().size(), this->Gets().data(), this->Getc().data());
+  TGraph *gr1 = new TGraph(this->Getc().size(), this->Getc().data(), this->Gets().data());
   TGraph *circle = new TGraph(101, circle_x.data(), circle_y.data());
   TCanvas *c1 = new TCanvas("s_vs_c", "s_i vs c_i", 700, 700);
   circle->Draw("AL");
@@ -132,7 +132,7 @@ void DDecayParameters::PlotParameters(std::string filename_cs, std::string filen
   circle->GetYaxis()->SetTitle("s_{i}");
   circle->GetXaxis()->SetRangeUser(-1.0, 1.0);
   circle->GetYaxis()->SetRangeUser(-1.0, 1.0);
-  circle->SetTitle("Plot of c_i vs s_i");
+  circle->SetTitle("Plot of s_i vs c_i");
   gr1->SetMarkerStyle(kFullDotLarge);
   c1->SetLeftMargin(0.11);
   circle->Draw("AL");
