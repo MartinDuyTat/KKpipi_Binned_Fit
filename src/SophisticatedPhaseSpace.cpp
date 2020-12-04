@@ -99,7 +99,7 @@ void SophisticatedPhaseSpace::ReadAverageStrongPhases(const std::string &filenam
   std::getline(f, line);
   int N = atoi(line.c_str());
   m_LookupBins = std::vector<std::vector<std::vector<std::vector<int>>>>(m_regions, std::vector<std::vector<std::vector<int>>>(N, std::vector<std::vector<int>>(N, std::vector<int>(N))));
-  std::vector<std::string> lines(9);
+  std::vector<std::string> lines(m_regions + 3);
   double BinWidth = 2*TMath::Pi()/(NumberOfBins() - m_binregion);
   std::map<double, int> BinMap;
   for(int i = 0; i < NumberOfBins() - m_binregion; i++) {
