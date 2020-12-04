@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['savecsv_213',['SaveCSV',['../classDDecayParameters.html#a8627828117c4d8c5198cb2a9f6d9ebde',1,'DDecayParameters']]],
-  ['setcov_214',['SetCov',['../classCPParameters.html#afd67816326f60153499c337833c6ea5f',1,'CPParameters::SetCov()'],['../classGamma.html#ae32d49cea928383c595963f5a0454ae5',1,'Gamma::SetCov()']]],
-  ['setleastsquares_215',['SetLeastSquares',['../classLikelihood.html#a63513a86aaf81a046b5491d8edbbad8d',1,'Likelihood']]],
-  ['sophisticatedphasespace_216',['SophisticatedPhaseSpace',['../classSophisticatedPhaseSpace.html#a1401d3271577ed4c10da00195768c91e',1,'SophisticatedPhaseSpace']]],
-  ['strongphase_217',['StrongPhase',['../classSophisticatedPhaseSpace.html#a86d51d6d110272a66092d102d1960368',1,'SophisticatedPhaseSpace']]]
+  ['readaveragestrongphases_231',['ReadAverageStrongPhases',['../classSophisticatedPhaseSpace.html#aebd939bd27fcf9acf98dcbd9ddf15c24',1,'SophisticatedPhaseSpace']]],
+  ['rectangularphasespace_232',['RectangularPhaseSpace',['../classRectangularPhaseSpace.html#a3891811269dbdd1e0d2b3ab1ce396186',1,'RectangularPhaseSpace::RectangularPhaseSpace(std::vector&lt; int &gt; bins)'],['../classRectangularPhaseSpace.html#a36fda8225711b341c73e88c7e4040496',1,'RectangularPhaseSpace::RectangularPhaseSpace()']]],
+  ['rectcoordinates_233',['RectCoordinates',['../namespaceKKpipiMath.html#a2c44a4d9374d1742c85e57d49ed8d977',1,'KKpipiMath']]]
 ];

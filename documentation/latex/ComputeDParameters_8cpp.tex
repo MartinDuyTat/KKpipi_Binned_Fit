@@ -1,0 +1,42 @@
+\hypertarget{ComputeDParameters_8cpp}{}\doxysection{/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/apps/\+Compute\+DParameters.cpp File Reference}
+\label{ComputeDParameters_8cpp}\index{/data/lhcb/users/tat/KKpipi\_Binned\_Fit/apps/ComputeDParameters.cpp@{/data/lhcb/users/tat/KKpipi\_Binned\_Fit/apps/ComputeDParameters.cpp}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}DDecay\+Parameters.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Phase\+Space\+Parameterisation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Naive\+Phase\+Space.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Rectangular\+Phase\+Space.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Sophisticated\+Phase\+Space.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Constants.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{ComputeDParameters_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ComputeDParameters_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{ComputeDParameters_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{ComputeDParameters.cpp@{ComputeDParameters.cpp}!main@{main}}
+\index{main@{main}!ComputeDParameters.cpp@{ComputeDParameters.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+This program is for calculating hadronic parameters of D-\/$>$KKpipi decays using Monte Carlo integration and an amplitude model from Amp\+Gen 
+\begin{DoxyParams}{Parameters}
+{\em 1} & Choice of binning scheme, in lowercase letters \\
+\hline
+{\em 2} & Filename to save D hadronic decay parameters to \\
+\hline
+{\em 3} & Number of events used in Monte Carlo integration \\
+\hline
+{\em 4} & For Rectangular Phase Space, state the number of bins in each direction, for Sophisticated Phase Space state the total number of bins \\
+\hline
+{\em 5} & For Sophisticated Phase Space, input the filename for strong phases for binning scheme \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 21 of file Compute\+DParameters.\+cpp.
+

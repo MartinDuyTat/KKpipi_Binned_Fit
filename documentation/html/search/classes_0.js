@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['amplitude_105',['Amplitude',['../classAmplitude.html',1,'']]]
+  ['amplitude_116',['Amplitude',['../classAmplitude.html',1,'']]]
 ];

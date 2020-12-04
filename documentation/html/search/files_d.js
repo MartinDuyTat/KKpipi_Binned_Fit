@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['sophisticatedphasespace_2ecpp_159',['SophisticatedPhaseSpace.cpp',['../SophisticatedPhaseSpace_8cpp.html',1,'']]],
-  ['sophisticatedphasespace_2eh_160',['SophisticatedPhaseSpace.h',['../SophisticatedPhaseSpace_8h.html',1,'']]]
+  ['rectangularphasespace_2ecpp_177',['RectangularPhaseSpace.cpp',['../RectangularPhaseSpace_8cpp.html',1,'']]],
+  ['rectangularphasespace_2eh_178',['RectangularPhaseSpace.h',['../RectangularPhaseSpace_8h.html',1,'']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['phasespaceparameterisation_2ecpp_155',['PhaseSpaceParameterisation.cpp',['../PhaseSpaceParameterisation_8cpp.html',1,'']]],
-  ['phasespaceparameterisation_2eh_156',['PhaseSpaceParameterisation.h',['../PhaseSpaceParameterisation_8h.html',1,'']]]
+  ['naivephasespace_2ecpp_171',['NaivePhaseSpace.cpp',['../NaivePhaseSpace_8cpp.html',1,'']]],
+  ['naivephasespace_2eh_172',['NaivePhaseSpace.h',['../NaivePhaseSpace_8h.html',1,'']]]
 ];

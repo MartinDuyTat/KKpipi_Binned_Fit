@@ -1,0 +1,66 @@
+\hypertarget{PullStudy_8cpp}{}\doxysection{/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/apps/\+Pull\+Study.cpp File Reference}
+\label{PullStudy_8cpp}\index{/data/lhcb/users/tat/KKpipi\_Binned\_Fit/apps/PullStudy.cpp@{/data/lhcb/users/tat/KKpipi\_Binned\_Fit/apps/PullStudy.cpp}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Phase\+Space\+Parameterisation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TFile.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TTree.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Bin\+List.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}DDecay\+Parameters.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}CPParameters.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Fitter.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TMath.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TH1\+D.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TMatrix\+D.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Gamma.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Fit\+Gamma.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Naive\+Phase\+Space.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Sophisticated\+Phase\+Space.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{PullStudy_8cpp_ac1a1c06edfd6812c3918b1be29900a57}{Split\+Tree}} (TTree $\ast$tree, TTree $\ast$tree\+Small, const int \&Start\+Event, const int \&Sample\+Size)
+\item 
+int \mbox{\hyperlink{PullStudy_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{PullStudy_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{PullStudy_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{PullStudy.cpp@{PullStudy.cpp}!main@{main}}
+\index{main@{main}!PullStudy.cpp@{PullStudy.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file Pull\+Study.\+cpp.
+
+\mbox{\Hypertarget{PullStudy_8cpp_ac1a1c06edfd6812c3918b1be29900a57}\label{PullStudy_8cpp_ac1a1c06edfd6812c3918b1be29900a57}} 
+\index{PullStudy.cpp@{PullStudy.cpp}!SplitTree@{SplitTree}}
+\index{SplitTree@{SplitTree}!PullStudy.cpp@{PullStudy.cpp}}
+\doxysubsubsection{\texorpdfstring{SplitTree()}{SplitTree()}}
+{\footnotesize\ttfamily void Split\+Tree (\begin{DoxyParamCaption}\item[{TTree $\ast$}]{tree,  }\item[{TTree $\ast$}]{tree\+Small,  }\item[{const int \&}]{Start\+Event,  }\item[{const int \&}]{Sample\+Size }\end{DoxyParamCaption})}
+
+Poolstudy is the program for doing a pool study of the binned fitting D meson decay parameters are loaded from file 
+\begin{DoxyParams}{Parameters}
+{\em 1} & Filename of B+ event file \\
+\hline
+{\em 2} & Filename of B-\/ event file \\
+\hline
+{\em 3} & Filename of D meson hadronic decay parameters \\
+\hline
+{\em 4} & Sample size \\
+\hline
+{\em 5} & Number of samples \\
+\hline
+{\em 6} & Filename of mean phases in the $(x_1, x_2, x_5)$ volume \\
+\hline
+{\em 7} & Total number of bins \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 119 of file Pull\+Study.\+cpp.
+

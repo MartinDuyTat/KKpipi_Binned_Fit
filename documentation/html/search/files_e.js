@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['xylikelihood_2ecpp_161',['XYLikelihood.cpp',['../XYLikelihood_8cpp.html',1,'']]],
-  ['xylikelihood_2eh_162',['XYLikelihood.h',['../XYLikelihood_8h.html',1,'']]]
+  ['sophisticatedphasespace_2ecpp_179',['SophisticatedPhaseSpace.cpp',['../SophisticatedPhaseSpace_8cpp.html',1,'']]],
+  ['sophisticatedphasespace_2eh_180',['SophisticatedPhaseSpace.h',['../SophisticatedPhaseSpace_8h.html',1,'']]]
 ];
