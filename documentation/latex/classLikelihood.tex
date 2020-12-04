@@ -9,7 +9,11 @@
 \item 
 \mbox{\hyperlink{classLikelihood_ad2ceefa8bdffe81d203459ac0ca5d520}{Likelihood}} (\mbox{\hyperlink{classBinList}{Bin\+List}} bins, \mbox{\hyperlink{classDDecayParameters}{DDecay\+Parameters}} ddparameters)
 \item 
+double \mbox{\hyperlink{classLikelihood_a4125d96cdd7317b4468243ddde158d62}{Log\+Poisson\+PDF}} (int x, double mu) const
+\item 
 double \mbox{\hyperlink{classLikelihood_a0a6f5026b36ca7f13d003ad056f8de22}{operator()}} (const double $\ast$cpparameters)
+\item 
+void \mbox{\hyperlink{classLikelihood_a63513a86aaf81a046b5491d8edbbad8d}{Set\+Least\+Squares}} (bool Use\+Least\+Squares)
 \end{DoxyCompactItemize}
 
 
@@ -41,6 +45,16 @@ Definition at line 10 of file Likelihood.\+cpp.
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLikelihood_a4125d96cdd7317b4468243ddde158d62}\label{classLikelihood_a4125d96cdd7317b4468243ddde158d62}} 
+\index{Likelihood@{Likelihood}!LogPoissonPDF@{LogPoissonPDF}}
+\index{LogPoissonPDF@{LogPoissonPDF}!Likelihood@{Likelihood}}
+\doxysubsubsection{\texorpdfstring{LogPoissonPDF()}{LogPoissonPDF()}}
+{\footnotesize\ttfamily double Likelihood\+::\+Log\+Poisson\+PDF (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{double}]{mu }\end{DoxyParamCaption}) const}
+
+Function for calculating the logarithm of the Poisson probability, based on ROOT\+::\+Math\+::poisson\+\_\+pdf 
+
+Definition at line 13 of file Likelihood.\+cpp.
+
 \mbox{\Hypertarget{classLikelihood_a0a6f5026b36ca7f13d003ad056f8de22}\label{classLikelihood_a0a6f5026b36ca7f13d003ad056f8de22}} 
 \index{Likelihood@{Likelihood}!operator()@{operator()}}
 \index{operator()@{operator()}!Likelihood@{Likelihood}}
@@ -57,7 +71,17 @@ Operator overload of () to easily access the likelihood function
 \end{DoxyReturn}
 
 
-Definition at line 13 of file Likelihood.\+cpp.
+Definition at line 17 of file Likelihood.\+cpp.
+
+\mbox{\Hypertarget{classLikelihood_a63513a86aaf81a046b5491d8edbbad8d}\label{classLikelihood_a63513a86aaf81a046b5491d8edbbad8d}} 
+\index{Likelihood@{Likelihood}!SetLeastSquares@{SetLeastSquares}}
+\index{SetLeastSquares@{SetLeastSquares}!Likelihood@{Likelihood}}
+\doxysubsubsection{\texorpdfstring{SetLeastSquares()}{SetLeastSquares()}}
+{\footnotesize\ttfamily void Likelihood\+::\+Set\+Least\+Squares (\begin{DoxyParamCaption}\item[{bool}]{Use\+Least\+Squares }\end{DoxyParamCaption})}
+
+Function for setting Least Squares in fitting instead of \mbox{\hyperlink{classLikelihood}{Likelihood}} 
+
+Definition at line 43 of file Likelihood.\+cpp.
 
 
 

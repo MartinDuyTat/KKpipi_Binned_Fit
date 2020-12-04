@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['phasespaceparameterisation_2ecpp_95',['PhaseSpaceParameterisation.cpp',['../PhaseSpaceParameterisation_8cpp.html',1,'']]],
-  ['phasespaceparameterisation_2eh_96',['PhaseSpaceParameterisation.h',['../PhaseSpaceParameterisation_8h.html',1,'']]]
+  ['likelihood_2ecpp_151',['Likelihood.cpp',['../Likelihood_8cpp.html',1,'']]],
+  ['likelihood_2eh_152',['Likelihood.h',['../Likelihood_8h.html',1,'']]]
 ];

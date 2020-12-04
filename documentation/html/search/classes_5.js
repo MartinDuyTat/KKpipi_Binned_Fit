@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['fitter_68',['Fitter',['../classFitter.html',1,'']]]
+  ['fitgamma_112',['FitGamma',['../classFitGamma.html',1,'']]],
+  ['fitter_113',['Fitter',['../classFitter.html',1,'']]]
 ];

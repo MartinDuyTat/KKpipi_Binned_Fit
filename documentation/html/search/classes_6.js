@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['generator_69',['Generator',['../classGenerator.html',1,'']]]
+  ['gamma_114',['Gamma',['../classGamma.html',1,'']]],
+  ['generator_115',['Generator',['../classGenerator.html',1,'']]]
 ];

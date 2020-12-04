@@ -82,7 +82,7 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classEvent.html#aa9d31cbf9c6ec3c0cd8a68739f6b66e7">   11</a></span>&#160;<a class="code" href="classEvent.html#a5a40dd4708297f7031e29b39e039ae10">Event::Event</a>(std::vector&lt;double&gt; p): m_momenta(p) {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classEvent.html#a06e0f9eb04ef0c54725d05edb2a9ef63">   14</a></span>&#160;std::vector&lt;double&gt; <a class="code" href="classEvent.html#a06e0f9eb04ef0c54725d05edb2a9ef63">Event::GetEventVector</a>() {</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classEvent.html#aff5c70ba4698f744b50c57112a686890">   14</a></span>&#160;<span class="keyword">const</span> std::vector&lt;double&gt;&amp; <a class="code" href="classEvent.html#aff5c70ba4698f744b50c57112a686890">Event::GetEventVector</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordflow">return</span> m_momenta;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
@@ -109,16 +109,11 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;           - TMath::Power(m_momenta[4*particle1 + 1] + m_momenta[4*particle2 + 1] + m_momenta[4*particle3 + 1], 2)</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;           - TMath::Power(m_momenta[4*particle1 + 2] + m_momenta[4*particle2 + 2] + m_momenta[4*particle3 + 2], 2));</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classEvent.html#afbeec371d2ccc0ad73045fb203dbd7dc">   42</a></span>&#160;std::vector&lt;double&gt; <a class="code" href="classEvent.html#afbeec371d2ccc0ad73045fb203dbd7dc">Event::GetEvent</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordflow">return</span> m_momenta;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
 <div class="ttc" id="aEvent_8h_html"><div class="ttname"><a href="Event_8h.html">Event.h</a></div></div>
-<div class="ttc" id="aclassEvent_html_a06e0f9eb04ef0c54725d05edb2a9ef63"><div class="ttname"><a href="classEvent.html#a06e0f9eb04ef0c54725d05edb2a9ef63">Event::GetEventVector</a></div><div class="ttdeci">std::vector&lt; double &gt; GetEventVector()</div><div class="ttdef"><b>Definition:</b> <a href="Event_8cpp_source.html#l00014">Event.cpp:14</a></div></div>
 <div class="ttc" id="aclassEvent_html_a5a40dd4708297f7031e29b39e039ae10"><div class="ttname"><a href="classEvent.html#a5a40dd4708297f7031e29b39e039ae10">Event::Event</a></div><div class="ttdeci">Event()</div><div class="ttdef"><b>Definition:</b> <a href="Event_8cpp_source.html#l00007">Event.cpp:7</a></div></div>
 <div class="ttc" id="aclassEvent_html_a8ac9c1332585ea64f2f51cf9d69936b3"><div class="ttname"><a href="classEvent.html#a8ac9c1332585ea64f2f51cf9d69936b3">Event::GetInvMass2</a></div><div class="ttdeci">double GetInvMass2(int particle1, int particle2) const</div><div class="ttdef"><b>Definition:</b> <a href="Event_8cpp_source.html#l00028">Event.cpp:28</a></div></div>
 <div class="ttc" id="aclassEvent_html_ae5bc86662635e5c7ac463f21eda617ee"><div class="ttname"><a href="classEvent.html#ae5bc86662635e5c7ac463f21eda617ee">Event::GetInvMass3</a></div><div class="ttdeci">double GetInvMass3(int particle1, int particle2, int particle3) const</div><div class="ttdef"><b>Definition:</b> <a href="Event_8cpp_source.html#l00035">Event.cpp:35</a></div></div>
-<div class="ttc" id="aclassEvent_html_afbeec371d2ccc0ad73045fb203dbd7dc"><div class="ttname"><a href="classEvent.html#afbeec371d2ccc0ad73045fb203dbd7dc">Event::GetEvent</a></div><div class="ttdeci">std::vector&lt; double &gt; GetEvent() const</div><div class="ttdef"><b>Definition:</b> <a href="Event_8cpp_source.html#l00042">Event.cpp:42</a></div></div>
+<div class="ttc" id="aclassEvent_html_aff5c70ba4698f744b50c57112a686890"><div class="ttname"><a href="classEvent.html#aff5c70ba4698f744b50c57112a686890">Event::GetEventVector</a></div><div class="ttdeci">const std::vector&lt; double &gt; &amp; GetEventVector() const</div><div class="ttdef"><b>Definition:</b> <a href="Event_8cpp_source.html#l00014">Event.cpp:14</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

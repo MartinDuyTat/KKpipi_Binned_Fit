@@ -11,15 +11,13 @@
 \item 
 \mbox{\hyperlink{classEvent_aa9d31cbf9c6ec3c0cd8a68739f6b66e7}{Event}} (std\+::vector$<$ double $>$ p)
 \item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{classEvent_a06e0f9eb04ef0c54725d05edb2a9ef63}{Get\+Event\+Vector}} ()
+const std\+::vector$<$ double $>$ \& \mbox{\hyperlink{classEvent_aff5c70ba4698f744b50c57112a686890}{Get\+Event\+Vector}} () const
 \item 
 \mbox{\hyperlink{classEvent_abbd01f1d751d550edfcb85e2051169e7}{Event}} (const std\+::vector$<$ TLorentz\+Vector $>$ \&p)
 \item 
 double \mbox{\hyperlink{classEvent_a8ac9c1332585ea64f2f51cf9d69936b3}{Get\+Inv\+Mass2}} (int particle1, int particle2) const
 \item 
 double \mbox{\hyperlink{classEvent_ae5bc86662635e5c7ac463f21eda617ee}{Get\+Inv\+Mass3}} (int particle1, int particle2, int particle3) const
-\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{classEvent_afbeec371d2ccc0ad73045fb203dbd7dc}{Get\+Event}} () const
 \end{DoxyCompactItemize}
 
 
@@ -49,7 +47,7 @@ Definition at line 7 of file Event.\+cpp.
 
 Constructor that takes a vector of four-\/momenta 
 \begin{DoxyParams}{Parameters}
-{\em p} & Four-\/momenta in the form (E, px, py, pz), in the order K+ K-\/ pi+ pi-\/ \\
+{\em p} & Four-\/momenta in the form (px, py, pz, E), in the order K+ K-\/ pi+ pi-\/ \\
 \hline
 \end{DoxyParams}
 
@@ -74,24 +72,11 @@ Definition at line 18 of file Event.\+cpp.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classEvent_afbeec371d2ccc0ad73045fb203dbd7dc}\label{classEvent_afbeec371d2ccc0ad73045fb203dbd7dc}} 
-\index{Event@{Event}!GetEvent@{GetEvent}}
-\index{GetEvent@{GetEvent}!Event@{Event}}
-\doxysubsubsection{\texorpdfstring{GetEvent()}{GetEvent()}}
-{\footnotesize\ttfamily std\+::vector$<$ double $>$ Event\+::\+Get\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-Function for getting vector of four-\/momenta of event \begin{DoxyReturn}{Returns}
-Vector of four-\/momenta 
-\end{DoxyReturn}
-
-
-Definition at line 42 of file Event.\+cpp.
-
-\mbox{\Hypertarget{classEvent_a06e0f9eb04ef0c54725d05edb2a9ef63}\label{classEvent_a06e0f9eb04ef0c54725d05edb2a9ef63}} 
+\mbox{\Hypertarget{classEvent_aff5c70ba4698f744b50c57112a686890}\label{classEvent_aff5c70ba4698f744b50c57112a686890}} 
 \index{Event@{Event}!GetEventVector@{GetEventVector}}
 \index{GetEventVector@{GetEventVector}!Event@{Event}}
 \doxysubsubsection{\texorpdfstring{GetEventVector()}{GetEventVector()}}
-{\footnotesize\ttfamily std\+::vector$<$ double $>$ Event\+::\+Get\+Event\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily const std\+::vector$<$ double $>$ \& Event\+::\+Get\+Event\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 Returns the four-\/momenta of daughter particles as a vector \begin{DoxyReturn}{Returns}
 Four-\/momenta of daughter particles in the form (E, px, py, pz), in the order K+ K-\/ pi+ pi-\/ 

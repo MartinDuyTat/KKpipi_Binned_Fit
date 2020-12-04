@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['phasespaceparameterisation_71',['PhaseSpaceParameterisation',['../classPhaseSpaceParameterisation.html',1,'']]]
+  ['naivephasespace_117',['NaivePhaseSpace',['../classNaivePhaseSpace.html',1,'']]]
 ];

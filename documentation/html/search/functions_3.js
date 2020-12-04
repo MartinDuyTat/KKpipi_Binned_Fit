@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ddecayparameters_102',['DDecayParameters',['../classDDecayParameters.html#aa2ab9a76fd4d97ae6218ea8248df9543',1,'DDecayParameters::DDecayParameters(const PhaseSpaceParameterisation &amp;psp, const double &amp;mass_parent, const double *mass_decay, int events)'],['../classDDecayParameters.html#ada593ba938bc5bcf6f1aa11b14628c11',1,'DDecayParameters::DDecayParameters(std::string filename)']]],
-  ['dofit_103',['DoFit',['../classFitter.html#a9223a8bbf734409eb9dcba435b938909',1,'Fitter']]]
+  ['ddecayparameters_172',['DDecayParameters',['../classDDecayParameters.html#ac138b7a00bedb4b525ca7044e1cb0cb9',1,'DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, int events)'],['../classDDecayParameters.html#ada593ba938bc5bcf6f1aa11b14628c11',1,'DDecayParameters::DDecayParameters(std::string filename)']]],
+  ['dofit_173',['DoFit',['../classFitGamma.html#aac43e08670e52001c1be27450a259b15',1,'FitGamma::DoFit()'],['../classFitter.html#a9223a8bbf734409eb9dcba435b938909',1,'Fitter::DoFit()']]]
 ];

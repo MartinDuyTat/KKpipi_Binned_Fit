@@ -1,0 +1,65 @@
+\hypertarget{classXYLikelihood}{}\doxysection{XYLikelihood Class Reference}
+\label{classXYLikelihood}\index{XYLikelihood@{XYLikelihood}}
+
+
+{\ttfamily \#include $<$XYLikelihood.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classXYLikelihood_a713ac1bb9df67f3eea2b6745312150c1}{XYLikelihood}} (\mbox{\hyperlink{classCPParameters}{CPParameters}} cpparameters)
+\item 
+double \mbox{\hyperlink{classXYLikelihood_adfc118d07fcb242ec7c02068e17ea5a5}{operator()}} (const double $\ast$gamma)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classXYLikelihood}{XYLikelihood}} is a class for calculating the likelihood of $x_\pm$, $y_\pm$, given the fitted values of $x_+$, $x_-$, $y_+$, $y_-$ and their covariance matrix, as a function of $r_B$, $\delta_B$ and $\gamma$ () operator is overloaded to make the likelihood function easily accessible 
+
+Definition at line 14 of file XYLikelihood.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classXYLikelihood_a713ac1bb9df67f3eea2b6745312150c1}\label{classXYLikelihood_a713ac1bb9df67f3eea2b6745312150c1}} 
+\index{XYLikelihood@{XYLikelihood}!XYLikelihood@{XYLikelihood}}
+\index{XYLikelihood@{XYLikelihood}!XYLikelihood@{XYLikelihood}}
+\doxysubsubsection{\texorpdfstring{XYLikelihood()}{XYLikelihood()}}
+{\footnotesize\ttfamily XYLikelihood\+::\+XYLikelihood (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCPParameters}{CPParameters}}}]{cpparameters }\end{DoxyParamCaption})}
+
+Constructor that takes in the true values of $r_B$, $\delta_B$, $\gamma$, the fitted values of $x_+$, $x_-$, $y_+$, $y_-$ and their covariance matrix 
+\begin{DoxyParams}{Parameters}
+{\em cpparameters} & A \mbox{\hyperlink{classCPParameters}{CPParameters}} object containing the fitted $x_\pm$ and $y_\pm$ and the covariance matrix \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 8 of file XYLikelihood.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classXYLikelihood_adfc118d07fcb242ec7c02068e17ea5a5}\label{classXYLikelihood_adfc118d07fcb242ec7c02068e17ea5a5}} 
+\index{XYLikelihood@{XYLikelihood}!operator()@{operator()}}
+\index{operator()@{operator()}!XYLikelihood@{XYLikelihood}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily double XYLikelihood\+::operator() (\begin{DoxyParamCaption}\item[{const double $\ast$}]{gamma }\end{DoxyParamCaption})}
+
+Operator overload of () that returns -\/2 times the likelihood function 
+\begin{DoxyParams}{Parameters}
+{\em gamma} & An array of $r_B$, $\delta_B$ and $\gamma$, in degrees \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/2ln(\+L), where L is the likelihood function 
+\end{DoxyReturn}
+
+
+Definition at line 14 of file XYLikelihood.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/\mbox{\hyperlink{XYLikelihood_8h}{XYLikelihood.\+h}}\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/\mbox{\hyperlink{XYLikelihood_8cpp}{XYLikelihood.\+cpp}}\end{DoxyCompactItemize}

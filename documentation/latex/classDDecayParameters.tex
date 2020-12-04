@@ -7,11 +7,13 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classDDecayParameters_aa2ab9a76fd4d97ae6218ea8248df9543}{DDecay\+Parameters}} (const \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} \&psp, const double \&mass\+\_\+parent, const double $\ast$mass\+\_\+decay, int events)
+\mbox{\hyperlink{classDDecayParameters_ac138b7a00bedb4b525ca7044e1cb0cb9}{DDecay\+Parameters}} (\mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} $\ast$psp, int events)
 \item 
 \mbox{\hyperlink{classDDecayParameters_ada593ba938bc5bcf6f1aa11b14628c11}{DDecay\+Parameters}} (std\+::string filename)
 \item 
-void \mbox{\hyperlink{classDDecayParameters_aba7c07bfc262cc325feb85e33c997c25}{save\+CSV}} (std\+::string filename) const
+void \mbox{\hyperlink{classDDecayParameters_a8627828117c4d8c5198cb2a9f6d9ebde}{Save\+CSV}} (std\+::string filename) const
+\item 
+void \mbox{\hyperlink{classDDecayParameters_a91da9c70a8496d6705845b6ae10fe06f}{Plot\+Parameters}} (std\+::string filename\+\_\+cs, std\+::string filename\+\_\+K)
 \item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{classDDecayParameters_a46cf4e9348bdd60d5d483cd9cee87a66}{GetK}} () const
 \item 
@@ -31,11 +33,11 @@ Definition at line 14 of file DDecay\+Parameters.\+h.
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classDDecayParameters_aa2ab9a76fd4d97ae6218ea8248df9543}\label{classDDecayParameters_aa2ab9a76fd4d97ae6218ea8248df9543}} 
+\mbox{\Hypertarget{classDDecayParameters_ac138b7a00bedb4b525ca7044e1cb0cb9}\label{classDDecayParameters_ac138b7a00bedb4b525ca7044e1cb0cb9}} 
 \index{DDecayParameters@{DDecayParameters}!DDecayParameters@{DDecayParameters}}
 \index{DDecayParameters@{DDecayParameters}!DDecayParameters@{DDecayParameters}}
 \doxysubsubsection{\texorpdfstring{DDecayParameters()}{DDecayParameters()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily DDecay\+Parameters\+::\+DDecay\+Parameters (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} \&}]{psp,  }\item[{const double \&}]{mass\+\_\+parent,  }\item[{const double $\ast$}]{mass\+\_\+decay,  }\item[{int}]{events }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily DDecay\+Parameters\+::\+DDecay\+Parameters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} $\ast$}]{psp,  }\item[{int}]{events }\end{DoxyParamCaption})}
 
 Constructor that takes in a \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} object and calculates the D decay parameters in each bin 
 \begin{DoxyParams}{Parameters}
@@ -44,6 +46,10 @@ Constructor that takes in a \mbox{\hyperlink{classPhaseSpaceParameterisation}{Ph
 {\em events} & Number of events in each bin for Monte Carlo integration \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 25 of file DDecay\+Parameters.\+cpp.
+
 \mbox{\Hypertarget{classDDecayParameters_ada593ba938bc5bcf6f1aa11b14628c11}\label{classDDecayParameters_ada593ba938bc5bcf6f1aa11b14628c11}} 
 \index{DDecayParameters@{DDecayParameters}!DDecayParameters@{DDecayParameters}}
 \index{DDecayParameters@{DDecayParameters}!DDecayParameters@{DDecayParameters}}
@@ -57,7 +63,7 @@ Constructor that takes in the D meson hadronic parameters from a comma separated
 \end{DoxyParams}
 
 
-Definition at line 72 of file DDecay\+Parameters.\+cpp.
+Definition at line 89 of file DDecay\+Parameters.\+cpp.
 
 
 
@@ -73,7 +79,7 @@ c Vector of cosine of the strong phases
 \end{DoxyReturn}
 
 
-Definition at line 113 of file DDecay\+Parameters.\+cpp.
+Definition at line 190 of file DDecay\+Parameters.\+cpp.
 
 \mbox{\Hypertarget{classDDecayParameters_a46cf4e9348bdd60d5d483cd9cee87a66}\label{classDDecayParameters_a46cf4e9348bdd60d5d483cd9cee87a66}} 
 \index{DDecayParameters@{DDecayParameters}!GetK@{GetK}}
@@ -86,7 +92,7 @@ K Vector of fractional yields of D0 events
 \end{DoxyReturn}
 
 
-Definition at line 106 of file DDecay\+Parameters.\+cpp.
+Definition at line 183 of file DDecay\+Parameters.\+cpp.
 
 \mbox{\Hypertarget{classDDecayParameters_a3e467e2ac2ca762509d61c04ab71e59a}\label{classDDecayParameters_a3e467e2ac2ca762509d61c04ab71e59a}} 
 \index{DDecayParameters@{DDecayParameters}!GetKbar@{GetKbar}}
@@ -99,7 +105,7 @@ K Vector of fractional yields of DBAR0 events
 \end{DoxyReturn}
 
 
-Definition at line 109 of file DDecay\+Parameters.\+cpp.
+Definition at line 186 of file DDecay\+Parameters.\+cpp.
 
 \mbox{\Hypertarget{classDDecayParameters_abe8d6ebf3ed3da503aef809d0a1852a5}\label{classDDecayParameters_abe8d6ebf3ed3da503aef809d0a1852a5}} 
 \index{DDecayParameters@{DDecayParameters}!Gets@{Gets}}
@@ -112,13 +118,30 @@ s Vector of sine of the strong phases
 \end{DoxyReturn}
 
 
-Definition at line 117 of file DDecay\+Parameters.\+cpp.
+Definition at line 194 of file DDecay\+Parameters.\+cpp.
 
-\mbox{\Hypertarget{classDDecayParameters_aba7c07bfc262cc325feb85e33c997c25}\label{classDDecayParameters_aba7c07bfc262cc325feb85e33c997c25}} 
-\index{DDecayParameters@{DDecayParameters}!saveCSV@{saveCSV}}
-\index{saveCSV@{saveCSV}!DDecayParameters@{DDecayParameters}}
-\doxysubsubsection{\texorpdfstring{saveCSV()}{saveCSV()}}
-{\footnotesize\ttfamily void DDecay\+Parameters\+::save\+CSV (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classDDecayParameters_a91da9c70a8496d6705845b6ae10fe06f}\label{classDDecayParameters_a91da9c70a8496d6705845b6ae10fe06f}} 
+\index{DDecayParameters@{DDecayParameters}!PlotParameters@{PlotParameters}}
+\index{PlotParameters@{PlotParameters}!DDecayParameters@{DDecayParameters}}
+\doxysubsubsection{\texorpdfstring{PlotParameters()}{PlotParameters()}}
+{\footnotesize\ttfamily void DDecay\+Parameters\+::\+Plot\+Parameters (\begin{DoxyParamCaption}\item[{std\+::string}]{filename\+\_\+cs,  }\item[{std\+::string}]{filename\+\_\+K }\end{DoxyParamCaption})}
+
+Function for plotting the c\+\_\+i and s\+\_\+i parameters in a s\+\_\+i-\/c\+\_\+i plane, and for plotting the magnitude of K\+\_\+i 
+\begin{DoxyParams}{Parameters}
+{\em filename\+\_\+cs} & Filename of c\+\_\+i-\/s\+\_\+i plot \\
+\hline
+{\em filename\+\_\+K} & Filename of K\+\_\+i/\+Kbar\+\_\+i plot \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 123 of file DDecay\+Parameters.\+cpp.
+
+\mbox{\Hypertarget{classDDecayParameters_a8627828117c4d8c5198cb2a9f6d9ebde}\label{classDDecayParameters_a8627828117c4d8c5198cb2a9f6d9ebde}} 
+\index{DDecayParameters@{DDecayParameters}!SaveCSV@{SaveCSV}}
+\index{SaveCSV@{SaveCSV}!DDecayParameters@{DDecayParameters}}
+\doxysubsubsection{\texorpdfstring{SaveCSV()}{SaveCSV()}}
+{\footnotesize\ttfamily void DDecay\+Parameters\+::\+Save\+CSV (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption}) const}
 
 Function for saving K\+\_\+i, Kbar\+\_\+i, c\+\_\+i and s\+\_\+i to a CSV file 
 \begin{DoxyParams}{Parameters}
@@ -127,7 +150,7 @@ Function for saving K\+\_\+i, Kbar\+\_\+i, c\+\_\+i and s\+\_\+i to a CSV file
 \end{DoxyParams}
 
 
-Definition at line 97 of file DDecay\+Parameters.\+cpp.
+Definition at line 114 of file DDecay\+Parameters.\+cpp.
 
 
 

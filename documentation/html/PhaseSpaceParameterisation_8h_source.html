@@ -69,28 +69,28 @@ $(function() {
 <div class="title">PhaseSpaceParameterisation.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="PhaseSpaceParameterisation_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Martin Duy Tat 31st October 2020</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"></span><span class="preprocessor">#ifndef PHASESPACEPARAMETERISATION</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define PHASESPACEPARAMETERISATION</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include&quot;<a class="code" href="Event_8h.html">Event.h</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classPhaseSpaceParameterisation.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPhaseSpaceParameterisation.html">PhaseSpaceParameterisation</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classPhaseSpaceParameterisation.html#a9c002f4fb258011d8d0cbc9cd4192985">PhaseSpaceParameterisation</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classPhaseSpaceParameterisation.html#a22820d02ff3db1c027b68c18970b7c17">WhichBin</a>(<span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a> &amp;event);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classPhaseSpaceParameterisation.html#a70da18b13ea6b48e4d8214e521f4839b">NumberOfBins</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">int</span> m_bins;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
+<a href="PhaseSpaceParameterisation_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Martin Duy Tat 12th November 2020</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"></span><span class="preprocessor">#ifndef PHASESPACEPARAMETERISATION</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define PHASESPACEPARAMETERISATION</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include&quot;<a class="code" href="Event_8h.html">Event.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classPhaseSpaceParameterisation.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPhaseSpaceParameterisation.html">PhaseSpaceParameterisation</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classPhaseSpaceParameterisation.html#ad487c5f2b467b1577b76c8e33c61dd72">PhaseSpaceParameterisation</a>(<span class="keywordtype">int</span> bins);</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classPhaseSpaceParameterisation.html#abce91b47a2ba67b3d00f6c998aa306ee">   23</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classPhaseSpaceParameterisation.html#abce91b47a2ba67b3d00f6c998aa306ee">WhichBin</a>(<span class="keyword">const</span> <a class="code" href="classEvent.html">Event</a> &amp;event) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classPhaseSpaceParameterisation.html#a1d3983cc2a3480c2763e97cdada03839">NumberOfBins</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> m_bins;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aEvent_8h_html"><div class="ttname"><a href="Event_8h.html">Event.h</a></div></div>
 <div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdef"><b>Definition:</b> <a href="Event_8h_source.html#l00012">Event.h:12</a></div></div>
-<div class="ttc" id="aclassPhaseSpaceParameterisation_html"><div class="ttname"><a href="classPhaseSpaceParameterisation.html">PhaseSpaceParameterisation</a></div><div class="ttdef"><b>Definition:</b> <a href="PhaseSpaceParameterisation_8h_source.html#l00013">PhaseSpaceParameterisation.h:13</a></div></div>
-<div class="ttc" id="aclassPhaseSpaceParameterisation_html_a22820d02ff3db1c027b68c18970b7c17"><div class="ttname"><a href="classPhaseSpaceParameterisation.html#a22820d02ff3db1c027b68c18970b7c17">PhaseSpaceParameterisation::WhichBin</a></div><div class="ttdeci">int WhichBin(const Event &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="PhaseSpaceParameterisation_8cpp_source.html#l00010">PhaseSpaceParameterisation.cpp:10</a></div></div>
-<div class="ttc" id="aclassPhaseSpaceParameterisation_html_a70da18b13ea6b48e4d8214e521f4839b"><div class="ttname"><a href="classPhaseSpaceParameterisation.html#a70da18b13ea6b48e4d8214e521f4839b">PhaseSpaceParameterisation::NumberOfBins</a></div><div class="ttdeci">int NumberOfBins()</div><div class="ttdef"><b>Definition:</b> <a href="PhaseSpaceParameterisation_8cpp_source.html#l00023">PhaseSpaceParameterisation.cpp:23</a></div></div>
-<div class="ttc" id="aclassPhaseSpaceParameterisation_html_a9c002f4fb258011d8d0cbc9cd4192985"><div class="ttname"><a href="classPhaseSpaceParameterisation.html#a9c002f4fb258011d8d0cbc9cd4192985">PhaseSpaceParameterisation::PhaseSpaceParameterisation</a></div><div class="ttdeci">PhaseSpaceParameterisation()</div><div class="ttdef"><b>Definition:</b> <a href="PhaseSpaceParameterisation_8cpp_source.html#l00007">PhaseSpaceParameterisation.cpp:7</a></div></div>
+<div class="ttc" id="aclassPhaseSpaceParameterisation_html"><div class="ttname"><a href="classPhaseSpaceParameterisation.html">PhaseSpaceParameterisation</a></div><div class="ttdef"><b>Definition:</b> <a href="PhaseSpaceParameterisation_8h_source.html#l00012">PhaseSpaceParameterisation.h:12</a></div></div>
+<div class="ttc" id="aclassPhaseSpaceParameterisation_html_a1d3983cc2a3480c2763e97cdada03839"><div class="ttname"><a href="classPhaseSpaceParameterisation.html#a1d3983cc2a3480c2763e97cdada03839">PhaseSpaceParameterisation::NumberOfBins</a></div><div class="ttdeci">int NumberOfBins() const</div><div class="ttdef"><b>Definition:</b> <a href="PhaseSpaceParameterisation_8cpp_source.html#l00008">PhaseSpaceParameterisation.cpp:8</a></div></div>
+<div class="ttc" id="aclassPhaseSpaceParameterisation_html_abce91b47a2ba67b3d00f6c998aa306ee"><div class="ttname"><a href="classPhaseSpaceParameterisation.html#abce91b47a2ba67b3d00f6c998aa306ee">PhaseSpaceParameterisation::WhichBin</a></div><div class="ttdeci">virtual int WhichBin(const Event &amp;event) const =0</div></div>
+<div class="ttc" id="aclassPhaseSpaceParameterisation_html_ad487c5f2b467b1577b76c8e33c61dd72"><div class="ttname"><a href="classPhaseSpaceParameterisation.html#ad487c5f2b467b1577b76c8e33c61dd72">PhaseSpaceParameterisation::PhaseSpaceParameterisation</a></div><div class="ttdeci">PhaseSpaceParameterisation(int bins)</div><div class="ttdef"><b>Definition:</b> <a href="PhaseSpaceParameterisation_8cpp_source.html#l00005">PhaseSpaceParameterisation.cpp:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

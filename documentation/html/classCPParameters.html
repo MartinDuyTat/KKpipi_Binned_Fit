@@ -77,15 +77,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a67c2de17f97c208151d1033b3648302f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad43e983fd9026f23582d223f917eb12d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPParameters.html#ad43e983fd9026f23582d223f917eb12d">GetCPParameters</a> (double &amp;xplus, double &amp;xminus, double &amp;yplus, double &amp;yminus) const</td></tr>
 <tr class="separator:ad43e983fd9026f23582d223f917eb12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91f4b4cd7551f2109052b15507ea6113"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPParameters.html#a91f4b4cd7551f2109052b15507ea6113">SetError</a> (double xplus, double xminus, double yplus, double yminus)</td></tr>
-<tr class="separator:a91f4b4cd7551f2109052b15507ea6113"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53d9acf62f855106d592ec45ae09a8dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPParameters.html#a53d9acf62f855106d592ec45ae09a8dc">GetError</a> (double &amp;xplus, double &amp;xminus, double &amp;yplus, double &amp;yminus) const</td></tr>
-<tr class="separator:a53d9acf62f855106d592ec45ae09a8dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd67816326f60153499c337833c6ea5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPParameters.html#afd67816326f60153499c337833c6ea5f">SetCov</a> (double *CovMatrix)</td></tr>
+<tr class="separator:afd67816326f60153499c337833c6ea5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96ff3a0514948df0fe7757dee53984b5"><td class="memItemLeft" align="right" valign="top">TMatrixD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPParameters.html#a96ff3a0514948df0fe7757dee53984b5">GetCov</a> () const</td></tr>
+<tr class="separator:a96ff3a0514948df0fe7757dee53984b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classCPParameters.html">CPParameters</a> is a class that contains the CP parameters x and y </p>
 
-<p class="definition">Definition at line <a class="el" href="CPParameters_8h_source.html#l00009">9</a> of file <a class="el" href="CPParameters_8h_source.html">CPParameters.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CPParameters_8h_source.html#l00011">11</a> of file <a class="el" href="CPParameters_8h_source.html">CPParameters.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a67c2de17f97c208151d1033b3648302f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67c2de17f97c208151d1033b3648302f">&#9670;&nbsp;</a></span>CPParameters()</h2>
@@ -134,11 +134,36 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="CPParameters_8cpp_source.html#l00005">5</a> of file <a class="el" href="CPParameters_8cpp_source.html">CPParameters.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CPParameters_8cpp_source.html#l00006">6</a> of file <a class="el" href="CPParameters_8cpp_source.html">CPParameters.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a96ff3a0514948df0fe7757dee53984b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ff3a0514948df0fe7757dee53984b5">&#9670;&nbsp;</a></span>GetCov()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TMatrixD CPParameters::GetCov </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function for getting CP parameter covariance matrix </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">CovMatrix</td><td>TMatrixD object with covariance matrix </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="CPParameters_8cpp_source.html#l00021">21</a> of file <a class="el" href="CPParameters_8cpp_source.html">CPParameters.cpp</a>.</p>
+
+</div>
+</div>
 <a id="ad43e983fd9026f23582d223f917eb12d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad43e983fd9026f23582d223f917eb12d">&#9670;&nbsp;</a></span>GetCPParameters()</h2>
 
@@ -186,109 +211,33 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="CPParameters_8cpp_source.html#l00008">8</a> of file <a class="el" href="CPParameters_8cpp_source.html">CPParameters.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CPParameters_8cpp_source.html#l00009">9</a> of file <a class="el" href="CPParameters_8cpp_source.html">CPParameters.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a53d9acf62f855106d592ec45ae09a8dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53d9acf62f855106d592ec45ae09a8dc">&#9670;&nbsp;</a></span>GetError()</h2>
+<a id="afd67816326f60153499c337833c6ea5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd67816326f60153499c337833c6ea5f">&#9670;&nbsp;</a></span>SetCov()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CPParameters::GetError </td>
+          <td class="memname">void CPParameters::SetCov </td>
           <td>(</td>
-          <td class="paramtype">double &amp;&#160;</td>
-          <td class="paramname"><em>xplus</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>CovMatrix</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">double &amp;&#160;</td>
-          <td class="paramname"><em>xminus</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double &amp;&#160;</td>
-          <td class="paramname"><em>yplus</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double &amp;&#160;</td>
-          <td class="paramname"><em>yminus</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function for getting CP parameter errors </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Function for setting CP parameter covariance matrix </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xplus</td><td>xplus error </td></tr>
-    <tr><td class="paramname">xminus</td><td>xminus error </td></tr>
-    <tr><td class="paramname">yplus</td><td>yplus error </td></tr>
-    <tr><td class="paramname">yminus</td><td>yminus error </td></tr>
+    <tr><td class="paramname">CovMatrix</td><td>Array with covariance matrix </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="CPParameters_8cpp_source.html#l00022">22</a> of file <a class="el" href="CPParameters_8cpp_source.html">CPParameters.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a91f4b4cd7551f2109052b15507ea6113"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91f4b4cd7551f2109052b15507ea6113">&#9670;&nbsp;</a></span>SetError()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void CPParameters::SetError </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>xplus</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>xminus</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>yplus</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>yminus</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Function for setting CP parameter errors </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xplus</td><td>xplus error </td></tr>
-    <tr><td class="paramname">xminus</td><td>xminus error </td></tr>
-    <tr><td class="paramname">yplus</td><td>yplus error </td></tr>
-    <tr><td class="paramname">yminus</td><td>yminus error </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="CPParameters_8cpp_source.html#l00015">15</a> of file <a class="el" href="CPParameters_8cpp_source.html">CPParameters.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CPParameters_8cpp_source.html#l00016">16</a> of file <a class="el" href="CPParameters_8cpp_source.html">CPParameters.cpp</a>.</p>
 
 </div>
 </div>

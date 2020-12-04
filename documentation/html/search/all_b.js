@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['phasespaceparameterisation_54',['PhaseSpaceParameterisation',['../classPhaseSpaceParameterisation.html',1,'PhaseSpaceParameterisation'],['../classPhaseSpaceParameterisation.html#a9c002f4fb258011d8d0cbc9cd4192985',1,'PhaseSpaceParameterisation::PhaseSpaceParameterisation()']]],
-  ['phasespaceparameterisation_2ecpp_55',['PhaseSpaceParameterisation.cpp',['../PhaseSpaceParameterisation_8cpp.html',1,'']]],
-  ['phasespaceparameterisation_2eh_56',['PhaseSpaceParameterisation.h',['../PhaseSpaceParameterisation_8h.html',1,'']]],
-  ['predict_57',['Predict',['../classBinList.html#ab2df617dc6a9589fd5b4cb5b216d40da',1,'BinList']]]
+  ['naivephasespace_71',['NaivePhaseSpace',['../classNaivePhaseSpace.html',1,'NaivePhaseSpace'],['../classNaivePhaseSpace.html#a93db8c7a5239ef13a22fab477ca44c05',1,'NaivePhaseSpace::NaivePhaseSpace()']]],
+  ['naivephasespace_2ecpp_72',['NaivePhaseSpace.cpp',['../NaivePhaseSpace_8cpp.html',1,'']]],
+  ['naivephasespace_2eh_73',['NaivePhaseSpace.h',['../NaivePhaseSpace_8h.html',1,'']]],
+  ['numberbins_74',['NumberBins',['../classBinList.html#a7f4fe374927c94b25c8f3f1abb1886ed',1,'BinList']]],
+  ['numberevents_75',['NumberEvents',['../classEventList.html#a132a9f61af3d5de6060b69f09dccbfe7',1,'EventList']]],
+  ['numberofbins_76',['NumberOfBins',['../classNaivePhaseSpace.html#ae0be7234896241a329f2122c62ef00ee',1,'NaivePhaseSpace::NumberOfBins()'],['../classPhaseSpaceParameterisation.html#a1d3983cc2a3480c2763e97cdada03839',1,'PhaseSpaceParameterisation::NumberOfBins()'],['../classRectangularPhaseSpace.html#a2c5558b3cdaefbaf8f4740878a178588',1,'RectangularPhaseSpace::NumberOfBins()'],['../classSophisticatedPhaseSpace.html#abcfe5b971cda6610342886e0dce407d8',1,'SophisticatedPhaseSpace::NumberOfBins()']]],
+  ['numberofregions_77',['NumberOfRegions',['../classSophisticatedPhaseSpace.html#a061748f3a3487efb9714be25db30ec27',1,'SophisticatedPhaseSpace']]]
 ];

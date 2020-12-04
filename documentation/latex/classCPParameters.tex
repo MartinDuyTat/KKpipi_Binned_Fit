@@ -11,16 +11,16 @@
 \item 
 void \mbox{\hyperlink{classCPParameters_ad43e983fd9026f23582d223f917eb12d}{Get\+CPParameters}} (double \&xplus, double \&xminus, double \&yplus, double \&yminus) const
 \item 
-void \mbox{\hyperlink{classCPParameters_a91f4b4cd7551f2109052b15507ea6113}{Set\+Error}} (double xplus, double xminus, double yplus, double yminus)
+void \mbox{\hyperlink{classCPParameters_afd67816326f60153499c337833c6ea5f}{Set\+Cov}} (double $\ast$Cov\+Matrix)
 \item 
-void \mbox{\hyperlink{classCPParameters_a53d9acf62f855106d592ec45ae09a8dc}{Get\+Error}} (double \&xplus, double \&xminus, double \&yplus, double \&yminus) const
+TMatrixD \mbox{\hyperlink{classCPParameters_a96ff3a0514948df0fe7757dee53984b5}{Get\+Cov}} () const
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \mbox{\hyperlink{classCPParameters}{CPParameters}} is a class that contains the CP parameters x and y 
 
-Definition at line 9 of file CPParameters.\+h.
+Definition at line 11 of file CPParameters.\+h.
 
 
 
@@ -44,11 +44,26 @@ Constructor that takes the CP parameters, x and y
 \end{DoxyParams}
 
 
-Definition at line 5 of file CPParameters.\+cpp.
+Definition at line 6 of file CPParameters.\+cpp.
 
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCPParameters_a96ff3a0514948df0fe7757dee53984b5}\label{classCPParameters_a96ff3a0514948df0fe7757dee53984b5}} 
+\index{CPParameters@{CPParameters}!GetCov@{GetCov}}
+\index{GetCov@{GetCov}!CPParameters@{CPParameters}}
+\doxysubsubsection{\texorpdfstring{GetCov()}{GetCov()}}
+{\footnotesize\ttfamily TMatrixD CPParameters\+::\+Get\+Cov (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Function for getting CP parameter covariance matrix 
+\begin{DoxyParams}{Parameters}
+{\em Cov\+Matrix} & TMatrixD object with covariance matrix \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 21 of file CPParameters.\+cpp.
+
 \mbox{\Hypertarget{classCPParameters_ad43e983fd9026f23582d223f917eb12d}\label{classCPParameters_ad43e983fd9026f23582d223f917eb12d}} 
 \index{CPParameters@{CPParameters}!GetCPParameters@{GetCPParameters}}
 \index{GetCPParameters@{GetCPParameters}!CPParameters@{CPParameters}}
@@ -68,49 +83,22 @@ Function for getting CP parameters
 \end{DoxyParams}
 
 
-Definition at line 8 of file CPParameters.\+cpp.
+Definition at line 9 of file CPParameters.\+cpp.
 
-\mbox{\Hypertarget{classCPParameters_a53d9acf62f855106d592ec45ae09a8dc}\label{classCPParameters_a53d9acf62f855106d592ec45ae09a8dc}} 
-\index{CPParameters@{CPParameters}!GetError@{GetError}}
-\index{GetError@{GetError}!CPParameters@{CPParameters}}
-\doxysubsubsection{\texorpdfstring{GetError()}{GetError()}}
-{\footnotesize\ttfamily void CPParameters\+::\+Get\+Error (\begin{DoxyParamCaption}\item[{double \&}]{xplus,  }\item[{double \&}]{xminus,  }\item[{double \&}]{yplus,  }\item[{double \&}]{yminus }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classCPParameters_afd67816326f60153499c337833c6ea5f}\label{classCPParameters_afd67816326f60153499c337833c6ea5f}} 
+\index{CPParameters@{CPParameters}!SetCov@{SetCov}}
+\index{SetCov@{SetCov}!CPParameters@{CPParameters}}
+\doxysubsubsection{\texorpdfstring{SetCov()}{SetCov()}}
+{\footnotesize\ttfamily void CPParameters\+::\+Set\+Cov (\begin{DoxyParamCaption}\item[{double $\ast$}]{Cov\+Matrix }\end{DoxyParamCaption})}
 
-Function for getting CP parameter errors 
+Function for setting CP parameter covariance matrix 
 \begin{DoxyParams}{Parameters}
-{\em xplus} & xplus error \\
-\hline
-{\em xminus} & xminus error \\
-\hline
-{\em yplus} & yplus error \\
-\hline
-{\em yminus} & yminus error \\
+{\em Cov\+Matrix} & Array with covariance matrix \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 22 of file CPParameters.\+cpp.
-
-\mbox{\Hypertarget{classCPParameters_a91f4b4cd7551f2109052b15507ea6113}\label{classCPParameters_a91f4b4cd7551f2109052b15507ea6113}} 
-\index{CPParameters@{CPParameters}!SetError@{SetError}}
-\index{SetError@{SetError}!CPParameters@{CPParameters}}
-\doxysubsubsection{\texorpdfstring{SetError()}{SetError()}}
-{\footnotesize\ttfamily void CPParameters\+::\+Set\+Error (\begin{DoxyParamCaption}\item[{double}]{xplus,  }\item[{double}]{xminus,  }\item[{double}]{yplus,  }\item[{double}]{yminus }\end{DoxyParamCaption})}
-
-Function for setting CP parameter errors 
-\begin{DoxyParams}{Parameters}
-{\em xplus} & xplus error \\
-\hline
-{\em xminus} & xminus error \\
-\hline
-{\em yplus} & yplus error \\
-\hline
-{\em yminus} & yminus error \\
-\hline
-\end{DoxyParams}
-
-
-Definition at line 15 of file CPParameters.\+cpp.
+Definition at line 16 of file CPParameters.\+cpp.
 
 
 

@@ -1,0 +1,86 @@
+\hypertarget{classFitGamma}{}\doxysection{Fit\+Gamma Class Reference}
+\label{classFitGamma}\index{FitGamma@{FitGamma}}
+
+
+{\ttfamily \#include $<$Fit\+Gamma.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFitGamma_a7be38c3e27eaaac4bcd8a1d5b8a206e8}{Fit\+Gamma}} (\mbox{\hyperlink{classCPParameters}{CPParameters}} cpparameters)
+\item 
+void \mbox{\hyperlink{classFitGamma_aac43e08670e52001c1be27450a259b15}{Do\+Fit}} (\mbox{\hyperlink{classGamma}{Gamma}} \&Gamma\+Params)
+\item 
+void \mbox{\hyperlink{classFitGamma_aaac6b16cd410a64bd212fe4289bda629}{Plot\+Contours}} (std\+::string Filename\+\_\+r\+B\+\_\+deltaB, std\+::string Filename\+\_\+delta\+B\+\_\+gamma, std\+::string Filename\+\_\+gamma\+\_\+rB, unsigned int npoints) const
+\item 
+\mbox{\hyperlink{classFitGamma_a2f094d84091333fd92885d676d63ae7a}{$\sim$\+Fit\+Gamma}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classFitGamma}{Fit\+Gamma}} is a class for maximising the likelihood and obtaining the CP violation parameters $r_B$, $\delta_B$ and $\gamma$ 
+
+Definition at line 15 of file Fit\+Gamma.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFitGamma_a7be38c3e27eaaac4bcd8a1d5b8a206e8}\label{classFitGamma_a7be38c3e27eaaac4bcd8a1d5b8a206e8}} 
+\index{FitGamma@{FitGamma}!FitGamma@{FitGamma}}
+\index{FitGamma@{FitGamma}!FitGamma@{FitGamma}}
+\doxysubsubsection{\texorpdfstring{FitGamma()}{FitGamma()}}
+{\footnotesize\ttfamily Fit\+Gamma\+::\+Fit\+Gamma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCPParameters}{CPParameters}}}]{cpparameters }\end{DoxyParamCaption})}
+
+Constructor that takes in a \mbox{\hyperlink{classCPParameters}{CPParameters}} object with fitted $x_\pm$ and $y_\pm$ 
+\begin{DoxyParams}{Parameters}
+{\em cpparameters} & A \mbox{\hyperlink{classCPParameters}{CPParameters}} object with fitted $x_\pm$ and $y_\pm$ and their covariance matrix \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file Fit\+Gamma.\+cpp.
+
+\mbox{\Hypertarget{classFitGamma_a2f094d84091333fd92885d676d63ae7a}\label{classFitGamma_a2f094d84091333fd92885d676d63ae7a}} 
+\index{FitGamma@{FitGamma}!````~FitGamma@{$\sim$FitGamma}}
+\index{````~FitGamma@{$\sim$FitGamma}!FitGamma@{FitGamma}}
+\doxysubsubsection{\texorpdfstring{$\sim$FitGamma()}{~FitGamma()}}
+{\footnotesize\ttfamily Fit\+Gamma\+::$\sim$\+Fit\+Gamma (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor to kill the minimiser 
+
+Definition at line 81 of file Fit\+Gamma.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFitGamma_aac43e08670e52001c1be27450a259b15}\label{classFitGamma_aac43e08670e52001c1be27450a259b15}} 
+\index{FitGamma@{FitGamma}!DoFit@{DoFit}}
+\index{DoFit@{DoFit}!FitGamma@{FitGamma}}
+\doxysubsubsection{\texorpdfstring{DoFit()}{DoFit()}}
+{\footnotesize\ttfamily void Fit\+Gamma\+::\+Do\+Fit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGamma}{Gamma}} \&}]{Gamma\+Params }\end{DoxyParamCaption})}
+
+Function for doing fit and returning the CP violation parameters (by reference) 
+\begin{DoxyParams}{Parameters}
+{\em cpparameters} & Initial guess of $r_B$, $\delta_B$ and $\gamma$ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 16 of file Fit\+Gamma.\+cpp.
+
+\mbox{\Hypertarget{classFitGamma_aaac6b16cd410a64bd212fe4289bda629}\label{classFitGamma_aaac6b16cd410a64bd212fe4289bda629}} 
+\index{FitGamma@{FitGamma}!PlotContours@{PlotContours}}
+\index{PlotContours@{PlotContours}!FitGamma@{FitGamma}}
+\doxysubsubsection{\texorpdfstring{PlotContours()}{PlotContours()}}
+{\footnotesize\ttfamily void Fit\+Gamma\+::\+Plot\+Contours (\begin{DoxyParamCaption}\item[{std\+::string}]{Filename\+\_\+r\+B\+\_\+deltaB,  }\item[{std\+::string}]{Filename\+\_\+delta\+B\+\_\+gamma,  }\item[{std\+::string}]{Filename\+\_\+gamma\+\_\+rB,  }\item[{unsigned int}]{npoints }\end{DoxyParamCaption}) const}
+
+Function for plotting contours after fitting 
+
+Definition at line 38 of file Fit\+Gamma.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/\mbox{\hyperlink{FitGamma_8h}{Fit\+Gamma.\+h}}\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/\mbox{\hyperlink{FitGamma_8cpp}{Fit\+Gamma.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,222 @@
+\hypertarget{classSophisticatedPhaseSpace}{}\doxysection{Sophisticated\+Phase\+Space Class Reference}
+\label{classSophisticatedPhaseSpace}\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+
+
+{\ttfamily \#include $<$Sophisticated\+Phase\+Space.\+h$>$}
+
+Inheritance diagram for Sophisticated\+Phase\+Space\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSophisticatedPhaseSpace}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSophisticatedPhaseSpace_a1401d3271577ed4c10da00195768c91e}{Sophisticated\+Phase\+Space}} (int nbins)
+\item 
+\mbox{\hyperlink{classSophisticatedPhaseSpace_aa9576b6f58467e3a159a7d8c0bdee63c}{$\sim$\+Sophisticated\+Phase\+Space}} ()
+\item 
+void \mbox{\hyperlink{classSophisticatedPhaseSpace_abcaddff2035e782f1be127c28c8fd34e}{x3x4\+Which\+Bin\+Grid}} (const \mbox{\hyperlink{classEvent}{Event}} \&event, int \&x3bin, int \&x4bin) const
+\item 
+void \mbox{\hyperlink{classSophisticatedPhaseSpace_a6fcc75e68d79697b51a77bdaab274407}{Load\+Amplitude\+Model}} (const std\+::string \&Damplitude, const std\+::string \&DBARamplitude)
+\item 
+double \mbox{\hyperlink{classSophisticatedPhaseSpace_a86d51d6d110272a66092d102d1960368}{Strong\+Phase}} (const \mbox{\hyperlink{classEvent}{Event}} \&event) const
+\item 
+void \mbox{\hyperlink{classSophisticatedPhaseSpace_a7f2370e7e2a7ea29d7dcfd776b674297}{Calculate\+Strong\+Phases}} (std\+::string Bplus\+Filename, std\+::string Bminus\+Filename, std\+::string Mean\+Filename, std\+::string RMSFilename) const
+\item 
+void \mbox{\hyperlink{classSophisticatedPhaseSpace_aebd939bd27fcf9acf98dcbd9ddf15c24}{Read\+Average\+Strong\+Phases}} (const std\+::string \&filename)
+\item 
+void \mbox{\hyperlink{classSophisticatedPhaseSpace_aa04abd23b2edc300d08afc05ee592da5}{Clear\+Average\+Strong\+Phases}} ()
+\item 
+int \mbox{\hyperlink{classSophisticatedPhaseSpace_a061748f3a3487efb9714be25db30ec27}{Number\+Of\+Regions}} () const
+\item 
+int \mbox{\hyperlink{classSophisticatedPhaseSpace_a98741198bf703e913241663581d9020c}{Which\+Region}} (const std\+::vector$<$ double $>$ \&X) const
+\item 
+int \mbox{\hyperlink{classSophisticatedPhaseSpace_a1a5aa1d0b2f26300b8dfff8a97490f0d}{Which\+Bin}} (const \mbox{\hyperlink{classEvent}{Event}} \&event) const
+\item 
+int \mbox{\hyperlink{classSophisticatedPhaseSpace_abcfe5b971cda6610342886e0dce407d8}{Number\+Of\+Bins}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classSophisticatedPhaseSpace}{Sophisticated\+Phase\+Space}} is a class that contains a binning scheme using the rectangular coordinates in \mbox{\hyperlink{classRectangularPhaseSpace}{Rectangular\+Phase\+Space}}, but the binning is based on the strong phases obtained using the LHCb amplitude model 
+
+Definition at line 17 of file Sophisticated\+Phase\+Space.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_a1401d3271577ed4c10da00195768c91e}\label{classSophisticatedPhaseSpace_a1401d3271577ed4c10da00195768c91e}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{SophisticatedPhaseSpace()}{SophisticatedPhaseSpace()}}
+{\footnotesize\ttfamily Sophisticated\+Phase\+Space\+::\+Sophisticated\+Phase\+Space (\begin{DoxyParamCaption}\item[{int}]{nbins }\end{DoxyParamCaption})}
+
+Constructor that calls the corresponding constructor in \mbox{\hyperlink{classRectangularPhaseSpace}{Rectangular\+Phase\+Space}} 
+\begin{DoxyParams}{Parameters}
+{\em nbins} & Number of bins in total \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 16 of file Sophisticated\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_aa9576b6f58467e3a159a7d8c0bdee63c}\label{classSophisticatedPhaseSpace_aa9576b6f58467e3a159a7d8c0bdee63c}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!````~SophisticatedPhaseSpace@{$\sim$SophisticatedPhaseSpace}}
+\index{````~SophisticatedPhaseSpace@{$\sim$SophisticatedPhaseSpace}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{$\sim$SophisticatedPhaseSpace()}{~SophisticatedPhaseSpace()}}
+{\footnotesize\ttfamily Sophisticated\+Phase\+Space\+::$\sim$\+Sophisticated\+Phase\+Space (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor that deletes the amplitude model 
+
+Definition at line 19 of file Sophisticated\+Phase\+Space.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_a7f2370e7e2a7ea29d7dcfd776b674297}\label{classSophisticatedPhaseSpace_a7f2370e7e2a7ea29d7dcfd776b674297}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!CalculateStrongPhases@{CalculateStrongPhases}}
+\index{CalculateStrongPhases@{CalculateStrongPhases}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{CalculateStrongPhases()}{CalculateStrongPhases()}}
+{\footnotesize\ttfamily void Sophisticated\+Phase\+Space\+::\+Calculate\+Strong\+Phases (\begin{DoxyParamCaption}\item[{std\+::string}]{Bplus\+Filename,  }\item[{std\+::string}]{Bminus\+Filename,  }\item[{std\+::string}]{Mean\+Filename,  }\item[{std\+::string}]{RMSFilename }\end{DoxyParamCaption}) const}
+
+Function for calculating the average strong phase and its standard deviation in each bin in the $(x_3, x_4)$ plane 
+\begin{DoxyParams}{Parameters}
+{\em Bplus\+Filename} & Filename with ROOT file with $B^+$ events in Amp\+Gen format \\
+\hline
+{\em Bminus\+Filename} & Filename with ROOT file with $B^-$ events in Amp\+Gen format \\
+\hline
+{\em Mean\+Filename} & Filename of CSV file that contains the mean strong phases \\
+\hline
+{\em RMSFilename} & Filename of CSV file that contains the RMS of phases \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 44 of file Sophisticated\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_aa04abd23b2edc300d08afc05ee592da5}\label{classSophisticatedPhaseSpace_aa04abd23b2edc300d08afc05ee592da5}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!ClearAverageStrongPhases@{ClearAverageStrongPhases}}
+\index{ClearAverageStrongPhases@{ClearAverageStrongPhases}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{ClearAverageStrongPhases()}{ClearAverageStrongPhases()}}
+{\footnotesize\ttfamily void Sophisticated\+Phase\+Space\+::\+Clear\+Average\+Strong\+Phases (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function for clearing out vector of phases to free up memory 
+
+Definition at line 122 of file Sophisticated\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_a6fcc75e68d79697b51a77bdaab274407}\label{classSophisticatedPhaseSpace_a6fcc75e68d79697b51a77bdaab274407}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!LoadAmplitudeModel@{LoadAmplitudeModel}}
+\index{LoadAmplitudeModel@{LoadAmplitudeModel}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{LoadAmplitudeModel()}{LoadAmplitudeModel()}}
+{\footnotesize\ttfamily void Sophisticated\+Phase\+Space\+::\+Load\+Amplitude\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{Damplitude,  }\item[{const std\+::string \&}]{DBARamplitude }\end{DoxyParamCaption})}
+
+Function for loading amplitude model 
+
+Definition at line 35 of file Sophisticated\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_abcfe5b971cda6610342886e0dce407d8}\label{classSophisticatedPhaseSpace_abcfe5b971cda6610342886e0dce407d8}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!NumberOfBins@{NumberOfBins}}
+\index{NumberOfBins@{NumberOfBins}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{NumberOfBins()}{NumberOfBins()}}
+{\footnotesize\ttfamily int Sophisticated\+Phase\+Space\+::\+Number\+Of\+Bins (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Function that returns the number of bins in the binning scheme \begin{DoxyReturn}{Returns}
+Number of bins 
+\end{DoxyReturn}
+
+
+Definition at line 194 of file Sophisticated\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_a061748f3a3487efb9714be25db30ec27}\label{classSophisticatedPhaseSpace_a061748f3a3487efb9714be25db30ec27}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!NumberOfRegions@{NumberOfRegions}}
+\index{NumberOfRegions@{NumberOfRegions}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{NumberOfRegions()}{NumberOfRegions()}}
+{\footnotesize\ttfamily int Sophisticated\+Phase\+Space\+::\+Number\+Of\+Regions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Function that returns the number of regions in the $(x_3, x_4)$ plane 
+
+Definition at line 126 of file Sophisticated\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_aebd939bd27fcf9acf98dcbd9ddf15c24}\label{classSophisticatedPhaseSpace_aebd939bd27fcf9acf98dcbd9ddf15c24}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!ReadAverageStrongPhases@{ReadAverageStrongPhases}}
+\index{ReadAverageStrongPhases@{ReadAverageStrongPhases}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{ReadAverageStrongPhases()}{ReadAverageStrongPhases()}}
+{\footnotesize\ttfamily void Sophisticated\+Phase\+Space\+::\+Read\+Average\+Strong\+Phases (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+Function for reading in average strong phases in the $(x_1, x_2, x_5)$ volume from a file and storing them in a vector 
+\begin{DoxyParams}{Parameters}
+{\em filename} & Filename of file with mean strong phases \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 96 of file Sophisticated\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_a86d51d6d110272a66092d102d1960368}\label{classSophisticatedPhaseSpace_a86d51d6d110272a66092d102d1960368}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!StrongPhase@{StrongPhase}}
+\index{StrongPhase@{StrongPhase}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{StrongPhase()}{StrongPhase()}}
+{\footnotesize\ttfamily double Sophisticated\+Phase\+Space\+::\+Strong\+Phase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEvent}{Event}} \&}]{event }\end{DoxyParamCaption}) const}
+
+Function for calculating the strong phase difference of an event 
+
+Definition at line 39 of file Sophisticated\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_a1a5aa1d0b2f26300b8dfff8a97490f0d}\label{classSophisticatedPhaseSpace_a1a5aa1d0b2f26300b8dfff8a97490f0d}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!WhichBin@{WhichBin}}
+\index{WhichBin@{WhichBin}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{WhichBin()}{WhichBin()}}
+{\footnotesize\ttfamily int Sophisticated\+Phase\+Space\+::\+Which\+Bin (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEvent}{Event}} \&}]{event }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Function that determines which bin an event belongs to, based on the lookup table The first m\+\_\+binregion regions are separate bins and assinged to the first m\+\_\+binregion bins without using a lookup table 
+\begin{DoxyParams}{Parameters}
+{\em event} & The event we want to determine the bin of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classBin}{Bin}} number 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPhaseSpaceParameterisation_abce91b47a2ba67b3d00f6c998aa306ee}{Phase\+Space\+Parameterisation}}.
+
+
+
+Definition at line 174 of file Sophisticated\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_a98741198bf703e913241663581d9020c}\label{classSophisticatedPhaseSpace_a98741198bf703e913241663581d9020c}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!WhichRegion@{WhichRegion}}
+\index{WhichRegion@{WhichRegion}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{WhichRegion()}{WhichRegion()}}
+{\footnotesize\ttfamily int Sophisticated\+Phase\+Space\+::\+Which\+Region (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{X }\end{DoxyParamCaption}) const}
+
+Function that determines which region in the $(x_3, x_4)$ plane an event belongs to 
+\begin{DoxyParams}{Parameters}
+{\em event} & Vector with four-\/momenta of the event \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Region number 
+\end{DoxyReturn}
+
+
+Definition at line 146 of file Sophisticated\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classSophisticatedPhaseSpace_abcaddff2035e782f1be127c28c8fd34e}\label{classSophisticatedPhaseSpace_abcaddff2035e782f1be127c28c8fd34e}} 
+\index{SophisticatedPhaseSpace@{SophisticatedPhaseSpace}!x3x4WhichBinGrid@{x3x4WhichBinGrid}}
+\index{x3x4WhichBinGrid@{x3x4WhichBinGrid}!SophisticatedPhaseSpace@{SophisticatedPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{x3x4WhichBinGrid()}{x3x4WhichBinGrid()}}
+{\footnotesize\ttfamily void Sophisticated\+Phase\+Space\+::x3x4\+Which\+Bin\+Grid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEvent}{Event}} \&}]{event,  }\item[{int \&}]{x3bin,  }\item[{int \&}]{x4bin }\end{DoxyParamCaption}) const}
+
+Function for binning of the $(x_3, x_4)$ plane on a grid 
+
+Definition at line 25 of file Sophisticated\+Phase\+Space.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/\mbox{\hyperlink{SophisticatedPhaseSpace_8h}{Sophisticated\+Phase\+Space.\+h}}\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/\mbox{\hyperlink{SophisticatedPhaseSpace_8cpp}{Sophisticated\+Phase\+Space.\+cpp}}\end{DoxyCompactItemize}

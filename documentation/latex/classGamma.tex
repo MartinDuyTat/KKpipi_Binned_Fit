@@ -1,0 +1,104 @@
+\hypertarget{classGamma}{}\doxysection{Gamma Class Reference}
+\label{classGamma}\index{Gamma@{Gamma}}
+
+
+{\ttfamily \#include $<$Gamma.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGamma_a956911d0f3f3059d02dfba41687e2da9}{Gamma}} (double rB, double deltaB, double gamma)
+\item 
+void \mbox{\hyperlink{classGamma_aa76af8868ec57a7f5bd42a65e77d2896}{Get\+Gamma\+Parameters}} (double \&rB, double \&deltaB, double \&gamma) const
+\item 
+void \mbox{\hyperlink{classGamma_ae32d49cea928383c595963f5a0454ae5}{Set\+Cov}} (double $\ast$Cov\+Matrix)
+\item 
+TMatrixD \mbox{\hyperlink{classGamma_abe59fcd94361aa644fba044c5e45682f}{Get\+Cov}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classGamma}{Gamma}} is a class that contains the parameters $r_B$, $\delta_B$ and $\gamma$ and their covariance matrix 
+
+Definition at line 11 of file Gamma.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGamma_a956911d0f3f3059d02dfba41687e2da9}\label{classGamma_a956911d0f3f3059d02dfba41687e2da9}} 
+\index{Gamma@{Gamma}!Gamma@{Gamma}}
+\index{Gamma@{Gamma}!Gamma@{Gamma}}
+\doxysubsubsection{\texorpdfstring{Gamma()}{Gamma()}}
+{\footnotesize\ttfamily Gamma\+::\+Gamma (\begin{DoxyParamCaption}\item[{double}]{rB,  }\item[{double}]{deltaB,  }\item[{double}]{gamma }\end{DoxyParamCaption})}
+
+Constructor that takes the CP parameters $r_B$, $\delta_B$ and $\gamma$ 
+\begin{DoxyParams}{Parameters}
+{\em rB} & $r_B$ \\
+\hline
+{\em deltaB} & $\delta_B$ \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 7 of file Gamma.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGamma_abe59fcd94361aa644fba044c5e45682f}\label{classGamma_abe59fcd94361aa644fba044c5e45682f}} 
+\index{Gamma@{Gamma}!GetCov@{GetCov}}
+\index{GetCov@{GetCov}!Gamma@{Gamma}}
+\doxysubsubsection{\texorpdfstring{GetCov()}{GetCov()}}
+{\footnotesize\ttfamily TMatrixD Gamma\+::\+Get\+Cov (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Function for getting CP parameter covariance matrix 
+\begin{DoxyParams}{Parameters}
+{\em Cov\+Matrix} & TMatrixD object with covariance matrix \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 21 of file Gamma.\+cpp.
+
+\mbox{\Hypertarget{classGamma_aa76af8868ec57a7f5bd42a65e77d2896}\label{classGamma_aa76af8868ec57a7f5bd42a65e77d2896}} 
+\index{Gamma@{Gamma}!GetGammaParameters@{GetGammaParameters}}
+\index{GetGammaParameters@{GetGammaParameters}!Gamma@{Gamma}}
+\doxysubsubsection{\texorpdfstring{GetGammaParameters()}{GetGammaParameters()}}
+{\footnotesize\ttfamily void Gamma\+::\+Get\+Gamma\+Parameters (\begin{DoxyParamCaption}\item[{double \&}]{rB,  }\item[{double \&}]{deltaB,  }\item[{double \&}]{gamma }\end{DoxyParamCaption}) const}
+
+Function for getting CP parameters 
+\begin{DoxyParams}{Parameters}
+{\em rB} & $r_B$ \\
+\hline
+{\em deltaB} & $\delta_B$ \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 10 of file Gamma.\+cpp.
+
+\mbox{\Hypertarget{classGamma_ae32d49cea928383c595963f5a0454ae5}\label{classGamma_ae32d49cea928383c595963f5a0454ae5}} 
+\index{Gamma@{Gamma}!SetCov@{SetCov}}
+\index{SetCov@{SetCov}!Gamma@{Gamma}}
+\doxysubsubsection{\texorpdfstring{SetCov()}{SetCov()}}
+{\footnotesize\ttfamily void Gamma\+::\+Set\+Cov (\begin{DoxyParamCaption}\item[{double $\ast$}]{Cov\+Matrix }\end{DoxyParamCaption})}
+
+Function for setting CP parameter covariance matrix 
+\begin{DoxyParams}{Parameters}
+{\em Cov\+Matrix} & Array with covariance matrix \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 16 of file Gamma.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/\mbox{\hyperlink{Gamma_8h}{Gamma.\+h}}\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/\mbox{\hyperlink{Gamma_8cpp}{Gamma.\+cpp}}\end{DoxyCompactItemize}

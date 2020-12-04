@@ -77,16 +77,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5a40dd4708297f7031e29b39e039ae10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9d31cbf9c6ec3c0cd8a68739f6b66e7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvent.html#aa9d31cbf9c6ec3c0cd8a68739f6b66e7">Event</a> (std::vector&lt; double &gt; p)</td></tr>
 <tr class="separator:aa9d31cbf9c6ec3c0cd8a68739f6b66e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06e0f9eb04ef0c54725d05edb2a9ef63"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvent.html#a06e0f9eb04ef0c54725d05edb2a9ef63">GetEventVector</a> ()</td></tr>
-<tr class="separator:a06e0f9eb04ef0c54725d05edb2a9ef63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff5c70ba4698f744b50c57112a686890"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvent.html#aff5c70ba4698f744b50c57112a686890">GetEventVector</a> () const</td></tr>
+<tr class="separator:aff5c70ba4698f744b50c57112a686890"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbd01f1d751d550edfcb85e2051169e7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvent.html#abbd01f1d751d550edfcb85e2051169e7">Event</a> (const std::vector&lt; TLorentzVector &gt; &amp;p)</td></tr>
 <tr class="separator:abbd01f1d751d550edfcb85e2051169e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ac9c1332585ea64f2f51cf9d69936b3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvent.html#a8ac9c1332585ea64f2f51cf9d69936b3">GetInvMass2</a> (int particle1, int particle2) const</td></tr>
 <tr class="separator:a8ac9c1332585ea64f2f51cf9d69936b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5bc86662635e5c7ac463f21eda617ee"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvent.html#ae5bc86662635e5c7ac463f21eda617ee">GetInvMass3</a> (int particle1, int particle2, int particle3) const</td></tr>
 <tr class="separator:ae5bc86662635e5c7ac463f21eda617ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbeec371d2ccc0ad73045fb203dbd7dc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvent.html#afbeec371d2ccc0ad73045fb203dbd7dc">GetEvent</a> () const</td></tr>
-<tr class="separator:afbeec371d2ccc0ad73045fb203dbd7dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classEvent.html">Event</a> is a class for storing the four-momenta of daugher particles in a D-&gt;KKpipi decay. </p>
@@ -130,7 +128,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructor that takes a vector of four-momenta </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p</td><td>Four-momenta in the form (E, px, py, pz), in the order K+ K- pi+ pi- </td></tr>
+    <tr><td class="paramname">p</td><td>Four-momenta in the form (px, py, pz, E), in the order K+ K- pi+ pi- </td></tr>
   </table>
   </dd>
 </dl>
@@ -166,37 +164,17 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="afbeec371d2ccc0ad73045fb203dbd7dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbeec371d2ccc0ad73045fb203dbd7dc">&#9670;&nbsp;</a></span>GetEvent()</h2>
+<a id="aff5c70ba4698f744b50c57112a686890"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff5c70ba4698f744b50c57112a686890">&#9670;&nbsp;</a></span>GetEventVector()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; double &gt; Event::GetEvent </td>
+          <td class="memname">const std::vector&lt; double &gt; &amp; Event::GetEventVector </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Function for getting vector of four-momenta of event </p><dl class="section return"><dt>Returns</dt><dd>Vector of four-momenta </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="Event_8cpp_source.html#l00042">42</a> of file <a class="el" href="Event_8cpp_source.html">Event.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a06e0f9eb04ef0c54725d05edb2a9ef63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06e0f9eb04ef0c54725d05edb2a9ef63">&#9670;&nbsp;</a></span>GetEventVector()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; double &gt; Event::GetEventVector </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">

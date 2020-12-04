@@ -69,7 +69,42 @@ $(function() {
 <div class="title">FitGamma.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="FitGamma_8h.html">Go to the documentation of this file.</a><div class="fragment"></div><!-- fragment --></div><!-- contents -->
+<a href="FitGamma_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Martin Duy Tat 10th November 2020</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"></span><span class="preprocessor">#ifndef FITGAMMA</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define FITGAMMA</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include&lt;string&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include&quot;<a class="code" href="XYLikelihood_8h.html">XYLikelihood.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include&quot;<a class="code" href="CPParameters_8h.html">CPParameters.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include&quot;Minuit2/Minuit2Minimizer.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include&quot;Math/Functor.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classFitGamma.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFitGamma.html">FitGamma</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classFitGamma.html#a7be38c3e27eaaac4bcd8a1d5b8a206e8">FitGamma</a>(<a class="code" href="classCPParameters.html">CPParameters</a> cpparameters);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFitGamma.html#aac43e08670e52001c1be27450a259b15">DoFit</a>(<a class="code" href="classGamma.html">Gamma</a> &amp;GammaParams);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFitGamma.html#aaac6b16cd410a64bd212fe4289bda629">PlotContours</a>(std::string Filename_rB_deltaB, std::string Filename_deltaB_gamma, std::string Filename_gamma_rB, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> npoints) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classFitGamma.html#a2f094d84091333fd92885d676d63ae7a">~FitGamma</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classCPParameters.html">CPParameters</a> m_cpparameters;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    ROOT::Minuit2::Minuit2Minimizer *m_minimiser = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classXYLikelihood.html">XYLikelihood</a> *m_likelihood = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    ROOT::Math::Functor m_fcn;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aCPParameters_8h_html"><div class="ttname"><a href="CPParameters_8h.html">CPParameters.h</a></div></div>
+<div class="ttc" id="aXYLikelihood_8h_html"><div class="ttname"><a href="XYLikelihood_8h.html">XYLikelihood.h</a></div></div>
+<div class="ttc" id="aclassCPParameters_html"><div class="ttname"><a href="classCPParameters.html">CPParameters</a></div><div class="ttdef"><b>Definition:</b> <a href="CPParameters_8h_source.html#l00011">CPParameters.h:11</a></div></div>
+<div class="ttc" id="aclassFitGamma_html"><div class="ttname"><a href="classFitGamma.html">FitGamma</a></div><div class="ttdef"><b>Definition:</b> <a href="FitGamma_8h_source.html#l00015">FitGamma.h:15</a></div></div>
+<div class="ttc" id="aclassFitGamma_html_a2f094d84091333fd92885d676d63ae7a"><div class="ttname"><a href="classFitGamma.html#a2f094d84091333fd92885d676d63ae7a">FitGamma::~FitGamma</a></div><div class="ttdeci">~FitGamma()</div><div class="ttdef"><b>Definition:</b> <a href="FitGamma_8cpp_source.html#l00081">FitGamma.cpp:81</a></div></div>
+<div class="ttc" id="aclassFitGamma_html_a7be38c3e27eaaac4bcd8a1d5b8a206e8"><div class="ttname"><a href="classFitGamma.html#a7be38c3e27eaaac4bcd8a1d5b8a206e8">FitGamma::FitGamma</a></div><div class="ttdeci">FitGamma(CPParameters cpparameters)</div><div class="ttdef"><b>Definition:</b> <a href="FitGamma_8cpp_source.html#l00013">FitGamma.cpp:13</a></div></div>
+<div class="ttc" id="aclassFitGamma_html_aaac6b16cd410a64bd212fe4289bda629"><div class="ttname"><a href="classFitGamma.html#aaac6b16cd410a64bd212fe4289bda629">FitGamma::PlotContours</a></div><div class="ttdeci">void PlotContours(std::string Filename_rB_deltaB, std::string Filename_deltaB_gamma, std::string Filename_gamma_rB, unsigned int npoints) const</div><div class="ttdef"><b>Definition:</b> <a href="FitGamma_8cpp_source.html#l00038">FitGamma.cpp:38</a></div></div>
+<div class="ttc" id="aclassFitGamma_html_aac43e08670e52001c1be27450a259b15"><div class="ttname"><a href="classFitGamma.html#aac43e08670e52001c1be27450a259b15">FitGamma::DoFit</a></div><div class="ttdeci">void DoFit(Gamma &amp;GammaParams)</div><div class="ttdef"><b>Definition:</b> <a href="FitGamma_8cpp_source.html#l00016">FitGamma.cpp:16</a></div></div>
+<div class="ttc" id="aclassGamma_html"><div class="ttname"><a href="classGamma.html">Gamma</a></div><div class="ttdef"><b>Definition:</b> <a href="Gamma_8h_source.html#l00011">Gamma.h:11</a></div></div>
+<div class="ttc" id="aclassXYLikelihood_html"><div class="ttname"><a href="classXYLikelihood.html">XYLikelihood</a></div><div class="ttdef"><b>Definition:</b> <a href="XYLikelihood_8h_source.html#l00014">XYLikelihood.h:14</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.0

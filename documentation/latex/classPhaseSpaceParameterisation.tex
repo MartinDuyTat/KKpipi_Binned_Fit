@@ -4,56 +4,62 @@
 
 {\ttfamily \#include $<$Phase\+Space\+Parameterisation.\+h$>$}
 
+Inheritance diagram for Phase\+Space\+Parameterisation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPhaseSpaceParameterisation}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classPhaseSpaceParameterisation_a9c002f4fb258011d8d0cbc9cd4192985}{Phase\+Space\+Parameterisation}} ()
+\mbox{\hyperlink{classPhaseSpaceParameterisation_ad487c5f2b467b1577b76c8e33c61dd72}{Phase\+Space\+Parameterisation}} (int bins)
 \item 
-int \mbox{\hyperlink{classPhaseSpaceParameterisation_a22820d02ff3db1c027b68c18970b7c17}{Which\+Bin}} (const \mbox{\hyperlink{classEvent}{Event}} \&event)
+virtual int \mbox{\hyperlink{classPhaseSpaceParameterisation_abce91b47a2ba67b3d00f6c998aa306ee}{Which\+Bin}} (const \mbox{\hyperlink{classEvent}{Event}} \&event) const =0
 \item 
-int \mbox{\hyperlink{classPhaseSpaceParameterisation_a70da18b13ea6b48e4d8214e521f4839b}{Number\+Of\+Bins}} ()
+int \mbox{\hyperlink{classPhaseSpaceParameterisation_a1d3983cc2a3480c2763e97cdada03839}{Number\+Of\+Bins}} () const
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} is a class that contains the information about how phase space is divided into bins Phasespace\+Parameterisation contains a very coarse and arbitrary binning of phase space A more sophisticated binning can be added by added a new class that inherits from \mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} 
+\mbox{\hyperlink{classPhaseSpaceParameterisation}{Phase\+Space\+Parameterisation}} is a class that contains the information about how phase space is divided into bins Add a new binning scheme by adding a derived class with the binning implemented 
 
-Definition at line 13 of file Phase\+Space\+Parameterisation.\+h.
+Definition at line 12 of file Phase\+Space\+Parameterisation.\+h.
 
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classPhaseSpaceParameterisation_a9c002f4fb258011d8d0cbc9cd4192985}\label{classPhaseSpaceParameterisation_a9c002f4fb258011d8d0cbc9cd4192985}} 
+\mbox{\Hypertarget{classPhaseSpaceParameterisation_ad487c5f2b467b1577b76c8e33c61dd72}\label{classPhaseSpaceParameterisation_ad487c5f2b467b1577b76c8e33c61dd72}} 
 \index{PhaseSpaceParameterisation@{PhaseSpaceParameterisation}!PhaseSpaceParameterisation@{PhaseSpaceParameterisation}}
 \index{PhaseSpaceParameterisation@{PhaseSpaceParameterisation}!PhaseSpaceParameterisation@{PhaseSpaceParameterisation}}
 \doxysubsubsection{\texorpdfstring{PhaseSpaceParameterisation()}{PhaseSpaceParameterisation()}}
-{\footnotesize\ttfamily Phase\+Space\+Parameterisation\+::\+Phase\+Space\+Parameterisation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Phase\+Space\+Parameterisation\+::\+Phase\+Space\+Parameterisation (\begin{DoxyParamCaption}\item[{int}]{bins }\end{DoxyParamCaption})}
 
-Default constructor 
+Default empty constructor 
 
-Definition at line 7 of file Phase\+Space\+Parameterisation.\+cpp.
+Definition at line 5 of file Phase\+Space\+Parameterisation.\+cpp.
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classPhaseSpaceParameterisation_a70da18b13ea6b48e4d8214e521f4839b}\label{classPhaseSpaceParameterisation_a70da18b13ea6b48e4d8214e521f4839b}} 
+\mbox{\Hypertarget{classPhaseSpaceParameterisation_a1d3983cc2a3480c2763e97cdada03839}\label{classPhaseSpaceParameterisation_a1d3983cc2a3480c2763e97cdada03839}} 
 \index{PhaseSpaceParameterisation@{PhaseSpaceParameterisation}!NumberOfBins@{NumberOfBins}}
 \index{NumberOfBins@{NumberOfBins}!PhaseSpaceParameterisation@{PhaseSpaceParameterisation}}
 \doxysubsubsection{\texorpdfstring{NumberOfBins()}{NumberOfBins()}}
-{\footnotesize\ttfamily int Phase\+Space\+Parameterisation\+::\+Number\+Of\+Bins (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Phase\+Space\+Parameterisation\+::\+Number\+Of\+Bins (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 Function that returns the number of bins in the binning scheme \begin{DoxyReturn}{Returns}
 Number of bins 
 \end{DoxyReturn}
 
 
-Definition at line 23 of file Phase\+Space\+Parameterisation.\+cpp.
+Definition at line 8 of file Phase\+Space\+Parameterisation.\+cpp.
 
-\mbox{\Hypertarget{classPhaseSpaceParameterisation_a22820d02ff3db1c027b68c18970b7c17}\label{classPhaseSpaceParameterisation_a22820d02ff3db1c027b68c18970b7c17}} 
+\mbox{\Hypertarget{classPhaseSpaceParameterisation_abce91b47a2ba67b3d00f6c998aa306ee}\label{classPhaseSpaceParameterisation_abce91b47a2ba67b3d00f6c998aa306ee}} 
 \index{PhaseSpaceParameterisation@{PhaseSpaceParameterisation}!WhichBin@{WhichBin}}
 \index{WhichBin@{WhichBin}!PhaseSpaceParameterisation@{PhaseSpaceParameterisation}}
 \doxysubsubsection{\texorpdfstring{WhichBin()}{WhichBin()}}
-{\footnotesize\ttfamily int Phase\+Space\+Parameterisation\+::\+Which\+Bin (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEvent}{Event}} \&}]{event }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily virtual int Phase\+Space\+Parameterisation\+::\+Which\+Bin (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEvent}{Event}} \&}]{event }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 Function that determines which bin an event belongs to 
 \begin{DoxyParams}{Parameters}
@@ -65,7 +71,7 @@ Function that determines which bin an event belongs to
 \end{DoxyReturn}
 
 
-Definition at line 10 of file Phase\+Space\+Parameterisation.\+cpp.
+Implemented in \mbox{\hyperlink{classSophisticatedPhaseSpace_a1a5aa1d0b2f26300b8dfff8a97490f0d}{Sophisticated\+Phase\+Space}}, \mbox{\hyperlink{classRectangularPhaseSpace_a30ab7e5590c6bd39db417606a61e37a3}{Rectangular\+Phase\+Space}}, and \mbox{\hyperlink{classNaivePhaseSpace_a1b97b6179a8eba1ad01f24c75149bea0}{Naive\+Phase\+Space}}.
 
 
 

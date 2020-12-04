@@ -1,0 +1,85 @@
+\hypertarget{classNaivePhaseSpace}{}\doxysection{Naive\+Phase\+Space Class Reference}
+\label{classNaivePhaseSpace}\index{NaivePhaseSpace@{NaivePhaseSpace}}
+
+
+{\ttfamily \#include $<$Naive\+Phase\+Space.\+h$>$}
+
+Inheritance diagram for Naive\+Phase\+Space\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classNaivePhaseSpace}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNaivePhaseSpace_a93db8c7a5239ef13a22fab477ca44c05}{Naive\+Phase\+Space}} ()
+\item 
+int \mbox{\hyperlink{classNaivePhaseSpace_a1b97b6179a8eba1ad01f24c75149bea0}{Which\+Bin}} (const \mbox{\hyperlink{classEvent}{Event}} \&event) const
+\item 
+int \mbox{\hyperlink{classNaivePhaseSpace_ae0be7234896241a329f2122c62ef00ee}{Number\+Of\+Bins}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classNaivePhaseSpace}{Naive\+Phase\+Space}} is a class that contains the information about how phase space is divided into bins in a naiive way \mbox{\hyperlink{classNaivePhaseSpace}{Naive\+Phase\+Space}} contains a very coarse and arbitrary binning of phase space 
+
+Definition at line 13 of file Naive\+Phase\+Space.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classNaivePhaseSpace_a93db8c7a5239ef13a22fab477ca44c05}\label{classNaivePhaseSpace_a93db8c7a5239ef13a22fab477ca44c05}} 
+\index{NaivePhaseSpace@{NaivePhaseSpace}!NaivePhaseSpace@{NaivePhaseSpace}}
+\index{NaivePhaseSpace@{NaivePhaseSpace}!NaivePhaseSpace@{NaivePhaseSpace}}
+\doxysubsubsection{\texorpdfstring{NaivePhaseSpace()}{NaivePhaseSpace()}}
+{\footnotesize\ttfamily Naive\+Phase\+Space\+::\+Naive\+Phase\+Space (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default constructor that sets the number of bins 
+
+Definition at line 8 of file Naive\+Phase\+Space.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classNaivePhaseSpace_ae0be7234896241a329f2122c62ef00ee}\label{classNaivePhaseSpace_ae0be7234896241a329f2122c62ef00ee}} 
+\index{NaivePhaseSpace@{NaivePhaseSpace}!NumberOfBins@{NumberOfBins}}
+\index{NumberOfBins@{NumberOfBins}!NaivePhaseSpace@{NaivePhaseSpace}}
+\doxysubsubsection{\texorpdfstring{NumberOfBins()}{NumberOfBins()}}
+{\footnotesize\ttfamily int Naive\+Phase\+Space\+::\+Number\+Of\+Bins (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Function that returns the number of bins in the binning scheme \begin{DoxyReturn}{Returns}
+Number of bins 
+\end{DoxyReturn}
+
+
+Definition at line 24 of file Naive\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classNaivePhaseSpace_a1b97b6179a8eba1ad01f24c75149bea0}\label{classNaivePhaseSpace_a1b97b6179a8eba1ad01f24c75149bea0}} 
+\index{NaivePhaseSpace@{NaivePhaseSpace}!WhichBin@{WhichBin}}
+\index{WhichBin@{WhichBin}!NaivePhaseSpace@{NaivePhaseSpace}}
+\doxysubsubsection{\texorpdfstring{WhichBin()}{WhichBin()}}
+{\footnotesize\ttfamily int Naive\+Phase\+Space\+::\+Which\+Bin (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEvent}{Event}} \&}]{event }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Function that determines which bin an event belongs to 
+\begin{DoxyParams}{Parameters}
+{\em event} & The event we want to determine the bin of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classBin}{Bin}} number 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPhaseSpaceParameterisation_abce91b47a2ba67b3d00f6c998aa306ee}{Phase\+Space\+Parameterisation}}.
+
+
+
+Definition at line 11 of file Naive\+Phase\+Space.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/\mbox{\hyperlink{NaivePhaseSpace_8h}{Naive\+Phase\+Space.\+h}}\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/\mbox{\hyperlink{NaivePhaseSpace_8cpp}{Naive\+Phase\+Space.\+cpp}}\end{DoxyCompactItemize}

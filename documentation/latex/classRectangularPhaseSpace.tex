@@ -1,0 +1,142 @@
+\hypertarget{classRectangularPhaseSpace}{}\doxysection{Rectangular\+Phase\+Space Class Reference}
+\label{classRectangularPhaseSpace}\index{RectangularPhaseSpace@{RectangularPhaseSpace}}
+
+
+{\ttfamily \#include $<$Rectangular\+Phase\+Space.\+h$>$}
+
+Inheritance diagram for Rectangular\+Phase\+Space\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classRectangularPhaseSpace}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRectangularPhaseSpace_a3891811269dbdd1e0d2b3ab1ce396186}{Rectangular\+Phase\+Space}} (std\+::vector$<$ int $>$ bins)
+\item 
+\mbox{\hyperlink{classRectangularPhaseSpace_a36fda8225711b341c73e88c7e4040496}{Rectangular\+Phase\+Space}} ()
+\item 
+int \mbox{\hyperlink{classRectangularPhaseSpace_a30ab7e5590c6bd39db417606a61e37a3}{Which\+Bin}} (const \mbox{\hyperlink{classEvent}{Event}} \&event) const
+\item 
+int \mbox{\hyperlink{classRectangularPhaseSpace_a2c5558b3cdaefbaf8f4740878a178588}{Number\+Of\+Bins}} () const
+\item 
+double \mbox{\hyperlink{classRectangularPhaseSpace_ad1a53a78a57137bf795bd23aede2588a}{Get\+Lower\+Boundary}} (int coordinate) const
+\item 
+double \mbox{\hyperlink{classRectangularPhaseSpace_ac678fcc4cd0fb283523a67031b169300}{Get\+Upper\+Boundary}} (int coordinate) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRectangularPhaseSpace}{Rectangular\+Phase\+Space}} is a class that contains the information about how phase space is divided into bins using a rectangular parameterisation 
+
+Definition at line 14 of file Rectangular\+Phase\+Space.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRectangularPhaseSpace_a3891811269dbdd1e0d2b3ab1ce396186}\label{classRectangularPhaseSpace_a3891811269dbdd1e0d2b3ab1ce396186}} 
+\index{RectangularPhaseSpace@{RectangularPhaseSpace}!RectangularPhaseSpace@{RectangularPhaseSpace}}
+\index{RectangularPhaseSpace@{RectangularPhaseSpace}!RectangularPhaseSpace@{RectangularPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{RectangularPhaseSpace()}{RectangularPhaseSpace()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Rectangular\+Phase\+Space\+::\+Rectangular\+Phase\+Space (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{bins }\end{DoxyParamCaption})}
+
+Constructor that sets up the bins and phase space parameters 
+\begin{DoxyParams}{Parameters}
+{\em bins} & A vector with the number of bins in each direction, such that the total number of bins is the product \\
+\hline
+{\em masses} & An array of the $(D^0, K^+, K^-, \pi^+, \pi^-)$ masses, with default the same as Ampgen\textquotesingle{}s values \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 16 of file Rectangular\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classRectangularPhaseSpace_a36fda8225711b341c73e88c7e4040496}\label{classRectangularPhaseSpace_a36fda8225711b341c73e88c7e4040496}} 
+\index{RectangularPhaseSpace@{RectangularPhaseSpace}!RectangularPhaseSpace@{RectangularPhaseSpace}}
+\index{RectangularPhaseSpace@{RectangularPhaseSpace}!RectangularPhaseSpace@{RectangularPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{RectangularPhaseSpace()}{RectangularPhaseSpace()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Rectangular\+Phase\+Space\+::\+Rectangular\+Phase\+Space (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default constructor, puts the whole phase space into a single bin 
+
+Definition at line 31 of file Rectangular\+Phase\+Space.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRectangularPhaseSpace_ad1a53a78a57137bf795bd23aede2588a}\label{classRectangularPhaseSpace_ad1a53a78a57137bf795bd23aede2588a}} 
+\index{RectangularPhaseSpace@{RectangularPhaseSpace}!GetLowerBoundary@{GetLowerBoundary}}
+\index{GetLowerBoundary@{GetLowerBoundary}!RectangularPhaseSpace@{RectangularPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{GetLowerBoundary()}{GetLowerBoundary()}}
+{\footnotesize\ttfamily double Rectangular\+Phase\+Space\+::\+Get\+Lower\+Boundary (\begin{DoxyParamCaption}\item[{int}]{coordinate }\end{DoxyParamCaption}) const}
+
+Function that returns the lower boundary of phase space 
+\begin{DoxyParams}{Parameters}
+{\em Coordinate} & to return the lower boundary for \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 43 of file Rectangular\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classRectangularPhaseSpace_ac678fcc4cd0fb283523a67031b169300}\label{classRectangularPhaseSpace_ac678fcc4cd0fb283523a67031b169300}} 
+\index{RectangularPhaseSpace@{RectangularPhaseSpace}!GetUpperBoundary@{GetUpperBoundary}}
+\index{GetUpperBoundary@{GetUpperBoundary}!RectangularPhaseSpace@{RectangularPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{GetUpperBoundary()}{GetUpperBoundary()}}
+{\footnotesize\ttfamily double Rectangular\+Phase\+Space\+::\+Get\+Upper\+Boundary (\begin{DoxyParamCaption}\item[{int}]{coordinate }\end{DoxyParamCaption}) const}
+
+Function that returns the upper boundary of phase space 
+\begin{DoxyParams}{Parameters}
+{\em Coordinate} & to return the upper boundary for \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 47 of file Rectangular\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classRectangularPhaseSpace_a2c5558b3cdaefbaf8f4740878a178588}\label{classRectangularPhaseSpace_a2c5558b3cdaefbaf8f4740878a178588}} 
+\index{RectangularPhaseSpace@{RectangularPhaseSpace}!NumberOfBins@{NumberOfBins}}
+\index{NumberOfBins@{NumberOfBins}!RectangularPhaseSpace@{RectangularPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{NumberOfBins()}{NumberOfBins()}}
+{\footnotesize\ttfamily int Rectangular\+Phase\+Space\+::\+Number\+Of\+Bins (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Function that returns the number of bins in the binning scheme \begin{DoxyReturn}{Returns}
+Number of bins 
+\end{DoxyReturn}
+
+
+Definition at line 39 of file Rectangular\+Phase\+Space.\+cpp.
+
+\mbox{\Hypertarget{classRectangularPhaseSpace_a30ab7e5590c6bd39db417606a61e37a3}\label{classRectangularPhaseSpace_a30ab7e5590c6bd39db417606a61e37a3}} 
+\index{RectangularPhaseSpace@{RectangularPhaseSpace}!WhichBin@{WhichBin}}
+\index{WhichBin@{WhichBin}!RectangularPhaseSpace@{RectangularPhaseSpace}}
+\doxysubsubsection{\texorpdfstring{WhichBin()}{WhichBin()}}
+{\footnotesize\ttfamily int Rectangular\+Phase\+Space\+::\+Which\+Bin (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEvent}{Event}} \&}]{event }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Function that determines which bin an event belongs to 
+\begin{DoxyParams}{Parameters}
+{\em event} & The event we want to determine the bin of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classBin}{Bin}} number 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPhaseSpaceParameterisation_abce91b47a2ba67b3d00f6c998aa306ee}{Phase\+Space\+Parameterisation}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classSophisticatedPhaseSpace_a1a5aa1d0b2f26300b8dfff8a97490f0d}{Sophisticated\+Phase\+Space}}.
+
+
+
+Definition at line 34 of file Rectangular\+Phase\+Space.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/include/\mbox{\hyperlink{RectangularPhaseSpace_8h}{Rectangular\+Phase\+Space.\+h}}\item 
+/data/lhcb/users/tat/\+KKpipi\+\_\+\+Binned\+\_\+\+Fit/src/\mbox{\hyperlink{RectangularPhaseSpace_8cpp}{Rectangular\+Phase\+Space.\+cpp}}\end{DoxyCompactItemize}

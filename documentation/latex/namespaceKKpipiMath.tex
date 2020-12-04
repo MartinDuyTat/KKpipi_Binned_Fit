@@ -1,0 +1,71 @@
+\hypertarget{namespaceKKpipiMath}{}\doxysection{KKpipi\+Math Namespace Reference}
+\label{namespaceKKpipiMath}\index{KKpipiMath@{KKpipiMath}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ TLorentz\+Vector $>$ \mbox{\hyperlink{namespaceKKpipiMath_afbdb02c67933aefce73beeb923fc1cac}{Convert\+Event\+To4\+Vectors}} (const std\+::vector$<$ double $>$ \&event)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespaceKKpipiMath_a2c44a4d9374d1742c85e57d49ed8d977}{Rect\+Coordinates}} (const \mbox{\hyperlink{classEvent}{Event}} \&event)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespaceKKpipiMath_a5ec3fa3993f37e49713b7db615715de3}{Convert\+XTo\+Momenta}} (const std\+::vector$<$ double $>$ \&X)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{namespaceKKpipiMath}{KKpipi\+Math}} is a namespace that contain all the maths functions used in the KKpipi library 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceKKpipiMath_afbdb02c67933aefce73beeb923fc1cac}\label{namespaceKKpipiMath_afbdb02c67933aefce73beeb923fc1cac}} 
+\index{KKpipiMath@{KKpipiMath}!ConvertEventTo4Vectors@{ConvertEventTo4Vectors}}
+\index{ConvertEventTo4Vectors@{ConvertEventTo4Vectors}!KKpipiMath@{KKpipiMath}}
+\doxysubsubsection{\texorpdfstring{ConvertEventTo4Vectors()}{ConvertEventTo4Vectors()}}
+{\footnotesize\ttfamily std\+::vector$<$ TLorentz\+Vector $>$ KKpipi\+Math\+::\+Convert\+Event\+To4\+Vectors (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{event }\end{DoxyParamCaption})}
+
+Function that converts a vector into a vector of TLorentz\+Vector objects 
+\begin{DoxyParams}{Parameters}
+{\em event} & A vector with four-\/momenta, in the order $(K^+, K^-, \pi^+, \pi^-)$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of TLorentz\+Vector objects 
+\end{DoxyReturn}
+
+
+Definition at line 13 of file KKpipi\+Math.\+cpp.
+
+\mbox{\Hypertarget{namespaceKKpipiMath_a5ec3fa3993f37e49713b7db615715de3}\label{namespaceKKpipiMath_a5ec3fa3993f37e49713b7db615715de3}} 
+\index{KKpipiMath@{KKpipiMath}!ConvertXToMomenta@{ConvertXToMomenta}}
+\index{ConvertXToMomenta@{ConvertXToMomenta}!KKpipiMath@{KKpipiMath}}
+\doxysubsubsection{\texorpdfstring{ConvertXToMomenta()}{ConvertXToMomenta()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ KKpipi\+Math\+::\+Convert\+XTo\+Momenta (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{X }\end{DoxyParamCaption})}
+
+Function that converts a set of five rectangular coordinates into a vector of four-\/momenta 
+\begin{DoxyParams}{Parameters}
+{\em X} & Vector with five rectangular coordinates \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector with four-\/momenta of the event, in the order $(K^+, K^-, \pi^+, \pi^-)$ 
+\end{DoxyReturn}
+
+
+Definition at line 56 of file KKpipi\+Math.\+cpp.
+
+\mbox{\Hypertarget{namespaceKKpipiMath_a2c44a4d9374d1742c85e57d49ed8d977}\label{namespaceKKpipiMath_a2c44a4d9374d1742c85e57d49ed8d977}} 
+\index{KKpipiMath@{KKpipiMath}!RectCoordinates@{RectCoordinates}}
+\index{RectCoordinates@{RectCoordinates}!KKpipiMath@{KKpipiMath}}
+\doxysubsubsection{\texorpdfstring{RectCoordinates()}{RectCoordinates()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ KKpipi\+Math\+::\+Rect\+Coordinates (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEvent}{Event}} \&}]{event }\end{DoxyParamCaption})}
+
+Function that determines the rectangular coordinates of an event 
+\begin{DoxyParams}{Parameters}
+{\em event} & Vector of four-\/momenta of the final states in the event, in the order $(K^+, K^-, \pi^+, \pi^-)$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector with the five rectangular coordinates 
+\end{DoxyReturn}
+
+
+Definition at line 21 of file KKpipi\+Math.\+cpp.
+

@@ -28,7 +28,7 @@
 int main(int argc, char *argv[]) {
   std::cout << "Starting B->DK, D->KKpipi binned fit\n";
   std::cout << "Using Sophisticated binning scheme\n";
-  if(argc != 5) {
+  if(argc != 6) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
