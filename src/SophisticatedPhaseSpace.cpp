@@ -101,10 +101,10 @@ void SophisticatedPhaseSpace::ReadAverageStrongPhases(const std::string &filenam
   m_LookupBins = std::vector<std::vector<std::vector<std::vector<int>>>>(m_regions, std::vector<std::vector<std::vector<int>>>(N, std::vector<std::vector<int>>(N, std::vector<int>(N))));
   std::vector<std::string> lines(m_regions + 3);
   double BinWidth = 2*TMath::Pi()/(NumberOfBins() - m_binregion);
-  std::map<double, int> BinMap;
+  /*std::map<double, int> BinMap;
   for(int i = 0; i < NumberOfBins() - m_binregion; i++) {
     BinMap.insert({-TMath::Pi() + BinWidth*(i + 1), i});
-  }
+    }*/
   bool endfile = true;
   while(endfile) {
     for(int i = 0; i < m_regions + 2; i++ ) {
@@ -113,7 +113,8 @@ void SophisticatedPhaseSpace::ReadAverageStrongPhases(const std::string &filenam
     endfile = endfile && std::getline(f, lines[m_regions + 2]);
     for(int i = 0; i < m_regions; i++) {
       double phase = atof(lines[i + 3].c_str());
-      m_LookupBins[i][atoi(lines[0].c_str())][atoi(lines[1].c_str())][atoi(lines[2].c_str())] = BinMap.lower_bound(phase)->second;
+      //m_LookupBins[i][atoi(lines[0].c_str())][atoi(lines[1].c_str())][atoi(lines[2].c_str())] = BinMap.lower_bound(phase)->second;
+      m_LookupBins[i][atoi(lines[0].c_str())][atoi(lines[1].c_str())][atoi(lines[2].c_str())] = static_cast<int>((phase + TMath::Pi())/BinWidth);
     }
   }
 }
@@ -177,9 +178,9 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
     return Region;
   }
   int N = m_LookupBins.size();
-  double dx1 = (RectangularPhaseSpace::GetUpperBoundary(0) - RectangularPhaseSpace::GetLowerBoundary(0))/N;
-  double dx2 = (RectangularPhaseSpace::GetUpperBoundary(1) - RectangularPhaseSpace::GetLowerBoundary(1))/N;
-  double dx5 = (RectangularPhaseSpace::GetUpperBoundary(4) - RectangularPhaseSpace::GetLowerBoundary(4))/N;
+  double dx1 = (RectangularPhaseSpace::GetUpperBoundary(0) + 1e-10 - RectangularPhaseSpace::GetLowerBoundary(0))/N;
+  double dx2 = (RectangularPhaseSpace::GetUpperBoundary(1) + 1e-10 - RectangularPhaseSpace::GetLowerBoundary(1))/N;
+  double dx5 = (RectangularPhaseSpace::GetUpperBoundary(4) + 1e-10 - RectangularPhaseSpace::GetLowerBoundary(4))/N;
   int x1_bin = static_cast<int>((X[0] - RectangularPhaseSpace::GetLowerBoundary(0))/dx1);
   int x2_bin = static_cast<int>((X[1] - RectangularPhaseSpace::GetLowerBoundary(1))/dx2);
   int x5_bin = static_cast<int>((X[4] - RectangularPhaseSpace::GetLowerBoundary(4))/dx5);
