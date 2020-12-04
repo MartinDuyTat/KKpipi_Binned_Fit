@@ -13,7 +13,7 @@
 #include"KKpipiMath.h"
 #include"TMath.h"
 
-SophisticatedPhaseSpace::SophisticatedPhaseSpace(): PhaseSpaceParameterisation(7), m_regions(6), m_binregion(1) {
+SophisticatedPhaseSpace::SophisticatedPhaseSpace(): PhaseSpaceParameterisation(7), m_regions(95), m_binregion(4) {
 }
 
 SophisticatedPhaseSpace::~SophisticatedPhaseSpace() {
@@ -126,7 +126,7 @@ int SophisticatedPhaseSpace::NumberOfRegions() const {
   return m_regions;
 }
 
-int SophisticatedPhaseSpace::WhichRegion(const std::vector<double> &X) const {
+/*int SophisticatedPhaseSpace::WhichRegion(const std::vector<double> &X) const {
   if(X[2] + X[3] > 1.4) {
     return 0;
   } else if(10*X[2] - 7*X[3] < -10) {
@@ -139,6 +139,34 @@ int SophisticatedPhaseSpace::WhichRegion(const std::vector<double> &X) const {
     return 4;
   } else {
     return 5;
+  }
+}*/
+
+int SophisticatedPhaseSpace::WhichRegion(const std::vector<double> &X) const {
+  if(X[2] > 0.4 && X[3] > 0.4) {
+    if(X[2] + X[3] > 1.4) {
+      if(X[2] > X[3]) {
+	return 0;
+      } else {
+	return 1;
+      }
+    } else {
+      if(X[2] > X[3]) {
+	return 2;
+      } else {
+	return 3;
+      }
+    }
+  }
+  int x3bin, x4bin;
+  if(X[3] < 0.4) {
+    x3bin = static_cast<int>((X[2] + 1)/(2.0/10.0));
+    x4bin = static_cast<int>((X[3] + 1)/(1.4/7.0));
+    return x3bin + 10*x4bin + 4;
+  } else {
+    x3bin = static_cast<int>((X[2] + 1)/(1.4/7.0));
+    x4bin = static_cast<int>((X[3] - 0.4)/(0.6/3.0));
+    return x3bin + 7*x4bin + 74;
   }
 }
 

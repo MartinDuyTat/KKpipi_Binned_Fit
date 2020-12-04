@@ -2,6 +2,8 @@
 /**
  * MapStrongPhases is a program that will calculate strong phases on a grid in phase space and save it to a file
  * The loop over i, or x1 bins, has been replaced by a user input to run these jobs in parallel
+ * @param 1 Filename for output file with average strong phases
+ * @param 2 Index i in the outermost loop over x1 regions
  */
 
 #include<iostream>
@@ -44,9 +46,9 @@ int main(int argc, char *argv[]) {
 	for(int m = 0; m < N; m++) {
 	  std::vector<double> X = {x_low[0] + dx[0]*(i + 0.5), x_low[1] + dx[1]*(j + 0.5), x_low[2] + dx[2]*(n + 0.5), x_low[3] + dx[3]*(m + 0.5), x_low[4] + dx[4]*(k + 0.5)};
 	  std::vector<double> event = KKpipiMath::ConvertXToMomenta(X);
-	  int whichbin = rph.WhichBin(Event(event));
-	  //sum[whichbin] += std::arg(amplitude(event, +1))*std::conj(amplitude(event, -1)); //remove maybe
-	  sum[whichbin] += std::polar(1.0, std::arg(amplitude(event, +1)/amplitude(event, -1)));
+	  int whichregion = rph.WhichRegion(X);
+	  //sum[whichregion] += std::arg(amplitude(event, +1))*std::conj(amplitude(event, -1)); //remove maybe
+	  sum[whichregion] += std::polar(1.0, std::arg(amplitude(event, +1)/amplitude(event, -1)));
 	}
       }
       f << i << "," << j << "," << k << ",";
