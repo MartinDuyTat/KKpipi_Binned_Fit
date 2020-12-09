@@ -12,7 +12,8 @@
 class PhaseSpaceParameterisation {
   public:
     /**
-     * Default empty constructor
+     * Constructor that creates a binning scheme with bins number of bins
+     * @param bins Number of bins in the binning scheme
      */
     PhaseSpaceParameterisation(int bins);
     /**

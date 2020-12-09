@@ -21,7 +21,7 @@ class Amplitude {
      * @param event Vector of four-momenta of event
      * @param conj Set to +1 for D^0 decay and -1 for DBAR^0 decay
      */
-    std::complex<double> operator()(const std::vector<double> &event, int conj);
+    std::complex<double> operator()(const std::vector<double> &event, int conj) const;
   private: 
     /**
      * Amplitude function for D^0 decay

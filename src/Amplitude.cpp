@@ -23,7 +23,7 @@ Amplitude::Amplitude(const std::string &Damplitude, const std::string &DBARampli
   }
 }
 
-std::complex<double> Amplitude::operator()(const std::vector<double> &event, int conj) {
+std::complex<double> Amplitude::operator()(const std::vector<double> &event, int conj) const {
   if(conj == +1) {
     return m_Damplitude(event.data(), +1);
   } else if(conj == -1) {
