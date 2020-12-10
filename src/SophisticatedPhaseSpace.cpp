@@ -13,8 +13,6 @@
 #include"KKpipiMath.h"
 #include"TMath.h"
 
-#include<iostream> //remove
-
 SophisticatedPhaseSpace::SophisticatedPhaseSpace(int nbins): PhaseSpaceParameterisation(nbins), m_regions(95), m_binregion(2) {
 }
 
@@ -186,7 +184,6 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
   int x1_bin = static_cast<int>((X[0] - RectangularPhaseSpace::GetLowerBoundary(0))/dx1);
   int x2_bin = static_cast<int>((X[1] - RectangularPhaseSpace::GetLowerBoundary(1))/dx2);
   int x5_bin = static_cast<int>((X[4] - RectangularPhaseSpace::GetLowerBoundary(4))/dx5);
-  std::cout << x1_bin << " " << x2_bin << " " << x5_bin << std::endl;
   return m_LookupBins[Region][x1_bin][x2_bin][x5_bin] + m_binregion;
 }
   
