@@ -161,11 +161,11 @@ int SophisticatedPhaseSpace::WhichRegion(const std::vector<double> &X) const {
   }
   int x3bin, x4bin;
   if(X[3] < 0.4) {
-    x3bin = static_cast<int>((X[2] + 1)/(2.0/10.0));
-    x4bin = static_cast<int>((X[3] + 1)/(1.4/7.0));
+    x3bin = static_cast<int>((X[2] + 1.0)/(2.0/10.0));
+    x4bin = static_cast<int>((X[3] + 1.0)/(1.4/7.0));
     return x3bin + 10*x4bin + 4;
   } else {
-    x3bin = static_cast<int>((X[2] + 1)/(1.4/7.0));
+    x3bin = static_cast<int>((X[2] + 1.0)/(1.4/7.0));
     x4bin = static_cast<int>((X[3] - 0.4)/(0.6/3.0));
     return x3bin + 7*x4bin + 74;
   }
@@ -177,16 +177,14 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
   if(Region < m_binregion) {
     return Region;
   }
-  int N = m_LookupBins.size();
-  // Added small correction terms to make the right edge slightly larger than pi
-  double dx1 = (RectangularPhaseSpace::GetUpperBoundary(0) + 1e-9 - RectangularPhaseSpace::GetLowerBoundary(0))/N;
-  double dx2 = (RectangularPhaseSpace::GetUpperBoundary(1) + 1e-9- RectangularPhaseSpace::GetLowerBoundary(1))/N;
-  double dx5 = (RectangularPhaseSpace::GetUpperBoundary(4) + 1e-9 - RectangularPhaseSpace::GetLowerBoundary(4))/N;
+  int N = m_LookupBins[0].size();
+  double dx1 = (RectangularPhaseSpace::GetUpperBoundary(0) - RectangularPhaseSpace::GetLowerBoundary(0))/N;
+  double dx2 = (RectangularPhaseSpace::GetUpperBoundary(1) - RectangularPhaseSpace::GetLowerBoundary(1))/N;
+  double dx5 = (RectangularPhaseSpace::GetUpperBoundary(4) - RectangularPhaseSpace::GetLowerBoundary(4))/N;
   int x1_bin = static_cast<int>((X[0] - RectangularPhaseSpace::GetLowerBoundary(0))/dx1);
   int x2_bin = static_cast<int>((X[1] - RectangularPhaseSpace::GetLowerBoundary(1))/dx2);
   int x5_bin = static_cast<int>((X[4] - RectangularPhaseSpace::GetLowerBoundary(4))/dx5);
-  int Bin = m_LookupBins[Region][x1_bin][x2_bin][x5_bin] + m_binregion;
-  return Bin;
+  return m_LookupBins[Region][x1_bin][x2_bin][x5_bin] + m_binregion;
 }
   
   

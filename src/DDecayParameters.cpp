@@ -41,19 +41,20 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, int events) 
     ++counter;
     // Generate event
     Event GeneratedEvent(generator.Generate());
+    // Calculate amplitude
+    std::complex<double> amplitude_d = amplitude(GeneratedEvent.GetEventVector(), +1);
+    std::complex<double> amplitude_dbar = amplitude(GeneratedEvent.GetEventVector(), -1);
+    // If amplitude is nan, event is probably on the boundary of phase space and wrongly classified as kinematically impossible, so discard event
+    // Need to do this check before checking bin number, in case event is just at the boundary and wrongly classified as outside
+    if(TMath::IsNaN(std::norm(amplitude_d)) || TMath::IsNaN(std::norm(amplitude_dbar))) {
+      continue;
+    }
     // Check which bin event belongs to
     int BinNumber = psp->WhichBin(GeneratedEvent);
     // Increment event count for that bin
     EventsGenerated[BinNumber] += 1;
     // Check if bin is full
     if(EventsGenerated[BinNumber] > events) {
-      continue;
-    }
-    // Calculate amplitude
-    std::complex<double> amplitude_d = amplitude(GeneratedEvent.GetEventVector(), +1);
-    std::complex<double> amplitude_dbar = amplitude(GeneratedEvent.GetEventVector(), -1);
-    // If amplitude is nan, event is probably on the boundary of phase space and wrongly classified as kinematically impossible, so discard event
-    if(TMath::IsNaN(std::norm(amplitude_d)) || TMath::IsNaN(std::norm(amplitude_dbar))) {
       continue;
     }
     // Calculate fractional yield
