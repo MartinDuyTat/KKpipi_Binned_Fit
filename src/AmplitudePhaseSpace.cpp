@@ -12,7 +12,7 @@ AmplitudePhaseSpace::AmplitudePhaseSpace(int bins): PhaseSpaceParameterisation(b
 
 int AmplitudePhaseSpace::WhichBin(const Event &event) const {
   std::vector<double> EventVector = event.GetEventVector();
-  double phase = std::arg(m_amplitude(EventVector, +1)) - std::arg(m_amplitude(EventVector, -1));
+  double phase = std::arg(m_amplitude(EventVector, +1)*std::conj(m_amplitude(EventVector, -1)));
   return static_cast<int>((phase + TMath::Pi())/(2*TMath::Pi()/NumberOfBins()));
 } 
 

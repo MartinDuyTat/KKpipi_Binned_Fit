@@ -4,7 +4,7 @@
  * @param 1 Choice of binning scheme, in lowercase letters
  * @param 2 Filename to save D hadronic decay parameters to
  * @param 3 Number of events used in Monte Carlo integration
- * @param 4 For Rectangular Phase Space, state the number of bins in each direction, for Sophisticated Phase Space state the total number of bins
+ * @param 4 For Rectangular Phase Space, state the number of bins in each direction, for Sophisticated and Amplitude Phase Space state the total number of bins
  * @param 5 For Sophisticated Phase Space, input the filename for strong phases for binning scheme
  */
 
@@ -16,12 +16,14 @@
 #include"NaivePhaseSpace.h"
 #include"RectangularPhaseSpace.h"
 #include"SophisticatedPhaseSpace.h"
+#include"AmplitudePhaseSpace.h"
 #include"Constants.h"
 
 int main(int argc, char *argv[]) {
   NaivePhaseSpace phasespace_naive;
   RectangularPhaseSpace phasespace_rectangular;
   SophisticatedPhaseSpace phasespace_sophisticated(atoi(argv[4]));
+  AmplitudePhaseSpace phasespace_amplitude(atoi(argv[4]));
   PhaseSpaceParameterisation *psp;
   if(std::string(argv[1]) == "naive" && argc == 4) {
     psp = &phasespace_naive;
@@ -32,6 +34,8 @@ int main(int argc, char *argv[]) {
   } else if(std::string(argv[1]) == "sophisticated" && argc == 6) {
     psp = &phasespace_sophisticated;
     phasespace_sophisticated.ReadAverageStrongPhases(std::string(argv[5]));
+  } else if(std::string(argv[1]) == "amplitude" && 5) {
+    psp = &phasespace_amplitude;
   } else {
     std::cout << "Invalid inputs!\n";
     return 0;
