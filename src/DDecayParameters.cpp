@@ -24,7 +24,7 @@
 
 DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, int events) {
   // Declare necessary variables
-  Amplitude amplitude("D0toKKpipi.so", "Dbar0toKKpipi.so");
+  Amplitude amplitude;
   Double_t mass_parent = KKpipi_Constants::MASS_D;
   Double_t mass_decay[] = {KKpipi_Constants::MASS_K, KKpipi_Constants::MASS_K, KKpipi_Constants::MASS_PI, KKpipi_Constants::MASS_PI};
   Generator generator(mass_parent, mass_decay, 4);

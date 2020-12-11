@@ -17,6 +17,10 @@ class Amplitude {
     */
     Amplitude(const std::string &Damplitude, const std::string &DBARamplitude);
     /**
+     * Default constructor that uses the standard AmpGen filenames
+     */
+    Amplitude();
+    /**
      * Overload () operator to easily access amplitude
      * @param event Vector of four-momenta of event
      * @param conj Set to +1 for D^0 decay and -1 for DBAR^0 decay

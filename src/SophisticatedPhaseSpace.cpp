@@ -32,8 +32,8 @@ void SophisticatedPhaseSpace::x3x4WhichBinGrid(const Event &event, int &x3bin, i
   x4bin = int((X[3] - x4lower)*m_x4bins/(x4upper - x4lower));
 }
 
-void SophisticatedPhaseSpace::LoadAmplitudeModel(const std::string &Damplitude, const std::string &DBARamplitude) {
-  m_AmplitudeModel = new Amplitude(Damplitude, DBARamplitude);
+void SophisticatedPhaseSpace::LoadAmplitudeModel() {
+  m_AmplitudeModel = new Amplitude;
 }
 
 double SophisticatedPhaseSpace::StrongPhase(const Event &event) const {

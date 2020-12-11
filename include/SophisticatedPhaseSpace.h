@@ -32,7 +32,7 @@ class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public
     /**
      * Function for loading amplitude model
      */
-    void LoadAmplitudeModel(const std::string &Damplitude, const std::string &DBARamplitude);
+    void LoadAmplitudeModel();
     /**
      * Function for calculating the strong phase difference of an event
      */

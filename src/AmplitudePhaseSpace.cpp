@@ -7,7 +7,7 @@
 #include"Amplitude.h"
 #include"Event.h"
 
-AmplitudePhaseSpace::AmplitudePhaseSpace(int bins): PhaseSpaceParameterisation(bins), m_amplitude("D0toKKpipi.so", "Dbar0toKKpipi.so") {
+AmplitudePhaseSpace::AmplitudePhaseSpace(int bins): PhaseSpaceParameterisation(bins) {
 }
 
 int AmplitudePhaseSpace::WhichBin(const Event &event) const {

@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     return 0;
   }
   SophisticatedPhaseSpace phasespace(8);
-  phasespace.LoadAmplitudeModel("D0toKKpipi.so", "Dbar0toKKpipi.so");
+  phasespace.LoadAmplitudeModel();
   std::string BplusFilename = argv[1];
   std::string BminusFilename = argv[2];
   std::string MeanFilename = argv[3];
