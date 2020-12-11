@@ -40,15 +40,4 @@ target_link_libraries(ComputeMeanPhases PUBLIC ROOT::Physics ROOT::RIO ROOT::Tre
 
 target_link_libraries(MapStrongPhases PUBLIC KKpipi ROOT::Tree)
 
-set_target_properties(FitNaive PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
-set_target_properties(FitRectangular PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
-set_target_properties(FitSophisticated PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
-#set_target_properties(FitAmplitude PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
-set_target_properties(ComputeDParameters PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
-set_target_properties(PullStudy PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
-set_target_properties(PlotDParameters PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
-set_target_properties(BinNumberStudy PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
-set_target_properties(ComputeMeanPhases PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
-set_target_properties(MapStrongPhases PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../bin)
-
-install(TARGETS FitAmplitude DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/../bin)
+install(TARGETS BinNumberStudy ComputeDParameters ComputeMeanPhases FitAmplitude FitNaive FitRectangular FitSophisticated MapStrongPhases PlotDParameters PullStudy DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/../bin)
