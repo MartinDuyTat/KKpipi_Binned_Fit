@@ -109,6 +109,7 @@ int main(int argc, char *argv[]) {
   std::cout << "r_B = " << rB << " \u00B1 " << TMath::Sqrt(gammacov(0, 0)) << std::endl;
   std::cout << "delta_B = " << deltaB << " \u00B1 " << TMath::Sqrt(gammacov(1, 1)) << std::endl;
   std::cout << "gamma = " << gamma << " \u00B1 " << TMath::Sqrt(gammacov(2, 2)) << std::endl;
+  delete phasespace;
   std::string drawcontours;
   std::cout << "Draw contours?\n";
   std::cin >> drawcontours;

@@ -18,6 +18,10 @@ class AmplitudePhaseSpace: public PhaseSpaceParameterisation {
      */
     AmplitudePhaseSpace(int bins);
     /**
+     * Virtual destructor to ensure well-defined behaviour when inheriting from PhaseSpaceParameterisation
+     */
+    ~AmplitudePhaseSpace();
+    /**
      * Function that determines which bin an event belongs to
      * @param event The event we want to determine the bin of
      * @return Bin number

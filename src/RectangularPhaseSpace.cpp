@@ -30,6 +30,9 @@ RectangularPhaseSpace::RectangularPhaseSpace(std::vector<int> bins): PhaseSpaceP
 
 RectangularPhaseSpace::RectangularPhaseSpace(): RectangularPhaseSpace({1, 1, 1, 1, 1}) {
 }
+
+RectangularPhaseSpace::~RectangularPhaseSpace() {
+}
   
 int RectangularPhaseSpace::WhichBin(const Event &event) const {
   std::vector<double> X = KKpipiMath::RectCoordinates(event);

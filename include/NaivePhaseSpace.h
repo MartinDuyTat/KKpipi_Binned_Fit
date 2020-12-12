@@ -17,6 +17,10 @@ class NaivePhaseSpace: public PhaseSpaceParameterisation {
      */
     NaivePhaseSpace();
     /**
+     * Virtual destructor to ensure well-defined behaviour when inheriting from PhaseSpaceParameterisation
+     */
+    ~NaivePhaseSpace();
+    /**
      * Function that determines which bin an event belongs to
      * @param event The event we want to determine the bin of
      * @return Bin number

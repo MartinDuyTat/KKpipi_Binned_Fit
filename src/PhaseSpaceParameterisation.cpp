@@ -5,6 +5,9 @@
 PhaseSpaceParameterisation::PhaseSpaceParameterisation(int bins): m_bins(bins) {
 }
 
+PhaseSpaceParameterisation::~PhaseSpaceParameterisation() {
+}
+
 int PhaseSpaceParameterisation::NumberOfBins() const {
   return m_bins;
 }

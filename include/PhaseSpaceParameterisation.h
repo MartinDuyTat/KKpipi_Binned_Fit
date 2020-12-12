@@ -17,6 +17,10 @@ class PhaseSpaceParameterisation {
      */
     PhaseSpaceParameterisation(int bins);
     /**
+     * Virtual destructor for well-defined behaviour when using polymorphism
+     */
+    virtual ~PhaseSpaceParameterisation() = 0;
+    /**
      * Function that determines which bin an event belongs to
      * @param event The event we want to determine the bin of
      * @return Bin number

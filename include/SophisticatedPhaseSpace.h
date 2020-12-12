@@ -32,6 +32,7 @@ class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public
     SophisticatedPhaseSpace(int nbins, const std::string &filename);
     /**
      * Destructor that deletes the amplitude model
+     * Virtual destructor to ensure well-defined behaviour when inheriting from PhaseSpaceParameterisation
      */
     ~SophisticatedPhaseSpace();
     /**

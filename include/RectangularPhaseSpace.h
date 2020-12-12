@@ -24,6 +24,10 @@ class RectangularPhaseSpace: virtual public PhaseSpaceParameterisation {
      */
     RectangularPhaseSpace();
     /**
+     * Virtual destructor to ensure well-defined behaviour when inheriting from PhaseSpaceParameterisation
+     */
+    ~RectangularPhaseSpace();
+    /**
      * Function that determines which bin an event belongs to
      * @param event The event we want to determine the bin of
      * @return Bin number
