@@ -13,6 +13,7 @@
 #include"RectangularPhaseSpace.h"
 #include"SophisticatedPhaseSpace.h"
 #include"AmplitudePhaseSpace.h"
+#include"BinList.h"
 #include"CPParameters.h"
 #include"Gamma.h"
 #include"FitGamma.h"
@@ -20,9 +21,17 @@
 namespace KKpipiFit {
   /**
    * Function for allocating the correct binning scheme
-   * @param phasespace Pointer to a PhaseSpaceParameterisation object, where the chosen binning scheme is allocated
+   * @param binning_choice Name of binning scheme chosen
+   * @return Pointer to a PhaseSpaceParameterisation object, where the chosen binning scheme is allocated
    */
   PhaseSpaceParameterisation* PickBinningScheme(const std::string &binning_choice);
+  /**
+   * Function for loading input data into the BinList object
+   * @param Bplusfile Name of input data file with \f$B^+\f$ events
+   * @param Bminusfile Name of input data file with \f$B^-\f$ events
+   * @param binlist BinList object to load input data into
+   */
+  void LoadInputDataIntoBins(const std::string &Bplusfile, const std::string &Bminusfile, BinList &binlist);
   /**
    * Function for printing fit results for \f$x_\pm\f$ and \f$y_\pm\f$
    * @param cpparameters CPParameters object with fit results

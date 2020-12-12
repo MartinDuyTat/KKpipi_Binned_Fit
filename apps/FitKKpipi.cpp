@@ -43,18 +43,8 @@ int main(int argc, char *argv[]) {
   }
   std::cout << "Binning scheme loaded\n";
   std::cout << "Loading input data...\n";
-  std::string Bplusfile = argv[2];
-  std::string Bminusfile = argv[3];
-  TFile fBplus(Bplusfile.c_str(), "READ");
-  TFile fBminus(Bminusfile.c_str(), "READ");
-  std::cout << "Input data ready\n";
-  std::cout << "Putting input events into bins...\n";
-  TTree *treeBplus, *treeBminus;
-  fBplus.GetObject("DalitzEventList", treeBplus);
-  fBminus.GetObject("DalitzEventList", treeBminus);
   BinList binlist(phasespace);
-  binlist.LoadTTree(treeBplus, +1);
-  binlist.LoadTTree(treeBminus, -1);
+  KKpipiFit::LoadInputDataIntoBins(std::string(argv[2]), std::string(argv[3]), binlist);
   std::cout << "Input events sorted into bins\n";
   std::cout << "Loading hadronic D decay parameters...\n";
   DDecayParameters ddparameters(argv[4]);

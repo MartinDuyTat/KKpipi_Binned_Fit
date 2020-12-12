@@ -4,11 +4,14 @@
 #include<string>
 #include<vector>
 #include"TMath.h"
+#include"TFile.h"
+#include"TTree.h"
 #include"PhaseSpaceParameterisation.h"
 #include"NaivePhaseSpace.h"
 #include"RectangularPhaseSpace.h"
 #include"SophisticatedPhaseSpace.h"
 #include"AmplitudePhaseSpace.h"
+#include"BinList.h"
 #include"CPParameters.h"
 #include"Gamma.h"
 #include"FitGamma.h"
@@ -45,6 +48,19 @@ namespace KKpipiFit {
       phasespace = nullptr;
     }
     return phasespace;
+  }
+
+  void LoadInputDataIntoBins(const std::string &Bplusfile, const std::string &Bminusfile, BinList &binlist) {
+    TFile fBplus(Bplusfile.c_str(), "READ");
+    TFile fBminus(Bminusfile.c_str(), "READ");
+    TTree *treeBplus, *treeBminus;
+    fBplus.GetObject("DalitzEventList", treeBplus);
+    fBminus.GetObject("DalitzEventList", treeBminus);
+    binlist.LoadTTree(treeBplus, +1);
+    binlist.LoadTTree(treeBminus, -1);
+    fBplus.Close();
+    fBminus.Close();
+    return;
   }
 
   void PrintXY(const CPParameters &cpparameters) {
