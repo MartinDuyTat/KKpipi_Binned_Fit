@@ -1,4 +1,4 @@
-add_library(KKpipi Amplitude.cpp AmplitudePhaseSpace.cpp Bin.cpp BinList.cpp CPParameters.cpp DDecayParameters.cpp Event.cpp EventList.cpp FitGamma.cpp Fitter.cpp Gamma.cpp Generator.cpp KKpipiMath.cpp Likelihood.cpp NaivePhaseSpace.cpp PhaseSpaceParameterisation.cpp RectangularPhaseSpace.cpp SophisticatedPhaseSpace.cpp XYLikelihood.cpp)
+add_library(KKpipi Amplitude.cpp AmplitudePhaseSpace.cpp Bin.cpp BinList.cpp CPParameters.cpp DDecayParameters.cpp Event.cpp EventList.cpp FitGamma.cpp Fitter.cpp Gamma.cpp Generator.cpp KKpipiFit.cpp KKpipiMath.cpp Likelihood.cpp NaivePhaseSpace.cpp PhaseSpaceParameterisation.cpp RectangularPhaseSpace.cpp SophisticatedPhaseSpace.cpp XYLikelihood.cpp)
 
 target_include_directories(KKpipi PUBLIC ../include)
 

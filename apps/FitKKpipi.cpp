@@ -11,6 +11,7 @@
 #include<string>
 #include<iostream>
 #include<stdlib.h>
+#include"KKpipiFit.h"
 #include"PhaseSpaceParameterisation.h"
 #include"NaivePhaseSpace.h"
 #include"RectangularPhaseSpace.h"
@@ -35,32 +36,8 @@ int main(int argc, char *argv[]) {
   }
   std::cout << "Starting B->DK, D->KKpipi binned fit\n";
   std::cout << "Loading binning scheme for phase space...\n";
-  PhaseSpaceParameterisation *phasespace;
-  if(std::string(argv[1]) == "naive") {
-    std::cout << "Using Naive binning scheme\n";
-    phasespace = new NaivePhaseSpace;
-  } else if(std::string(argv[1]) == "rectangular") {
-    std::cout << "Using Rectangular binning scheme\n";
-    std::vector<int> rectbins(5);
-    std::cout << "Please input bins in each direction:\n";
-    std::cin >> rectbins[0] >> rectbins[1] >> rectbins [2] >> rectbins[3] >> rectbins [4];
-    phasespace = new RectangularPhaseSpace(rectbins);
-  } else if(std::string(argv[1]) == "sophisticated") {
-    std::cout << "Using Sophisticated binning scheme\n";
-    int bins;
-    std::string phasefilename;
-    std::cout << "Please input total number of bins:\n";
-    std::cin >> bins;
-    std::cout << "Please input file with mean strong phases:\n";
-    std::cin >> phasefilename;
-    phasespace = new SophisticatedPhaseSpace(bins, phasefilename);
-  } else if(std::string(argv[1]) == "amplitude") {
-    std::cout << "Using Amplitude binning scheme\n";
-    int bins;
-    std::cout << "Please input total number of bins:\n";
-    std::cin >> bins;
-    phasespace = new AmplitudePhaseSpace(bins);
-  } else {
+  PhaseSpaceParameterisation *phasespace = KKpipiFit::PickBinningScheme(std::string(argv[1]));
+  if(phasespace == nullptr) {
     std::cout << "Invalid binning scheme\n";
     return 0;
   }

@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
     //delete treeSmallBplus;
     //delete treeSmallBminus;
   }
-  std::cout << "Pool study finished\n";
+  std::cout << "Pull study finished\n";
   std::cout << "Analysed " << Samples << " samples, each of size " << SampleSize << std::endl;
   PullTree->Write();
   f->Close();
