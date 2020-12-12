@@ -61,40 +61,20 @@ int main(int argc, char *argv[]) {
   std::cout << "Hadronic D parameters loaded\n";
   std::cout << "Loading fitter...\n";
   Fitter fit(binlist, ddparameters);
-  CPParameters cpparameters(-0.09, 0.06, -0.04, 0.08);
-  double xplus, xminus, yplus, yminus;
+  CPParameters cpparameters(0.0, 0.0, 0.0, 0.0);
   std::cout << "Ready for fitting\n";
   std::cout << "Fitting x and y...\n";
   fit.DoFit(cpparameters);
   std::cout << "x and y fitted\n";
-  cpparameters.GetCPParameters(xplus, xminus, yplus, yminus);
-  TMatrixD cov = cpparameters.GetCov();
-  std::cout << "Fitted x and y parameters:\n";
-  std::cout << "xplus = " << xplus << " \u00B1 " << TMath::Sqrt(cov(0, 0)) << std::endl;
-  std::cout << "xminus = " << xminus << " \u00B1 " << TMath::Sqrt(cov(1, 1)) << std::endl;
-  std::cout << "yplus = " << yplus << " \u00B1 " << TMath::Sqrt(cov(2, 2)) << std::endl;
-  std::cout << "yminus = " << yminus << " \u00B1 " << TMath::Sqrt(cov(3, 3)) << std::endl;
+  KKpipiFit::PrintXY(cpparameters);
   std::cout << "Fitting r_B, delta_B and gamma...\n";
   FitGamma fitgamma(cpparameters);
   Gamma gammaparams(0.1, 130.0, 75.0);
   fitgamma.DoFit(gammaparams);
   std::cout << "r_B, delta_B and gamma fitted\n";
-  double rB, deltaB, gamma;
-  gammaparams.GetGammaParameters(rB, deltaB, gamma);
-  TMatrixD gammacov = gammaparams.GetCov();
-  std::cout << "Fitted r_B, delta_B and gamma parameters:\n";
-  std::cout << "r_B = " << rB << " \u00B1 " << TMath::Sqrt(gammacov(0, 0)) << std::endl;
-  std::cout << "delta_B = " << deltaB << " \u00B1 " << TMath::Sqrt(gammacov(1, 1)) << std::endl;
-  std::cout << "gamma = " << gamma << " \u00B1 " << TMath::Sqrt(gammacov(2, 2)) << std::endl;
-  delete phasespace;
-  std::string drawcontours;
-  std::cout << "Draw contours?\n";
-  std::cin >> drawcontours;
-  if(drawcontours == "yes") {
-    std::cout << "Drawing contours...\n";
-    fitgamma.PlotContours("Contour_rB_vs_dB.png", "Contour_dB_vs_gamma.png", "Contour_gamma_vs_rB.png", 20);
-    std::cout << "Finished drawing contours\n";
-  }
+  KKpipiFit::PrintGamma(gammaparams);
+  KKpipiFit::DrawContours(fitgamma);
   std::cout << "Congratulations, gamma has been measured!\n";
+  delete phasespace;
   return 0;
 }

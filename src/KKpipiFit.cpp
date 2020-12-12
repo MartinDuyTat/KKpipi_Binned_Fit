@@ -3,11 +3,15 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include"TMath.h"
 #include"PhaseSpaceParameterisation.h"
 #include"NaivePhaseSpace.h"
 #include"RectangularPhaseSpace.h"
 #include"SophisticatedPhaseSpace.h"
 #include"AmplitudePhaseSpace.h"
+#include"CPParameters.h"
+#include"Gamma.h"
+#include"FitGamma.h"
 
 namespace KKpipiFit {
 
@@ -41,6 +45,41 @@ namespace KKpipiFit {
       phasespace = nullptr;
     }
     return phasespace;
+  }
+
+  void PrintXY(const CPParameters &cpparameters) {
+    double xplus, xminus, yplus, yminus;
+    cpparameters.GetCPParameters(xplus, xminus, yplus, yminus);
+    TMatrixD cov = cpparameters.GetCov();
+    std::cout << "Fitted x and y parameters:\n";
+    std::cout << "xplus = " << xplus << " \u00B1 " << TMath::Sqrt(cov(0, 0)) << std::endl;
+    std::cout << "xminus = " << xminus << " \u00B1 " << TMath::Sqrt(cov(1, 1)) << std::endl;
+    std::cout << "yplus = " << yplus << " \u00B1 " << TMath::Sqrt(cov(2, 2)) << std::endl;
+    std::cout << "yminus = " << yminus << " \u00B1 " << TMath::Sqrt(cov(3, 3)) << std::endl;
+    return;
+  }
+
+  void PrintGamma (const Gamma &gammaparams) {
+    double rB, deltaB, gamma;
+    gammaparams.GetGammaParameters(rB, deltaB, gamma);
+    TMatrixD gammacov = gammaparams.GetCov();
+    std::cout << "Fitted r_B, delta_B and gamma parameters:\n";
+    std::cout << "r_B = " << rB << " \u00B1 " << TMath::Sqrt(gammacov(0, 0)) << std::endl;
+    std::cout << "delta_B = " << deltaB << " \u00B1 " << TMath::Sqrt(gammacov(1, 1)) << std::endl;
+    std::cout << "gamma = " << gamma << " \u00B1 " << TMath::Sqrt(gammacov(2, 2)) << std::endl;
+    return;
+  }
+
+  void DrawContours(const FitGamma &fitgamma) {
+    std::string drawcontours;
+    std::cout << "Draw contours?\n";
+    std::cin >> drawcontours;
+    if(drawcontours == "yes") {
+      std::cout << "Drawing contours...\n";
+      fitgamma.PlotContours("Contour_rB_vs_dB.png", "Contour_dB_vs_gamma.png", "Contour_gamma_vs_rB.png", 20);
+      std::cout << "Finished drawing contours\n";
+    }
+    return;
   }
 
 }
