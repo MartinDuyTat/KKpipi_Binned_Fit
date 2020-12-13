@@ -28,22 +28,14 @@ void BinList::AddEvent(Event event, int charge, int maxevents) {
 void BinList::LoadTTree(TTree *tree, int charge) {
   std::vector<Double_t> four_momentum(16);
   double *p = four_momentum.data();
-  tree->SetBranchAddress("_1_K~_Px", p + 0);
-  tree->SetBranchAddress("_1_K~_Py", p + 1);
-  tree->SetBranchAddress("_1_K~_Pz", p + 2);
-  tree->SetBranchAddress("_1_K~_E", p + 3);
-  tree->SetBranchAddress("_2_K#_Px", p + 4);
-  tree->SetBranchAddress("_2_K#_Py", p + 5);
-  tree->SetBranchAddress("_2_K#_Pz", p + 6);
-  tree->SetBranchAddress("_2_K#_E", p + 7);
-  tree->SetBranchAddress("_3_pi~_Px", p + 8);
-  tree->SetBranchAddress("_3_pi~_Py", p + 9);
-  tree->SetBranchAddress("_3_pi~_Pz", p + 10);
-  tree->SetBranchAddress("_3_pi~_E", p +11);
-  tree->SetBranchAddress("_4_pi#_Px", p + 12);
-  tree->SetBranchAddress("_4_pi#_Py", p + 13);
-  tree->SetBranchAddress("_4_pi#_Pz", p + 14);
-  tree->SetBranchAddress("_4_pi#_E", p + 15);
+  for(int i = 0; i < 16; i++) {
+    std::string address = tree->GetListOfBranches()[0][i]->GetName();
+    if(i%4 == 0) {
+      tree->SetBranchAddress(address.c_str(), p + i + 3);
+    } else {
+      tree->SetBranchAddress(address.c_str(), p + i - 1);
+    }
+  }
   for(Int_t i = 0; i < tree->GetEntries(); i++) {
     tree->GetEntry(i);
     this->AddEvent(Event(four_momentum), charge);
