@@ -17,6 +17,8 @@
 #include"CPParameters.h"
 #include"Gamma.h"
 #include"FitGamma.h"
+#include"TTree.h"
+#include"TFile.h"
 
 namespace KKpipiFit {
   /**
@@ -32,6 +34,14 @@ namespace KKpipiFit {
    * @param binlist BinList object to load input data into
    */
   void LoadInputDataIntoBins(const std::string &Bplusfile, const std::string &Bminusfile, BinList &binlist);
+  /**
+   * Function for splitting up TTree with a large datasample into smaller samples
+   * @param tree TTree with larger datasample
+   * @param treeSmall TTree with smaller subset of the large datasample
+   * @param StartEvent Index of first event
+   * @param SampleSize Size of smaller datasample
+   */
+  void SplitTree(TTree *tree, TTree *treeSmall, const int &StartEvent, const int &SampleSize);
   /**
    * Function for printing fit results for \f$x_\pm\f$ and \f$y_\pm\f$
    * @param cpparameters CPParameters object with fit results

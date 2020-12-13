@@ -26,13 +26,37 @@ namespace KKpipi_Constants {
    */
   const double rB = 0.1;
   /**
-   * \f$\delta_B\f$, as assumed in simulation
+   * \f$\delta_B\f$, as assumed in simulation, in radians
    */
   const double dB = 130.0*TMath::Pi()/180.0;
   /**
-   * \f$\gamma\f$, as assumed in simulation
+   * \f$\gamma\f$, as assumed in simulation, in radians
    */
   const double gamma = 75.0*TMath::Pi()/180.0;
+  /**
+   * \f$\delta_B\f$, as assumed in simulation, in degrees
+   */
+  const double dB_d = 130.0;
+  /**
+   * \f$\gamma\f$, as assumed in simulation, in degrees
+   */
+  const double gamma_d = 75.0;
+  /**
+   * \f$x_+\f$, as assumed in simulation
+   */
+  const double xplus = rB*TMath::Cos(dB + gamma);
+  /**
+   * \f$x_-\f$, as assumed in simulation
+   */
+  const double xminus = rB*TMath::Cos(dB - gamma);
+  /**
+   * \f$y_+\f$, as assumed in simulation
+   */
+  const double yplus = rB*TMath::Sin(dB + gamma);
+  /**
+   * \f$y_-\f$, as assumed in simulation
+   */
+  const double yminus = rB*TMath::Sin(dB - gamma);
 }
 
 #endif

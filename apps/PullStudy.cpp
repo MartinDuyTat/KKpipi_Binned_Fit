@@ -1,6 +1,6 @@
 // Martin Duy Tat 30th October 2020
 /**
- * Poolstudy is the program for doing a pool study of the binned fitting
+ * Pullstudy is the program for doing a pull study of the binned fitting
  * D meson decay parameters are loaded from file
  * @param 1 Filename of B+ event file
  * @param 2 Filename of B- event file
@@ -14,21 +14,23 @@
 #include<string>
 #include<iostream>
 #include<stdlib.h>
-#include"PhaseSpaceParameterisation.h"
 #include"TFile.h"
 #include"TTree.h"
+#include"TMath.h"
+#include"TH1D.h"
+#include"TMatrixD.h"
+#include"KKpipiFit.h"
+#include"Constants.h"
 #include"BinList.h"
 #include"DDecayParameters.h"
 #include"CPParameters.h"
 #include"Fitter.h"
-#include"TMath.h"
-#include"TH1D.h"
-#include"TMatrixD.h"
 #include"Gamma.h"
 #include"FitGamma.h"
-#include"NaivePhaseSpace.h"
+#include"PhaseSpaceParameterisation.h"
 #include"SophisticatedPhaseSpace.h"
 #include"AmplitudePhaseSpace.h"
+#include"NaivePhaseSpace.h"
 
 void SplitTree(TTree *tree, TTree *treeSmall, const int &StartEvent, const int &SampleSize);
 
@@ -37,14 +39,6 @@ int main(int argc, char *argv[]) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
-  double r_B = 0.1, delta_B = 130*TMath::Pi()/180, gamma = 75*TMath::Pi()/180;
-  double xplus_true = r_B*TMath::Cos(delta_B + gamma);
-  double xminus_true = r_B*TMath::Cos(delta_B - gamma);
-  double yplus_true = r_B*TMath::Sin(delta_B + gamma);
-  double yminus_true = r_B*TMath::Sin(delta_B - gamma);
-  double rB_true = 0.1;
-  double dB_true = 130;
-  double gamma_true = 75;
   std::string BplusFilename = argv[1];
   std::string BminusFilename = argv[2];
   std::string DDecayFilename = argv[3];
@@ -79,8 +73,8 @@ int main(int argc, char *argv[]) {
     std::cout << "Starting fitting of sample " << i << std::endl;
     TTree *treeSmallBplus = new TTree("DalitzEventList", "Dbar0 K+ K- pi+ pi-");
     TTree *treeSmallBminus = new TTree("DalitzEventList", "D0 K+ K- pi+ pi-");
-    SplitTree(treeBplus, treeSmallBplus, Samples*i, SampleSize);
-    SplitTree(treeBminus, treeSmallBminus, Samples*i, SampleSize);
+    KKpipiFit::SplitTree(treeBplus, treeSmallBplus, Samples*i, SampleSize);
+    KKpipiFit::SplitTree(treeBminus, treeSmallBminus, Samples*i, SampleSize);
     BinList binlist(psp);
     binlist.LoadTTree(treeSmallBplus, +1);
     binlist.LoadTTree(treeSmallBminus, -1);    
@@ -92,19 +86,19 @@ int main(int argc, char *argv[]) {
     fit.DoFit(cpparameters);
     cpparameters.GetCPParameters(xplus, xminus, yplus, yminus);
     TMatrixD cov = cpparameters.GetCov();
-    xplus_pull = (xplus - xplus_true)/TMath::Sqrt(cov(0, 0));
-    xminus_pull = (xminus - xminus_true)/TMath::Sqrt(cov(1, 1));
-    yplus_pull = (yplus - yplus_true)/TMath::Sqrt(cov(2, 2));
-    yminus_pull = (yminus - yminus_true)/TMath::Sqrt(cov(3, 3));
+    xplus_pull = (xplus - KKpipi_Constants::xplus)/TMath::Sqrt(cov(0, 0));
+    xminus_pull = (xminus - KKpipi_Constants::xminus)/TMath::Sqrt(cov(1, 1));
+    yplus_pull = (yplus - KKpipi_Constants::yplus)/TMath::Sqrt(cov(2, 2));
+    yminus_pull = (yminus - KKpipi_Constants::yminus)/TMath::Sqrt(cov(3, 3));
     FitGamma gammafitter(cpparameters);
     Gamma gammaparams(0.1, 140, 70);
     gammafitter.DoFit(gammaparams);
     double rB, dB, gamma;
     gammaparams.GetGammaParameters(rB, dB, gamma);
     TMatrixD gammacov = gammaparams.GetCov();
-    rB_pull = (rB - rB_true)/TMath::Sqrt(gammacov(0, 0));
-    dB_pull = (dB - dB_true)/TMath::Sqrt(gammacov(1, 1));
-    gamma_pull = (gamma - gamma_true)/TMath::Sqrt(gammacov(2, 2));
+    rB_pull = (rB - KKpipi_Constants::rB)/TMath::Sqrt(gammacov(0, 0));
+    dB_pull = (dB - KKpipi_Constants::dB_d)/TMath::Sqrt(gammacov(1, 1));
+    gamma_pull = (gamma - KKpipi_Constants::gamma_d)/TMath::Sqrt(gammacov(2, 2));
     gamma_fitted = gamma;
     gamma_error = TMath::Sqrt(gammacov(2, 2));
     PullTree->Fill();
@@ -118,43 +112,4 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-void SplitTree(TTree *tree, TTree *treeSmall, const int &StartEvent, const int &SampleSize) {
-  std::vector<Double_t> four_momentum(16);
-  Double_t *p = four_momentum.data();
-  treeSmall->Branch("_1_K~_Px", p + 0, "_1_K~_Px/D");
-  treeSmall->Branch("_1_K~_Py", p + 1, "_1_K~_Py/D");
-  treeSmall->Branch("_1_K~_Pz", p + 2, "_1_K~_Pz/D");
-  treeSmall->Branch("_1_K~_E", p + 3, "_1_K~_E/D");
-  treeSmall->Branch("_2_K#_Px", p + 4, "_2_K#_Px/D");
-  treeSmall->Branch("_2_K#_Py", p + 5, "_2_K#_Py/D");
-  treeSmall->Branch("_2_K#_Pz", p + 6, "_2_K#_Pz/D");
-  treeSmall->Branch("_2_K#_E", p + 7, "_2_K#_E/D");
-  treeSmall->Branch("_3_pi~_Px", p + 8, "_3_pi~_Px/D");
-  treeSmall->Branch("_3_pi~_Py", p + 9, "_3_pi~_Py/D");
-  treeSmall->Branch("_3_pi~_Pz", p + 10, "_3_pi~_Pz/D");
-  treeSmall->Branch("_3_pi~_E", p +11, "_3_pi~_E/D");
-  treeSmall->Branch("_4_pi#_Px", p + 12, "_4_pi#_Px/D");
-  treeSmall->Branch("_4_pi#_Py", p + 13, "_4_pi#_Py/D");
-  treeSmall->Branch("_4_pi#_Pz", p + 14, "_4_pi#_Pz/D");
-  treeSmall->Branch("_4_pi#_E", p + 15, "_4_pi#_E/D");
-  tree->SetBranchAddress("_1_K~_Px", p + 0);
-  tree->SetBranchAddress("_1_K~_Py", p + 1);
-  tree->SetBranchAddress("_1_K~_Pz", p + 2);
-  tree->SetBranchAddress("_1_K~_E", p + 3);
-  tree->SetBranchAddress("_2_K#_Px", p + 4);
-  tree->SetBranchAddress("_2_K#_Py", p + 5);
-  tree->SetBranchAddress("_2_K#_Pz", p + 6);
-  tree->SetBranchAddress("_2_K#_E", p + 7);
-  tree->SetBranchAddress("_3_pi~_Px", p + 8);
-  tree->SetBranchAddress("_3_pi~_Py", p + 9);
-  tree->SetBranchAddress("_3_pi~_Pz", p + 10);
-  tree->SetBranchAddress("_3_pi~_E", p +11);
-  tree->SetBranchAddress("_4_pi#_Px", p + 12);
-  tree->SetBranchAddress("_4_pi#_Py", p + 13);
-  tree->SetBranchAddress("_4_pi#_Pz", p + 14);
-  tree->SetBranchAddress("_4_pi#_E", p + 15);
-  for(int i = StartEvent; i < StartEvent + SampleSize; i++) {
-    tree->GetEntry(i);
-    treeSmall->Fill();
-  }
-}
+

@@ -98,4 +98,23 @@ namespace KKpipiFit {
     return;
   }
 
+  void SplitTree(TTree *tree, TTree *treeSmall, const int &StartEvent, const int &SampleSize) {
+    std::vector<Double_t> four_momentum(16);
+    Double_t *p = four_momentum.data();
+    for(int i = 0; i < 16; i++) {
+      std::string address = tree->GetListOfBranches()[0][i]->GetName();
+      if(i%4 != 0) {
+	tree->SetBranchAddress(address.c_str(), p + i - 1);
+	treeSmall->Branch(address.c_str(), p + i - 1, (address + "/D").c_str());
+      } else {
+	tree->SetBranchAddress(address.c_str(), p + i + 3);
+	treeSmall->Branch(address.c_str(), p + i + 3, (address + "/D").c_str());
+      }
+    }
+    for(int i = StartEvent; i < StartEvent + SampleSize; i++) {
+      tree->GetEntry(i);
+      treeSmall->Fill();
+    }
+  }
+
 }
