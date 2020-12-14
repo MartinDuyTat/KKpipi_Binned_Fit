@@ -38,8 +38,10 @@ class BinList {
      * Function for loading events from input data into their respective bins
      * @param tree A ROOT TTree in the AmpGen format containing all the input data events
      * @param charge +1 for B+, -1 for B-
+     * @param StartEvent Index of first event to read from TTree
+     * @param TotalEvents Total number of events to read from file, -1 means read until end of file
      */
-    void LoadTTree(TTree *tree, int charge);
+    void LoadTTree(TTree *tree, const int &charge, const int &StartEvent = 0, const int &TotalEvents = -1);
     /**
      * Function for getting number of bins
      */

@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
   KKpipiFit::PrintXY(cpparameters);
   std::cout << "Fitting r_B, delta_B and gamma...\n";
   FitGamma fitgamma(cpparameters);
-  Gamma gammaparams(0.1, 130.0, 75.0);
+  Gamma gammaparams(0.1, 140.0, 75.0);
   fitgamma.DoFit(gammaparams);
   std::cout << "r_B, delta_B and gamma fitted\n";
   KKpipiFit::PrintGamma(gammaparams);

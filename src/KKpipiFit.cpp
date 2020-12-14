@@ -50,14 +50,19 @@ namespace KKpipiFit {
     return phasespace;
   }
 
-  void LoadInputDataIntoBins(const std::string &Bplusfile, const std::string &Bminusfile, BinList &binlist) {
-    TFile fBplus(Bplusfile.c_str(), "READ");
-    TFile fBminus(Bminusfile.c_str(), "READ");
-    TTree *treeBplus, *treeBminus;
+  void LoadTreesIntoBins(TTree *TreeBplus, TTree *TreeBminus, BinList &binlist, const int &StartEvent = 0, const int &TotalEvents = -1) {
+    binlist.LoadTTree(TreeBplus, +1, StartEvent, TotalEvents);
+    binlist.LoadTTree(TreeBminus, -1, StartEvent, TotalEvents);
+    return;
+  }
+
+  void LoadInputDataIntoBins(const std::string &BplusFilename, const std::string &BminusFilename, BinList &binlist, const int &StartEvent, const int &TotalEvents) {
+    TFile fBplus(BplusFilename.c_str(), "$READ");
+    TFile fBminus(BminusFilename.c_str(), "READ");
+    TTree *treeBplus = nullptr, *treeBminus = nullptr;
     fBplus.GetObject("DalitzEventList", treeBplus);
     fBminus.GetObject("DalitzEventList", treeBminus);
-    binlist.LoadTTree(treeBplus, +1);
-    binlist.LoadTTree(treeBminus, -1);
+    LoadTreesIntoBins(treeBplus, treeBminus, binlist, StartEvent, TotalEvents);
     fBplus.Close();
     fBminus.Close();
     return;
@@ -96,25 +101,6 @@ namespace KKpipiFit {
       std::cout << "Finished drawing contours\n";
     }
     return;
-  }
-
-  void SplitTree(TTree *tree, TTree *treeSmall, const int &StartEvent, const int &SampleSize) {
-    std::vector<Double_t> four_momentum(16);
-    Double_t *p = four_momentum.data();
-    for(int i = 0; i < 16; i++) {
-      std::string address = tree->GetListOfBranches()[0][i]->GetName();
-      if(i%4 != 0) {
-	tree->SetBranchAddress(address.c_str(), p + i - 1);
-	treeSmall->Branch(address.c_str(), p + i - 1, (address + "/D").c_str());
-      } else {
-	tree->SetBranchAddress(address.c_str(), p + i + 3);
-	treeSmall->Branch(address.c_str(), p + i + 3, (address + "/D").c_str());
-      }
-    }
-    for(int i = StartEvent; i < StartEvent + SampleSize; i++) {
-      tree->GetEntry(i);
-      treeSmall->Fill();
-    }
   }
 
 }

@@ -2,13 +2,12 @@
 /**
  * Pullstudy is the program for doing a pull study of the binned fitting
  * D meson decay parameters are loaded from file
- * @param 1 Filename of B+ event file
- * @param 2 Filename of B- event file
- * @param 3 Filename of D meson hadronic decay parameters
- * @param 4 Sample size
- * @param 5 Number of samples
- * @param 6 Filename of mean phases in the \f$(x_1, x_2, x_5)\f$ volume
- * @param 7 Total number of bins
+ * @param 1 Binning choice, in lowercase letters
+ * @param 2 Filename of B+ event file
+ * @param 3 Filename of B- event file
+ * @param 4 Filename of D meson hadronic decay parameters
+ * @param 5 Sample size
+ * @param 6 Number of samples
  */
 
 #include<string>
@@ -32,27 +31,20 @@
 #include"AmplitudePhaseSpace.h"
 #include"NaivePhaseSpace.h"
 
-void SplitTree(TTree *tree, TTree *treeSmall, const int &StartEvent, const int &SampleSize);
-
 int main(int argc, char *argv[]) {
   if(argc != 7) {
     std::cout << "Incorrect number of inputs\n";
     return 0;
   }
-  std::string BplusFilename = argv[1];
-  std::string BminusFilename = argv[2];
-  std::string DDecayFilename = argv[3];
-  int SampleSize = atoi(argv[4]);
-  int Samples = atoi(argv[5]);
-  std::cout << "Starting B->DK, D->KKpipi binned fit pool study\n";
-  std::cout << "Loaded phase space\n";
-  TFile fBplus(BplusFilename.c_str(), "READ");
-  TFile fBminus(BminusFilename.c_str(), "READ");
-  std::cout << "Opened data files\n";
-  TTree *treeBplus, *treeBminus;
+  std::cout << "Starting B->DK, D->KKpipi binned fit pull study\n";
+  std::cout << "Loading input data...\n";
+  TFile fBplus(argv[2], "READ");
+  TFile fBminus(argv[3], "READ");
+  TTree *treeBplus = nullptr, *treeBminus = nullptr;
   fBplus.GetObject("DalitzEventList", treeBplus);
   fBminus.GetObject("DalitzEventList", treeBminus);
-  std::cout << "Loaded trees\n";
+  std::cout << "Events loaded into bins\n";
+  std::cout << "Loading pull tree...\n";
   TFile *f = new TFile("PullDistributions.root", "RECREATE");
   TTree *PullTree = new TTree("pull", "Pull distributions of #x_#pm and #y_#pm");
   Double_t xplus_pull, xminus_pull, yplus_pull, yminus_pull, rB_pull, dB_pull, gamma_pull, gamma_fitted, gamma_error;
@@ -65,22 +57,18 @@ int main(int argc, char *argv[]) {
   PullTree->Branch("gamma", &gamma_pull, "gamma/D");
   PullTree->Branch("gamma_fitted", &gamma_fitted, "gamma_fitted/D");
   PullTree->Branch("gamma_error", &gamma_error, "gamma_error/D");
-  //SophisticatedPhaseSpace phasespace(atoi(argv[7]));
-  AmplitudePhaseSpace phasespace(atoi(argv[6]));
-  //phasespace.ReadAverageStrongPhases(std::string(argv[6]));
-  PhaseSpaceParameterisation *psp = &phasespace;
+  std::cout << "Tree with pulls is ready\n";
+  PhaseSpaceParameterisation *phasespace = KKpipiFit::PickBinningScheme(std::string(argv[1]));
+  std::string DDecayFilename = argv[4];
+  int SampleSize = atoi(argv[5]);
+  int Samples = atoi(argv[6]);
+  double gamma_sum = 0, gamma2_sum = 0;
   for(int i = 0; i < Samples; i++) {
     std::cout << "Starting fitting of sample " << i << std::endl;
-    TTree *treeSmallBplus = new TTree("DalitzEventList", "Dbar0 K+ K- pi+ pi-");
-    TTree *treeSmallBminus = new TTree("DalitzEventList", "D0 K+ K- pi+ pi-");
-    KKpipiFit::SplitTree(treeBplus, treeSmallBplus, Samples*i, SampleSize);
-    KKpipiFit::SplitTree(treeBminus, treeSmallBminus, Samples*i, SampleSize);
-    BinList binlist(psp);
-    binlist.LoadTTree(treeSmallBplus, +1);
-    binlist.LoadTTree(treeSmallBminus, -1);    
+    BinList binlist(phasespace);
+    KKpipiFit::LoadTreesIntoBins(treeBplus, treeBminus, binlist, Samples*i, SampleSize);
     DDecayParameters ddparameters(DDecayFilename);
     Fitter fit(binlist, ddparameters);
-    //CPParameters cpparameters(-0.09, 0.06, -0.04, 0.08);
     CPParameters cpparameters(0.0, 0.0, 0.0, 0.0);
     double xplus, xminus, yplus, yminus;
     fit.DoFit(cpparameters);
@@ -102,13 +90,18 @@ int main(int argc, char *argv[]) {
     gamma_fitted = gamma;
     gamma_error = TMath::Sqrt(gammacov(2, 2));
     PullTree->Fill();
-    //delete treeSmallBplus;
-    //delete treeSmallBminus;
+    gamma_sum += gamma;
+    gamma2_sum += gamma*gamma;
   }
   std::cout << "Pull study finished\n";
   std::cout << "Analysed " << Samples << " samples, each of size " << SampleSize << std::endl;
   PullTree->Write();
   f->Close();
+  fBplus.Close();
+  fBminus.Close();
+  delete phasespace;
+  std::cout << "Standard deviation of gamma: " << TMath::Sqrt((gamma2_sum - gamma_sum*gamma_sum/Samples)/(Samples - 1)) << std::endl;
+  std::cout << "Congratulations, gamma has been measured!\n";
   return 0;
 }
 

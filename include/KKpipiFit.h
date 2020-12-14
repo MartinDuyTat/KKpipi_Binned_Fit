@@ -28,20 +28,23 @@ namespace KKpipiFit {
    */
   PhaseSpaceParameterisation* PickBinningScheme(const std::string &binning_choice);
   /**
-   * Function for loading input data into the BinList object
-   * @param Bplusfile Name of input data file with \f$B^+\f$ events
-   * @param Bminusfile Name of input data file with \f$B^-\f$ events
+   * Function for loading events into bins from trees
+   * @param TreeBplus TTree with \f$B^+\f$ events
+   * @param TreeBminus TTree with \f$B^-\f$ events
    * @param binlist BinList object to load input data into
-   */
-  void LoadInputDataIntoBins(const std::string &Bplusfile, const std::string &Bminusfile, BinList &binlist);
-  /**
-   * Function for splitting up TTree with a large datasample into smaller samples
-   * @param tree TTree with larger datasample
-   * @param treeSmall TTree with smaller subset of the large datasample
    * @param StartEvent Index of first event
-   * @param SampleSize Size of smaller datasample
+   * @param SampleSize Size of datasample
    */
-  void SplitTree(TTree *tree, TTree *treeSmall, const int &StartEvent, const int &SampleSize);
+  void LoadTreesIntoBins(TTree *TreeBplus, TTree *TreeBminus, BinList &binlist, const int &StartEvent = 0, const int &TotalEvents = -1);
+  /**
+   * Function for loading input data into the BinList object
+   * @param Bplusfile TFile with input data file with \f$B^+\f$ events
+   * @param Bminusfile TFile with input data file with \f$B^-\f$ events
+   * @param binlist BinList object to load input data into
+   * @param StartEvent Index of first event
+   * @param SampleSize Size of datasample
+   */
+  void LoadInputDataIntoBins(const std::string &BplusFilename, const std::string &BminusFilename, BinList &binlist, const int &StartEvent = 0, const int &TotalEvents = -1);
   /**
    * Function for printing fit results for \f$x_\pm\f$ and \f$y_\pm\f$
    * @param cpparameters CPParameters object with fit results

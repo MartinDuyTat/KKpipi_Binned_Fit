@@ -25,7 +25,7 @@ void BinList::AddEvent(Event event, int charge, int maxevents) {
   }
 }
 
-void BinList::LoadTTree(TTree *tree, int charge) {
+void BinList::LoadTTree(TTree *tree, const int &charge, const int &StartEvent, const int &TotalEvents) {
   std::vector<Double_t> four_momentum(16);
   double *p = four_momentum.data();
   for(int i = 0; i < 16; i++) {
@@ -36,7 +36,7 @@ void BinList::LoadTTree(TTree *tree, int charge) {
       tree->SetBranchAddress(address.c_str(), p + i - 1);
     }
   }
-  for(Int_t i = 0; i < tree->GetEntries(); i++) {
+  for(Int_t i = StartEvent; i < ((TotalEvents  == -1) ? tree->GetEntries() : (StartEvent + TotalEvents)); i++) {
     tree->GetEntry(i);
     this->AddEvent(Event(four_momentum), charge);
   }
