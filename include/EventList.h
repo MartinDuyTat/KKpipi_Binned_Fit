@@ -20,7 +20,7 @@ class EventList {
      * Function that adds an Event to the EventList
      * @param event New Event object to be added to the EventList
      */
-    void AddEvent(Event event);
+    void AddEvent(const Event &event);
     /**
      * Function that returns total number of events in this EventList
      */

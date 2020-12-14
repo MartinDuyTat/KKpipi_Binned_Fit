@@ -7,7 +7,7 @@
 Bin::Bin() {
 }
 
-void Bin::AddEvent(Event event, int charge) {
+void Bin::AddEvent(const Event &event, const int &charge) {
   if(charge == + 1) {
     m_eventlistBplus.AddEvent(event);
   } else if(charge == -1) {
@@ -15,7 +15,7 @@ void Bin::AddEvent(Event event, int charge) {
   }
 }
 
-int Bin::GetNumberEvents(int charge) const {
+int Bin::GetNumberEvents(const int &charge) const {
   if(charge == +1) {
     return m_eventlistBplus.NumberEvents();
   } else if(charge == -1) {
@@ -24,7 +24,7 @@ int Bin::GetNumberEvents(int charge) const {
   return 0;
 }
 
-EventList Bin::GetEvents(int charge) {
+EventList Bin::GetEvents(const int &charge) {
   if(charge == +1) {
     return m_eventlistBplus;
   } else if(charge == -1) {

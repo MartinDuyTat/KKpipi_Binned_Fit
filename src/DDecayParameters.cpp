@@ -181,17 +181,18 @@ void DDecayParameters::PlotParameters(std::string filename_cs, std::string filen
   delete c2;
 }
 
-std::vector<double> DDecayParameters::GetK() const {
+const std::vector<double>& DDecayParameters::GetK() const {
   return m_K;
 }
-std::vector<double> DDecayParameters::GetKbar() const {
+
+const std::vector<double>& DDecayParameters::GetKbar() const {
   return m_Kbar;
 }
 
-std::vector<double> DDecayParameters::Getc() const {
+const std::vector<double>& DDecayParameters::Getc() const {
   return m_c;
 }
 
-std::vector<double> DDecayParameters::Gets() const {
+const std::vector<double>& DDecayParameters::Gets() const {
   return m_s;
 }

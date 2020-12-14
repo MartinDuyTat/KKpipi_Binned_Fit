@@ -27,9 +27,6 @@
 #include"Gamma.h"
 #include"FitGamma.h"
 #include"PhaseSpaceParameterisation.h"
-#include"SophisticatedPhaseSpace.h"
-#include"AmplitudePhaseSpace.h"
-#include"NaivePhaseSpace.h"
 
 int main(int argc, char *argv[]) {
   if(argc != 7) {

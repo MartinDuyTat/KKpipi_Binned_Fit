@@ -13,10 +13,12 @@
 #include<string>
 #include<iostream>
 #include<stdlib.h>
+#include<omp.h>
 #include"TFile.h"
 #include"TTree.h"
 #include"TMath.h"
 #include"TMatrixD.h"
+#include"TROOT.h"
 #include"KKpipiFit.h"
 #include"BinList.h"
 #include"DDecayParameters.h"
@@ -25,9 +27,6 @@
 #include"Gamma.h"
 #include"FitGamma.h"
 #include"PhaseSpaceParameterisation.h"
-//#include"SophisticatedPhaseSpace.h"
-//#include"AmplitudePhaseSpace.h"
-//#include"NaivePhaseSpace.h"
 
 int main(int argc, char *argv[]) {
   if(argc != 7) {
@@ -45,14 +44,13 @@ int main(int argc, char *argv[]) {
   std::cout << "Loading pull tree...\n";
   std::cout << "Tree with pulls is ready\n";
   PhaseSpaceParameterisation *phasespace = KKpipiFit::PickBinningScheme(std::string(argv[1]));
-  std::string DDecayFilename = argv[4];
+  DDecayParameters ddparameters(argv[4]);
   int SampleSize = atoi(argv[5]);
   int Samples = atoi(argv[6]);
   double gamma_sum = 0, gamma2_sum = 0;
   for(int i = 0; i < Samples; i++) {
     BinList binlist(phasespace);
     KKpipiFit::LoadTreesIntoBins(treeBplus, treeBminus, binlist, Samples*i, SampleSize);
-    DDecayParameters ddparameters(DDecayFilename);
     Fitter fit(binlist, ddparameters);
     CPParameters cpparameters(0.0, 0.0, 0.0, 0.0);
     fit.DoFit(cpparameters);

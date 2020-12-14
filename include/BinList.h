@@ -26,14 +26,14 @@ class BinList {
      * @param event Event object to be added to the correct bin
      * @param charge +1 for B+, -1 for B-
      */
-    void AddEvent(Event event, int charge);
+    void AddEvent(const Event &event, const int &charge);
     /**
      * Function for adding an event to the correct bin, if the number of events in that bin is less than the maximum
      * @param event Event object to be added to the correct bin
      * @param charge +1 for B+, -1 for B-
      * @param maxEvents Maximum number of events in each bin
      */
-    void AddEvent(Event event, int charge, int maxevents);
+    void AddEvent(const Event &event, const int &charge, const int &maxevents);
     /**
      * Function for loading events from input data into their respective bins
      * @param tree A ROOT TTree in the AmpGen format containing all the input data events

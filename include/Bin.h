@@ -19,19 +19,19 @@ class Bin {
      * @param event Event to add
      * @param charge +1 for B+, -1 for B-
      */
-    void AddEvent(Event event, int charge);
+    void AddEvent(const Event &event, const int &charge);
     /**
      * Function for getting number of events in this bin
      * @param charge +1 for B+, -1 for B-
      * @return Number of events in this bin
      */
-    int GetNumberEvents(int charge) const;
+    int GetNumberEvents(const int &charge) const;
     /**
      * Function for betting EventList object
      * @param charge +1 for B+, -1 for B-
      * @return eventlist EventList object
      */
-    EventList GetEvents(int charge);
+    EventList GetEvents(const int &charge);
   private:
     /**
      * EventList for B+ events in this bin

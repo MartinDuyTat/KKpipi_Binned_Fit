@@ -7,7 +7,7 @@
 EventList::EventList() {
 }
 
-void EventList::AddEvent(Event event) {
+void EventList::AddEvent(const Event &event) {
   m_eventlist.push_back(event);
 }
 

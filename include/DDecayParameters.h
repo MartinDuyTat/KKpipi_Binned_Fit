@@ -40,22 +40,22 @@ class DDecayParameters {
      * Function for getting fractional yield K_i
      * @return K Vector of fractional yields of D0 events
      */
-    std::vector<double> GetK() const;
+    const std::vector<double>& GetK() const;
     /**
      * Function for getting fractional yield K_i
      * @return K Vector of fractional yields of DBAR0 events
      */
-    std::vector<double> GetKbar() const;
+    const std::vector<double>& GetKbar() const;
     /**
      * Function for getting cosine of the strong phase
      * @return c Vector of cosine of the strong phases
      */
-    std::vector<double> Getc() const;
+    const std::vector<double>& Getc() const;
     /**
      * Function for getting sine of the strong phase
      * @return s Vector of sine of the strong phases
      */
-    std::vector<double> Gets() const;
+    const std::vector<double>& Gets() const;
  private:
     /**
      * Vector of fractional yields of D0 events
