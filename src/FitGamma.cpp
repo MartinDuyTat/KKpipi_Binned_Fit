@@ -10,7 +10,7 @@
 #include"TGraph.h"
 #include"TAxis.h"
 
-FitGamma::FitGamma(CPParameters cpparameters): m_cpparameters(cpparameters) {
+FitGamma::FitGamma(const CPParameters &cpparameters): m_cpparameters(cpparameters) {
 }
 
 void FitGamma::DoFit(Gamma &GammaParams) {
@@ -35,7 +35,7 @@ void FitGamma::DoFit(Gamma &GammaParams) {
   GammaParams.SetCov(CovMatrix);
 }
 
-void FitGamma::PlotContours(std::string Filename_rB_deltaB, std::string Filename_deltaB_gamma, std::string Filename_gamma_rB, unsigned int npoints) const {
+void FitGamma::PlotContours(const std::string &Filename_rB_deltaB, const std::string &Filename_deltaB_gamma, const std::string &Filename_gamma_rB, unsigned int npoints) const {
   std::vector<double> x(npoints + 1), y(npoints + 1);
   TCanvas *c1 = new TCanvas("rB_vs_dB", "r_{B} vs #delta_{B} contours", 200, 10, 600, 400);
   m_minimiser->SetErrorDef(1.0);

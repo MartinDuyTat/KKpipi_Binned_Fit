@@ -17,11 +17,11 @@ class Likelihood {
      * @param events BinList object with the input data
      * @param ddecayparameters A DDecayParameters object with the parameters for the D meson decay
      */
-    Likelihood(BinList bins, DDecayParameters ddparameters);
+    Likelihood(const BinList &bins, const DDecayParameters &ddparameters);
     /**
      * Function for calculating the logarithm of the Poisson probability, based on ROOT::Math::poisson_pdf
      */
-    double LogPoissonPDF(int x, double mu) const;
+    double LogPoissonPDF(const int &x, const double &mu) const;
     /**
      * Operator overload of () to easily access the likelihood function
      * @param cpparameters A CPParameters object with the CP violation parameters for the B meson decay

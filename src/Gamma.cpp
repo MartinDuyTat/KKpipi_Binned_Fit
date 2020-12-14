@@ -4,7 +4,7 @@
 #include"CPParameters.h"
 #include"TMatrixD.h"
 
-Gamma::Gamma(double rB, double deltaB, double gamma): m_rB(rB), m_deltaB(deltaB), m_gamma(gamma) {
+Gamma::Gamma(const double &rB, const double &deltaB, const double &gamma): m_rB(rB), m_deltaB(deltaB), m_gamma(gamma) {
 }
 
 void Gamma::GetGammaParameters(double &rB, double &deltaB, double &gamma) const {

@@ -16,7 +16,7 @@ class Gamma {
      * @param deltaB \f$\delta_B\f$
      * @param \f$\gamma\f$
      */
-    Gamma(double rB, double deltaB, double gamma);
+    Gamma(const double &rB, const double &deltaB, const double &gamma);
     /**
      * Function for getting CP parameters
      * @param rB \f$r_B\f$

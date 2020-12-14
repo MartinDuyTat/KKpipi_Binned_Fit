@@ -5,7 +5,7 @@
 #include"TMatrixD.h"
 #include"TMath.h"
 
-XYLikelihood::XYLikelihood(CPParameters cpparameters) {
+XYLikelihood::XYLikelihood(const CPParameters &cpparameters) {
   cpparameters.GetCPParameters(m_xplus, m_xminus, m_yplus, m_yminus);
   m_InvCov.ResizeTo(4, 4);
   m_InvCov = cpparameters.GetCov().Invert();

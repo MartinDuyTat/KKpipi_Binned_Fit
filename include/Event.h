@@ -19,7 +19,7 @@ class Event {
      * Constructor that takes a vector of four-momenta
      * @param p Four-momenta in the form (px, py, pz, E), in the order K+ K- pi+ pi-
      */
-    Event(std::vector<double> p);
+    Event(const std::vector<double> &p);
     /**
      * Returns the four-momenta of daughter particles as a vector
      * @return Four-momenta of daughter particles in the form (E, px, py, pz), in the order K+ K- pi+ pi-
@@ -36,7 +36,7 @@ class Event {
      * @param particle2 Particle 0(K+), 1(K-), 2(pi+), 3(pi-)
      * @return Returns invariant mass of given particles
      */
-    double GetInvMass2(int particle1, int particle2) const;
+    double GetInvMass2(const int &particle1, const int &particle2) const;
     /**
      * Function for getting invariant mass of three particles
      * @param particle1 Particle 0(K+), 1(K-), 2(pi+), 3(pi-)
@@ -44,7 +44,7 @@ class Event {
      * @param particle3 Particle 0(K+), 1(K-), 2(pi+), 3(pi-)
      * @return Returns mass of given particles
      */
-    double GetInvMass3(int particle1, int particle2, int particle3) const;
+    double GetInvMass3(const int &particle1, const int &particle2, const int &particle3) const;
   private:
     /**
      * Four-momenta of daughter particles

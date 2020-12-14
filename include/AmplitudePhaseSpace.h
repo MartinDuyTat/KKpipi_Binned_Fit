@@ -16,7 +16,7 @@ class AmplitudePhaseSpace: public PhaseSpaceParameterisation {
      * Constructor that creates a binning with bins number of bins
      * @param bins Number of bins in the binning scheme
      */
-    AmplitudePhaseSpace(int bins);
+    AmplitudePhaseSpace(const int &bins);
     /**
      * Virtual destructor to ensure well-defined behaviour when inheriting from PhaseSpaceParameterisation
      */

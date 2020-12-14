@@ -26,7 +26,7 @@ Amplitude::Amplitude(const std::string &Damplitude, const std::string &DBARampli
 Amplitude::Amplitude(): Amplitude("D0toKKpipi.so", "Dbar0toKKpipi.so") {
 }
 
-std::complex<double> Amplitude::operator()(const std::vector<double> &event, int conj) const {
+std::complex<double> Amplitude::operator()(const std::vector<double> &event, const int &conj) const {
   if(conj == +1) {
     return m_Damplitude(event.data(), +1);
   } else if(conj == -1) {

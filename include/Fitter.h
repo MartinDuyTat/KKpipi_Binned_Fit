@@ -17,7 +17,7 @@ class Fitter {
      * @param binlist Input data events
      * @param ddecayparameters Parameters describing the D meson decay
      */
-    Fitter(BinList binlist, DDecayParameters ddparameters);
+    Fitter(const BinList &binlist, const DDecayParameters &ddparameters);
     /**
      * Function for doing fit and returning the CP violation parameters (by reference)
      * @param cpparameters Initial guess of CP violation parameters, function replaces these with the fitted parameters and its covariance matrix

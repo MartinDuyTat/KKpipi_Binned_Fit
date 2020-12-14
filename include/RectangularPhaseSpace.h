@@ -18,7 +18,7 @@ class RectangularPhaseSpace: virtual public PhaseSpaceParameterisation {
      * @param bins A vector with the number of bins in each direction, such that the total number of bins is the product
      * @param masses An array of the \f$(D^0, K^+, K^-, \pi^+, \pi^-)\f$ masses, with default the same as Ampgen's values
      */
-    RectangularPhaseSpace(std::vector<int> bins);
+    RectangularPhaseSpace(const std::vector<int> &bins);
     /**
      * Default constructor, puts the whole phase space into a single bin
      */

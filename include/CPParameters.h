@@ -17,7 +17,7 @@ class CPParameters {
      * @param yplus r_Bsin(delta_B + gamma) for Bplus decays
      * @param yminus r_Bsin(delta - gamma) for Bminus decays
      */
-    CPParameters(double xplus, double xminus, double yplus, double yminus);
+    CPParameters(const double &xplus, const double &xminus, const double &yplus, const double &yminus);
     /**
      * Function for getting CP parameters
      * @param xplus r_Bcos(delta_B + gamma) for Bplus decays

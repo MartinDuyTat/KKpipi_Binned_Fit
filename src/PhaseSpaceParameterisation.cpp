@@ -2,7 +2,7 @@
 
 #include"PhaseSpaceParameterisation.h"
 
-PhaseSpaceParameterisation::PhaseSpaceParameterisation(int bins): m_bins(bins) {
+PhaseSpaceParameterisation::PhaseSpaceParameterisation(const int &bins): m_bins(bins) {
 }
 
 PhaseSpaceParameterisation::~PhaseSpaceParameterisation() {

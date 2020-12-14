@@ -13,7 +13,7 @@
 #include"KKpipiMath.h"
 #include"TMath.h"
 
-SophisticatedPhaseSpace::SophisticatedPhaseSpace(int nbins): PhaseSpaceParameterisation(nbins), m_regions(95), m_binregion(2) {
+SophisticatedPhaseSpace::SophisticatedPhaseSpace(const int &nbins): PhaseSpaceParameterisation(nbins), m_regions(95), m_binregion(2) {
 }
 
 void SophisticatedPhaseSpace::ReadAverageStrongPhases(const std::string &filename) {
@@ -42,7 +42,7 @@ void SophisticatedPhaseSpace::ReadAverageStrongPhases(const std::string &filenam
   }
 }
 
-SophisticatedPhaseSpace::SophisticatedPhaseSpace(int nbins, const std::string &filename): SophisticatedPhaseSpace(nbins) {
+SophisticatedPhaseSpace::SophisticatedPhaseSpace(const int &nbins, const std::string &filename): SophisticatedPhaseSpace(nbins) {
   ReadAverageStrongPhases(filename);
 }
 
@@ -71,7 +71,7 @@ double SophisticatedPhaseSpace::StrongPhase(const Event &event) const {
   return std::arg(m_AmplitudeModel->operator()(fourmomenta, +1)) - std::arg(m_AmplitudeModel->operator()(fourmomenta, -1));
 }
 
-void SophisticatedPhaseSpace::CalculateStrongPhases(std::string BplusFilename, std::string BminusFilename, std::string MeanFilename, std::string RMSFilename) const {
+void SophisticatedPhaseSpace::CalculateStrongPhases(const std::string &BplusFilename, const std::string &BminusFilename, const std::string &MeanFilename, const std::string &RMSFilename) const {
   std::vector<std::vector<double>> average(m_x3bins, std::vector<double>(m_x4bins));
   std::vector<std::vector<double>> rms(m_x3bins, std::vector<double>(m_x4bins));
   std::vector<std::vector<int>> numberevents(m_x3bins, std::vector<int>(m_x4bins));

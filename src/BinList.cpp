@@ -46,7 +46,7 @@ int BinList::NumberBins() {
   return m_bins.size();
 }
 
-std::vector<int> BinList::GetEvents(int charge) const {
+std::vector<int> BinList::GetEvents(const int &charge) const {
   std::vector<int> number_events;
   for(unsigned int i = 0; i < m_bins.size(); i++) {
     number_events.push_back(m_bins[i].GetNumberEvents(charge));
@@ -54,11 +54,11 @@ std::vector<int> BinList::GetEvents(int charge) const {
   return number_events;
 }
 
-Bin BinList::GetBin(int i) {
+Bin BinList::GetBin(const int &i) {
   return m_bins[i];
 }
 
-void BinList::Predict(const DDecayParameters &ddparameters, const CPParameters &cpparameters, std::vector<double> &BplusEvents, std::vector<double> &BminusEvents, int totalBplus, int totalBminus) {
+void BinList::Predict(const DDecayParameters &ddparameters, const CPParameters &cpparameters, std::vector<double> &BplusEvents, std::vector<double> &BminusEvents, const int &totalBplus, const int &totalBminus) {
   double xplus, xminus, yplus, yminus;
   cpparameters.GetCPParameters(xplus, xminus, yplus, yminus);
   std::vector<double> K = ddparameters.GetK();

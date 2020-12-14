@@ -17,7 +17,7 @@ class XYLikelihood {
      * Constructor that takes in the true values of \f$r_B\f$, \f$\delta_B\f$, \f$\gamma\f$, the fitted values of \f$x_+\f$, \f$x_-\f$, \f$y_+\f$, \f$y_-\f$ and their covariance matrix
      * @param cpparameters A CPParameters object containing the fitted \f$x_\pm\f$ and \f$y_\pm\f$ and the covariance matrix
      */
-    XYLikelihood(CPParameters cpparameters);
+    XYLikelihood(const CPParameters &cpparameters);
     /**
      * Operator overload of () that returns -2 times the likelihood function
      * @param gamma An array of \f$r_B\f$, \f$\delta_B\f$ and \f$\gamma\f$, in degrees

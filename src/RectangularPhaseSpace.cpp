@@ -13,7 +13,7 @@
 #include"KKpipiMath.h"
 #include"Constants.h"
 
-RectangularPhaseSpace::RectangularPhaseSpace(std::vector<int> bins): PhaseSpaceParameterisation(std::accumulate(bins.begin(), bins.end(), 1, std::multiplies<int>())), m_Binning(bins) {
+RectangularPhaseSpace::RectangularPhaseSpace(const std::vector<int> &bins): PhaseSpaceParameterisation(std::accumulate(bins.begin(), bins.end(), 1, std::multiplies<int>())), m_Binning(bins) {
   m_xlow = {KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI, KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI, -1.0, -1.0, -TMath::Pi()};
   m_xhigh = {KKpipi_Constants::MASS_D - KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI, KKpipi_Constants::MASS_D - KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI, 1.0, 1.0, TMath::Pi()};
   m_BinMap.resize(5);

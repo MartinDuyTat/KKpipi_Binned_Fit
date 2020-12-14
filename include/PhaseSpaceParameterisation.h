@@ -15,7 +15,7 @@ class PhaseSpaceParameterisation {
      * Constructor that creates a binning scheme with bins number of bins
      * @param bins Number of bins in the binning scheme
      */
-    PhaseSpaceParameterisation(int bins);
+    PhaseSpaceParameterisation(const int &bins);
     /**
      * Virtual destructor for well-defined behaviour when using polymorphism
      */

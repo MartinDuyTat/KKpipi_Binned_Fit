@@ -7,7 +7,7 @@
 #include"Amplitude.h"
 #include"Event.h"
 
-AmplitudePhaseSpace::AmplitudePhaseSpace(int bins): PhaseSpaceParameterisation(bins) {
+AmplitudePhaseSpace::AmplitudePhaseSpace(const int &bins): PhaseSpaceParameterisation(bins) {
 }
 
 AmplitudePhaseSpace::~AmplitudePhaseSpace() {

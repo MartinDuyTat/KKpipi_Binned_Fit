@@ -3,7 +3,7 @@
 #include"CPParameters.h"
 #include"TMatrixD.h"
 
-CPParameters::CPParameters(double xplus, double xminus, double yplus, double yminus): m_xplus(xplus), m_xminus(xminus), m_yplus(yplus), m_yminus(yminus) {
+CPParameters::CPParameters(const double &xplus, const double &xminus, const double &yplus, const double &yminus): m_xplus(xplus), m_xminus(xminus), m_yplus(yplus), m_yminus(yminus) {
 }
 
 void CPParameters::GetCPParameters(double &xplus, double &xminus, double &yplus, double &yminus) const {

@@ -8,7 +8,7 @@
 #include"Minuit2/Minuit2Minimizer.h"
 #include"Math/Functor.h"
 
-Fitter::Fitter(BinList binlist, DDecayParameters ddparameters): m_binlist(binlist), m_ddparameters(ddparameters) {
+Fitter::Fitter(const BinList &binlist, const DDecayParameters &ddparameters): m_binlist(binlist), m_ddparameters(ddparameters) {
 }
 
 void Fitter::DoFit(CPParameters &cpparameters) {

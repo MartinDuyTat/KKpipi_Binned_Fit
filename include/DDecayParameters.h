@@ -18,24 +18,24 @@ class DDecayParameters {
      * @param psp PhaseSpaceParameterisation object
      * @param events Number of events in each bin for Monte Carlo integration
      */
-    DDecayParameters(PhaseSpaceParameterisation *psp, int events);
+    DDecayParameters(PhaseSpaceParameterisation *psp, const int &events);
     /** 
      * Constructor that takes in the D meson hadronic parameters from a comma separated CSV file, in the order i K_i Kbar_i c_i s_i
      * First line is assumed to be column names
      * @param filename Filename of file with D meson hadronic parameters
      */
-    DDecayParameters(std::string filename);
+    DDecayParameters(const std::string &filename);
     /**
      * Function for saving K_i, Kbar_i, c_i and s_i to a CSV file
      * @param filename Filename of file to save D meson hadronic parameters
      */
-    void SaveCSV(std::string filename) const;
+    void SaveCSV(const std::string &filename) const;
     /**
      * Function for plotting the c_i and s_i parameters in a s_i-c_i plane, and for plotting the magnitude of K_i
      * @param filename_cs Filename of c_i-s_i plot
      * @param filename_K Filename of K_i/Kbar_i plot
      */
-    void PlotParameters(std::string filename_cs, std::string filename_K);
+    void PlotParameters(const std::string &filename_cs, const std::string &filename_K);
     /**
      * Function for getting fractional yield K_i
      * @return K Vector of fractional yields of D0 events

@@ -20,7 +20,7 @@ class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public
      * Constructor that calls the corresponding constructor in RectangularPhaseSpace
      * @param nbins Number of bins in total
      */
-    SophisticatedPhaseSpace(int nbins);
+    SophisticatedPhaseSpace(const int &nbins);
     /**
      * Function for reading in average strong phases in the \f$(x_1, x_2, x_5)\f$ volume from a file and storing them in a vector
      * @param filename Filename of file with mean strong phases
@@ -29,7 +29,7 @@ class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public
     /**
      * Constructor that also reads in the average strong phases and sets up a lookup table
      */
-    SophisticatedPhaseSpace(int nbins, const std::string &filename);
+    SophisticatedPhaseSpace(const int &nbins, const std::string &filename);
     /**
      * Destructor that deletes the amplitude model
      * Virtual destructor to ensure well-defined behaviour when inheriting from PhaseSpaceParameterisation
@@ -54,7 +54,7 @@ class SophisticatedPhaseSpace: virtual public PhaseSpaceParameterisation, public
      * @param MeanFilename Filename of CSV file that contains the mean strong phases
      * @param RMSFilename Filename of CSV file that contains the RMS of phases
      */
-    void CalculateStrongPhases(std::string BplusFilename, std::string BminusFilename, std::string MeanFilename, std::string RMSFilename) const;
+    void CalculateStrongPhases(const std::string &BplusFilename, const std::string &BminusFilename, const std::string &MeanFilename, const std::string &RMSFilename) const;
     /**
      * Function for clearing out vector of phases to free up memory
      */

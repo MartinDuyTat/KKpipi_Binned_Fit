@@ -22,7 +22,7 @@
 #include"TAxis.h"
 #include"TLegend.h"
 
-DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, int events) {
+DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const int &events) {
   // Declare necessary variables
   Amplitude amplitude;
   Double_t mass_parent = KKpipi_Constants::MASS_D;
@@ -87,7 +87,7 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, int events) 
   std::cout << "Calculation of D hadronic decay parameters complete\n";
 }
 
-DDecayParameters::DDecayParameters(std::string filename) {
+DDecayParameters::DDecayParameters(const std::string &filename) {
   std::ifstream DDecayFile(filename);
   std::string line;
   std::getline(DDecayFile, line);
@@ -112,7 +112,7 @@ DDecayParameters::DDecayParameters(std::string filename) {
   DDecayFile.close();
 }
 
-void DDecayParameters::SaveCSV(std::string filename) const {
+void DDecayParameters::SaveCSV(const std::string &filename) const {
   std::ofstream DDecayFile(filename);
   DDecayFile << "i,K_i,Kbar_i,c_i,s_i\n";
   for(unsigned int i = 0; i < m_K.size(); i++) {
@@ -121,7 +121,7 @@ void DDecayParameters::SaveCSV(std::string filename) const {
   DDecayFile.close();
 }
 
-void DDecayParameters::PlotParameters(std::string filename_cs, std::string filename_K) {
+void DDecayParameters::PlotParameters(const std::string &filename_cs, const std::string &filename_K) {
   std::vector<Double_t> circle_x(101), circle_y(101);
   for(int i = 0; i < 101; i++) {
     circle_x[i] = TMath::Cos(2*TMath::Pi()*i/100);

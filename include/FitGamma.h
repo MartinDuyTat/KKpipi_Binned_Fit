@@ -18,7 +18,7 @@ class FitGamma {
      * Constructor that takes in a CPParameters object with fitted \f$x_\pm\f$ and \f$y_\pm\f$
      * @param cpparameters A CPParameters object with fitted \f$x_\pm\f$ and \f$y_\pm\f$ and their covariance matrix
      */
-    FitGamma(CPParameters cpparameters);
+    FitGamma(const CPParameters &cpparameters);
     /**
      * Function for doing fit and returning the CP violation parameters (by reference)
      * @param cpparameters Initial guess of \f$r_B\f$, \f$\delta_B\f$ and \f$\gamma\f$
@@ -27,7 +27,7 @@ class FitGamma {
     /**
      * Function for plotting contours after fitting
      */
-    void PlotContours(std::string Filename_rB_deltaB, std::string Filename_deltaB_gamma, std::string Filename_gamma_rB, unsigned int npoints) const;
+    void PlotContours(const std::string &Filename_rB_deltaB, const std::string &Filename_deltaB_gamma, const std::string &Filename_gamma_rB, unsigned int npoints) const;
     /**
      * Destructor to kill the minimiser
      */

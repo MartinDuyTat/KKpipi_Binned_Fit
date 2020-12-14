@@ -7,10 +7,10 @@
 #include"TMath.h"
 #include"Math/PdfFuncMathCore.h"
 
-Likelihood::Likelihood(BinList bins, DDecayParameters ddparameters): m_bins(bins), m_ddparameters(ddparameters), m_leastsquares(false) {
+Likelihood::Likelihood(const BinList &bins, const DDecayParameters &ddparameters): m_bins(bins), m_ddparameters(ddparameters), m_leastsquares(false) {
 }
 
-double Likelihood::LogPoissonPDF(int x, double mu) const {
+double Likelihood::LogPoissonPDF(const int &x, const double &mu) const {
   return x*TMath::Log(mu) - ROOT::Math::lgamma(x + 1) - mu;
 }
 
