@@ -188,6 +188,12 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
   int x1_bin = static_cast<int>((X[0] - RectangularPhaseSpace::GetLowerBoundary(0))/dx1);
   int x2_bin = static_cast<int>((X[1] - RectangularPhaseSpace::GetLowerBoundary(1))/dx2);
   int x5_bin = static_cast<int>((X[4] - RectangularPhaseSpace::GetLowerBoundary(4))/dx5);
+  if(x1_bin == 100) {
+    x1_bin = 99;
+  }
+  if(x2_bin == 100) {
+    x2_bin = 99;
+  }
   return m_LookupBins[Region][x1_bin][x2_bin][x5_bin] + m_binregion;
 }
   

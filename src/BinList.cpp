@@ -48,7 +48,7 @@ void BinList::LoadTTree(TTree *tree, const int &charge, const int &StartEvent, c
     } else {
       tree->SetBranchAddress(address.c_str(), p + i - 1);
     }
-  }
+  }  
   for(Int_t i = StartEvent; i < ((TotalEvents  == -1) ? tree->GetEntries() : (StartEvent + TotalEvents)); i++) {
     tree->GetEntry(i);
     this->AddEvent(Event(four_momentum), charge);
