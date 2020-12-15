@@ -20,7 +20,7 @@ class BinList {
      * Constructor that takes a PhaseSpaceParameterisation object and creates the bins
      * @param php A PhaseSpaceParameterisation object that defines the bins in the 5D phase space
      */
-    BinList(PhaseSpaceParameterisation *php);
+    BinList(PhaseSpaceParameterisation *php, bool SaveEvents = false);
     /**
      * Function for adding an event to the correct bin
      * @param event Event object to be added to the correct bin
@@ -77,6 +77,18 @@ class BinList {
      * Vector of Bin objects
      */
     std::vector<Bin> m_bins;
+    /**
+     * Flag to save all event data into bins for later analysis, instead of simply counting the number of events
+     */
+    bool m_SaveEvents;
+    /**
+     * Vector containing the number of \f$B^+\f$ events in each bin
+     */
+    std::vector<int> m_BplusEvents;
+    /**
+     * Vector containing the number of \f$B^-\f$ events in each bin
+     */
+    std::vector<int> m_BminusEvents;
 };
 
 #endif

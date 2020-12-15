@@ -9,7 +9,6 @@
 #include<sstream>
 #include"DDecayParameters.h"
 #include"Constants.h"
-#include"BinList.h"
 #include"Generator.h"
 #include"TLorentzVector.h"
 #include"Event.h"
