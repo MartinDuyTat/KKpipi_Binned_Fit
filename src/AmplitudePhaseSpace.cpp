@@ -18,7 +18,7 @@ AmplitudePhaseSpace::~AmplitudePhaseSpace() {
 int AmplitudePhaseSpace::WhichBin(const Event &event) const {
   std::vector<double> EventVector = event.GetEventVector();
   double phase = std::arg(m_amplitude(EventVector, +1)*std::conj(m_amplitude(EventVector, -1)));
-  phase += KKpipi_Constants::gamma;
+  /*phase += KKpipi_Constants::gamma;
   if(phase > TMath::Pi()) {
     phase -= 2*TMath::Pi();
   }
@@ -32,8 +32,8 @@ int AmplitudePhaseSpace::WhichBin(const Event &event) const {
     return 6;
   } else {
     return 7;
-  }
-  //return static_cast<int>((phase + TMath::Pi())/(2*TMath::Pi()/NumberOfBins()));
+    }*/
+  return static_cast<int>((phase + TMath::Pi())/(2*TMath::Pi()/NumberOfBins()));
 } 
 
 int AmplitudePhaseSpace::NumberOfBins() const {
