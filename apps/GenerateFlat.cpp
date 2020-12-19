@@ -19,6 +19,7 @@
 #include"Event.h"
 #include"TTree.h"
 #include"TFile.h"
+#include"TMath.h"
 
 int main(int argc, char *argv[]) {
   if(argc != 3) {
@@ -42,15 +43,21 @@ int main(int argc, char *argv[]) {
   tree.Branch("D_amplitude", &Damp);
   tree.Branch("Dbar_amplitude", &DBARamp);
   std::cout << "TTree initialized\n";
-  for(int i = 0; i < atoi(argv[1]); i++) {
-    if(i%100000 == 1) {
-      std::cout << i - 1 << " events generated\n";
-    }
+  int i = 0;
+  while(i < atoi(argv[1])) {
     Event event(generator.Generate());
     std::vector<double> coordinates = KKpipiMath::RectCoordinates(event);
     X = coordinates;
     Damp = amplitude(event.GetEventVector(), +1);
     DBARamp = amplitude(event.GetEventVector(), -1);
+    // If amplitude is nan, event is probably on the boundary of phase space and wrongly classified as kinematically impossible, so discard event
+    if(TMath::IsNaN(std::norm(Damp)) || TMath::IsNaN(std::norm(DBARamp))) {
+      continue;
+    }
+    ++i;
+    if(i%100000 == 0) {
+      std::cout << i << " events generated\n";
+    }
     tree.Fill();
   }
   std::cout << "Event generation finished, generated " << atoi(argv[1]) << " events in total\n";
