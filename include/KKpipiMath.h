@@ -9,6 +9,8 @@
 #include<vector>
 #include"TLorentzVector.h"
 #include"Event.h"
+#include"CPParameters.h"
+#include"DDecayParameters.h"
 
 namespace KKpipiMath {
   /**
@@ -29,6 +31,21 @@ namespace KKpipiMath {
    * @return Vector with four-momenta of the event, in the order \f$(K^+, K^-, \pi^+, \pi^-)\f$
    */
   std::vector<double> ConvertXToMomenta(const std::vector<double> &X);
+  /**
+   * Function that predicts how many events there are in each bin, given \f$K_i\f$, \f$\bar{K_i}\f$, \f$c_i\f$, \f$s_i\f$, \f$x_\pm\f$, \f$y_\pm\f$ and the total number of \f$B^\pm$ events
+   * @param ddparameters A DDecayParameters object that describes the D meson decay
+   * @param cpparameters A CPParameters object that describes the CP violation in the B meson decay
+   * @param BplusEvents Vector of predicted number of B+ events
+   * @param BminusEvents Vector of predicted number of B- events
+   * @param totalBplus Total number of B+ events
+   * @param totalBminus Total number of B- events
+   */
+  void ExpectedNumberOfEvents(const DDecayParameters &ddparameters,
+	       const CPParameters &cpparameters,
+	       const int &totalBplus,
+	       const int &totalBminus,
+	       std::vector<double> &BplusEvents,
+	       std::vector<double> &BminusEvents);
 }
 
 #endif

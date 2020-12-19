@@ -6,6 +6,7 @@
 #include"BinList.h"
 #include"TMath.h"
 #include"Math/PdfFuncMathCore.h"
+#include"KKpipiMath.h"
 
 Likelihood::Likelihood(const BinList &bins, const DDecayParameters &ddparameters): m_bins(bins), m_ddparameters(ddparameters), m_leastsquares(false) {
 }
@@ -25,7 +26,7 @@ double Likelihood::operator()(const double *cpparameters) {
     totalBminus += eventsBminus[i];
   }
   CPParameters cpparam(cpparameters[0], cpparameters[1], cpparameters[2], cpparameters[3]);
-  m_bins.Predict(m_ddparameters, cpparam, predictedBplus, predictedBminus, totalBplus, totalBminus);
+  KKpipiMath::ExpectedNumberOfEvents(m_ddparameters, cpparam, totalBplus, totalBminus, predictedBplus, predictedBminus);
   if(m_leastsquares) {
     for(int i = 0; i < m_bins.NumberBins(); i++) {
       loglikelihood += TMath::Power(eventsBplus[i] - predictedBplus[i], 2)/predictedBplus[i];

@@ -58,16 +58,6 @@ class BinList {
      * @return Bin object
      */
     Bin GetBin(const int &i);
-    /**
-     * Function for calculating the number of events in each bin, given the D decay parameters and the CP parameters
-     * @param ddparameters A DDecayParameters object that describes the D meson decay
-     * @param cpparameters A CPParameters object that describes the CP violation in the B meson decay
-     * @param BplusEvents Vector of predicted number of B+ events
-     * @param BminusEvents Vector of predicted number of B- events
-     * @param totalBplus Total number of B+ events
-     * @param totalBminus Total number of B- events
-     */
-    void Predict(const DDecayParameters &ddparameters, const CPParameters &cpparameters, std::vector<double> &BplusEvents, std::vector<double> &BminusEvents, const int &totalBplus, const int &totalBminus);
   private:
     /**
      * A parameterisation of phase space

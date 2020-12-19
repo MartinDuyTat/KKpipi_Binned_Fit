@@ -1,7 +1,10 @@
 // Martin Duy Tat 1st December 2020
 
 #include<vector>
+#include<functional>
 #include"KKpipiMath.h"
+#include"CPParameters.h"
+#include"DDecayParameters.h"
 #include"TLorentzVector.h"
 #include"Event.h"
 #include"Constants.h"
@@ -98,4 +101,26 @@ namespace KKpipiMath {
     return event;
   }
 
+  void ExpectedNumberOfEvents(const DDecayParameters &ddparameters, const CPParameters &cpparameters, const int &totalBplus, const int &totalBminus, std::vector<double> &BplusEvents, std::vector<double> &BminusEvents) {
+    double xplus, xminus, yplus, yminus;
+    cpparameters.GetCPParameters(xplus, xminus, yplus, yminus);
+    std::vector<double> K = ddparameters.GetK();
+    std::vector<double> Kbar = ddparameters.GetKbar();
+    std::vector<double> c = ddparameters.Getc();
+    std::vector<double> s = ddparameters.Gets();
+    BplusEvents.resize(K.size());
+    BminusEvents.resize(K.size());
+    double sumplus = 0, summinus = 0;
+    for(unsigned int i = 0; i < K.size(); i++) {
+      BplusEvents[i] = Kbar[i] + (xplus*xplus + yplus*yplus)*K[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(xplus*c[i] - yplus*s[i]);
+      BminusEvents[i] = K[i] + (xminus*xminus + yminus*yminus)*Kbar[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(xminus*c[i] + yminus*s[i]);
+      sumplus += BplusEvents[i];
+      summinus += BminusEvents[i];
+    }
+    double normalisationBplus = totalBplus/sumplus;
+    double normalisationBminus = totalBminus/summinus;
+    std::transform(BplusEvents.begin(), BplusEvents.end(), BplusEvents.begin(), std::bind(std::multiplies<double>(), std::placeholders::_1, normalisationBplus));
+    std::transform(BminusEvents.begin(), BminusEvents.end(), BminusEvents.begin(), std::bind(std::multiplies<double>(), std::placeholders::_1, normalisationBminus));
+  }
+  
 }
