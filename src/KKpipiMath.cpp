@@ -3,6 +3,7 @@
 #include<vector>
 #include<functional>
 #include"KKpipiMath.h"
+#include"Constants.h"
 #include"CPParameters.h"
 #include"DDecayParameters.h"
 #include"TLorentzVector.h"
@@ -123,4 +124,22 @@ namespace KKpipiMath {
     std::transform(BminusEvents.begin(), BminusEvents.end(), BminusEvents.begin(), std::bind(std::multiplies<double>(), std::placeholders::_1, normalisationBminus));
   }
   
+  double CalculateBinningQValue(const DDecayParameters &ddparameters) {
+    std::vector<double> BplusEvents, BminusEvents;
+    CPParameters cpparameters(KKpipi_Constants::xplus, KKpipi_Constants::xminus, KKpipi_Constants::yplus, KKpipi_Constants::yminus);
+    ExpectedNumberOfEvents(ddparameters, cpparameters, 1.0, 1.0, BplusEvents, BminusEvents);
+    std::vector<double> ci = ddparameters.Getc();
+    std::vector<double> si = ddparameters.Gets();
+    double Qplus = 0, Qminus = 0, Nplus = 0, Nminus = 0;
+    for(unsigned int i = 0; i < BplusEvents.size(); i++) {
+      Nplus += BplusEvents[i];
+      Nminus += BminusEvents[i];
+      Qplus += BplusEvents[i]*(ci[i]*ci[i] + si[i]*si[i]);
+      Qminus += BminusEvents[i]*(ci[i]*ci[i] + si[i]*si[i]);
+    }
+    Qplus /= Nplus;
+    Qminus /= Nminus;
+    return TMath::Sqrt(0.5*(Qplus + Qminus));
+  }
+
 }

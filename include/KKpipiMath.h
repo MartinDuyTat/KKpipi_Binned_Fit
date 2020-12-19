@@ -46,6 +46,11 @@ namespace KKpipiMath {
 	       const int &totalBminus,
 	       std::vector<double> &BplusEvents,
 	       std::vector<double> &BminusEvents);
+  /**
+   * Function for calculating the Q-value of a binning scheme
+   * @param Hadronic parameters for the \f$D\f$ decay
+   */
+  double CalculateBinningQValue(const DDecayParameters &ddparameters);
 }
 
 #endif
