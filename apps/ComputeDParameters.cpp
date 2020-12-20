@@ -22,6 +22,8 @@
 #include"EventList.h"
 
 int main(int argc, char *argv[]) {
+  std::cout << "Calculation of K_i, Kbar_i, c_i, s_i using Monte Carlo integration\n";
+  std::cout << "Loading phase space binning...\n";
   NaivePhaseSpace phasespace_naive;
   RectangularPhaseSpace phasespace_rectangular;
   SophisticatedPhaseSpace phasespace_sophisticated(atoi(argv[4]));
@@ -43,10 +45,14 @@ int main(int argc, char *argv[]) {
     std::cout << "Invalid inputs!\n";
     return 0;
   }
-  std::string filename = argv[2];
+  std::cout << "Binning scheme prepared\n";
+  std::cout << "Loading MC events...\n";
   EventList eventlist;
   eventlist.LoadTree(std::string(argv[3]));
+  std::cout << "MC events ready\n";
+  std::cout << "Calculating D hadronic parameters...\n";
   DDecayParameters ddecay(psp, eventlist);
-  ddecay.SaveCSV(filename);
+  ddecay.SaveCSV(std::string(argv[2]));
+  std::cout << "Calculation of D hadronic decay parameters complete\n";
   return 0;
 }

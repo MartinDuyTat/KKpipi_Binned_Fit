@@ -3,7 +3,6 @@
 #include<algorithm>
 #include<vector>
 #include<complex>
-#include<iostream>
 #include<string>
 #include<fstream>
 #include<sstream>
@@ -59,7 +58,6 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
   // Divide by total to normalise fractional yields to 1
   std::transform(m_K.begin(), m_K.end(), m_K.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumK));
   std::transform(m_Kbar.begin(), m_Kbar.end(), m_Kbar.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumKbar));
-  std::cout << "Calculation of D hadronic decay parameters complete\n";
 }
 
 DDecayParameters::DDecayParameters(const std::string &filename) {
