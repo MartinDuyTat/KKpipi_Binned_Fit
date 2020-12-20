@@ -37,6 +37,7 @@ int main(int argc, char *argv[]) {
     psp = &phasespace_sophisticated;
     phasespace_sophisticated.ReadAverageStrongPhases(std::string(argv[5]));
   } else if(std::string(argv[1]) == "amplitude" && argc == 5) {
+    phasespace_amplitude.ReadAmplitudeFromEvent(true);
     psp = &phasespace_amplitude;
   } else {
     std::cout << "Invalid inputs!\n";

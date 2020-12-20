@@ -22,6 +22,12 @@ class AmplitudePhaseSpace: public PhaseSpaceParameterisation {
      */
     ~AmplitudePhaseSpace();
     /**
+     * Function for setting the flag for reading amplitudes from the Event object
+     * Set true if amplitude is read from the Event Object
+     * @param TrueIfReadFromEvent Obvious name
+     */
+    void ReadAmplitudeFromEvent(bool TrueIfReadFromEvent);
+    /**
      * Function that determines which bin an event belongs to
      * @param event The event we want to determine the bin of
      * @return Bin number
@@ -37,6 +43,11 @@ class AmplitudePhaseSpace: public PhaseSpaceParameterisation {
      * Amplitude object to calculate the strong phase difference of an event
      */
     Amplitude m_amplitude;
+    /**
+     * When true, the amplitudes are read from the Event object instead of calculated
+     * This only works for MC events because the amplitude has already been calculated and stored
+     */
+    bool m_ReadAmplitudeFromEvent = false;
 };
 
 #endif
