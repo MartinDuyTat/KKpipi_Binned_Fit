@@ -21,41 +21,24 @@
 #include"TAxis.h"
 #include"TLegend.h"
 
-DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const int &events) {
-  // Declare necessary variables
-  Amplitude amplitude;
-  Double_t mass_parent = KKpipi_Constants::MASS_D;
-  Double_t mass_decay[] = {KKpipi_Constants::MASS_K, KKpipi_Constants::MASS_K, KKpipi_Constants::MASS_PI, KKpipi_Constants::MASS_PI};
-  Generator generator(mass_parent, mass_decay, 4);
+DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventList &eventlist) {
+  // Number of bins in this binning scheme
   int NumberBins = psp->NumberOfBins();
-  int counter = 0;
   // Reset all bins that store D hadronic parameters
   m_K = std::vector<double>(NumberBins, 0.0);
   m_Kbar = std::vector<double>(NumberBins, 0.0);
   m_c = std::vector<double>(NumberBins, 0.0);
   m_s = std::vector<double>(NumberBins, 0.0);
-  // Generate events until all bins have "events" number of events, and for each event calculate the ampltitudes and phases
-  std::vector<int> EventsGenerated(NumberBins, 0);
-  while(!std::all_of(EventsGenerated.begin(), EventsGenerated.end(), [&events](int i){return i >= events;})) {
-    ++counter;
-    // Generate event
-    Event GeneratedEvent(generator.Generate());
-    // Calculate amplitude
-    std::complex<double> amplitude_d = amplitude(GeneratedEvent.GetEventVector(), +1);
-    std::complex<double> amplitude_dbar = amplitude(GeneratedEvent.GetEventVector(), -1);
-    // If amplitude is nan, event is probably on the boundary of phase space and wrongly classified as kinematically impossible, so discard event
-    // Need to do this check before checking bin number, in case event is just at the boundary and wrongly classified as outside
-    if(TMath::IsNaN(std::norm(amplitude_d)) || TMath::IsNaN(std::norm(amplitude_dbar))) {
-      continue;
-    }
+  // Loop over all unweighted events
+  for(int i = 0; i < eventlist.NumberEvents(); i++) {
+    // Get generated event
+    Event GeneratedEvent = eventlist.GetEvent(i);
     // Check which bin event belongs to
     int BinNumber = psp->WhichBin(GeneratedEvent);
-    // Increment event count for that bin
-    EventsGenerated[BinNumber] += 1;
-    // Check if bin is full
-    if(EventsGenerated[BinNumber] > events) {
-      continue;
-    }
+    // Get the amplitudes
+    std::complex<double> amplitude_d;
+    std::complex<double> amplitude_dbar;
+    GeneratedEvent.GetAmplitudes(amplitude_d, amplitude_dbar);
     // Calculate fractional yield
     m_K[BinNumber] += std::norm(amplitude_d);
     m_Kbar[BinNumber] += std::norm(amplitude_dbar);
@@ -63,19 +46,12 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const int &e
     double phase = std::arg(amplitude_d) - std::arg(amplitude_dbar);
     m_c[BinNumber] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase);
     m_s[BinNumber] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase);
-    if(counter%events == 0) {
-      std::cout << "Generated " << counter << " events\n";
-    }
   }
-  std::cout << "Generated " << counter << " events\n";
   double sumK = 0, sumKbar = 0;
   for(int i = 0; i < NumberBins; i++) {
     // Amplitude averaged strong phase variation normalisation
     m_c[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
     m_s[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
-    // Account for size of phase space in each bin
-    m_K[i] *= EventsGenerated[i];
-    m_Kbar[i] *= EventsGenerated[i];
     // Normalise fractional yields so they sum to 1
     sumK += m_K[i];
     sumKbar += m_Kbar[i];

@@ -7,6 +7,7 @@
 #define EVENT_H
 
 #include<vector>
+#include<complex>
 #include"TLorentzVector.h"
 
 class Event {
@@ -21,6 +22,13 @@ class Event {
      */
     Event(const std::vector<double> &p);
     /**
+     * Constructor that takes a vector of four-momenta and the amplitudes for \f$D^0\f$ and \f$\bar{D^0}\f$ decay
+     * @param p Four-momenta in the form (px, py, pz, E), in the order K+ K- pi+ pi-
+     * @param D_amplitude Amplitude of \f$D^0\f$ decay
+     * @param DBAR_amplitude Amplitude of \f$\bar{D^0}\f$ decay
+     */
+    Event(const std::vector<double> &p, const std::complex<double> &D_amplitude, const std::complex<double> &DBAR_amplitude);
+    /**
      * Returns the four-momenta of daughter particles as a vector
      * @return Four-momenta of daughter particles in the form (E, px, py, pz), in the order K+ K- pi+ pi-
      */
@@ -30,6 +38,12 @@ class Event {
      * @param p Vector of TLorentzVector objects, in the order K+ K- pi+ pi-
      */
     Event(const std::vector<TLorentzVector> &p);
+    /**
+     * Function that returns the two amplitudes by reference
+     * @param D_amplitude \f$D^0\f$ amplitude
+     * @param DBAR_amplitude \f$\bar{D^0}\f$ amplitude
+     */
+    void GetAmplitudes(std::complex<double> &D_amplitude, std::complex<double> &DBAR_amplitude) const;
     /**
      * Function for getting invariant mass of two particles
      * @param particle1 Particle 0(K+), 1(K-), 2(pi+), 3(pi-)
@@ -50,6 +64,14 @@ class Event {
      * Four-momenta of daughter particles
      */
     std::vector<double> m_momenta;
+    /**
+     * Amplitude of \f$D^0\f$ decay
+     */
+    std::complex<double> m_Damplitude;
+    /**
+     * Amplitude of \f$\bar{D^0}\f$ decay
+     */
+    std::complex<double> m_DBARamplitude;
 };
 
 #endif

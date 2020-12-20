@@ -12,10 +12,11 @@ add_executable(MapStrongPhases MapStrongPhases.cpp)
 add_executable(PullStudy PullStudy.cpp)
 add_executable(PlotDParameters PlotDParameters.cpp)
 
+target_link_libraries(BinningQ PUBLIC KKpipi)
+target_link_libraries(BinningQ PUBLIC ROOT::Physics ROOT::RIO ROOT::Tree)
+
 target_link_libraries(BinNumberStudy PUBLIC KKpipi)
 target_link_libraries(BinNumberStudy PUBLIC ROOT::Physics ROOT::RIO ROOT::Tree)
-
-target_link_libraries(BinningQ PUBLIC KKpipi)
 
 target_link_libraries(ComputeDParameters PUBLIC KKpipi)
 target_link_libraries(ComputeDParameters PUBLIC ROOT::Tree)
@@ -35,6 +36,7 @@ target_link_libraries(GenerateFlat PUBLIC ROOT::Physics ROOT::RIO ROOT::Tree)
 target_link_libraries(MapStrongPhases PUBLIC KKpipi ROOT::Tree)
 
 target_link_libraries(PlotDParameters PUBLIC KKpipi)
+target_link_libraries(PlotDParameters PUBLIC ROOT::Physics ROOT::RIO ROOT::Tree)
 
 target_link_libraries(PullStudy PUBLIC KKpipi)
 target_link_libraries(PullStudy PUBLIC ROOT::Physics ROOT::RIO ROOT::Tree)

@@ -6,9 +6,10 @@
 #ifndef EVENTLIST_H
 #define EVENTLIST_H
 
+#include<vector>
+#include<string>
 #include"Event.h"
 #include"TTree.h"
-#include<vector>
 
 class EventList {
   public:
@@ -29,7 +30,21 @@ class EventList {
      * Function that returns the vector of Event objects
      * @return Vector of Event objects
      */
-    std::vector<Event> GetEvents();
+    const std::vector<Event>& GetEvents() const;
+    /**
+     * Function that returns an Event object
+     * @param i Event index
+     */
+    const Event& GetEvent(const int &i) const;
+    /**
+     * Function for loading a TTree with events
+     * @param filename Filename with TTree
+     */
+    void LoadTree(const std::string &filename);
+    /**
+     * Function for clearing the EventList to free up memory
+     */
+    void Clear();
   private:
     /**
      * List of events

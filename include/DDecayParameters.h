@@ -10,15 +10,17 @@
 #include<vector>
 #include<string>
 #include"PhaseSpaceParameterisation.h"
+#include"EventList.h"
 
 class DDecayParameters {
   public:
     /**
      * Constructor that takes in a PhaseSpaceParameterisation object and calculates the D decay parameters in each bin
+     * Unweighted events in phase space must be given in order to perform the Monte Carlo integrations
      * @param psp PhaseSpaceParameterisation object
-     * @param events Number of events in each bin for Monte Carlo integration
+     * @param eventlist EventList object with the unweighted Monte Carlo events
      */
-    DDecayParameters(PhaseSpaceParameterisation *psp, const int &events);
+    DDecayParameters(PhaseSpaceParameterisation *psp, const EventList &eventlist);
     /** 
      * Constructor that takes in the D meson hadronic parameters from a comma separated CSV file, in the order i K_i Kbar_i c_i s_i
      * First line is assumed to be column names

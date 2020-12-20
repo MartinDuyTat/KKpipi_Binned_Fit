@@ -1,6 +1,7 @@
 // Martin Duy Tat 2nd November 2020
 
 #include<vector>
+#include<complex>
 #include"Event.h"
 #include"TLorentzVector.h"
 #include"TMath.h"
@@ -10,6 +11,9 @@ Event::Event() {
 }
 
 Event::Event(const std::vector<double> &p): m_momenta(p) {
+}
+
+Event::Event(const std::vector<double> &p, const std::complex<double> &D_amplitude, const std::complex<double> &DBAR_amplitude): m_momenta(p), m_Damplitude(D_amplitude), m_DBARamplitude(DBAR_amplitude) {
 }
 
 const std::vector<double>& Event::GetEventVector() const {
@@ -24,6 +28,11 @@ Event::Event(const std::vector<TLorentzVector> &p) {
     m_momenta[4*i + 2] = p[i][2];
     m_momenta[4*i + 3] = p[i][3];
   }
+}
+
+void Event::GetAmplitudes(std::complex<double> &D_amplitude, std::complex<double> &DBAR_amplitude) const {
+  D_amplitude = m_Damplitude;
+  DBAR_amplitude = m_DBARamplitude;
 }
 
 double Event::GetInvMass2(const int &particle1, const int &particle2) const {
