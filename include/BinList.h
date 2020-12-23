@@ -2,6 +2,8 @@
 /**
  * BinList is a class that contains all the bins in phase space
  * BinList also loads the input data and puts it in their respective bins
+ * Events can also be saved, instead of simply counted, by setting SaveEvents = true
+ * Bin \f$-i\f$ is the CP conjugation of bin \f$i\f$, defined by the binning scheme through the function PhaseSpaceParameterisation::WhichBin
  */
 
 #ifndef BINLIST_H
@@ -43,21 +45,23 @@ class BinList {
      */
     void LoadTTree(TTree *tree, const int &charge, const int &StartEvent = 0, const int &TotalEvents = -1);
     /**
-     * Function for getting number of bins
+     * Function for getting the total number of bins, not counting CP conjugated bins
      */
     int NumberBins();
     /**
      * Function for getting the number of events in each bin
      * @param charge +1 for B+, -1 for B-
+     * @param cp \f$+1\f$ for positive bins, \f$-1\f$ for negative bins
      * @return A vector of the number of events in each bin
      */
-    std::vector<int> GetEvents(const int &charge) const;
+    std::vector<int> GetEvents(const int &charge, const int &cp) const;
     /**
      * Function for getting Bin object
      * @param i Bin number
+     * @param cp \f$+1\f$ for positive bins, \f$-1\f$ for negative bins
      * @return Bin object
      */
-    Bin GetBin(const int &i);
+    Bin GetBin(const int &i, const int &cp);
   private:
     /**
      * A parameterisation of phase space
@@ -67,6 +71,10 @@ class BinList {
      * Vector of Bin objects
      */
     std::vector<Bin> m_bins;
+    /**
+     * Vector of CP conjugated Bin objects
+     */
+    std::vector<Bin> m_CPbins;
     /**
      * Flag to save all event data into bins for later analysis, instead of simply counting the number of events
      */
@@ -79,6 +87,14 @@ class BinList {
      * Vector containing the number of \f$B^-\f$ events in each bin
      */
     std::vector<int> m_BminusEvents;
+    /**
+     * Vector containing the number of CP conjugated \f$B^+\f$ events in each bin
+     */
+    std::vector<int> m_BplusCPEvents;
+    /**
+     * Vector containing the number of CP conjugated \f$B^-\f$ events in each bin
+     */
+    std::vector<int> m_BminusCPEvents;
 };
 
 #endif

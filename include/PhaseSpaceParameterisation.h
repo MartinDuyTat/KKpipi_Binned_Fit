@@ -2,6 +2,8 @@
 /**
  * PhaseSpaceParameterisation is a class that contains the information about how phase space is divided into bins
  * Add a new binning scheme by adding a derived class with the binning implemented
+ * Bin numbers go from \f$i = 1, 2, 3, ...\f$, and \f$i = -1, -2, -3, ...\f$ for CP conjugated bins
+ * Which events that are CP conjugates are defined by the binning scheme
  */
 
 #ifndef PHASESPACEPARAMETERISATION

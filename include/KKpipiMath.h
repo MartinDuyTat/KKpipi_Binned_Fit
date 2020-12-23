@@ -35,17 +35,21 @@ namespace KKpipiMath {
    * Function that predicts how many events there are in each bin, given \f$K_i\f$, \f$\bar{K_i}\f$, \f$c_i\f$, \f$s_i\f$, \f$x_\pm\f$, \f$y_\pm\f$ and the total number of \f$B^\pm$ events
    * @param ddparameters A DDecayParameters object that describes the D meson decay
    * @param cpparameters A CPParameters object that describes the CP violation in the B meson decay
-   * @param BplusEvents Vector of predicted number of B+ events
-   * @param BminusEvents Vector of predicted number of B- events
    * @param totalBplus Total number of B+ events
    * @param totalBminus Total number of B- events
+   * @param BplusEvents Vector of predicted number of B+ events in bin \f$i\f$
+   * @param BminusEvents Vector of predicted number of B- events in bin \f$i\f$
+   * @param BplusEvents Vector of predicted number of CP conjugated B+ events in bin \f$-i\f$
+   * @param BminusEvents Vector of predicted number of CP conjugated B- events in bin \f$-i\f$
    */
   void ExpectedNumberOfEvents(const DDecayParameters &ddparameters,
-	       const CPParameters &cpparameters,
-	       const int &totalBplus,
-	       const int &totalBminus,
-	       std::vector<double> &BplusEvents,
-	       std::vector<double> &BminusEvents);
+			      const CPParameters &cpparameters,
+			      const int &totalBplus,
+			      const int &totalBminus,
+			      std::vector<double> &BplusEvents,
+			      std::vector<double> &BminusEvents,
+			      std::vector<double> &BplusCPEvents,
+			      std::vector<double> &BminusCPEvents);
   /**
    * Function for calculating the Q-value of a binning scheme
    * @param Hadronic parameters for the \f$D\f$ decay

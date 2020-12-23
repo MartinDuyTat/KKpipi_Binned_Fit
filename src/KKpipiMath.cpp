@@ -102,7 +102,7 @@ namespace KKpipiMath {
     return event;
   }
 
-  void ExpectedNumberOfEvents(const DDecayParameters &ddparameters, const CPParameters &cpparameters, const int &totalBplus, const int &totalBminus, std::vector<double> &BplusEvents, std::vector<double> &BminusEvents) {
+  void ExpectedNumberOfEvents(const DDecayParameters &ddparameters, const CPParameters &cpparameters, const int &totalBplus, const int &totalBminus, std::vector<double> &BplusEvents, std::vector<double> &BminusEvents, std::vector<double> &BplusCPEvents, std::vector<double> &BminusCPEvents) {
     double xplus, xminus, yplus, yminus;
     cpparameters.GetCPParameters(xplus, xminus, yplus, yminus);
     std::vector<double> K = ddparameters.GetK();
@@ -111,31 +111,37 @@ namespace KKpipiMath {
     std::vector<double> s = ddparameters.Gets();
     BplusEvents.resize(K.size());
     BminusEvents.resize(K.size());
+    BplusCPEvents.resize(K.size());
+    BminusCPEvents.resize(K.size());
     double sumplus = 0, summinus = 0;
     for(unsigned int i = 0; i < K.size(); i++) {
       BplusEvents[i] = Kbar[i] + (xplus*xplus + yplus*yplus)*K[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(xplus*c[i] - yplus*s[i]);
       BminusEvents[i] = K[i] + (xminus*xminus + yminus*yminus)*Kbar[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(xminus*c[i] + yminus*s[i]);
-      sumplus += BplusEvents[i];
-      summinus += BminusEvents[i];
+      BplusCPEvents[i] = K[i] + (xplus*xplus + yplus*yplus)*Kbar[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(xplus*c[i] + yplus*s[i]);
+      BminusCPEvents[i] = Kbar[i] + (xminus*xminus + yminus*yminus)*K[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(xminus*c[i] - yminus*s[i]);
+      sumplus += BplusEvents[i] + BplusCPEvents[i];
+      summinus += BminusEvents[i] + BminusCPEvents[i];
     }
     double normalisationBplus = totalBplus/sumplus;
     double normalisationBminus = totalBminus/summinus;
     std::transform(BplusEvents.begin(), BplusEvents.end(), BplusEvents.begin(), std::bind(std::multiplies<double>(), std::placeholders::_1, normalisationBplus));
     std::transform(BminusEvents.begin(), BminusEvents.end(), BminusEvents.begin(), std::bind(std::multiplies<double>(), std::placeholders::_1, normalisationBminus));
+    std::transform(BplusCPEvents.begin(), BplusCPEvents.end(), BplusCPEvents.begin(), std::bind(std::multiplies<double>(), std::placeholders::_1, normalisationBplus));
+    std::transform(BminusCPEvents.begin(), BminusCPEvents.end(), BminusCPEvents.begin(), std::bind(std::multiplies<double>(), std::placeholders::_1, normalisationBminus));
   }
   
   double CalculateBinningQValue(const DDecayParameters &ddparameters) {
-    std::vector<double> BplusEvents, BminusEvents;
+    std::vector<double> BplusEvents, BminusEvents, BplusCPEvents, BminusCPEvents;
     CPParameters cpparameters(KKpipi_Constants::xplus, KKpipi_Constants::xminus, KKpipi_Constants::yplus, KKpipi_Constants::yminus);
-    ExpectedNumberOfEvents(ddparameters, cpparameters, 1.0, 1.0, BplusEvents, BminusEvents);
+    ExpectedNumberOfEvents(ddparameters, cpparameters, 1.0, 1.0, BplusEvents, BminusEvents, BplusCPEvents, BminusCPEvents);
     std::vector<double> ci = ddparameters.Getc();
     std::vector<double> si = ddparameters.Gets();
     double Qplus = 0, Qminus = 0, Nplus = 0, Nminus = 0;
     for(unsigned int i = 0; i < BplusEvents.size(); i++) {
-      Nplus += BplusEvents[i];
-      Nminus += BminusEvents[i];
-      Qplus += BplusEvents[i]*(ci[i]*ci[i] + si[i]*si[i]);
-      Qminus += BminusEvents[i]*(ci[i]*ci[i] + si[i]*si[i]);
+      Nplus += BplusEvents[i] + BplusCPEvents[i];
+      Nminus += BminusEvents[i] + BminusCPEvents[i];
+      Qplus += (BplusEvents[i] + BplusCPEvents[i])*(ci[i]*ci[i] + si[i]*si[i]);
+      Qminus += (BminusEvents[i] + BminusCPEvents[i])*(ci[i]*ci[i] + si[i]*si[i]);
     }
     Qplus /= Nplus;
     Qminus /= Nminus;
