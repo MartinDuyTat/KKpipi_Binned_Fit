@@ -34,6 +34,8 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
     Event GeneratedEvent = eventlist.GetEvent(i);
     // Check which bin event belongs to
     int BinNumber = psp->WhichBin(GeneratedEvent);
+    int BinSign = BinNumber > 0 ? +1 : -1;
+    BinNumber = TMath::Abs(BinNumber) - 1;
     // Get the amplitudes
     std::complex<double> amplitude_d;
     std::complex<double> amplitude_dbar;
@@ -43,6 +45,7 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
     m_Kbar[BinNumber] += std::norm(amplitude_dbar);
     // Calcualte strong Phase difference
     double phase = std::arg(amplitude_d) - std::arg(amplitude_dbar);
+    phase *= BinSign;
     m_c[BinNumber] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase);
     m_s[BinNumber] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase);
   }
