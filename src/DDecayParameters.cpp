@@ -34,6 +34,8 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
     Event GeneratedEvent = eventlist.GetEvent(i);
     // Check which bin event belongs to
     int BinNumber = psp->WhichBin(GeneratedEvent);
+    // Bin index, starting from 0
+    int BinIndex = TMath::Abs(BinNumber) - 1;
     // Get the amplitudes
     std::complex<double> amplitude_d;
     std::complex<double> amplitude_dbar;
@@ -42,27 +44,26 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
     if(BinNumber < 0) {
       std::swap(amplitude_d, amplitude_dbar);
     }
-    BinNumber = TMath::Abs(BinNumber) - 1;
     // Calculate fractional yield
-    m_K[BinNumber] += std::norm(amplitude_d);
-    m_Kbar[BinNumber] += std::norm(amplitude_dbar);
-    // Calcualte strong Phase difference
+    m_K[BinIndex] += std::norm(amplitude_d);
+    m_Kbar[BinIndex] += std::norm(amplitude_dbar);
+    // Calculate strong phase difference
     double phase = std::arg(amplitude_d) - std::arg(amplitude_dbar);
-    m_c[BinNumber] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase);
-    m_s[BinNumber] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase);
+    m_c[BinIndex] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase);
+    m_s[BinIndex] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase);
   }
-  double sumK = 0, sumKbar = 0;
+  double sumK = 0;
   for(int i = 0; i < NumberBins; i++) {
     // Amplitude averaged strong phase variation normalisation
     m_c[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
     m_s[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
-    // Normalise fractional yields so they sum to 1
+    // Sum factional yields for normalisation
     sumK += m_K[i];
-    sumKbar += m_Kbar[i];
+    sumK += m_Kbar[i];
   }
   // Divide by total to normalise fractional yields to 1
   std::transform(m_K.begin(), m_K.end(), m_K.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumK));
-  std::transform(m_Kbar.begin(), m_Kbar.end(), m_Kbar.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumKbar));
+  std::transform(m_Kbar.begin(), m_Kbar.end(), m_Kbar.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumK));
 }
 
 DDecayParameters::DDecayParameters(const std::string &filename) {
