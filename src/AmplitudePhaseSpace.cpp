@@ -29,22 +29,11 @@ int AmplitudePhaseSpace::WhichBin(const Event &event) const {
   } else {
     phase = std::arg(m_amplitude(EventVector, +1)*std::conj(m_amplitude(EventVector, -1)));
   }
-  /*phase += KKpipi_Constants::gamma;
-  if(phase > TMath::Pi()) {
-    phase -= 2*TMath::Pi();
-  }
-  if(phase < 0.0) {
-    return static_cast<int>((phase + TMath::Pi())/(TMath::Pi()/4.0));
-  } else if(phase < TMath::Pi()/6) {
-    return 4;
-  } else if(phase < KKpipi_Constants::gamma) {
-    return 5;
-  } else if(phase < 2*KKpipi_Constants::gamma - 0.3) {
-    return 6;
+  if(phase > 0) {
+    return static_cast<int>(phase/(TMath::Pi()/NumberOfBins())) + 1;
   } else {
-    return 7;
-    }*/
-  return static_cast<int>((phase + TMath::Pi())/(2*TMath::Pi()/NumberOfBins()));
+    return -(static_cast<int>(-phase/(TMath::Pi()/NumberOfBins())) + 1);
+  }
 } 
 
 int AmplitudePhaseSpace::NumberOfBins() const {

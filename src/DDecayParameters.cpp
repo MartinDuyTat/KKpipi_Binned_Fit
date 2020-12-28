@@ -1,6 +1,7 @@
 // Martin Duy Tat 2nd November 2020
 
 #include<algorithm>
+#include<numeric>
 #include<vector>
 #include<complex>
 #include<string>
@@ -122,32 +123,24 @@ void DDecayParameters::PlotParameters(const std::string &filename_cs, const std:
   gr1->Draw("P");
   c1->Update();
   c1->SaveAs(filename_cs.c_str());
-  std::vector<double> binning(this->GetK().size());
-  double maximum = 0;
-  for(unsigned int i = 0; i < binning.size(); i++) {
-    binning[i] = i;
-    if(GetK()[i] > maximum) {
-      maximum = GetK()[i];
-    }
+  std::vector<double> KKbar = this->GetK();
+  int NumberBins = this->GetK().size();
+  KKbar.insert(KKbar.end(), this->GetKbar().begin(), this->GetKbar().end());
+  double maximum = *std::max_element(KKbar.begin(), KKbar.end());
+  std::vector<double> binning(KKbar.size()), binX(KKbar.size() + 1);
+  for(int i = 1; i <= NumberBins; i++ ) {
+    binning[i - 1] = -i;
+    binning[i + NumberBins - 1] = i;
   }
-  TGraph *gr2 = new TGraph(binning.size(), binning.data(), this->GetK().data());
-  TGraph *gr3 = new TGraph(binning.size(), binning.data(), this->GetKbar().data());
+  std::iota(binX.begin(), binX.end(), -NumberBins);
+  TGraph *gr2 = new TGraph(binning.size(), binning.data(), KKbar.data());
   TCanvas *c2 = new TCanvas("K", "K_i and Kbar_i");
   gr2->Draw("AP");
-  gr2->GetXaxis()->SetLimits(-0.5, binning.size() - 0.5);
+  gr2->GetXaxis()->Set(2*NumberBins + 2, -NumberBins - 1, NumberBins + 1);
   gr2->GetYaxis()->SetRangeUser(0.0, maximum + 0.05);
   gr2->SetMarkerStyle(kFullDotLarge);
-  gr3->SetMarkerStyle(kFullDotLarge);
-  gr2->SetMarkerColor(kBlue);
-  gr3->SetMarkerColor(kRed);
   gr2->Draw("AP");
-  gr3->Draw("P");
   gr2->SetName("gr2");
-  gr3->SetName("gr3");
-  TLegend *legend = new TLegend(0.75, 0.85, 0.9, 0.95);
-  legend->AddEntry("gr2", "K_{i}");
-  legend->AddEntry("gr3", "#bar{K_{i}}");
-  legend->Draw();
   gr2->SetTitle("Fractional yields");
   gr2->GetXaxis()->SetTitle("Bin number");
   gr2->GetYaxis()->SetTitle("Fractional yield");
