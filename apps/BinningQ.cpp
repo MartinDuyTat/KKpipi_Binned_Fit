@@ -8,6 +8,7 @@
 #include<string>
 #include<iostream>
 #include"KKpipiMath.h"
+#include"TMath.h"
 
 int main(int argc, char *argv[]) {
   if(argc != 2) {
@@ -15,8 +16,12 @@ int main(int argc, char *argv[]) {
     return 0;
   }
   double Q = KKpipiMath::CalculateBinningQValue(std::string(argv[1]));
+  double Qexact = KKpipiMath::CalculateExactBinningQValue(std::string(argv[1]));
   std::cout << "Q-value of binning scheme: " << Q << std::endl;
-  if(Q < 0.9) {
+  std::cout << "Q-value using exact formula: " << Qexact << std::endl;
+  if(TMath::IsNaN(Q) || Q > 1.0) {
+    std::cout << "Binning scheme is invalid!\n";
+  } else if(Q < 0.9) {
     std::cout << "Keep working, need to get that Q-value up!\n";
   } else {
     std::cout << "Congratulations, the binning scheme is good!!!\n";

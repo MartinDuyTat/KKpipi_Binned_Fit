@@ -51,10 +51,18 @@ namespace KKpipiMath {
 			      std::vector<double> &BplusCPEvents,
 			      std::vector<double> &BminusCPEvents);
   /**
-   * Function for calculating the Q-value of a binning scheme
+   * Function for calculating the Q-value of a binning scheme using the approximation \f$x = y = 0\f$
    * @param Hadronic parameters for the \f$D\f$ decay
    */
   double CalculateBinningQValue(const DDecayParameters &ddparameters);
+
+  /**
+   * Function for calculating the Q-value of a binning scheme using the exact formula
+   * @param Hadronic parameters for the \f$D\f$ decay
+   */
+  double CalculateExactBinningQValue(const DDecayParameters &ddparameters);
+
+
 }
 
 #endif

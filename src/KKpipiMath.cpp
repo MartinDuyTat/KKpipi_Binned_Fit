@@ -136,16 +136,28 @@ namespace KKpipiMath {
     ExpectedNumberOfEvents(ddparameters, cpparameters, 1.0, 1.0, BplusEvents, BminusEvents, BplusCPEvents, BminusCPEvents);
     std::vector<double> ci = ddparameters.Getc();
     std::vector<double> si = ddparameters.Gets();
-    double Qplus = 0, Qminus = 0, Nplus = 0, Nminus = 0;
+    double Q2 = 0, Ntotal = 0;
     for(unsigned int i = 0; i < BplusEvents.size(); i++) {
-      Nplus += BplusEvents[i] + BplusCPEvents[i];
-      Nminus += BminusEvents[i] + BminusCPEvents[i];
-      Qplus += (BplusEvents[i] + BplusCPEvents[i])*(ci[i]*ci[i] + si[i]*si[i]);
-      Qminus += (BminusEvents[i] + BminusCPEvents[i])*(ci[i]*ci[i] + si[i]*si[i]);
+      Ntotal += BplusEvents[i] + BplusCPEvents[i] + BminusEvents[i] + BminusCPEvents[i];
+      Q2 += (BplusEvents[i] + BplusCPEvents[i] + BminusEvents[i] + BminusCPEvents[i])*(ci[i]*ci[i] + si[i]*si[i]);
     }
-    Qplus /= Nplus;
-    Qminus /= Nminus;
-    return TMath::Sqrt(0.5*(Qplus + Qminus));
+    return TMath::Sqrt(Q2/Ntotal);
+  }
+
+  double CalculateExactBinningQValue(const DDecayParameters &ddparameters) {
+    std::vector<double> K = ddparameters.GetK();
+    std::vector<double> Kbar = ddparameters.GetKbar();
+    std::vector<double> ci = ddparameters.Getc();
+    std::vector<double> si = ddparameters.Gets();
+    double Q2 = 1;
+    for(unsigned int i = 0; i < K.size(); i++) {
+      double Nplus = Kbar[i] + KKpipi_Constants::rB*KKpipi_Constants::rB*K[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(KKpipi_Constants::xplus*ci[i] - KKpipi_Constants::yplus*si[i]);
+      double Nminus = K[i] + KKpipi_Constants::rB*KKpipi_Constants::rB*Kbar[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(KKpipi_Constants::xminus*ci[i] + KKpipi_Constants::yminus*si[i]);
+      double NplusCP = K[i] + KKpipi_Constants::rB*KKpipi_Constants::rB*Kbar[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(KKpipi_Constants::xplus*ci[i] + KKpipi_Constants::yplus*si[i]);
+      double NminusCP = Kbar[i] + KKpipi_Constants::rB*KKpipi_Constants::rB*K[i] + 2*TMath::Sqrt(K[i]*Kbar[i])*(KKpipi_Constants::xminus*ci[i] - KKpipi_Constants::yminus*si[i]);
+      Q2 -= 0.5*K[i]*Kbar[i]*(1 - ci[i]*ci[i] - si[i]*si[i])*(1/Nplus + 1/Nminus + 1/NplusCP + 1/NminusCP);
+    }
+    return TMath::Sqrt(Q2);
   }
 
 }
