@@ -23,11 +23,7 @@ void SophisticatedPhaseSpace::ReadAverageStrongPhases(const std::string &filenam
   int N = atoi(line.c_str());
   m_LookupBins = std::vector<std::vector<std::vector<std::vector<int>>>>(m_regions, std::vector<std::vector<std::vector<int>>>(N, std::vector<std::vector<int>>(N, std::vector<int>(N))));
   std::vector<std::string> lines(m_regions + 3);
-  double BinWidth = 2*TMath::Pi()/(NumberOfBins() - m_binregion);
-  /*std::map<double, int> BinMap;
-  for(int i = 0; i < NumberOfBins() - m_binregion; i++) {
-    BinMap.insert({-TMath::Pi() + BinWidth*(i + 1), i});
-    }*/
+  double BinWidth = TMath::Pi()/(NumberOfBins() - m_binregion);
   bool endfile = true;
   while(endfile) {
     for(int i = 0; i < m_regions + 2; i++ ) {
@@ -36,8 +32,13 @@ void SophisticatedPhaseSpace::ReadAverageStrongPhases(const std::string &filenam
     endfile = endfile && std::getline(f, lines[m_regions + 2]);
     for(int i = 0; i < m_regions; i++) {
       double phase = atof(lines[i + 3].c_str());
-      //m_LookupBins[i][atoi(lines[0].c_str())][atoi(lines[1].c_str())][atoi(lines[2].c_str())] = BinMap.lower_bound(phase)->second;
-      m_LookupBins[i][atoi(lines[0].c_str())][atoi(lines[1].c_str())][atoi(lines[2].c_str())] = static_cast<int>((phase + TMath::Pi())/BinWidth);
+      int phase_sign = phase > 0 ? +1 : -1;
+      phase = TMath::Abs(phase);
+      if(i < m_binregion) {
+	m_LookupBins[i][atoi(lines[0].c_str())][atoi(lines[1].c_str())][atoi(lines[2].c_str())] = (i + 1)*phase_sign;
+      } else {
+	m_LookupBins[i][atoi(lines[0].c_str())][atoi(lines[1].c_str())][atoi(lines[2].c_str())] = (static_cast<int>(phase/BinWidth) + m_binregion + 1)*phase_sign;
+      }
     }
   }
 }
@@ -131,22 +132,6 @@ int SophisticatedPhaseSpace::NumberOfRegions() const {
   return m_regions;
 }
 
-/*int SophisticatedPhaseSpace::WhichRegion(const std::vector<double> &X) const {
-  if(X[2] + X[3] > 1.4) {
-    return 0;
-  } else if(10*X[2] - 7*X[3] < -10) {
-    return 1;
-  } else if(45*X[2] - 35*X[3] < -17) { 
-    return 2;
-  } else if(7*X[2] - 5*X[3] > 5) {
-    return 3;
-  } else if(9*X[2] + 4*X[3] > 5) {
-    return 4;
-  } else {
-    return 5;
-  }
-}*/
-
 int SophisticatedPhaseSpace::WhichRegion(const std::vector<double> &X) const {
   if(X[2] > 0.4 && X[3] > 0.4) {
     if(X[2] + X[3] > 1.4) {
@@ -177,11 +162,8 @@ int SophisticatedPhaseSpace::WhichRegion(const std::vector<double> &X) const {
 
 int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
   std::vector<double> X = KKpipiMath::RectCoordinates(event);
-  int Region = WhichRegion(X);
-  if(Region < m_binregion) {
-    return Region;
-  }
   int N = m_LookupBins[0].size();
+  int Region = WhichRegion(X);
   double dx1 = (RectangularPhaseSpace::GetUpperBoundary(0) - RectangularPhaseSpace::GetLowerBoundary(0))/N;
   double dx2 = (RectangularPhaseSpace::GetUpperBoundary(1) - RectangularPhaseSpace::GetLowerBoundary(1))/N;
   double dx5 = (RectangularPhaseSpace::GetUpperBoundary(4) - RectangularPhaseSpace::GetLowerBoundary(4))/N;
@@ -194,7 +176,7 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
   if(x2_bin == 100) {
     x2_bin = 99;
   }
-  return m_LookupBins[Region][x1_bin][x2_bin][x5_bin] + m_binregion;
+  return m_LookupBins[Region][x1_bin][x2_bin][x5_bin];
 }
   
   
