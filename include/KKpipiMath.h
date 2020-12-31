@@ -62,7 +62,6 @@ namespace KKpipiMath {
    */
   double CalculateExactBinningQValue(const DDecayParameters &ddparameters);
 
-
 }
 
 #endif
