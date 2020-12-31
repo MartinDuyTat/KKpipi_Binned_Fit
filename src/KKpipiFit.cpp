@@ -44,6 +44,28 @@ namespace KKpipiFit {
       std::cout << "Please input total number of bins:\n";
       std::cin >> bins;
       phasespace = new AmplitudePhaseSpace(bins);
+      AmplitudePhaseSpace *aph = static_cast<AmplitudePhaseSpace*>(phasespace);
+      std::string answer;
+      std::cout << "Read amplitudes from event?\n";
+      std::cin >> answer;
+      if(answer == "yes") {
+	aph->ReadAmplitudeFromEvent(true);
+      }
+      std::cout << "Use variable bin widths?\n";
+      std::cin >> answer;
+      if(answer == "yes") {
+	if(bins%2 != 0) {
+	  std::cout << "Need an even number of bins for variable bin widths\n";
+	  return nullptr;
+	}
+	std::vector<double> BinEdges((bins - 2)/2);
+	std::cout << "Please input the positive upper bin edges, in increasing order:\n";
+	for(auto &edge : BinEdges) {
+	  std::cin >> edge;
+	}
+	aph->SetBinEdges(BinEdges);
+	aph->UseVariableBinWidths(true);
+      }
     } else {
       phasespace = nullptr;
     }

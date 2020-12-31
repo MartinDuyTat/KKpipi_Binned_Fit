@@ -178,8 +178,6 @@ int SophisticatedPhaseSpace::WhichBin(const Event &event) const {
   }
   return m_LookupBins[Region][x1_bin][x2_bin][x5_bin];
 }
-  
-  
 
 int SophisticatedPhaseSpace::NumberOfBins() const {
   return PhaseSpaceParameterisation::NumberOfBins();

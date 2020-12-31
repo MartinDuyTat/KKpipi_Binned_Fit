@@ -19,6 +19,30 @@ void AmplitudePhaseSpace::ReadAmplitudeFromEvent(bool TrueIfReadFromEvent) {
   m_ReadAmplitudeFromEvent = TrueIfReadFromEvent;
 }
 
+void AmplitudePhaseSpace::UseVariableBinWidths(bool VariableBinWidths) {
+  if(VariableBinWidths && static_cast<int>(m_BinMap.size()) == NumberOfBins()) {
+    m_UseVariableBinWidths = true;
+  } else {
+    m_UseVariableBinWidths = false;
+  }
+}
+
+void AmplitudePhaseSpace::SetBinEdges(const std::vector<double> &BinEdges) {
+  m_BinMap.clear();
+  int BinNumberCounter = 1;
+  for(auto it = BinEdges.rbegin(); it != BinEdges.rend(); it++) {
+    m_BinMap.insert({-*it, BinNumberCounter});
+    ++BinNumberCounter;
+  }
+  m_BinMap.insert({0.0, BinNumberCounter});
+  ++BinNumberCounter;
+  for(const auto &edge : BinEdges) {
+    m_BinMap.insert({edge, BinNumberCounter});
+    ++BinNumberCounter;
+  }
+  m_BinMap.insert({TMath::Pi(), BinNumberCounter});
+}
+
 int AmplitudePhaseSpace::WhichBin(const Event &event) const {
   std::vector<double> EventVector = event.GetEventVector();
   std::complex<double> D_amplitude, Dbar_amplitude;
@@ -31,7 +55,12 @@ int AmplitudePhaseSpace::WhichBin(const Event &event) const {
   }
   phase = std::arg(D_amplitude*std::conj(Dbar_amplitude));
   rD = std::norm(D_amplitude/Dbar_amplitude);
-  int BinNumber = static_cast<int>((phase + TMath::Pi())/(2*TMath::Pi()/NumberOfBins())) + 1;
+  int BinNumber;
+  if(m_UseVariableBinWidths) {
+    BinNumber = m_BinMap.lower_bound(phase)->second;
+  } else {
+    BinNumber = static_cast<int>((phase + TMath::Pi())/(2*TMath::Pi()/NumberOfBins())) + 1;
+  }
   if(rD < 1) {
     return BinNumber;
   } else {

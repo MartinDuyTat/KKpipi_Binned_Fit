@@ -6,6 +6,8 @@
 #ifndef AMPLITUDEPHASESPACE
 #define AMPLITUDEPHASESPACE
 
+#include<map>
+#include<vector>
 #include"PhaseSpaceParameterisation.h"
 #include"Event.h"
 #include"Amplitude.h"
@@ -28,6 +30,19 @@ class AmplitudePhaseSpace: public PhaseSpaceParameterisation {
      */
     void ReadAmplitudeFromEvent(bool TrueIfReadFromEvent);
     /**
+     * Function for setting the flag m_UseVariableBinWidths
+     * Before setting this flag to true, the map BinEdgeMap must be initialised with the correct number of bin edges, otherwise this flag stays false
+     * @param VariableBinWidth Flag that is true when variable bin widths are used
+     */
+    void UseVariableBinWidths(bool VariableBinWidths);
+    /**
+     * Function for setting the bin edges when variable bin widths are used
+     * For \f$N\f$ bins, \f$(N - 2)/2\f$ inputs are required
+     * \f$\delta_D = 0, \pm\pi\f$ are fixed bin edges, and the other $\f$N - 2\f$ are placed symmetrically around $\f$\delta = 0\f$, therefore $\f$(N - 2)/2\f$ bin edges must be specified
+     * Bin edges must be positive, in increasing order!
+     */
+    void SetBinEdges(const std::vector<double> &BinEdges);
+    /**
      * Function that determines which bin an event belongs to
      * @param event The event we want to determine the bin of
      * @return Bin number
@@ -48,6 +63,14 @@ class AmplitudePhaseSpace: public PhaseSpaceParameterisation {
      * This only works for MC events because the amplitude has already been calculated and stored
      */
     bool m_ReadAmplitudeFromEvent = false;
+    /**
+     * When true, the bin edges will have variable bin widths along strong phase difference instead of uniformly spaced
+     */
+    bool m_UseVariableBinWidths = false;
+    /**
+     * Map that connects the upper bin edges with the bin numbers
+     */
+    std::map<double, int> m_BinMap;
 };
 
 #endif
