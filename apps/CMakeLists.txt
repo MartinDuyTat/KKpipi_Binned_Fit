@@ -1,6 +1,7 @@
 set(CMAKE_INSTALL_RPATH "${CMAKE_SOURCE_DIR}/lib")
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
+add_executable(BinningOptimizer BinningOptimizer.cpp)
 add_executable(BinningQ BinningQ.cpp)
 add_executable(BinNumberStudy BinNumberStudy.cpp)
 add_executable(ComputeDParameters ComputeDParameters.cpp)
@@ -11,6 +12,9 @@ add_executable(GenerateFlat GenerateFlat.cpp)
 add_executable(MapStrongPhases MapStrongPhases.cpp)
 add_executable(PullStudy PullStudy.cpp)
 add_executable(PlotDParameters PlotDParameters.cpp)
+
+target_link_libraries(BinningOptimizer PUBLIC KKpipi)
+target_link_libraries(BinningOptimizer PUBLIC ROOT::Physics ROOT::RIO ROOT::Tree)
 
 target_link_libraries(BinningQ PUBLIC KKpipi)
 target_link_libraries(BinningQ PUBLIC ROOT::Physics ROOT::RIO ROOT::Tree)
@@ -41,4 +45,4 @@ target_link_libraries(PlotDParameters PUBLIC ROOT::Physics ROOT::RIO ROOT::Tree)
 target_link_libraries(PullStudy PUBLIC KKpipi)
 target_link_libraries(PullStudy PUBLIC ROOT::Physics ROOT::RIO ROOT::Tree)
 
-install(TARGETS BinningQ BinNumberStudy ComputeDParameters ComputeMeanPhases FastBinningTest FitKKpipi GenerateFlat MapStrongPhases PlotDParameters PullStudy DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/../bin)
+install(TARGETS BinningOptimizer BinningQ BinNumberStudy ComputeDParameters ComputeMeanPhases FastBinningTest FitKKpipi GenerateFlat MapStrongPhases PlotDParameters PullStudy DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/../bin)

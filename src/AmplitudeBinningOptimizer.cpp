@@ -33,7 +33,7 @@ double AmplitudeBinningOptimizer::operator ()(const double *BinEdges) {
   return -KKpipiMath::CalculateExactBinningQValue(ddparameters);
 }
 
-void AmplitudeBinningOptimizer::OptimizeBinEdges() {
+double AmplitudeBinningOptimizer::OptimizeBinEdges() {
   ROOT::Minuit2::Minuit2Minimizer *mini = new ROOT::Minuit2::Minuit2Minimizer();
   ROOT::Math::Functor fcn(*this, (m_bins - 2)/2);
   mini->SetFunction(fcn);
@@ -43,7 +43,9 @@ void AmplitudeBinningOptimizer::OptimizeBinEdges() {
   mini->Minimize();
   const double *xs = mini->X();
   m_BinEdges = std::vector<double>(xs, xs + (m_bins - 2)/2);
+  double MinValue = mini->MinValue();
   delete mini;
+  return -MinValue;
 }
 
 const std::vector<double>& AmplitudeBinningOptimizer::GetBinEdges() const {

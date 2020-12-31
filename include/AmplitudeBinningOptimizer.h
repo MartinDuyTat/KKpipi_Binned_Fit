@@ -30,9 +30,10 @@ class AmplitudeBinningOptimizer {
      * Function that runs the TMinuit2 fitting to maximize the \f$Q\f$-value
      * Iniital guess is a uniform binning, and optimized bin edges are saved in m_BinEdges
      */
-    void OptimizeBinEdges();
+    double OptimizeBinEdges();
     /**
      * Function that returns the bin edges
+     * @return The optimized binning \f$Q\f$-value
      */
     const std::vector<double>& GetBinEdges() const;
   private:
