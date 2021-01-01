@@ -134,7 +134,7 @@ int main(int argc, char *argv[]) {
     rB_fitted.push_back(rB);
     rB_error.push_back(TMath::Sqrt(gammacov(0, 0)));
     Qvalue.push_back(KKpipiMath::CalculateExactBinningQValue(ddparameters));
-    unbinned_binned_gamma_error_ratio.push_back((TMath::Sqrt(1000)*gamma_unbinned_error)/gamma_error.back());
+    unbinned_binned_gamma_error_ratio.push_back(gamma_unbinned_error/gamma_error.back());
   }
 
   TCanvas c1("gamma", "Number of bins vs #gamma", 200, 10, 600, 400);
