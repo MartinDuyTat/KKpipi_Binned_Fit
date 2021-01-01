@@ -18,10 +18,9 @@
 #include"TMatrixD.h"
 #include"TCanvas.h"
 #include"TGraph.h"
-#include"TAxis.h"
 #include"TGraphErrors.h"
 #include"TMultiGraph.h"
-#include"TLine.h"
+#include"KKpipiMath.h"
 #include"KKpipiFit.h"
 #include"PhaseSpaceParameterisation.h"
 #include"AmplitudePhaseSpace.h"
@@ -77,6 +76,7 @@ int main(int argc, char *argv[]) {
   std::vector<double> NumberBins(N);
   std::vector<double> gamma_fitted, gamma_error, dB_fitted, dB_error, rB_fitted, rB_error;
   std::vector<double> xplus_fitted, xplus_error, xminus_fitted, xminus_error, yplus_fitted, yplus_error, yminus_fitted, yminus_error;
+  std::vector<double> Qvalue, unbinned_binned_gamma_error_ratio;
   std::cout << "Loading input events...\n";
   TFile fBplus(argv[1], "READ");
   TFile fBminus(argv[2], "READ");
@@ -133,6 +133,8 @@ int main(int argc, char *argv[]) {
     dB_error.push_back(TMath::Sqrt(gammacov(1, 1)));
     rB_fitted.push_back(rB);
     rB_error.push_back(TMath::Sqrt(gammacov(0, 0)));
+    Qvalue.push_back(KKpipiMath::CalculateExactBinningQValue(ddparameters));
+    unbinned_binned_gamma_error_ratio.push_back((TMath::Sqrt(1000)*gamma_unbinned_error)/gamma_error.back());
   }
 
   TCanvas c1("gamma", "Number of bins vs #gamma", 200, 10, 600, 400);
@@ -337,6 +339,23 @@ int main(int argc, char *argv[]) {
   mg14.SetMinimum(0.0);
   mg14.Draw("A");
   c14.SaveAs("yminuserror.png");
+
+  TCanvas c15("Qvalue", "Binning Q value", 200, 10, 600, 400);
+  TMultiGraph mg15("mg15", "mg15");
+  mg15.SetTitle("Binning Q value and ratio of unbinned to binned fit #gamma error;Bins)");
+  TGraph gr15(N, NumberBins.data(), Qvalue.data());
+  gr15.SetTitle("Q-value");
+  gr15.SetMarkerColor(kBlue);
+  gr15.SetLineColor(kBlue);
+  mg15.Add(&gr15, "L*");
+  TGraph gr16(N, NumberBins.data(), unbinned_binned_gamma_error_ratio.data());
+  gr16.SetTitle("#gamma error ratio");
+  gr16.SetMarkerColor(kRed);
+  gr16.SetLineColor(kRed);
+  mg15.Add(&gr16, "L*");
+  mg15.Draw("A");
+  c15.BuildLegend();
+  c15.SaveAs("Qvalue.png");
 
   return 0;
 }
