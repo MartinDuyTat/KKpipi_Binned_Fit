@@ -59,13 +59,24 @@ int AmplitudePhaseSpace::WhichBin(const Event &event) const {
   if(m_UseVariableBinWidths) {
     BinNumber = m_BinMap.lower_bound(phase)->second;
   } else {
-    BinNumber = static_cast<int>((phase + TMath::Pi())/(2*TMath::Pi()/NumberOfBins())) + 1;
+    //BinNumber = static_cast<int>((phase + TMath::Pi())/(2*TMath::Pi()/NumberOfBins())) + 1;
+    BinNumber = static_cast<int>((phase + TMath::Pi())/(2*TMath::Pi()/(NumberOfBins()/2))) + 1;
   }
-  if(rD < 1) {
+  double ln_rD = TMath::Log(rD);
+  if(ln_rD < 0.0 && ln_rD > -0.5) {
     return BinNumber;
+  } else if(ln_rD < -0.5) {
+    return BinNumber + NumberOfBins()/2;
+  } else if(ln_rD > 0.0 && ln_rD < 0.5) {
+    return -(NumberOfBins()/2 + 1 - BinNumber);
   } else {
     return -(NumberOfBins() + 1 - BinNumber);
   }
+  /*if(rD < 1) {
+    return BinNumber;
+  } else {
+    return -(NumberOfBins() + 1 - BinNumber);
+    }*/
 } 
 
 int AmplitudePhaseSpace::NumberOfBins() const {
