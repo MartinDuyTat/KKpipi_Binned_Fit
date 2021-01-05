@@ -16,9 +16,11 @@ class AmplitudePhaseSpace: public PhaseSpaceParameterisation {
   public:
     /**
      * Constructor that creates a binning with bins number of bins
+     * If using bins along \f$r_D\f$, the total number of bins must be even!
      * @param bins Number of bins in the binning scheme
+     * @param rDBinning True when using \f$4\f$ bins in the \f$r_D\f$ direction, instead of simply splitting at \f$r_D = 1\f$
      */
-    AmplitudePhaseSpace(const int &bins);
+    AmplitudePhaseSpace(const int &bins, bool rDBinning = false);
     /**
      * Virtual destructor to ensure well-defined behaviour when inheriting from PhaseSpaceParameterisation
      */
@@ -50,6 +52,7 @@ class AmplitudePhaseSpace: public PhaseSpaceParameterisation {
     int WhichBin(const Event &event) const;
     /**
      * Function that returns the number of bins in the binning scheme
+     * When using \f$4\f$ bins along the \f$r_D\f$ direction, this returns the number of bins divided by two because practically half of the bins are redundant (however, this function is not virtual so calling it from a parent pointer will return the total number of bins)
      * @return Number of bins
      */
     int NumberOfBins() const;
@@ -71,6 +74,12 @@ class AmplitudePhaseSpace: public PhaseSpaceParameterisation {
      * Map that connects the upper bin edges with the bin numbers
      */
     std::map<double, int> m_BinMap;
+    /**
+     * Flag for binning along \f$r_D\f$, in addition to binning in strong phase
+     * If true, \f$4\f$ bins will be used, with bin boundaries at $\f$\ln(r_D) = 0\f$ and \f$\ln(r_D) = \pm 0.5\f$
+     * If false, \f$2\f" bins will be used, split along $\f$r_D = 1\f$
+     */
+    bool m_rDBinning;
 };
 
 #endif

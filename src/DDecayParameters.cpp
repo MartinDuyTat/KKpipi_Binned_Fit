@@ -168,3 +168,14 @@ const std::vector<double>& DDecayParameters::Getc() const {
 const std::vector<double>& DDecayParameters::Gets() const {
   return m_s;
 }
+
+void DDecayParameters::CopyRedundantCS(const std::string &filename) {
+  DDecayParameters ddparameters(filename);
+  std::vector<double> ci = ddparameters.Getc();
+  std::vector<double> si = ddparameters.Gets();
+  int N = ci.size();
+  std::copy(ci.begin(), ci.end(), m_c.begin());
+  std::copy(ci.begin(), ci.end(), m_c.begin() + N);
+  std::copy(si.begin(), si.end(), m_s.begin());
+  std::copy(si.begin(), si.end(), m_s.begin() + N);
+}

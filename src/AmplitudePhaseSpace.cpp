@@ -9,7 +9,7 @@
 #include"Event.h"
 #include"Constants.h"
 
-AmplitudePhaseSpace::AmplitudePhaseSpace(const int &bins): PhaseSpaceParameterisation(bins) {
+AmplitudePhaseSpace::AmplitudePhaseSpace(const int &bins, bool rDBinning): PhaseSpaceParameterisation(bins), m_rDBinning(rDBinning) {
 }
 
 AmplitudePhaseSpace::~AmplitudePhaseSpace() {
@@ -61,13 +61,30 @@ int AmplitudePhaseSpace::WhichBin(const Event &event) const {
   } else {
     BinNumber = static_cast<int>((phase + TMath::Pi())/(2*TMath::Pi()/NumberOfBins())) + 1;
   }
-  if(rD < 1) {
-    return BinNumber;
+  if(!m_rDBinning) {
+    if(rD < 1) {
+      return BinNumber;
+    } else {
+      return -(NumberOfBins() + 1 - BinNumber);
+    }
   } else {
-    return -(NumberOfBins() + 1 - BinNumber);
+    double ln_rD = 0.5*TMath::Log(rD);
+    if(ln_rD < 0.0 && ln_rD > -0.5) {
+      return BinNumber;
+    } else if(ln_rD < -0.5) {
+      return BinNumber + NumberOfBins();
+    } else if(ln_rD > 0.0 && ln_rD < 0.5) {
+      return -(NumberOfBins() + 1 - BinNumber);
+    } else {
+      return -(2*NumberOfBins() + 1 - BinNumber);
+    }
   }
 } 
 
 int AmplitudePhaseSpace::NumberOfBins() const {
-  return PhaseSpaceParameterisation::NumberOfBins();
+  if(m_rDBinning) {
+    return PhaseSpaceParameterisation::NumberOfBins()/2;
+  } else {
+    return PhaseSpaceParameterisation::NumberOfBins();
+  }
 }
