@@ -58,6 +58,12 @@ class DDecayParameters {
      * @return s Vector of sine of the strong phases
      */
     const std::vector<double>& Gets() const;
+    /**
+     * Function for copying \f$c_i\f$ and \f$s_i\f$ from a DDecayParameter object with half the number of bins to this one
+     * The \f$c_i\f$ and \f$s_i\f$ are repeated twice because the bins are constrained to have the same \f$c_i\f$ and \f$s_i\f$
+     * The \f$K_i\f$ and \f$\bar{K_i}\f$ are kept the same
+     */
+    void CopyRedundantCS(const std::string &filename);
  private:
     /**
      * Vector of fractional yields of D0 events
