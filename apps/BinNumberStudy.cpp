@@ -342,7 +342,7 @@ int main(int argc, char *argv[]) {
 
   TCanvas c15("Qvalue", "Binning Q value", 200, 10, 600, 400);
   TMultiGraph mg15("mg15", "mg15");
-  mg15.SetTitle("Binning Q value and ratio of unbinned to binned fit #gamma error;Bins)");
+  mg15.SetTitle("Binning Q value and ratio of unbinned to binned fit #gamma error;Bins");
   TGraph gr15(N, NumberBins.data(), Qvalue.data());
   gr15.SetTitle("Q-value");
   gr15.SetMarkerColor(kBlue);
