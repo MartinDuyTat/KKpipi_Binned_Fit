@@ -13,8 +13,9 @@
 #include"DDecayParameters.h"
 
 int main(int argc, char *argv[]) {
-  if(argc != 5) {
+  if(argc != 4) {
     std::cout << "Incorrect number of inputs\n";
+    return 0;
   }
   std::cout << "c_i, s_i transfer from smaller to larger binning scheme\n";
   DDecayParameters larger(argv[1]);
