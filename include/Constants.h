@@ -22,6 +22,10 @@ namespace KKpipi_Constants {
    */
   const double MASS_PI = 0.13957039;
   /**
+   * Mass of the \f$\K_S^0\f$ meson
+   */
+  const double MASS_KS = 0.497611;
+  /**
    * \f$r_B\f$, as assumed in simulation
    */
   const double rB = 0.1;

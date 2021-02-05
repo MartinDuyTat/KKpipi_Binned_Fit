@@ -33,11 +33,24 @@ class PhaseSpaceParameterisation {
      * @return Number of bins
      */
     int NumberOfBins() const;
+    /**
+     * Function that sets the veto boundary
+     */
+    void SetKSVeto(double veto);
+    /**
+     * Function that returns true if event is inside the veto window
+     */
+    bool isKSVeto(const Event &event) const;
   private:
     /**
      * Number of bins in this binning scheme
      */
     int m_bins;
+    /**
+     * Veto window size around the \f$K_S^0\f$ mass, in units of \f$\text{GeV}\f$
+     * If this is negative or zero, no veto is applied
+     */
+    double m_KSVeto = 0.0;
 };
 
 #endif
