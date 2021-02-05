@@ -44,6 +44,9 @@ void AmplitudePhaseSpace::SetBinEdges(const std::vector<double> &BinEdges) {
 }
 
 int AmplitudePhaseSpace::WhichBin(const Event &event) const {
+  if(isKSVeto(event)) {
+    return 0;
+  }
   std::vector<double> EventVector = event.GetEventVector();
   std::complex<double> D_amplitude, Dbar_amplitude;
   double phase, rD;

@@ -24,6 +24,8 @@ class PhaseSpaceParameterisation {
     virtual ~PhaseSpaceParameterisation() = 0;
     /**
      * Function that determines which bin an event belongs to
+     * Negative bin numbers are CP conjugates of the corresponding positive bin
+     * If bin number is zero, the event has been vetoed, please skip this event
      * @param event The event we want to determine the bin of
      * @return Bin number
      */

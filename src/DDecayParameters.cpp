@@ -35,6 +35,10 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
     Event GeneratedEvent = eventlist.GetEvent(i);
     // Check which bin event belongs to
     int BinNumber = psp->WhichBin(GeneratedEvent);
+    // If bin number is zero, this event is vetoed, skip
+    if(BinNumber == 0) {
+      continue;
+    }
     // Bin index, starting from 0
     int BinIndex = TMath::Abs(BinNumber) - 1;
     // Get the amplitudes

@@ -13,6 +13,9 @@ BinList::BinList(PhaseSpaceParameterisation *psp, bool SaveEvents): m_psp(psp), 
 
 void BinList::AddEvent(const Event &event, const int &charge) {
   int BinNumber = m_psp->WhichBin(event);
+  if(BinNumber == 0) {
+    return;
+  }
   if(charge == +1) {
     if(BinNumber > 0) {
       m_BplusEvents[BinNumber - 1] += 1;
@@ -37,6 +40,9 @@ void BinList::AddEvent(const Event &event, const int &charge) {
 
 void BinList::AddEvent(const Event &event, const int &charge, const int &maxevents) {
   int BinNumber = m_psp->WhichBin(event);
+  if(BinNumber == 0) {
+    return;
+  }
   if(charge == +1) {
     if(BinNumber > 0) {
       m_BplusEvents[BinNumber - 1] += 1;
