@@ -69,6 +69,14 @@ namespace KKpipiFit {
 	aph->SetBinEdges(BinEdges);
 	aph->UseVariableBinWidths(true);
       }
+      std::cout << "Use KS veto?\n";
+      std::cin >> answer;
+      if(answer == "yes" ) {
+	double KSVeto;
+	std::cout << "How big is the veto range in GeV? (\u00B1 the KS mass)\n";
+	std::cin >> KSVeto;
+	phasespace->SetKSVeto(KSVeto);
+      }
     } else {
       phasespace = nullptr;
     }

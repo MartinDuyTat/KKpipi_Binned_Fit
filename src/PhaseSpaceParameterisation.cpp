@@ -20,5 +20,9 @@ void PhaseSpaceParameterisation::SetKSVeto(double veto) {
 }
 
 bool PhaseSpaceParameterisation::isKSVeto(const Event &event) const {
-  return TMath::Abs(event.GetInvMass2(2, 3) - KKpipi_Constants::MASS_KS) < m_KSVeto;
+  if(m_KSVeto <= 0.0) {
+    return false;
+  } else {
+    return TMath::Abs(event.GetInvMass2(2, 3) - KKpipi_Constants::MASS_KS) < m_KSVeto;
+  }
 }
