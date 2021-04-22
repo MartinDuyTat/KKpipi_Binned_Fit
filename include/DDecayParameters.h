@@ -81,6 +81,14 @@ class DDecayParameters {
      * Vector of sine of strong phases
      */
     std::vector<double> m_s;
+    /**
+     * Vector of bin areas of positive bins
+     */
+    std::vector<double> m_AreaPlus;
+    /**
+     * Vector of bin areas of negative bins
+     */
+    std::vector<double> m_AreaMinus;
 };
 
 #endif

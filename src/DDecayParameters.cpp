@@ -29,6 +29,8 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
   m_Kbar = std::vector<double>(NumberBins, 0.0);
   m_c = std::vector<double>(NumberBins, 0.0);
   m_s = std::vector<double>(NumberBins, 0.0);
+  m_AreaPlus = std::vector<double>(NumberBins, 0.0);
+  m_AreaMinus = std::vector<double>(NumberBins, 0.0);
   // Loop over all unweighted events
   for(int i = 0; i < eventlist.NumberEvents(); i++) {
     // Get generated event
@@ -56,8 +58,10 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
     double phase = std::arg(amplitude_d) - std::arg(amplitude_dbar);
     m_c[BinIndex] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase);
     m_s[BinIndex] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase);
+    // Calculate bin area
+    BinNumber > 0 ? m_AreaPlus[BinIndex]++ : m_AreaMinus[BinIndex]++;
   }
-  double sumK = 0;
+  double sumK = 0.0, sumArea = 0.0;
   for(int i = 0; i < NumberBins; i++) {
     // Amplitude averaged strong phase variation normalisation
     m_c[i] /= TMath::Sqrt(m_K[i]*m_Kbar[i]);
@@ -65,10 +69,16 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
     // Sum factional yields for normalisation
     sumK += m_K[i];
     sumK += m_Kbar[i];
+    // Sum bin area
+    sumArea += m_AreaPlus[i];
+    sumArea += m_AreaMinus[i];
   }
-  // Divide by total to normalise fractional yields to 1
+  // Divide fractional yields by total to normalise to 1
   std::transform(m_K.begin(), m_K.end(), m_K.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumK));
   std::transform(m_Kbar.begin(), m_Kbar.end(), m_Kbar.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumK));
+  // Divide area by total to normalise to 1
+  std::transform(m_AreaPlus.begin(), m_AreaPlus.end(), m_AreaPlus.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumArea));
+  std::transform(m_AreaMinus.begin(), m_AreaMinus.end(), m_AreaMinus.begin(), std::bind(std::divides<double>(), std::placeholders::_1, sumArea));
 }
 
 DDecayParameters::DDecayParameters(const std::string &filename) {
@@ -78,7 +88,7 @@ DDecayParameters::DDecayParameters(const std::string &filename) {
   while(std::getline(DDecayFile, line)) {
     std::stringstream ss(line);
     int i;
-    double K, Kbar, c, s;
+    double K, Kbar, c, s, AreaPlus, AreaMinus;
     ss >> i;
     ss.ignore();
     ss >> K;
@@ -88,19 +98,25 @@ DDecayParameters::DDecayParameters(const std::string &filename) {
     ss >> c;
     ss.ignore();
     ss >> s;
+    ss.ignore();
+    ss >> AreaPlus;
+    ss.ignore();
+    ss >> AreaMinus;
     m_K.push_back(K);
     m_Kbar.push_back(Kbar);
     m_c.push_back(c);
     m_s.push_back(s);
+    m_AreaPlus.push_back(AreaPlus);
+    m_AreaMinus.push_back(AreaMinus);
   }
   DDecayFile.close();
 }
 
 void DDecayParameters::SaveCSV(const std::string &filename) const {
   std::ofstream DDecayFile(filename);
-  DDecayFile << "i,K_i,Kbar_i,c_i,s_i\n";
+  DDecayFile << "i,K_i,Kbar_i,c_i,s_i,AreaPlus_i,AreaMinus_i\n";
   for(unsigned int i = 0; i < m_K.size(); i++) {
-    DDecayFile << i << "," <<  m_K[i] << "," << m_Kbar[i] << "," << m_c[i] << "," << m_s[i] << std::endl;
+    DDecayFile << i << "," <<  m_K[i] << "," << m_Kbar[i] << "," << m_c[i] << "," << m_s[i] << "," << m_AreaPlus[i] << "," << m_AreaMinus[i] << std::endl;
   }
   DDecayFile.close();
 }
