@@ -56,6 +56,9 @@ int AmplitudePhaseSpace::WhichBin(const Event &event) const {
     D_amplitude = m_amplitude(EventVector, +1);
     Dbar_amplitude = m_amplitude(EventVector, -1);
   }
+  if(TMath::IsNaN(D_amplitude.real()) || TMath::IsNaN(D_amplitude.imag()) || TMath::IsNaN(Dbar_amplitude.real()) || TMath::IsNaN(Dbar_amplitude.imag())) {
+    return 0;
+  }
   phase = std::arg(D_amplitude*std::conj(Dbar_amplitude));
   rD = std::norm(D_amplitude/Dbar_amplitude);
   int BinNumber;
