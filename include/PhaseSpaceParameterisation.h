@@ -9,6 +9,7 @@
 #ifndef PHASESPACEPARAMETERISATION
 #define PHASESPACEPARAMETERISATION
 
+#include<utility>
 #include"Event.h"
 
 class PhaseSpaceParameterisation {
@@ -37,8 +38,10 @@ class PhaseSpaceParameterisation {
     int NumberOfBins() const;
     /**
      * Function that sets the veto boundary
+     * @param Lower Lower edge of veto window
+     * @param Upper Upper edge of veto window
      */
-    void SetKSVeto(double veto);
+    void SetKSVeto(double Lower, double Upper);
     /**
      * Function that returns true if event is inside the veto window
      */
@@ -52,7 +55,7 @@ class PhaseSpaceParameterisation {
      * Veto window size around the \f$K_S^0\f$ mass, in units of \f$\text{GeV}\f$
      * If this is negative or zero, no veto is applied
      */
-    double m_KSVeto = 0.0;
+    std::pair<double, double> m_KSVeto;
 };
 
 #endif
