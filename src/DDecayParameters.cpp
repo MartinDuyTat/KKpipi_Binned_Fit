@@ -35,6 +35,8 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
   for(int i = 0; i < eventlist.NumberEvents(); i++) {
     // Get generated event
     Event GeneratedEvent = eventlist.GetEvent(i);
+    // Get event weight (1.0 by default)
+    double EventWeight = GeneratedEvent.GetWeight();
     // Check which bin event belongs to
     int BinNumber = psp->WhichBin(GeneratedEvent);
     // If bin number is zero, this event is vetoed, skip
@@ -52,14 +54,18 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
       std::swap(amplitude_d, amplitude_dbar);
     }
     // Calculate fractional yield
-    m_K[BinIndex] += std::norm(amplitude_d);
-    m_Kbar[BinIndex] += std::norm(amplitude_dbar);
+    m_K[BinIndex] += std::norm(amplitude_d)*EventWeight;
+    m_Kbar[BinIndex] += std::norm(amplitude_dbar)*EventWeight;
     // Calculate strong phase difference
     double phase = std::arg(amplitude_d) - std::arg(amplitude_dbar);
-    m_c[BinIndex] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase);
-    m_s[BinIndex] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase);
+    m_c[BinIndex] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase)*EventWeight;
+    m_s[BinIndex] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase)*EventWeight;
     // Calculate bin area
-    BinNumber > 0 ? m_AreaPlus[BinIndex]++ : m_AreaMinus[BinIndex]++;
+    if(BinNumber > 0) {
+      m_AreaPlus[BinIndex] += EventWeight;
+    } else {
+      m_AreaMinus[BinIndex] += EventWeight;
+    }
   }
   double sumK = 0.0, sumArea = 0.0;
   for(int i = 0; i < NumberBins; i++) {

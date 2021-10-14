@@ -5,6 +5,7 @@
  * @param 1 Choice of binning scheme, in lowercase letters
  * @param 2 Filename to save D hadronic decay parameters to
  * @param 3 Filename of TTree with unweighted events
+ * @param 4 Filename of TTree with efficiency weights (optional)
  */
 
 #include<string>
@@ -17,7 +18,7 @@
 #include"KKpipiFit.h"
 
 int main(int argc, char *argv[]) {
-  if(argc != 4) {
+  if(argc != 4 && argc != 5) {
     std::cout << "Incorrect number of inputs\n";
   }
   std::cout << "Calculation of K_i, Kbar_i, c_i, s_i using Monte Carlo integration\n";
@@ -30,7 +31,7 @@ int main(int argc, char *argv[]) {
   std::cout << "Binning scheme prepared\n";
   std::cout << "Loading MC events...\n";
   EventList eventlist;
-  eventlist.LoadTree(std::string(argv[3]));
+  argc == 4 ? eventlist.LoadTree(std::string(argv[3])) : eventlist.LoadTree(std::string(argv[3]), std::string(argv[4]));
   std::cout << "MC events ready\n";
   std::cout << "Calculating D hadronic parameters...\n";
   DDecayParameters ddecay(phasespace, eventlist);

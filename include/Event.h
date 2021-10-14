@@ -26,8 +26,9 @@ class Event {
      * @param p Four-momenta in the form (px, py, pz, E), in the order K+ K- pi+ pi-
      * @param D_amplitude Amplitude of \f$D^0\f$ decay
      * @param DBAR_amplitude Amplitude of \f$\bar{D^0}\f$ decay
+     * @param weight Weight of event (optional)
      */
-    Event(const std::vector<double> &p, const std::complex<double> &D_amplitude, const std::complex<double> &DBAR_amplitude);
+    Event(const std::vector<double> &p, const std::complex<double> &D_amplitude, const std::complex<double> &DBAR_amplitude, double weight = 1.0);
     /**
      * Returns the four-momenta of daughter particles as a vector
      * @return Four-momenta of daughter particles in the form (E, px, py, pz), in the order K+ K- pi+ pi-
@@ -59,6 +60,10 @@ class Event {
      * @return Returns mass of given particles
      */
     double GetInvMass3(const int &particle1, const int &particle2, const int &particle3) const;
+    /**
+     * Get weight of event
+     */
+    double GetWeight() const;
   private:
     /**
      * Four-momenta of daughter particles
@@ -72,6 +77,10 @@ class Event {
      * Amplitude of \f$\bar{D^0}\f$ decay
      */
     std::complex<double> m_DBARamplitude;
+    /**
+     * Weight of event
+     */
+    double m_weight;
 };
 
 #endif

@@ -39,8 +39,9 @@ class EventList {
     /**
      * Function for loading a TTree with events
      * @param filename Filename with TTree
+     * @param filename_weight Filename with TTree of weights (optional)
      */
-    void LoadTree(const std::string &filename);
+    void LoadTree(const std::string &filename, const std::string &filename_weight = "");
     /**
      * Function for clearing the EventList to free up memory
      */
