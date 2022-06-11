@@ -9,11 +9,7 @@
 #include"Event.h"
 #include"Constants.h"
 
-AmplitudePhaseSpace::AmplitudePhaseSpace(const int &bins, bool rDBinning, const std::string &D0Filename, const std::string &Dbar0Filename): PhaseSpaceParameterisation(bins), m_rDBinning(rDBinning) {
-  if(D0Filename != "" && Dbar0Filename != "") {
-    m_amplitude = Amplitude(D0Filename, Dbar0Filename);
-    m_ReadAmplitudeFromEvent = false;
-  }
+AmplitudePhaseSpace::AmplitudePhaseSpace(const int &bins, bool rDBinning): PhaseSpaceParameterisation(bins), m_rDBinning(rDBinning) {
 }
 
 AmplitudePhaseSpace::~AmplitudePhaseSpace() {

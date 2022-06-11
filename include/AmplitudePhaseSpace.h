@@ -22,7 +22,7 @@ class AmplitudePhaseSpace: public PhaseSpaceParameterisation {
      * @param D0Filename Load alternative model by providing a filename
      * @param Dbar0Filename Load alternative model by providing a filename
      */
-    AmplitudePhaseSpace(const int &bins, bool rDBinning = false, const std::string &D0Filename = "", const std::string &Dbar0Filename = "");
+    AmplitudePhaseSpace(const int &bins, bool rDBinning = false);
     /**
      * Virtual destructor to ensure well-defined behaviour when inheriting from PhaseSpaceParameterisation
      */

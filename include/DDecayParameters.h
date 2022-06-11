@@ -11,6 +11,7 @@
 #include<string>
 #include"PhaseSpaceParameterisation.h"
 #include"EventList.h"
+#include"Amplitude.h"
 
 class DDecayParameters {
   public:
@@ -19,8 +20,9 @@ class DDecayParameters {
      * Unweighted events in phase space must be given in order to perform the Monte Carlo integrations
      * @param psp PhaseSpaceParameterisation object
      * @param eventlist EventList object with the unweighted Monte Carlo events
+     * @param amplitude Optional argument, if given this Amplitude object will be used to calculate the strong phases
      */
-    DDecayParameters(PhaseSpaceParameterisation *psp, const EventList &eventlist);
+    DDecayParameters(PhaseSpaceParameterisation *psp, const EventList &eventlist, const Amplitude *amplitude = nullptr);
     /** 
      * Constructor that takes in the D meson hadronic parameters from a comma separated CSV file, in the order i K_i Kbar_i c_i s_i
      * First line is assumed to be column names

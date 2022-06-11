@@ -21,7 +21,7 @@
 #include"TAxis.h"
 #include"TLegend.h"
 
-DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventList &eventlist) {
+DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventList &eventlist, const Amplitude *amplitude) {
   // Number of bins in this binning scheme
   int NumberBins = psp->NumberOfBins();
   // Reset all bins that store D hadronic parameters
@@ -49,7 +49,12 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
     std::complex<double> amplitude_d;
     std::complex<double> amplitude_dbar;
     // Swap amplitudes if event is in a negative bin
-    GeneratedEvent.GetAmplitudes(amplitude_d, amplitude_dbar);
+    if(!amplitude) {
+      GeneratedEvent.GetAmplitudes(amplitude_d, amplitude_dbar);
+    } else {
+      amplitude_d = amplitude->operator()(GeneratedEvent.GetEventVector(), +1);
+      amplitude_dbar = amplitude->operator()(GeneratedEvent.GetEventVector(), -1);
+    }
     if(BinNumber < 0) {
       std::swap(amplitude_d, amplitude_dbar);
     }
