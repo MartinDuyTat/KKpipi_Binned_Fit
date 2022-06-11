@@ -47,7 +47,16 @@ namespace KKpipiFit {
       std::cout << "Is binning along rD used?\n";
       std::cin >> answer;
       bool rDBinning = answer == "yes";
-      phasespace = new AmplitudePhaseSpace(bins, rDBinning);
+      std::cout << "Read in alternative model?\n";
+      std::cin >> answer;
+      std::string D0Filename, Dbar0Filename;
+      if(answer == "yes") {
+	std::cout << "D0 model filename:\n";
+	std::cin >> D0Filename;
+	std::cout << "Dbar0 model filename:\n";
+	std::cin >> Dbar0Filename;
+      }
+      phasespace = new AmplitudePhaseSpace(bins, rDBinning, D0Filename, Dbar0Filename);
       AmplitudePhaseSpace *aph = static_cast<AmplitudePhaseSpace*>(phasespace);
       std::cout << "Read amplitudes from event?\n";
       std::cin >> answer;

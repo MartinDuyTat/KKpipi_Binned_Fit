@@ -19,8 +19,10 @@ class AmplitudePhaseSpace: public PhaseSpaceParameterisation {
      * If using bins along \f$r_D\f$, the total number of bins must be even!
      * @param bins Number of bins in the binning scheme
      * @param rDBinning True when using \f$4\f$ bins in the \f$r_D\f$ direction, instead of simply splitting at \f$r_D = 1\f$
+     * @param D0Filename Load alternative model by providing a filename
+     * @param Dbar0Filename Load alternative model by providing a filename
      */
-    AmplitudePhaseSpace(const int &bins, bool rDBinning = false);
+    AmplitudePhaseSpace(const int &bins, bool rDBinning = false, const std::string &D0Filename = "", const std::string &Dbar0Filename = "");
     /**
      * Virtual destructor to ensure well-defined behaviour when inheriting from PhaseSpaceParameterisation
      */
