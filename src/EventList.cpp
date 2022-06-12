@@ -46,9 +46,10 @@ void EventList::LoadTree(const std::string &filename, const std::string &filenam
     tree->SetBranchAddress("weight", &weight);
   }
   m_eventlist.reserve(tree->GetEntries());
-  for(int i = 0; i < tree->GetEntries(); i++) {
+  const auto N = tree->GetEntries();
+  for(int i = 0; i < N; i++) {
     tree->GetEntry(i);
-    std::vector<double> momenta = KKpipiMath::ConvertXToMomenta(X);
+    const std::vector<double> momenta = KKpipiMath::ConvertXToMomenta(X);
     this->AddEvent(Event(momenta, *D_amplitude, *Dbar_amplitude, weight));
   }
 }

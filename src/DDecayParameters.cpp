@@ -7,6 +7,7 @@
 #include<string>
 #include<fstream>
 #include<sstream>
+#include<omp.h>
 #include"DDecayParameters.h"
 #include"Constants.h"
 #include"Generator.h"
@@ -32,19 +33,20 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
   m_AreaPlus = std::vector<double>(NumberBins, 0.0);
   m_AreaMinus = std::vector<double>(NumberBins, 0.0);
   // Loop over all unweighted events
+  #pragma omp parallel for
   for(int i = 0; i < eventlist.NumberEvents(); i++) {
     // Get generated event
-    Event GeneratedEvent = eventlist.GetEvent(i);
+    const auto GeneratedEvent = eventlist.GetEvent(i);
     // Get event weight (1.0 by default)
-    double EventWeight = GeneratedEvent.GetWeight();
+    const double EventWeight = GeneratedEvent.GetWeight();
     // Check which bin event belongs to
-    int BinNumber = psp->WhichBin(GeneratedEvent);
+    const int BinNumber = psp->WhichBin(GeneratedEvent);
     // If bin number is zero, this event is vetoed, skip
     if(BinNumber == 0) {
       continue;
     }
     // Bin index, starting from 0
-    int BinIndex = TMath::Abs(BinNumber) - 1;
+    const int BinIndex = TMath::Abs(BinNumber) - 1;
     // Get the amplitudes
     std::complex<double> amplitude_d;
     std::complex<double> amplitude_dbar;
@@ -59,17 +61,35 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
       std::swap(amplitude_d, amplitude_dbar);
     }
     // Calculate fractional yield
+    #pragma omp critical (K_update)
+    {
     m_K[BinIndex] += std::norm(amplitude_d)*EventWeight;
+    }
+    #pragma omp critical (Kbar_update)
+    {
     m_Kbar[BinIndex] += std::norm(amplitude_dbar)*EventWeight;
+    }
     // Calculate strong phase difference
     double phase = std::arg(amplitude_d) - std::arg(amplitude_dbar);
+    #pragma omp critical (c_update)
+    {
     m_c[BinIndex] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Cos(phase)*EventWeight;
+    }
+    #pragma omp critical (s_update)
+    {
     m_s[BinIndex] += TMath::Sqrt(std::norm(amplitude_d)*std::norm(amplitude_dbar))*TMath::Sin(phase)*EventWeight;
+    }
     // Calculate bin area
     if(BinNumber > 0) {
+      #pragma omp critical (AreaPlus_update)
+      {
       m_AreaPlus[BinIndex] += EventWeight;
+      }
     } else {
+      #pragma omp critical (AreaMinus_update)
+      {
       m_AreaMinus[BinIndex] += EventWeight;
+      }
     }
   }
   double sumK = 0.0, sumArea = 0.0;

@@ -59,32 +59,32 @@ namespace KKpipiMath {
 
   std::vector<double> ConvertXToMomenta(const std::vector<double> &X) {
     // Find the invariant masses of K+pi+ and K-pi-
-    double alpha = (std::min(X[0], X[1]) - KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI)/2.0;
-    double mplus = X[0] - alpha;
-    double mminus = X[1] - alpha;
+    const double alpha = (std::min(X[0], X[1]) - KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI)/2.0;
+    const double mplus = X[0] - alpha;
+    const double mminus = X[1] - alpha;
     // Energy of K+pi+ system in the D meson rest frame
-    double Eplus = (KKpipi_Constants::MASS_D*KKpipi_Constants::MASS_D + mplus*mplus - mminus*mminus)/(2*KKpipi_Constants::MASS_D);
+    const double Eplus = (KKpipi_Constants::MASS_D*KKpipi_Constants::MASS_D + mplus*mplus - mminus*mminus)/(2*KKpipi_Constants::MASS_D);
     // Speed of D meson in the K+pi+ rest frame
-    double betap = TMath::Sqrt(Eplus*Eplus - mplus*mplus)/Eplus;
+    const double betap = TMath::Sqrt(Eplus*Eplus - mplus*mplus)/Eplus;
     // Energy of K+ in the K+pi+ rest frame
-    double EKp = (mplus*mplus + KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI*KKpipi_Constants::MASS_PI)/(2*mplus);
+    const double EKp = (mplus*mplus + KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI*KKpipi_Constants::MASS_PI)/(2*mplus);
     // Momentum of K+ in the K+pi+ rest frame
-    double pKp = TMath::Sqrt(EKp*EKp - KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K);
+    const double pKp = TMath::Sqrt(EKp*EKp - KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K);
     // Energy of pi+ in the K+pi+ rest frame
-    double Epip = (mplus*mplus - KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI*KKpipi_Constants::MASS_PI)/(2*mplus);
+    const double Epip = (mplus*mplus - KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI*KKpipi_Constants::MASS_PI)/(2*mplus);
     // Put into four-vectors, with K+ at an angle theta+ relative to the D meson, and choose them in the xz plane
     TLorentzVector P_Kp(pKp*TMath::Sqrt(1 - X[2]*X[2]), 0.0, -pKp*X[2], EKp);
     TLorentzVector P_pip(-pKp*TMath::Sqrt(1 - X[2]*X[2]), 0.0, pKp*X[2], Epip);
     // Energy of K-pi- system in the D meson rest frame
-    double Eminus = (KKpipi_Constants::MASS_D*KKpipi_Constants::MASS_D - mplus*mplus + mminus*mminus)/(2*KKpipi_Constants::MASS_D);
+    const double Eminus = (KKpipi_Constants::MASS_D*KKpipi_Constants::MASS_D - mplus*mplus + mminus*mminus)/(2*KKpipi_Constants::MASS_D);
     // Speed of D meson in the K-pi- rest frame
-    double betam = TMath::Sqrt(Eminus*Eminus - mminus*mminus)/Eminus;
+    const double betam = TMath::Sqrt(Eminus*Eminus - mminus*mminus)/Eminus;
     // Energy of K- in the K-pi- rest frame
-    double EKm = (mminus*mminus + KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI*KKpipi_Constants::MASS_PI)/(2*mminus);
+    const double EKm = (mminus*mminus + KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K - KKpipi_Constants::MASS_PI*KKpipi_Constants::MASS_PI)/(2*mminus);
     // Momentum of K- in the K-pi- rest frame
-    double pKm = TMath::Sqrt(EKm*EKm - KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K);
+    const double pKm = TMath::Sqrt(EKm*EKm - KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K);
     // Energy of pi- in the K-pi- rest frame
-    double Epim = (mminus*mminus - KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI*KKpipi_Constants::MASS_PI)/(2*mminus);
+    const double Epim = (mminus*mminus - KKpipi_Constants::MASS_K*KKpipi_Constants::MASS_K + KKpipi_Constants::MASS_PI*KKpipi_Constants::MASS_PI)/(2*mminus);
     // Put into four-vector, with K- at an angle theta- relative to the D meson, and put them initially in the xz plane
     TLorentzVector P_Km(-pKm*TMath::Sqrt(1 - X[3]*X[3]), 0.0, pKm*X[3], EKm);
     TLorentzVector P_pim(pKm*TMath::Sqrt(1 - X[3]*X[3]), 0.0, -pKm*X[3], Epim);
@@ -98,7 +98,7 @@ namespace KKpipiMath {
     P_Km.Boost(0.0, 0.0, -betam);
     P_pim.Boost(0.0, 0.0, -betam);
     // Put everything together and return it
-    std::vector<double> event = {P_Kp[0], P_Kp[1], P_Kp[2], P_Kp[3], P_Km[0], P_Km[1], P_Km[2], P_Km[3], P_pip[0], P_pip[1], P_pip[2], P_pip[3], P_pim[0], P_pim[1], P_pim[2], P_pim[3]};
+    const std::vector<double> event = {P_Kp[0], P_Kp[1], P_Kp[2], P_Kp[3], P_Km[0], P_Km[1], P_Km[2], P_Km[3], P_pip[0], P_pip[1], P_pip[2], P_pip[3], P_pim[0], P_pim[1], P_pim[2], P_pim[3]};
     return event;
   }
 

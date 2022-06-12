@@ -5,3 +5,7 @@ target_include_directories(KKpipiBinnedFit PUBLIC ../include)
 target_link_libraries(KKpipiBinnedFit PUBLIC ROOT::Physics ROOT::Minuit2 ROOT::Gpad)
 
 target_link_libraries(KKpipiBinnedFit PUBLIC -ldl)
+
+if(OpenMP_CXX_FOUND)
+    target_link_libraries(KKpipiBinnedFit PUBLIC OpenMP::OpenMP_CXX)
+endif()
