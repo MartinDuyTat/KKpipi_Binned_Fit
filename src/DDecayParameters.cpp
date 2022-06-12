@@ -33,7 +33,7 @@ DDecayParameters::DDecayParameters(PhaseSpaceParameterisation *psp, const EventL
   m_AreaPlus = std::vector<double>(NumberBins, 0.0);
   m_AreaMinus = std::vector<double>(NumberBins, 0.0);
   // Loop over all unweighted events
-  #pragma omp parallel for
+  #pragma omp parallel for num_threads(16)
   for(int i = 0; i < eventlist.NumberEvents(); i++) {
     // Get generated event
     const auto GeneratedEvent = eventlist.GetEvent(i);
